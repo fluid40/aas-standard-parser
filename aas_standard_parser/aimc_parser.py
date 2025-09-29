@@ -47,7 +47,7 @@ class MappingConfigurations:
     aid_submodel_ids: list[str]
 
 
-class AimcParser:
+class AIMCParser:
     """Parser for the AIMC submodel.
 
     :return: The parsed AIMC submodel.
