@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  dev_container:
+    build: .
+    container_name: python_container_asp
+    volumes:
+      - ../..:/workspaces:cached
+    command: sleep infinity
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
