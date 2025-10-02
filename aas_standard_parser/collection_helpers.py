@@ -27,6 +27,7 @@ def find_by_semantic_id(parent: NamespaceSet[SubmodelElement], semantic_id_value
     :param parent: The NamespaceSet to search within.
     :param semantic_id_value: The semantic ID value to search for.
     :return: The first found SubmodelElement, or None if not found.
+    @rtype: object
     """
 
     # create a Reference that acts like the to-be-matched semanticId
