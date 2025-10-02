@@ -3,15 +3,12 @@ import base64
 from typing import Dict, List
 
 from basyx.aas.model import (
-    ExternalReference,
-    Key,
-    KeyTypes,
-    NamespaceSet,
     Property,
-    Reference,
     SubmodelElement,
-    SubmodelElementCollection, ModelReference, SubmodelElementList,
+    SubmodelElementCollection, SubmodelElementList,
 )
+
+from aas_standard_parser.collection_helpers import find_by_semantic_id, find_all_by_semantic_id, find_by_id_short
 
 
 class IAuthenticationDetails:
@@ -32,85 +29,6 @@ class NoAuthenticationDetails(IAuthenticationDetails):
 
     def __init__(self):
         super().__init__()
-
-
-def find_all_by_semantic_id(parent: NamespaceSet[SubmodelElement], semantic_id_value: str) -> List[SubmodelElement]:
-    """Find all SubmodelElements having a specific Semantic ID.
-
-    :param parent: The NamespaceSet to search within.
-    :param semantic_id_value: The semantic ID value to search for.
-    :return: The found SubmodelElement(s) or an empty list if not found.
-    """
-    reference: Reference = ExternalReference(
-        (Key(
-            type_=KeyTypes.GLOBAL_REFERENCE,
-            value=semantic_id_value
-        ),)
-    )
-    found_elements: list[SubmodelElement] = [
-        element for element in parent if element.semantic_id.__eq__(reference)
-    ]
-    return found_elements
-
-
-def find_by_semantic_id(parent: NamespaceSet[SubmodelElement], semantic_id_value: str) -> SubmodelElement | None:
-    """Find a SubmodelElement by its semantic ID.
-
-    :param parent: The NamespaceSet to search within.
-    :param semantic_id_value: The semantic ID value to search for.
-    :return: The first found SubmodelElement, or None if not found.
-    """
-
-    # create a Reference that acts like the to-be-matched semanticId
-    reference: Reference = ExternalReference(
-        (Key(
-            type_=KeyTypes.GLOBAL_REFERENCE,
-            value=semantic_id_value
-        ),)
-    )
-
-    # check if the constructed Reference appears as semanticId of the child elements
-    for element in parent:
-        if element.semantic_id.__eq__(reference):
-            return element
-    return None
-
-
-def find_by_id_short(parent: NamespaceSet[SubmodelElement], id_short_value: str) -> SubmodelElement | None:
-    for element in parent:
-        if element.id_short == id_short_value:
-            return element
-
-    return None
-
-
-def find_by_supplemental_semantic_id(parent: NamespaceSet[SubmodelElement], semantic_id_value: str) -> SubmodelElement:
-    """Find a SubmodelElement by its supplemental semantic ID.
-
-    :param parent: The NamespaceSet to search within.
-    :param semantic_id_value: The supplemental semantic ID value to search for.
-    :return: The first found SubmodelElement, or None if not found.
-    """
-    for element in parent:
-        if contains_supplemental_semantic_id(element, semantic_id_value):
-            return element
-    return None
-
-
-def contains_supplemental_semantic_id(element: SubmodelElement, semantic_id_value: str) -> bool:
-    """Check if the element contains a specific supplemental semantic ID.
-
-    :param element: The SubmodelElement to check.
-    :param semantic_id_value: The supplemental semantic ID value to search for.
-    :return: True if the element contains the supplemental semantic ID, False otherwise.
-    """
-    reference: Reference = ExternalReference(
-        (Key(
-            type_=KeyTypes.GLOBAL_REFERENCE,
-            value=semantic_id_value
-        ),)
-    )
-    return element.supplemental_semantic_id.__contains__(reference)
 
 
 def get_base_url_from_interface(aid_interface: SubmodelElementCollection) -> str:
@@ -229,17 +147,6 @@ def create_property_to_href_map(aid_interface: SubmodelElementCollection) -> Dic
         )
 
     return mapping
-
-
-def construct_idshort_path_from_reference(reference: ModelReference) -> str:
-    idshort_path: str = ""
-
-    # start from the second Key and omit the Identifiable at the beginning of the list
-    for key in reference.key[1:]:
-        idshort_path += (key.value + ".")
-
-    # get rid of the trailing dot
-    return idshort_path[:-1]
 
 
 def parse_auth(aid_interface: SubmodelElementCollection) -> IAuthenticationDetails:
