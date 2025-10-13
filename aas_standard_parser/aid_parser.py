@@ -1,305 +1,259 @@
 """This module provides functions to parse AID Submodels and extract MQTT interface descriptions."""
-
-from collections.abc import Iterator
-from typing import NamedTuple
+import base64
+from typing import Dict, List
 
 from basyx.aas.model import (
-    ExternalReference,
-    Key,
-    KeyTypes,
-    NamespaceSet,
     Property,
-    Reference,
-    Submodel,
     SubmodelElement,
-    SubmodelElementCollection,
+    SubmodelElementCollection, SubmodelElementList, Submodel,
 )
-from basyx.aas.util import traversal
+
+from aas_standard_parser.collection_helpers import find_by_semantic_id, find_all_by_semantic_id, find_by_id_short
 
 
-class MQTTInterfaceDescription(NamedTuple):
-    """Represents an MQTT interface configuration for a specific asset.
+class PropertyDetails:
 
-    :param interface_smc: The SubmodelElementCollection representing the MQTT interface.
-    :param base_url: The base URL for the MQTT interface.
-    :param websocket_connection: Whether this interface is using a WebSocket connection or not (default).
-    """
+    def __init__(self, href: str, keys: List[str]):
+        self.href = href
+        self.keys = keys
 
-    interface_smc: SubmodelElementCollection
-    base_url: str
-    websocket_connection: bool = False
 
-class AIDParser:
-    """A class to handle parsing of AID Submodels and connecting to MQTT topics.
+class IAuthenticationDetails:
 
-    It extracts the MQTT topic information from the AID Submodel as well as the base url of the MQTT broker.
-    All MQTT interface configurations are stored in a list of MQTTInterfaceDescriptions.
-    """
+    def __init__(self):
+        # TODO: different implementations for different AID versions
+        pass
 
-    _mqtt_interface_descriptions: list[MQTTInterfaceDescription]
-    _default_mqtt_interface: MQTTInterfaceDescription = None
-    _fallback_mqtt_interface: MQTTInterfaceDescription = None
-    _topic_map: dict[str, str] = {}
 
-    def __init__(self, aid_sm: Submodel):
-        """Initialize the AIDParser with a JSON representation of an AID Submodel.
+class BasicAuthenticationDetails(IAuthenticationDetails):
 
-        Extract all MQTT interface collections and find the contained MQTT topics using the default interface.
-        """
-        mqtt_interfaces: list[SubmodelElementCollection] = self._find_all_mqtt_interfaces(aid_sm)
-        if mqtt_interfaces == []:
-            print("No MQTT interface description found in AID Submodel.")
+    def __init__(self, user: str, password: str):
+        self.user = user
+        self.password = password
+        super().__init__()
 
-        self._mqtt_interface_descriptions = [
-            MQTTInterfaceDescription(
-                interface_smc=smc,
-                base_url=self._get_base_url_from_interface(smc),
-                websocket_connection=self._uses_websocket(smc)
-            )
-            for smc in mqtt_interfaces
-        ]
-        print(f"Found {len(self._mqtt_interface_descriptions)} MQTT interfaces in AID Submodel.")
-        self._default_mqtt_interface = self._get_default_mqtt_interface_description()
-        self._fallback_mqtt_interface = self._get_fallback_mqtt_interface_description()
-        self._create_topic_map(self._default_mqtt_interface.interface_smc)
 
-    def _find_all_mqtt_interfaces(self, aid_sm: Submodel) -> list[SubmodelElementCollection]:
-        """Find all MQTT interface collections in the AID Submodel by semantic_id and supplemental_semantic_id.
+class NoAuthenticationDetails(IAuthenticationDetails):
 
-        :return: A list of MQTT interface SubmodelElementCollections or an empty list if none are found.
-        """
-        interfaces: list[SubmodelElement] = find_all_by_semantic_id(
-            aid_sm.submodel_element, "https://admin-shell.io/idta/AssetInterfacesDescription/1/0/Interface"
-        )
+    def __init__(self):
+        super().__init__()
 
-        return [interface for interface in interfaces if isinstance(interface, SubmodelElementCollection) and
-                contains_supplemental_semantic_id(interface, "http://www.w3.org/2011/mqtt")] if interfaces else []
 
-    def _get_base_url_from_interface(self, mqtt_interface: SubmodelElementCollection) -> str:
-        """Set the base URL for the MQTT interface from the EndpointMetadata SMC."""
-        endpoint_metadata: SubmodelElementCollection = find_by_semantic_id(
-            mqtt_interface.value, "https://admin-shell.io/idta/AssetInterfacesDescription/1/0/EndpointMetadata"
+class AIDParser():
+
+    def __init__(self):
+        pass
+
+    def get_base_url_from_interface(self, aid_interface: SubmodelElementCollection) -> str:
+        """Get the base address (EndpointMetadata.base) from a SMC describing an interface in the AID."""
+
+        endpoint_metadata: SubmodelElementCollection | None = find_by_semantic_id(
+            aid_interface.value, "https://admin-shell.io/idta/AssetInterfacesDescription/1/0/EndpointMetadata"
         )
         if endpoint_metadata is None:
-            raise ValueError("EndpointMetadata SMC not found in AID Submodel.")
-        base: Property = find_by_semantic_id(
-            endpoint_metadata.value, "https://www.w3.org/2019/wot/td#base"
+            raise ValueError(f"'EndpointMetadata' SMC not found in the provided '{aid_interface.id_short}' SMC.")
+
+        base: Property | None = find_by_semantic_id(
+            endpoint_metadata.value, "https://www.w3.org/2019/wot/td#baseURI"
         )
         if base is None:
-            raise ValueError("BaseUrl Property not found in EndpointMetadata SMC.")
+            raise ValueError("'base' Property not found in 'EndpointMetadata' SMC.")
+
         return base.value
 
-    def _create_topic_map(self, mqtt_interface: SubmodelElementCollection):
-        """Find all MQTT topics by their property definitions in the MQTT interface SMC and create a new topic Map.
 
-        The topic Map is a dictionary of the Topic Name (IdShort of the Property Definition) and the MQTT topic link.
+    def create_property_to_href_map(self, aid_interface: SubmodelElementCollection) -> Dict[str, PropertyDetails]:
+        """Find all first-level and nested properties in a provided SMC describing one interface in the AID.
+        Map each property (either top-level or nested) to the according 'href' attribute.
+        Nested properties are further mapped to the hierarchical list of keys
+        that are necessary to extract their value from the payload of the interface.
 
-        :param mqtt_interface: The MQTT interface SubmodelElementCollection to use.
+        :param aid_interface: An SMC describing an interface in the AID.
+        :return: A dictionary mapping each property (represented by its idShort-path) to PropertyDetails.
         """
-        print(f"Creating topic map for MQTT interface {mqtt_interface.id_short}.")
-        mqtt_property_collection: SubmodelElementCollection = self._get_mqtt_properties(mqtt_interface)
-        if not mqtt_property_collection:
-            print(f"No MQTT properties found in InteractionMetadata of MQTT Interface {mqtt_interface.id_short}.")
-            return
+        mapping: Dict[str, PropertyDetails] = {}
 
-        property_definitions: list[SubmodelElementCollection] = [
-            prop_def for prop_def in find_all_by_semantic_id(
-                traversal.walk_submodel(mqtt_property_collection),
-                "https://admin-shell.io/idta/AssetInterfaceDescription/1/0/PropertyDefinition"
-            )
-            if isinstance(prop_def, SubmodelElementCollection) and
-            find_by_semantic_id(prop_def.value, "https://www.w3.org/2019/wot/td#hasForm") is not None
-        ]
-        self._topic_map = self._get_topics_from_property_definitions(property_definitions)
-
-    def _get_topics_from_property_definitions(self, property_definitions: list[SubmodelElementCollection]) -> dict[str, str]:
-        """Create a mapping of MQTT topics from the property definitions.
-
-        :param property_definitions: The list of property definitions from the AID SM.
-        :return: A dictionary mapping IdShort of MQTT topic definitions to their MQTT topic links.
-        """
-        topic_map: dict[str, str] = {}
-        for prop_def in property_definitions:
-            forms = find_by_semantic_id(
-                prop_def.value, "https://www.w3.org/2019/wot/td#hasForm"
-            )
-            if forms is None:
-                print(f"Form SMC not found in PropertyDefinition {prop_def.id_short}.")
-                continue
-
-            target_href = find_by_semantic_id(
-                forms.value, "https://www.w3.org/2019/wot/hypermedia#hasTarget"
-            )
-            if target_href is None:
-                print(f"Target property not found in Form SMC of PropertyDefinition {prop_def.id_short}.")
-                continue
-
-            topic_map[prop_def.id_short] = target_href.value
-        return topic_map
-
-    def _get_default_mqtt_interface_description(self) -> MQTTInterfaceDescription:
-        """Get the default MQTT interface description from the list of MQTT interfaces.
-
-        Default MQTT interface does not use Websocket. If no such interface is found, simply return the first one.
-
-        :return: The default MQTT interface or None if no interface is found.
-        """
-        for interface in self._mqtt_interface_descriptions:
-            if not interface.websocket_connection:
-                print(f"Using default MQTT interface: {interface.interface_smc.id_short}")
-                return interface
-
-        if len(self._mqtt_interface_descriptions) > 0:
-            print(f"Using default MQTT interface: {self._mqtt_interface_descriptions[0].interface_smc.id_short}")
-            return self._mqtt_interface_descriptions[0]
-
-        return None
-
-    def _get_fallback_mqtt_interface_description(self) -> MQTTInterfaceDescription:
-        """Get the fallback MQTT interface description from the list of MQTT interfaces.
-
-        :return: The fallback MQTT interface or None if no second interface is provided in the AID SM.
-        """
-        if len(self._mqtt_interface_descriptions) > 1:
-            for interface in self._mqtt_interface_descriptions:
-                if interface.websocket_connection:
-                    print(f"Using fallback MQTT interface: {interface.interface_smc.id_short}")
-                    return interface
-        return None
-
-    def _get_mqtt_properties(self, default_mqtt_interface: SubmodelElementCollection) -> SubmodelElementCollection | None:
-        """Get the MQTT properties from the InteractionMetadata SMC.
-
-        :return: The SubmodelElementCollection containing MQTT properties on None if not found.
-        """
-        interaction_metadata: SubmodelElementCollection = find_by_semantic_id(
-            default_mqtt_interface.value, "https://admin-shell.io/idta/AssetInterfacesDescription/1/0/InteractionMetadata"
+        interaction_metadata: SubmodelElementCollection | None = find_by_semantic_id(
+            aid_interface.value, "https://admin-shell.io/idta/AssetInterfacesDescription/1/0/InteractionMetadata"
         )
         if interaction_metadata is None:
-            print("InteractionMetadata SMC not found in MQTT interface description.")
-            return None
+            raise ValueError(f"'InteractionMetadata' SMC not found in the provided '{aid_interface.id_short}' SMC.")
 
-        mqtt_property_collection: SubmodelElementCollection = find_by_semantic_id(
+        properties: SubmodelElementCollection | None = find_by_semantic_id(
             interaction_metadata.value, "https://www.w3.org/2019/wot/td#PropertyAffordance"
         )
-        if mqtt_property_collection is None:
-            print("PropertyAffordance SMC not found in InteractionMetadata SMC.")
-            return None
+        if properties is None:
+            raise ValueError("'properties' SMC not found in 'InteractionMetadata' SMC.")
 
-        return mqtt_property_collection
+        fl_properties: List[SubmodelElement] = find_all_by_semantic_id(
+            properties.value, "https://admin-shell.io/idta/AssetInterfacesDescription/1/0/PropertyDefinition"
+        )
+        # TODO: some AIDs have typos in that semanticId but we only support the official ones
+        #fl_properties_alternative: List[SubmodelElement] = find_all_by_semantic_id(
+        #    properties.value, "https://admin-shell.io/idta/AssetInterfaceDescription/1/0/PropertyDefinition"
+        #)
+        #fl_properties.extend(fl_properties_alternative)
+        if fl_properties is None:
+            #raise ValueError(f"No first-level 'property' SMC not found in 'properties' SMC.")
+            return {}
 
-    def _uses_websocket(self, mqtt_interface: SubmodelElementCollection) -> bool:
-        """Check if the given MQTT interface uses a WebSocket connection by searching for the appropriate semantic ID.
+        def traverse_property(smc: SubmodelElementCollection, parent_path: str, href: str, key_path: List[str | int],
+                              is_items=False, idx=None, is_top_level=False):
+            # determine local key only if not top-level
+            if not is_top_level:
+                if is_items and idx is not None:
+                    local_key = idx  # integer index
+                else:
+                    key_prop = find_by_semantic_id(
+                        smc.value, "https://admin-shell.io/idta/AssetInterfacesDescription/1/0/key"
+                    )
+                    local_key = key_prop.value if key_prop else smc.id_short  # string
+                new_key_path = key_path + [local_key]
+            else:
+                new_key_path = key_path  # top-level: no key added
 
-        :param mqtt_interface: The MQTT interface to check.
-        :return: True if the interface uses WebSocket, False otherwise.
+            # register this property
+            full_path = f"{parent_path}.{smc.id_short}"
+            mapping[full_path] = PropertyDetails(href, new_key_path)
+
+            # traverse nested "properties" or "items"
+            # (nested properties = object members, nested items = array elements)
+            # TODO: some apparently use the wrong semanticId:
+            # "https://www.w3.org/2019/wot/td#PropertyAffordance"
+            for nested_sem_id in [
+                "https://www.w3.org/2019/wot/json-schema#properties",
+                "https://www.w3.org/2019/wot/json-schema#items",
+            ]:
+                nested_group: SubmodelElementCollection | None = find_by_semantic_id(smc.value, nested_sem_id)
+                if nested_group:
+                    # attach the name of that SMC ("items" or "properties" or similar) to the key_path
+                    full_path += "." + nested_group.id_short
+
+                    # find all nested properties/items by semantic-ID
+                    nested_properties: List[SubmodelElement] = find_all_by_semantic_id(
+                        nested_group.value, "https://www.w3.org/2019/wot/json-schema#propertyName"
+                    )
+                    # TODO: some AIDs have typos or use wrong semanticIds but we only support the official ones
+                    #nested_properties_alternative1: List[SubmodelElement] = find_all_by_semantic_id(
+                    #    nested_group.value, "https://admin-shell.io/idta/AssetInterfaceDescription/1/0/PropertyDefinition"
+                    #)
+                    # nested_properties_alternative2: List[SubmodelElement] = find_all_by_semantic_id(
+                    #    nested_group.value, "https://admin-shell.io/idta/AssetInterfacesDescription/1/0/PropertyDefinition"
+                    # )
+                    #nested_properties.extend(nested_properties_alternative1)
+                    #nested_properties.extend(nested_properties_alternative2)
+
+                    # traverse all nested properties/items recursively
+                    for idx, nested in enumerate(nested_properties):
+                        if nested_sem_id.endswith("#items"):
+                            # for arrays: append index instead of property key
+                            traverse_property(nested, full_path, href, new_key_path, is_items=True, idx=idx)
+                        else:
+                            traverse_property(nested, full_path, href, new_key_path)
+
+        # process all first-level properties
+        for fl_property in fl_properties:
+            forms: SubmodelElementCollection | None = find_by_semantic_id(
+                fl_property.value, "https://www.w3.org/2019/wot/td#hasForm"
+            )
+            if forms is None:
+                raise ValueError(f"'forms' SMC not found in '{fl_property.id_short}' SMC.")
+
+            href: Property | None = find_by_semantic_id(
+                forms.value, "https://www.w3.org/2019/wot/hypermedia#hasTarget"
+            )
+            if href is None:
+                raise ValueError("'href' Property not found in 'forms' SMC.")
+
+            href_value = href.value
+            idshort_path_prefix = f"{aid_interface.id_short}.{interaction_metadata.id_short}.{properties.id_short}"
+
+            traverse_property(
+                fl_property,
+                idshort_path_prefix,
+                href_value,
+                [],
+                is_top_level=True
+            )
+
+        return mapping
+
+
+    def parse_security(self, aid_interface: SubmodelElementCollection) -> IAuthenticationDetails:
+        """Extract the authentication details (EndpointMetadata.security) from the provided interface in the AID.
+
+        :param aid_interface: An SMC describing an interface in the AID.
+        :return: A subtype of IAuthenticationDetails with details depending on the specified authentication method for the interface.
         """
-        return contains_supplemental_semantic_id(mqtt_interface, "https://www.rfc-editor.org/rfc/rfc6455")
+        endpoint_metadata: SubmodelElementCollection | None = find_by_semantic_id(
+            aid_interface.value, "https://admin-shell.io/idta/AssetInterfacesDescription/1/0/EndpointMetadata"
+        )
+        if endpoint_metadata is None:
+            raise ValueError(f"'EndpointMetadata' SMC not found in the provided '{aid_interface.id_short}' SMC.")
 
-    def get_mqtt_topic_map(self, fallback: bool = False) -> dict[str, str]:
-        """Get the MQTT topic map.
+        security: SubmodelElementList | None = find_by_semantic_id(
+            endpoint_metadata.value, "https://www.w3.org/2019/wot/td#hasSecurityConfiguration"
+        )
+        if security is None:
+            raise ValueError("'security' SML not found in 'EndpointMetadata' SMC.")
 
-        If the fallback value needs to be used, regenerate the topic map from the fallback MQTT interface.
+        # TODO: resolve the full reference(s)
+        # for now, assume there is only one reference to the security in use
+        # -> access SML[0]
+        # assume that this ReferenceElement points to a security scheme in this very AID SM
+        # -> can just use the last key to determine the type of security
+        sc_idshort = security.value[0].value.key[-1].value
 
-        :param fallback: Whether to use the fallback MQTT interface, defaults to False
-        :return: The MQTT topic map.
-        """
-        if fallback:
-            self._create_topic_map(self._get_fallback().interface_smc)
-        return self._topic_map
+        # get the securityDefinitions SMC
+        security_definitions: SubmodelElementCollection | None = find_by_semantic_id(
+            endpoint_metadata.value, "https://www.w3.org/2019/wot/td#definesSecurityScheme"
+        )
+        if security_definitions is None:
+            raise ValueError("'securityDefinitions' SMC not found in 'EndpointMetadata' SMC.")
 
-    def get_mqtt_base_url(self, fallback: bool = False) -> str:
-        """Get the base URL for the MQTT connection.
+        # find the security scheme SMC with the same idShort as mentioned in the reference "sc"
+        referenced_security: SubmodelElementCollection | None = find_by_id_short(
+            security_definitions.value, sc_idshort
+        )
+        if referenced_security is None:
+            raise ValueError(f"Referenced security scheme '{sc_idshort}' SMC not found in 'securityDefinitions' SMC")
 
-        :param fallback: Whether to use the fallback MQTT interface, defaults to False
-        :return: The base URL of the MQTT interface.
-        """
-        if fallback:
-            return self._get_fallback().base_url
+        # get the name of the security scheme
+        scheme: Property | None = find_by_semantic_id(
+            referenced_security.value, "https://www.w3.org/2019/wot/security#SecurityScheme"
+        )
+        if scheme is None:
+            raise ValueError(f"'scheme' Property not found in referenced security scheme '{sc_idshort}' SMC.")
 
-        return self._default_mqtt_interface.base_url
+        auth_details: IAuthenticationDetails = None
 
-    def _get_fallback(self):
-        """Get the fallback MQTT interface description if it exists.
+        match scheme.value:
+            case "nosec":
+                auth_details = NoAuthenticationDetails()
 
-        :raises ConnectionError: If no fallback MQTT interface is available.
-        :return: The fallback MQTT interface description.
-        """
-        if not self._fallback_mqtt_interface:
-            raise ConnectionError("No fallback MQTT interface available.")
-        return self._fallback_mqtt_interface
+            case "basic":
+                basic_sc_name: Property | None = find_by_semantic_id(
+                    referenced_security.value, "https://www.w3.org/2019/wot/security#name"
+                )
+                if basic_sc_name is None:
+                    raise ValueError("'name' Property not found in 'basic_sc' SMC")
 
-    def uses_websocket_interface(self, fallback: bool = False) -> bool:
-        """Check if the MQTT connection will be initialized using Websocket.
+                auth_base64 = basic_sc_name.value
+                auth_plain = base64.b64decode(auth_base64).decode("utf-8")
+                auth_details = BasicAuthenticationDetails(auth_plain.split(":")[0], auth_plain.split(":")[1])
 
-        :param fallback: Whether to use the fallback MQTT interface, defaults to False
-        :return: True if the MQTT interface uses WebSocket, False otherwise.
-        """
-        if fallback:
-            return self._get_fallback().websocket_connection
+            # TODO: remaining cases
+            case "digest":
+                pass
+            case "bearer":
+                pass
+            case "psk":
+                pass
+            case "oauth2":
+                pass
+            case "apikey":
+                pass
+            case "auto":
+                pass
 
-        return self._default_mqtt_interface.websocket_connection
-
-
-def find_all_by_semantic_id(parent: Iterator[SubmodelElement], semantic_id_value: str) -> list[SubmodelElement]:
-    """Find all SubmodelElements having a specific Semantic ID.
-
-    :param parent: The NamespaceSet to search within.
-    :param semantic_id_value: The semantic ID value to search for.
-    :return: The found SubmodelElement(s) or an empty list if not found.
-    """
-    reference: Reference = ExternalReference(
-        [Key(
-            type_= KeyTypes.GLOBAL_REFERENCE,
-            value=semantic_id_value
-        )]
-    )
-    found_elements: list[SubmodelElement] = [
-        element for element in parent if element.semantic_id.__eq__(reference)
-    ]
-    return found_elements
-
-def find_by_semantic_id(parent: NamespaceSet[SubmodelElement], semantic_id_value: str) -> SubmodelElement:
-    """Find a SubmodelElement by its semantic ID.
-
-    :param parent: The NamespaceSet to search within.
-    :param semantic_id_value: The semantic ID value to search for.
-    :return: The first found SubmodelElement, or None if not found.
-    """
-    reference: Reference = ExternalReference(
-        [Key(
-            type_= KeyTypes.GLOBAL_REFERENCE,
-            value=semantic_id_value
-        )]
-    )
-    for element in parent:
-        if element.semantic_id.__eq__(reference):
-            return element
-    return None
-
-def find_by_supplemental_semantic_id(parent: NamespaceSet[SubmodelElement], semantic_id_value: str) -> SubmodelElement:
-    """Find a SubmodelElement by its supplemental semantic ID.
-
-    :param parent: The NamespaceSet to search within.
-    :param semantic_id_value: The supplemental semantic ID value to search for.
-    :return: The first found SubmodelElement, or None if not found.
-    """
-    for element in parent:
-        if contains_supplemental_semantic_id(element, semantic_id_value):
-            return element
-    return None
-
-def contains_supplemental_semantic_id(element: SubmodelElement, semantic_id_value: str) -> bool:
-    """Check if the element contains a specific supplemental semantic ID.
-
-    :param element: The SubmodelElement to check.
-    :param semantic_id_value: The supplemental semantic ID value to search for.
-    :return: True if the element contains the supplemental semantic ID, False otherwise.
-    """
-    reference: Reference = ExternalReference(
-        [Key(
-            type_= KeyTypes.GLOBAL_REFERENCE,
-            value=semantic_id_value
-        )]
-    )
-    return element.supplemental_semantic_id.__contains__(reference)
+        return auth_details
