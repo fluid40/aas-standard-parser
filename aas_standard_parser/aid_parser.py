@@ -11,11 +11,26 @@ from basyx.aas.model import (
 from aas_standard_parser.collection_helpers import find_by_semantic_id, find_all_by_semantic_id, find_by_id_short
 
 
+class IProtocolBinding:
+
+    def __init__(self):
+        pass
+
+
+class HttpProtocolBinding(IProtocolBinding):
+
+    def __init__(self, method_name: str, headers: Dict[str, str]):
+        super().__init__()
+        self.method_name = method_name
+        self.headers = headers
+
+
 class PropertyDetails:
 
-    def __init__(self, href: str, keys: List[str]):
+    def __init__(self, href: str, keys: List[str], protocol_binding: IProtocolBinding = None):
         self.href = href
         self.keys = keys
+        self.protocol_binding = protocol_binding
 
 
 class IAuthenticationDetails:
