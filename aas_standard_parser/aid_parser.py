@@ -5,7 +5,7 @@ from typing import Dict, List
 from basyx.aas.model import (
     Property,
     SubmodelElement,
-    SubmodelElementCollection, SubmodelElementList, Submodel,
+    SubmodelElementCollection, SubmodelElementList,
 )
 
 from aas_standard_parser.collection_helpers import find_by_semantic_id, find_all_by_semantic_id, find_by_id_short
@@ -103,13 +103,8 @@ class AIDParser():
         fl_properties: List[SubmodelElement] = find_all_by_semantic_id(
             properties.value, "https://admin-shell.io/idta/AssetInterfacesDescription/1/0/PropertyDefinition"
         )
-        # TODO: some AIDs have typos in that semanticId but we only support the official ones
-        #fl_properties_alternative: List[SubmodelElement] = find_all_by_semantic_id(
-        #    properties.value, "https://admin-shell.io/idta/AssetInterfaceDescription/1/0/PropertyDefinition"
-        #)
-        #fl_properties.extend(fl_properties_alternative)
         if fl_properties is None:
-            #raise ValueError(f"No first-level 'property' SMC not found in 'properties' SMC.")
+            print(f"WARN: No first-level 'property' SMC not found in 'properties' SMC.")
             return {}
 
         def traverse_property(smc: SubmodelElementCollection, parent_path: str, href: str,
@@ -155,8 +150,6 @@ class AIDParser():
             mapping[full_path] = PropertyDetails(href, new_key_path, protocol_binding)
 
             # traverse nested "properties" or "items"
-            # TODO: some apparently use the wrong semanticId:
-            # "https://www.w3.org/2019/wot/td#PropertyAffordance"
             for nested_sem_id in [
                 "https://www.w3.org/2019/wot/json-schema#properties",
                 "https://www.w3.org/2019/wot/json-schema#items",
@@ -170,15 +163,6 @@ class AIDParser():
                     nested_properties: List[SubmodelElement] = find_all_by_semantic_id(
                         nested_group.value, "https://www.w3.org/2019/wot/json-schema#propertyName"
                     )
-                    # TODO: some AIDs have typos or use wrong semanticIds but we only support the official ones
-                    #nested_properties_alternative1: List[SubmodelElement] = find_all_by_semantic_id(
-                    #    nested_group.value, "https://admin-shell.io/idta/AssetInterfaceDescription/1/0/PropertyDefinition"
-                    #)
-                    # nested_properties_alternative2: List[SubmodelElement] = find_all_by_semantic_id(
-                    #    nested_group.value, "https://admin-shell.io/idta/AssetInterfacesDescription/1/0/PropertyDefinition"
-                    # )
-                    #nested_properties.extend(nested_properties_alternative1)
-                    #nested_properties.extend(nested_properties_alternative2)
 
                     # traverse all nested properties/items recursively
                     for idx, nested in enumerate(nested_properties):
