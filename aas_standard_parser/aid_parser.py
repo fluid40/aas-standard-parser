@@ -59,7 +59,7 @@ class AIDParser():
     def __init__(self):
         pass
 
-    def get_base_url_from_interface(self, aid_interface: SubmodelElementCollection) -> str:
+    def parse_base(self, aid_interface: SubmodelElementCollection) -> str:
         """Get the base address (EndpointMetadata.base) from a SMC describing an interface in the AID."""
 
         endpoint_metadata: SubmodelElementCollection | None = find_by_semantic_id(
@@ -77,7 +77,7 @@ class AIDParser():
         return base.value
 
 
-    def create_property_to_href_map(self, aid_interface: SubmodelElementCollection) -> Dict[str, PropertyDetails]:
+    def parse_properties(self, aid_interface: SubmodelElementCollection) -> Dict[str, PropertyDetails]:
         """Find all first-level and nested properties in a provided SMC describing one interface in the AID.
         Map each property (either top-level or nested) to the according 'href' attribute.
         Nested properties are further mapped to the hierarchical list of keys
