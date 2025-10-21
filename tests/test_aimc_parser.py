@@ -1,7 +1,7 @@
 import pytest
 from basyx.aas import model
 
-from aas_standard_parser.aimc_parser import MappingConfiguration
+from aas_standard_parser.aimc_parser import MappingConfiguration, SourceSinkRelation
 import aas_standard_parser.aimc_parser as aimc_parser
 from aas_standard_parser.utils import create_submodel_from_file
 
@@ -92,6 +92,24 @@ def _check_relations(configuration: MappingConfiguration):
     assert relation is not None
     assert relation.source is not None
     assert relation.sink is not None
+    assert relation.source_parent_path is not None
+    assert len(relation.source_parent_path) == 5
+    assert relation.source_parent_path[3] == "axes_position"
 
     assert isinstance(relation.source, model.ExternalReference)
     assert isinstance(relation.sink, model.ExternalReference)
+
+    _check_relation_methods(relation)
+
+def _check_relation_methods(relation: SourceSinkRelation):
+    # test to_json methods
+    source_json = relation.source_as_dict()
+    assert source_json is not None
+    assert "type" in source_json
+
+    sink_json = relation.sink_as_dict()
+    assert sink_json is not None
+    assert "type" in sink_json
+
+    parent_name = relation.get_source_parent_property_group_name()
+    assert parent_name == "axes_position"
