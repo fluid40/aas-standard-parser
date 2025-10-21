@@ -36,7 +36,7 @@ def test_003_parse_mapping_configuration_element(aimc_submodel: model.submodel):
     )
 
     configuration_element = configuration_elements[0]
-    configuration = aimc_parser.parse_mapping_configuration(configuration_element)
+    configuration = aimc_parser.parse_mapping_configuration_element(configuration_element)
 
     assert configuration is not None
     _check_interface_ref(configuration)

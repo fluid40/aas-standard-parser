@@ -1,8 +1,13 @@
+"""Parser for Mapping Configurations in AIMC Submodel."""
+
 import json
 import logging
+from dataclasses import dataclass, field
 
 import basyx.aas.adapter.json
 from basyx.aas import model
+
+import aas_standard_parser.collection_helpers as ch
 
 logger = logging.getLogger(__name__)
 
@@ -10,10 +15,11 @@ logger = logging.getLogger(__name__)
 class SourceSinkRelation:
     """Class representing a source-sink relation in the mapping configuration."""
 
-    aid_submodel_id: str
-    source: model.ExternalReference
-    sink: model.ExternalReference
-    property_name: str
+    aid_submodel_id: str = field(metadata={"description": "Identifier of the AID submodel used by the source reference."})
+    source: model.ExternalReference = field(metadata={"description": "Reference to the source property in the AID submodel."})
+    sink: model.ExternalReference = field(metadata={"description": "Reference to the sink property in the target submodel."})
+    property_name: str = field(metadata={"description": "Name of the mapped property."})
+    source_parent_path: list[str] = field(metadata={"description": "List of idShorts representing the parent path of the reference."})
 
     def source_as_dict(self) -> dict:
         """Convert the source reference to a dictionary.
@@ -31,89 +37,91 @@ class SourceSinkRelation:
         """
         return json.loads(json.dumps(self.sink, cls=basyx.aas.adapter.json.AASToJsonEncoder))
 
+    def get_source_parent_property_group_name(self) -> str:
+        """Get the name of the parent property group from the source. Ignore 'properties' entries from the path."""
+        if len(self.source_parent_path) == 0:
+            return ""
+
+        return next((n for n in reversed(self.source_parent_path) if n != "properties"), "")
+
 
 class MappingConfiguration:
     """Class representing a mapping configuration."""
 
-    interface_reference: model.ReferenceElement
-    aid_submodel_id: str
-    source_sink_relations: list[SourceSinkRelation]
+    interface_reference: model.ReferenceElement = field(metadata={"description": "Reference to the interface in the AID submodel."})
+    aid_submodel_id: str = field(metadata={"description": "Identifier of the AID submodel used by the interface reference."})
+    source_sink_relations: list[SourceSinkRelation] = field(metadata={"description": "List of source-sink relations in the mapping configuration."})
 
 
 class MappingConfigurations:
     """Class representing mapping configurations from AIMC submodel."""
 
-    configurations: list[MappingConfiguration]
-    aid_submodel_ids: list[str]
+    configurations: list[MappingConfiguration] = field(metadata={"description": "List of mapping configurations."})
+    aid_submodel_ids: list[str] = field(metadata={"description": "List of AID submodel IDs used in the mapping configurations."})
 
 
-def get_mapping_configuration_root_element(
-    aimc_submodel: model.Submodel,
-) -> model.SubmodelElementCollection | None:
+def get_mapping_configuration_root_element(aimc_submodel: model.Submodel) -> model.SubmodelElementCollection | None:
     """Get the mapping configuration root submodel element collection from the AIMC submodel.
 
+    :param aimc_submodel: The AIMC submodel to extract the mapping configuration root from.
     :return: The mapping configuration root submodel element collection or None if not found.
     """
+    # check if AIMC submodel is None
     if aimc_submodel is None:
         logger.error("AIMC submodel is None.")
         return None
 
-    mapping_configuration_element = next(
-        (elem for elem in aimc_submodel.submodel_element if elem.id_short == "MappingConfigurations"),
-        None,
-    )
-
-    if mapping_configuration_element is None:
+    # get 'MappingConfigurations' element list by its semantic ID
+    mc_element = ch.find_by_in_semantic_id(aimc_submodel.submodel_element, "idta/AssetInterfacesMappingConfiguration/1/0/MappingConfigurations")
+    if mc_element is None:
         logger.error("'MappingConfigurations' element list not found in AIMC submodel.")
-        return None
 
-    return mapping_configuration_element
+    return mc_element
 
 
-def get_mapping_configuration_elements(
-    aimc_submodel: model.Submodel,
-) -> list[model.SubmodelElementCollection] | None:
-    """Get all mapping configurations elements from the AIMC submodel.
+def get_mapping_configuration_elements(aimc_submodel: model.Submodel) -> list[model.SubmodelElementCollection] | None:
+    """Get all mapping configurations from the AIMC submodel.
 
-    :return: A dictionary containing all mapping configurations elements.
+    :param aimc_submodel: The AIMC submodel to extract mapping configurations from.
+    :return: A dictionary containing all mapping configurations.
     """
+    # check if AIMC submodel is None
     if aimc_submodel is None:
         logger.error("AIMC submodel is None.")
         return None
 
-    mapping_configuration_element = get_mapping_configuration_root_element(aimc_submodel)
-
-    if mapping_configuration_element is None:
+    # get mapping configuration root element
+    root_element = get_mapping_configuration_root_element(aimc_submodel)
+    if root_element is None:
         return None
 
-    mapping_configurations: list[model.SubmodelElementCollection] = [
-        element for element in mapping_configuration_element.value if isinstance(element, model.SubmodelElementCollection)
-    ]
+    # find all 'MappingConfiguration' elements by their semantic ID
+    mapping_configurations = ch.find_all_by_in_semantic_id(root_element.value, "idta/AssetInterfacesMappingConfiguration/1/0/MappingConfiguration")
 
     logger.debug(f"Found {len(mapping_configurations)} mapping configuration elements in AIMC submodel.")
 
     return mapping_configurations
 
 
-def parse_mapping_configurations(
-    aimc_submodel: model.Submodel,
-) -> MappingConfigurations:
+def parse_mapping_configurations(aimc_submodel: model.Submodel) -> MappingConfigurations:
     """Parse all mapping configurations in the AIMC submodel.
 
+    :param aimc_submodel: The AIMC submodel to parse mapping configurations from.
     :return: A list of parsed mapping configurations.
     """
     logger.info("Parse mapping configurations from AIMC submodel.")
 
     mapping_configurations: list[MappingConfiguration] = []
 
-    mc_elements = get_mapping_configuration_elements(aimc_submodel)
-
-    if mc_elements is None:
+    # get all mapping configuration elements
+    mapping_configurations_elements = get_mapping_configuration_elements(aimc_submodel)
+    if mapping_configurations_elements is None:
         logger.error("No mapping configuration elements found in AIMC submodel.")
-        return mapping_configurations
+        return mapping_configurations_elements
 
-    for mc_element in mc_elements:
-        mc = parse_mapping_configuration(mc_element)
+    # parse each mapping configuration element
+    for mc_element in mapping_configurations_elements:
+        mc = parse_mapping_configuration_element(mc_element)
         if mc is not None:
             mapping_configurations.append(mc)
 
@@ -130,7 +138,7 @@ def parse_mapping_configurations(
     return mcs
 
 
-def parse_mapping_configuration(
+def parse_mapping_configuration_element(
     mapping_configuration_element: model.SubmodelElementCollection,
 ) -> MappingConfiguration | None:
     """Parse a mapping configuration element.
@@ -144,8 +152,8 @@ def parse_mapping_configuration(
 
     logger.debug(f"Parse mapping configuration '{mapping_configuration_element}'")
 
-    interface_reference = _get_interface_reference(mapping_configuration_element)
-
+    # get interface reference element
+    interface_reference = _get_interface_reference_element(mapping_configuration_element)
     if interface_reference is None:
         return None
 
@@ -172,7 +180,7 @@ def parse_mapping_configuration(
     return mc
 
 
-def _get_interface_reference(
+def _get_interface_reference_element(
     mapping_configuration_element: model.SubmodelElementCollection,
 ) -> model.ReferenceElement | None:
     """Get the interface reference ID from the mapping configuration element.
@@ -182,9 +190,8 @@ def _get_interface_reference(
     """
     logger.debug(f"Get 'InterfaceReference' from mapping configuration '{mapping_configuration_element}'.")
 
-    interface_ref: model.ReferenceElement = next(
-        (elem for elem in mapping_configuration_element.value if elem.id_short == "InterfaceReference"),
-        None,
+    interface_ref: model.ReferenceElement = ch.find_by_in_semantic_id(
+        mapping_configuration_element, "idta/AssetInterfacesMappingConfiguration/1/0/InterfaceReference"
     )
 
     if interface_ref is None or not isinstance(interface_ref, model.ReferenceElement):
@@ -198,16 +205,13 @@ def _get_interface_reference(
     return interface_ref
 
 
-def _generate_source_sink_relations(
-    mapping_configuration_element: model.SubmodelElementCollection,
-) -> list[SourceSinkRelation]:
+def _generate_source_sink_relations(mapping_configuration_element: model.SubmodelElementCollection) -> list[SourceSinkRelation]:
     source_sink_relations: list[SourceSinkRelation] = []
 
     logger.debug(f"Get 'MappingSourceSinkRelations' from mapping configuration '{mapping_configuration_element}'.")
 
-    relations_list: model.SubmodelElementList = next(
-        (elem for elem in mapping_configuration_element.value if elem.id_short == "MappingSourceSinkRelations"),
-        None,
+    relations_list: model.SubmodelElementList = ch.find_by_in_semantic_id(
+        mapping_configuration_element, "/idta/AssetInterfacesMappingConfiguration/1/0/MappingSourceSinkRelations"
     )
 
     if relations_list is None or not isinstance(relations_list, model.SubmodelElementList):
@@ -218,7 +222,7 @@ def _generate_source_sink_relations(
         logger.debug(f"Parse source-sink relation '{source_sink_relation}'.")
 
         if not isinstance(source_sink_relation, model.RelationshipElement):
-            logger.warning(f"'{source_sink_relation.id_short}' is not a RelationshipElement")
+            logger.warning(f"'{source_sink_relation}' is not a RelationshipElement")
             continue
 
         if source_sink_relation.first is None or len(source_sink_relation.first.key) == 0:
@@ -229,17 +233,16 @@ def _generate_source_sink_relations(
             logger.warning(f"'second' reference is missing in RelationshipElement '{source_sink_relation.id_short}'")
             continue
 
-        global_ref = next(
-            (key for key in source_sink_relation.first.key if key.type == model.KeyTypes.GLOBAL_REFERENCE),
-            None,
-        )
+        source_ref = source_sink_relation.first
+
+        global_ref = next((key for key in source_ref.key if key.type == model.KeyTypes.GLOBAL_REFERENCE), None)
 
         if global_ref is None:
             logger.warning(f"No GLOBAL_REFERENCE key found in 'first' reference of RelationshipElement '{source_sink_relation.id_short}'")
             continue
 
         last_fragment_ref = next(
-            (key for key in reversed(source_sink_relation.first.key) if key.type == model.KeyTypes.FRAGMENT_REFERENCE),
+            (key for key in reversed(source_ref.key) if key.type == model.KeyTypes.FRAGMENT_REFERENCE),
             None,
         )
 
@@ -252,7 +255,18 @@ def _generate_source_sink_relations(
         relation.sink = source_sink_relation.second
         relation.aid_submodel_id = global_ref.value
         relation.property_name = last_fragment_ref.value
+        relation.source_parent_path = _get_reference_parent_path(source_ref)
 
         source_sink_relations.append(relation)
 
     return source_sink_relations
+
+
+def _get_reference_parent_path(reference: model.ExternalReference) -> list[str]:
+    """Get the parent path of a reference as a list of idShorts.
+
+    :param reference: The reference to extract the parent path from.
+    :return: A list of idShorts representing the parent path.
+    """
+    # Exclude the last key which is the actual element
+    return [key.value for key in reference.key[:-1] if key.type == model.KeyTypes.FRAGMENT_REFERENCE]

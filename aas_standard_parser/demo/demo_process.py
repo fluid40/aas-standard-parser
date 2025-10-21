@@ -11,6 +11,8 @@ def start() -> None:
 
     aimc_submodel = create_submodel_from_file("tests/test_data/aimc_submodel.json")
 
-    root = aimc_parser.get_mapping_configuration_root_element(aimc_submodel)
+    tmp = aimc_parser.parse_mapping_configurations(aimc_submodel)
+
+    tmp2 = tmp.configurations[0].source_sink_relations[0].get_source_parent_property_group_name()
 
     logger.info("Demo process finished.")
