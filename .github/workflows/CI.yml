@@ -27,10 +27,9 @@ jobs:
             echo "changed=false" >> $GITHUB_OUTPUT
           fi
 
-  Test_client:
-    name: Test HTTP client
+  Run_Tests:
+    name: Run Tests
     runs-on: ubuntu-latest
-
 
     steps:
       - name: Checkout code
@@ -54,7 +53,7 @@ jobs:
     name: Publish PyPI Package
     if: github.ref == 'refs/heads/main' && needs.Detect_Project_Changes.outputs.changed == 'true'
     runs-on: ubuntu-latest
-    needs: [Detect_Project_Changes]
+    needs: [Detect_Project_Changes, Run_Tests]
 
     steps:
       - uses: actions/checkout@v4
