@@ -20,12 +20,8 @@ class SourceSinkRelation:
 
         :return: The source reference as a dictionary.
         """
-        dict_string = json.dumps(
-            self.source, cls=basyx.aas.adapter.json.AASToJsonEncoder
-        )
-        dict_string = dict_string.replace("GlobalReference", "Submodel").replace(
-            "FragmentReference", "SubmodelElementCollection"
-        )
+        dict_string = json.dumps(self.source, cls=basyx.aas.adapter.json.AASToJsonEncoder)
+        dict_string = dict_string.replace("GlobalReference", "Submodel").replace("FragmentReference", "SubmodelElementCollection")
         return json.loads(dict_string)
 
     def sink_as_dict(self) -> dict:
@@ -33,9 +29,7 @@ class SourceSinkRelation:
 
         :return: The sink reference as a dictionary.
         """
-        return json.loads(
-            json.dumps(self.sink, cls=basyx.aas.adapter.json.AASToJsonEncoder)
-        )
+        return json.loads(json.dumps(self.sink, cls=basyx.aas.adapter.json.AASToJsonEncoder))
 
 
 class MappingConfiguration:
@@ -65,11 +59,7 @@ def get_mapping_configuration_root_element(
         return None
 
     mapping_configuration_element = next(
-        (
-            elem
-            for elem in aimc_submodel.submodel_element
-            if elem.id_short == "MappingConfigurations"
-        ),
+        (elem for elem in aimc_submodel.submodel_element if elem.id_short == "MappingConfigurations"),
         None,
     )
 
@@ -91,22 +81,16 @@ def get_mapping_configuration_elements(
         logger.error("AIMC submodel is None.")
         return None
 
-    mapping_configuration_element = get_mapping_configuration_root_element(
-        aimc_submodel
-    )
+    mapping_configuration_element = get_mapping_configuration_root_element(aimc_submodel)
 
     if mapping_configuration_element is None:
         return None
 
     mapping_configurations: list[model.SubmodelElementCollection] = [
-        element
-        for element in mapping_configuration_element.value
-        if isinstance(element, model.SubmodelElementCollection)
+        element for element in mapping_configuration_element.value if isinstance(element, model.SubmodelElementCollection)
     ]
 
-    logger.debug(
-        f"Found {len(mapping_configurations)} mapping configuration elements in AIMC submodel."
-    )
+    logger.debug(f"Found {len(mapping_configurations)} mapping configuration elements in AIMC submodel.")
 
     return mapping_configurations
 
@@ -140,18 +124,14 @@ def parse_mapping_configurations(
     # add all unique AID submodel IDs from all mapping configurations
     mcs.aid_submodel_ids = list({mc.aid_submodel_id for mc in mapping_configurations})
 
-    logger.debug(
-        f"Found {len(mcs.aid_submodel_ids)} unique AID submodel IDs in mapping configurations."
-    )
-    logger.debug(
-        f"Found {len(mcs.configurations)} mapping configurations in AIMC submodel."
-    )
+    logger.debug(f"Found {len(mcs.aid_submodel_ids)} unique AID submodel IDs in mapping configurations.")
+    logger.debug(f"Found {len(mcs.configurations)} mapping configurations in AIMC submodel.")
 
     return mcs
 
 
 def parse_mapping_configuration(
-    self, mapping_configuration_element: model.SubmodelElementCollection
+    mapping_configuration_element: model.SubmodelElementCollection,
 ) -> MappingConfiguration | None:
     """Parse a mapping configuration element.
 
@@ -169,23 +149,14 @@ def parse_mapping_configuration(
     if interface_reference is None:
         return None
 
-    source_sink_relations = self._generate_source_sink_relations(
-        mapping_configuration_element
-    )
+    source_sink_relations = _generate_source_sink_relations(mapping_configuration_element)
 
     if len(source_sink_relations) == 0:
-        logger.error(
-            f"No source-sink relations found in mapping configuration '{mapping_configuration_element.id_short}'."
-        )
+        logger.error(f"No source-sink relations found in mapping configuration '{mapping_configuration_element.id_short}'.")
         return None
 
     # check if all relations have the same AID submodel
-    aid_submodel_ids = list(
-        {
-            source_sink_relation.aid_submodel_id
-            for source_sink_relation in source_sink_relations
-        }
-    )
+    aid_submodel_ids = list({source_sink_relation.aid_submodel_id for source_sink_relation in source_sink_relations})
 
     if len(aid_submodel_ids) != 1:
         logger.error(
@@ -209,29 +180,19 @@ def _get_interface_reference(
     :param mapping_configuration_element: The mapping configuration element to extract the interface reference ID from.
     :return: The interface reference ID or None if not found.
     """
-    logger.debug(
-        f"Get 'InterfaceReference' from mapping configuration '{mapping_configuration_element}'."
-    )
+    logger.debug(f"Get 'InterfaceReference' from mapping configuration '{mapping_configuration_element}'.")
 
     interface_ref: model.ReferenceElement = next(
-        (
-            elem
-            for elem in mapping_configuration_element.value
-            if elem.id_short == "InterfaceReference"
-        ),
+        (elem for elem in mapping_configuration_element.value if elem.id_short == "InterfaceReference"),
         None,
     )
 
     if interface_ref is None or not isinstance(interface_ref, model.ReferenceElement):
-        logger.error(
-            f"'InterfaceReference' not found in mapping configuration '{mapping_configuration_element.id_short}'."
-        )
+        logger.error(f"'InterfaceReference' not found in mapping configuration '{mapping_configuration_element.id_short}'.")
         return None
 
     if interface_ref.value is None or len(interface_ref.value.key) == 0:
-        logger.error(
-            f"'InterfaceReference' has no value in mapping configuration '{mapping_configuration_element.id_short}'."
-        )
+        logger.error(f"'InterfaceReference' has no value in mapping configuration '{mapping_configuration_element.id_short}'.")
         return None
 
     return interface_ref
@@ -242,82 +203,48 @@ def _generate_source_sink_relations(
 ) -> list[SourceSinkRelation]:
     source_sink_relations: list[SourceSinkRelation] = []
 
-    logger.debug(
-        f"Get 'MappingSourceSinkRelations' from mapping configuration '{mapping_configuration_element}'."
-    )
+    logger.debug(f"Get 'MappingSourceSinkRelations' from mapping configuration '{mapping_configuration_element}'.")
 
     relations_list: model.SubmodelElementList = next(
-        (
-            elem
-            for elem in mapping_configuration_element.value
-            if elem.id_short == "MappingSourceSinkRelations"
-        ),
+        (elem for elem in mapping_configuration_element.value if elem.id_short == "MappingSourceSinkRelations"),
         None,
     )
 
-    if relations_list is None or not isinstance(
-        relations_list, model.SubmodelElementList
-    ):
-        logger.error(
-            f"'MappingSourceSinkRelations' not found in mapping configuration '{mapping_configuration_element.id_short}'."
-        )
+    if relations_list is None or not isinstance(relations_list, model.SubmodelElementList):
+        logger.error(f"'MappingSourceSinkRelations' not found in mapping configuration '{mapping_configuration_element.id_short}'.")
         return source_sink_relations
 
     for source_sink_relation in relations_list.value:
         logger.debug(f"Parse source-sink relation '{source_sink_relation}'.")
 
         if not isinstance(source_sink_relation, model.RelationshipElement):
-            logger.warning(
-                f"'{source_sink_relation.id_short}' is not a RelationshipElement"
-            )
+            logger.warning(f"'{source_sink_relation.id_short}' is not a RelationshipElement")
             continue
 
-        if (
-            source_sink_relation.first is None
-            or len(source_sink_relation.first.key) == 0
-        ):
-            logger.warning(
-                f"'first' reference is missing in RelationshipElement '{source_sink_relation.id_short}'"
-            )
+        if source_sink_relation.first is None or len(source_sink_relation.first.key) == 0:
+            logger.warning(f"'first' reference is missing in RelationshipElement '{source_sink_relation.id_short}'")
             continue
 
-        if (
-            source_sink_relation.second is None
-            or len(source_sink_relation.second.key) == 0
-        ):
-            logger.warning(
-                f"'second' reference is missing in RelationshipElement '{source_sink_relation.id_short}'"
-            )
+        if source_sink_relation.second is None or len(source_sink_relation.second.key) == 0:
+            logger.warning(f"'second' reference is missing in RelationshipElement '{source_sink_relation.id_short}'")
             continue
 
         global_ref = next(
-            (
-                key
-                for key in source_sink_relation.first.key
-                if key.type == model.KeyTypes.GLOBAL_REFERENCE
-            ),
+            (key for key in source_sink_relation.first.key if key.type == model.KeyTypes.GLOBAL_REFERENCE),
             None,
         )
 
         if global_ref is None:
-            logger.warning(
-                f"No GLOBAL_REFERENCE key found in 'first' reference of RelationshipElement '{source_sink_relation.id_short}'"
-            )
+            logger.warning(f"No GLOBAL_REFERENCE key found in 'first' reference of RelationshipElement '{source_sink_relation.id_short}'")
             continue
 
         last_fragment_ref = next(
-            (
-                key
-                for key in reversed(source_sink_relation.first.key)
-                if key.type == model.KeyTypes.FRAGMENT_REFERENCE
-            ),
+            (key for key in reversed(source_sink_relation.first.key) if key.type == model.KeyTypes.FRAGMENT_REFERENCE),
             None,
         )
 
         if last_fragment_ref is None:
-            logger.warning(
-                f"No FRAGMENT_REFERENCE key found in 'first' reference of RelationshipElement '{source_sink_relation.id_short}'"
-            )
+            logger.warning(f"No FRAGMENT_REFERENCE key found in 'first' reference of RelationshipElement '{source_sink_relation.id_short}'")
             continue
 
         relation = SourceSinkRelation()

@@ -12,6 +12,11 @@
     ],
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#0F332F",
+        "titleBar.activeBackground": "#164841",
+        "titleBar.activeForeground": "#F5FCFB"
+    },
     "files.exclude": {
         "**/.git": true,
         "**/.svn": true,
