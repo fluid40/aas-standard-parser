@@ -2,7 +2,7 @@
 
 import json
 import logging
-from dataclasses import dataclass, field
+from dataclasses import field
 
 import basyx.aas.adapter.json
 from basyx.aas import model
@@ -19,7 +19,8 @@ class SourceSinkRelation:
     source: model.ExternalReference = field(metadata={"description": "Reference to the source property in the AID submodel."})
     sink: model.ExternalReference = field(metadata={"description": "Reference to the sink property in the target submodel."})
     property_name: str = field(metadata={"description": "Name of the mapped property."})
-    source_parent_path: list[str] = field(metadata={"description": "List of idShorts representing the parent path of the reference."})
+    source_parent_path: list[str] = field(metadata={"description": "List of idShorts representing the parent path of the source reference."})
+    sink_parent_path: list[str] = field(metadata={"description": "List of idShorts representing the parent path of the reference."})
 
     def source_as_dict(self) -> dict:
         """Convert the source reference to a dictionary.
@@ -36,13 +37,6 @@ class SourceSinkRelation:
         :return: The sink reference as a dictionary.
         """
         return json.loads(json.dumps(self.sink, cls=basyx.aas.adapter.json.AASToJsonEncoder))
-
-    def get_source_parent_property_group_name(self) -> str:
-        """Get the name of the parent property group from the source. Ignore 'properties' entries from the path."""
-        if len(self.source_parent_path) == 0:
-            return ""
-
-        return next((n for n in reversed(self.source_parent_path) if n != "properties"), "")
 
 
 class MappingConfiguration:
@@ -233,16 +227,14 @@ def _generate_source_sink_relations(mapping_configuration_element: model.Submode
             logger.warning(f"'second' reference is missing in RelationshipElement '{source_sink_relation.id_short}'")
             continue
 
-        source_ref = source_sink_relation.first
-
-        global_ref = next((key for key in source_ref.key if key.type == model.KeyTypes.GLOBAL_REFERENCE), None)
+        global_ref = next((key for key in source_sink_relation.first.key if key.type == model.KeyTypes.GLOBAL_REFERENCE), None)
 
         if global_ref is None:
             logger.warning(f"No GLOBAL_REFERENCE key found in 'first' reference of RelationshipElement '{source_sink_relation.id_short}'")
             continue
 
         last_fragment_ref = next(
-            (key for key in reversed(source_ref.key) if key.type == model.KeyTypes.FRAGMENT_REFERENCE),
+            (key for key in reversed(source_sink_relation.first.key) if key.type == model.KeyTypes.FRAGMENT_REFERENCE),
             None,
         )
 
@@ -255,7 +247,8 @@ def _generate_source_sink_relations(mapping_configuration_element: model.Submode
         relation.sink = source_sink_relation.second
         relation.aid_submodel_id = global_ref.value
         relation.property_name = last_fragment_ref.value
-        relation.source_parent_path = _get_reference_parent_path(source_ref)
+        relation.source_parent_path = _get_reference_parent_path(source_sink_relation.first)
+        relation.sink_parent_path = _get_reference_parent_path(source_sink_relation.second)
 
         source_sink_relations.append(relation)
 
