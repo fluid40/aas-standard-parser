@@ -1,7 +1,7 @@
 import pytest
 from basyx.aas import model
 
-from aas_standard_parser.aimc_parser import MappingConfiguration, SourceSinkRelation, ReferenceProperties
+from aas_standard_parser.classes.aimc_parser_classes import MappingConfiguration, SourceSinkRelation, ReferenceProperties
 import aas_standard_parser.aimc_parser as aimc_parser
 from aas_standard_parser.utils import create_submodel_from_file
 
@@ -120,10 +120,10 @@ def _check_relations_sink(reference_properties: ReferenceProperties):
 
 def _check_relation_methods(relation: SourceSinkRelation):
     # test to_json methods
-    source_json = relation.source_as_dict()
+    source_json = relation.source_reference_as_dict()
     assert source_json is not None
     assert "type" in source_json
 
-    sink_json = relation.sink_as_dict()
+    sink_json = relation.sink_reference_as_dict()
     assert sink_json is not None
     assert "type" in sink_json
