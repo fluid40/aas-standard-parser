@@ -27,7 +27,7 @@ class SourceSinkRelation:
         """
         dict_string = json.dumps(self.source_properties.reference, cls=basyx.aas.adapter.json.AASToJsonEncoder)
         dict_string = dict_string.replace("GlobalReference", "Submodel").replace("FragmentReference", "SubmodelElementCollection")
-        return json.loads(dict_string)
+        return json.dumps(dict_string)
 
     def sink_reference_as_dict(self) -> dict:
         """Convert the sink reference to a dictionary.
