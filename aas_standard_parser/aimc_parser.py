@@ -12,13 +12,23 @@ import aas_standard_parser.collection_helpers as ch
 logger = logging.getLogger(__name__)
 
 
+class ReferenceProperties:
+    """Class representing properties of a reference in the mapping configuration."""
+
+    submodel_id: str = field(metadata={"description": "Identifier of the submodel used by the reference."})
+    property_name: str = field(metadata={"description": "Name of the mapped property."})
+    parent_path: list[str] = field(metadata={"description": "List of idShorts representing the parent path of the reference."})
+
+
 class SourceSinkRelation:
     """Class representing a source-sink relation in the mapping configuration."""
 
-    aid_submodel_id: str = field(metadata={"description": "Identifier of the AID submodel used by the source reference."})
+    source_submodel_id: str = field(metadata={"description": "Identifier of the source (AID) submodel used by the source reference."})
+    sink_submodel_id: str = field(metadata={"description": "Identifier of the target submodel used by the sink reference."})
     source: model.ExternalReference = field(metadata={"description": "Reference to the source property in the AID submodel."})
     sink: model.ExternalReference = field(metadata={"description": "Reference to the sink property in the target submodel."})
-    property_name: str = field(metadata={"description": "Name of the mapped property."})
+    source_property_name: str = field(metadata={"description": "Name of the mapped property in source."})
+    sink_property_name: str = field(metadata={"description": "Name of the mapped property in sink."})
     source_parent_path: list[str] = field(metadata={"description": "List of idShorts representing the parent path of the source reference."})
     sink_parent_path: list[str] = field(metadata={"description": "List of idShorts representing the parent path of the reference."})
 
@@ -158,7 +168,7 @@ def parse_mapping_configuration_element(
         return None
 
     # check if all relations have the same AID submodel
-    aid_submodel_ids = list({source_sink_relation.aid_submodel_id for source_sink_relation in source_sink_relations})
+    aid_submodel_ids = list({source_sink_relation.source_submodel_id for source_sink_relation in source_sink_relations})
 
     if len(aid_submodel_ids) != 1:
         logger.error(
@@ -227,32 +237,47 @@ def _generate_source_sink_relations(mapping_configuration_element: model.Submode
             logger.warning(f"'second' reference is missing in RelationshipElement '{source_sink_relation.id_short}'")
             continue
 
-        global_ref = next((key for key in source_sink_relation.first.key if key.type == model.KeyTypes.GLOBAL_REFERENCE), None)
-
-        if global_ref is None:
-            logger.warning(f"No GLOBAL_REFERENCE key found in 'first' reference of RelationshipElement '{source_sink_relation.id_short}'")
-            continue
-
-        last_fragment_ref = next(
-            (key for key in reversed(source_sink_relation.first.key) if key.type == model.KeyTypes.FRAGMENT_REFERENCE),
-            None,
-        )
-
-        if last_fragment_ref is None:
-            logger.warning(f"No FRAGMENT_REFERENCE key found in 'first' reference of RelationshipElement '{source_sink_relation.id_short}'")
-            continue
+        source_ref_properties = _get_reference_properties(source_sink_relation.first)
+        sink_ref_properties = _get_reference_properties(source_sink_relation.second)
 
         relation = SourceSinkRelation()
+
         relation.source = source_sink_relation.first
+        relation.source_submodel_id = source_ref_properties.submodel_id
+        relation.source_property_name = source_ref_properties.property_name
+        relation.source_parent_path = source_ref_properties.parent_path
+
         relation.sink = source_sink_relation.second
-        relation.aid_submodel_id = global_ref.value
-        relation.property_name = last_fragment_ref.value
-        relation.source_parent_path = _get_reference_parent_path(source_sink_relation.first)
-        relation.sink_parent_path = _get_reference_parent_path(source_sink_relation.second)
+        relation.sink_submodel_id = sink_ref_properties.submodel_id
+        relation.sink_property_name = sink_ref_properties.property_name
+        relation.sink_parent_path = sink_ref_properties.parent_path
 
         source_sink_relations.append(relation)
 
     return source_sink_relations
+
+
+def _get_reference_properties(reference: model.ExternalReference) -> ReferenceProperties | None:
+    global_ref = next((key for key in reference.key if key.type == model.KeyTypes.GLOBAL_REFERENCE), None)
+
+    if global_ref is None:
+        logger.warning(f"No GLOBAL_REFERENCE key found in 'first' reference of RelationshipElement '{reference}'")
+        return None
+
+    last_fragment_ref = next((key for key in reversed(reference.key) if key.type == model.KeyTypes.FRAGMENT_REFERENCE), None)
+
+    if last_fragment_ref is None:
+        logger.warning(f"No FRAGMENT_REFERENCE key found in 'first' reference of RelationshipElement '{reference.id_short}'")
+        return None
+
+    parent_path = _get_reference_parent_path(reference)
+
+    ref_properties = ReferenceProperties()
+    ref_properties.submodel_id = global_ref.value
+    ref_properties.property_name = last_fragment_ref.value
+    ref_properties.parent_path = parent_path
+
+    return ref_properties
 
 
 def _get_reference_parent_path(reference: model.ExternalReference) -> list[str]:

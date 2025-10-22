@@ -40,7 +40,7 @@ def test_003_parse_mapping_configuration_element(aimc_submodel: model.submodel):
 
     assert configuration is not None
     _check_interface_ref(configuration)
-    _check_relations_aid(configuration)
+    _check_relations(configuration)
     _check_relations(configuration)
 
 def test_004_parse_mapping_configurations(aimc_submodel: model.submodel):
@@ -56,7 +56,7 @@ def test_004_parse_mapping_configurations(aimc_submodel: model.submodel):
     assert configuration.aid_submodel_id == "https://fluid40.de/ids/sm/4757_4856_8464_1441"
 
     _check_interface_ref(configuration)
-    _check_relations_aid(configuration)
+    _check_relations(configuration)
     _check_relations(configuration)
 
 def _check_interface_ref(configuration: MappingConfiguration):
@@ -74,32 +74,51 @@ def _check_interface_ref(configuration: MappingConfiguration):
     assert key is not None
     assert key.value == "https://fluid40.de/ids/sm/4757_4856_8464_1442/Interface_MQTT"
 
-def _check_relations_aid(configuration: MappingConfiguration):
-    assert len(configuration.source_sink_relations) > 0
-
-    relation = configuration.source_sink_relations[0]
-    assert relation is not None
-    assert relation.aid_submodel_id == configuration.aid_submodel_id
-
-    assert relation.property_name is not None
-    assert relation.property_name == "HandlingC"
-
 
 def _check_relations(configuration: MappingConfiguration):
     assert len(configuration.source_sink_relations) > 0
 
     relation = configuration.source_sink_relations[0]
     assert relation is not None
+
     assert relation.source is not None
+    assert relation.source_submodel_id == configuration.aid_submodel_id
+
     assert relation.sink is not None
+
+    _check_relations_source(relation)
+    _check_relations_sink(relation)
+    _check_relation_methods(relation)
+
+def _check_relations_source(relation: SourceSinkRelation):
+    assert relation is not None
+
+    assert isinstance(relation.source, model.ExternalReference)
+
+    assert relation.source_property_name is not None
+    assert relation.source_property_name == "HandlingC"
+
     assert relation.source_parent_path is not None
     assert len(relation.source_parent_path) == 5
     assert relation.source_parent_path[3] == "axes_position"
 
-    assert isinstance(relation.source, model.ExternalReference)
+    assert relation.source_submodel_id is not None
+    assert relation.source_submodel_id == relation.source.key[0].value
+
+def _check_relations_sink(relation: SourceSinkRelation):
+    assert relation is not None
+
     assert isinstance(relation.sink, model.ExternalReference)
 
-    _check_relation_methods(relation)
+    assert relation.sink_property_name is not None
+    assert relation.sink_property_name == "HandlingC"
+
+    assert relation.sink_parent_path is not None
+    assert len(relation.sink_parent_path) == 2
+    assert relation.sink_parent_path[1] == "AxesPosition"
+
+    assert relation.sink_submodel_id is not None
+    assert relation.sink_submodel_id == relation.sink.key[0].value
 
 def _check_relation_methods(relation: SourceSinkRelation):
     # test to_json methods
@@ -110,6 +129,3 @@ def _check_relation_methods(relation: SourceSinkRelation):
     sink_json = relation.sink_as_dict()
     assert sink_json is not None
     assert "type" in sink_json
-
-    parent_name = relation.get_source_parent_property_group_name()
-    assert parent_name == "axes_position"
