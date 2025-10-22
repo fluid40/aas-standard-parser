@@ -121,9 +121,11 @@ def _check_relations_sink(reference_properties: ReferenceProperties):
 def _check_relation_methods(relation: SourceSinkRelation):
     # test to_json methods
     source_json = relation.source_reference_as_dict()
+    assert isinstance(source_json, dict)
     assert source_json is not None
     assert "type" in source_json
 
     sink_json = relation.sink_reference_as_dict()
+    assert isinstance(sink_json, dict)
     assert sink_json is not None
     assert "type" in sink_json
