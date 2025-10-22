@@ -15,6 +15,7 @@ logger = logging.getLogger(__name__)
 class ReferenceProperties:
     """Class representing properties of a reference in the mapping configuration."""
 
+    reference: model.ExternalReference = field(metadata={"description": "Reference to the property in the submodel."})
     submodel_id: str = field(metadata={"description": "Identifier of the submodel used by the reference."})
     property_name: str = field(metadata={"description": "Name of the mapped property."})
     parent_path: list[str] = field(metadata={"description": "List of idShorts representing the parent path of the reference."})
@@ -23,21 +24,15 @@ class ReferenceProperties:
 class SourceSinkRelation:
     """Class representing a source-sink relation in the mapping configuration."""
 
-    source_submodel_id: str = field(metadata={"description": "Identifier of the source (AID) submodel used by the source reference."})
-    sink_submodel_id: str = field(metadata={"description": "Identifier of the target submodel used by the sink reference."})
-    source: model.ExternalReference = field(metadata={"description": "Reference to the source property in the AID submodel."})
-    sink: model.ExternalReference = field(metadata={"description": "Reference to the sink property in the target submodel."})
-    source_property_name: str = field(metadata={"description": "Name of the mapped property in source."})
-    sink_property_name: str = field(metadata={"description": "Name of the mapped property in sink."})
-    source_parent_path: list[str] = field(metadata={"description": "List of idShorts representing the parent path of the source reference."})
-    sink_parent_path: list[str] = field(metadata={"description": "List of idShorts representing the parent path of the reference."})
+    source_properties: ReferenceProperties = field(metadata={"description": "Properties of the source reference."})
+    sink_properties: ReferenceProperties = field(metadata={"description": "Properties of the sink reference."})
 
     def source_as_dict(self) -> dict:
         """Convert the source reference to a dictionary.
 
         :return: The source reference as a dictionary.
         """
-        dict_string = json.dumps(self.source, cls=basyx.aas.adapter.json.AASToJsonEncoder)
+        dict_string = json.dumps(self.source_properties.reference, cls=basyx.aas.adapter.json.AASToJsonEncoder)
         dict_string = dict_string.replace("GlobalReference", "Submodel").replace("FragmentReference", "SubmodelElementCollection")
         return json.loads(dict_string)
 
@@ -46,7 +41,7 @@ class SourceSinkRelation:
 
         :return: The sink reference as a dictionary.
         """
-        return json.loads(json.dumps(self.sink, cls=basyx.aas.adapter.json.AASToJsonEncoder))
+        return json.dumps(self.sink_properties.reference, cls=basyx.aas.adapter.json.AASToJsonEncoder)
 
 
 class MappingConfiguration:
@@ -168,7 +163,7 @@ def parse_mapping_configuration_element(
         return None
 
     # check if all relations have the same AID submodel
-    aid_submodel_ids = list({source_sink_relation.source_submodel_id for source_sink_relation in source_sink_relations})
+    aid_submodel_ids = list({source_sink_relation.source_properties.submodel_id for source_sink_relation in source_sink_relations})
 
     if len(aid_submodel_ids) != 1:
         logger.error(
@@ -237,20 +232,9 @@ def _generate_source_sink_relations(mapping_configuration_element: model.Submode
             logger.warning(f"'second' reference is missing in RelationshipElement '{source_sink_relation.id_short}'")
             continue
 
-        source_ref_properties = _get_reference_properties(source_sink_relation.first)
-        sink_ref_properties = _get_reference_properties(source_sink_relation.second)
-
         relation = SourceSinkRelation()
-
-        relation.source = source_sink_relation.first
-        relation.source_submodel_id = source_ref_properties.submodel_id
-        relation.source_property_name = source_ref_properties.property_name
-        relation.source_parent_path = source_ref_properties.parent_path
-
-        relation.sink = source_sink_relation.second
-        relation.sink_submodel_id = sink_ref_properties.submodel_id
-        relation.sink_property_name = sink_ref_properties.property_name
-        relation.sink_parent_path = sink_ref_properties.parent_path
+        relation.source_properties = _get_reference_properties(source_sink_relation.first)
+        relation.sink_properties = _get_reference_properties(source_sink_relation.second)
 
         source_sink_relations.append(relation)
 
@@ -276,6 +260,7 @@ def _get_reference_properties(reference: model.ExternalReference) -> ReferencePr
     ref_properties.submodel_id = global_ref.value
     ref_properties.property_name = last_fragment_ref.value
     ref_properties.parent_path = parent_path
+    ref_properties.reference = reference
 
     return ref_properties
 

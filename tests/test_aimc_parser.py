@@ -1,7 +1,7 @@
 import pytest
 from basyx.aas import model
 
-from aas_standard_parser.aimc_parser import MappingConfiguration, SourceSinkRelation
+from aas_standard_parser.aimc_parser import MappingConfiguration, SourceSinkRelation, ReferenceProperties
 import aas_standard_parser.aimc_parser as aimc_parser
 from aas_standard_parser.utils import create_submodel_from_file
 
@@ -41,7 +41,6 @@ def test_003_parse_mapping_configuration_element(aimc_submodel: model.submodel):
     assert configuration is not None
     _check_interface_ref(configuration)
     _check_relations(configuration)
-    _check_relations(configuration)
 
 def test_004_parse_mapping_configurations(aimc_submodel: model.submodel):
     mapping_configurations = aimc_parser.parse_mapping_configurations(aimc_submodel)
@@ -56,7 +55,6 @@ def test_004_parse_mapping_configurations(aimc_submodel: model.submodel):
     assert configuration.aid_submodel_id == "https://fluid40.de/ids/sm/4757_4856_8464_1441"
 
     _check_interface_ref(configuration)
-    _check_relations(configuration)
     _check_relations(configuration)
 
 def _check_interface_ref(configuration: MappingConfiguration):
@@ -81,44 +79,44 @@ def _check_relations(configuration: MappingConfiguration):
     relation = configuration.source_sink_relations[0]
     assert relation is not None
 
-    assert relation.source is not None
-    assert relation.source_submodel_id == configuration.aid_submodel_id
+    assert relation.source_properties is not None
+    assert relation.source_properties.submodel_id == configuration.aid_submodel_id
 
-    assert relation.sink is not None
+    assert relation.sink_properties is not None
 
-    _check_relations_source(relation)
-    _check_relations_sink(relation)
+    _check_relations_source(relation.source_properties)
+    _check_relations_sink(relation.sink_properties)
     _check_relation_methods(relation)
 
-def _check_relations_source(relation: SourceSinkRelation):
-    assert relation is not None
+def _check_relations_source(reference_properties: ReferenceProperties):
+    assert reference_properties is not None
 
-    assert isinstance(relation.source, model.ExternalReference)
+    assert isinstance(reference_properties.reference, model.ExternalReference)
 
-    assert relation.source_property_name is not None
-    assert relation.source_property_name == "HandlingC"
+    assert reference_properties.property_name is not None
+    assert reference_properties.property_name == "HandlingC"
 
-    assert relation.source_parent_path is not None
-    assert len(relation.source_parent_path) == 5
-    assert relation.source_parent_path[3] == "axes_position"
+    assert reference_properties.parent_path is not None
+    assert len(reference_properties.parent_path) == 5
+    assert reference_properties.parent_path[3] == "axes_position"
 
-    assert relation.source_submodel_id is not None
-    assert relation.source_submodel_id == relation.source.key[0].value
+    assert reference_properties.submodel_id is not None
+    assert reference_properties.submodel_id == reference_properties.reference.key[0].value
 
-def _check_relations_sink(relation: SourceSinkRelation):
-    assert relation is not None
+def _check_relations_sink(reference_properties: ReferenceProperties):
+    assert reference_properties is not None
 
-    assert isinstance(relation.sink, model.ExternalReference)
+    assert isinstance(reference_properties.reference, model.ExternalReference)
 
-    assert relation.sink_property_name is not None
-    assert relation.sink_property_name == "HandlingC"
+    assert reference_properties.property_name is not None
+    assert reference_properties.property_name == "HandlingC"
 
-    assert relation.sink_parent_path is not None
-    assert len(relation.sink_parent_path) == 2
-    assert relation.sink_parent_path[1] == "AxesPosition"
+    assert reference_properties.parent_path is not None
+    assert len(reference_properties.parent_path) == 2
+    assert reference_properties.parent_path[1] == "AxesPosition"
 
-    assert relation.sink_submodel_id is not None
-    assert relation.sink_submodel_id == relation.sink.key[0].value
+    assert reference_properties.submodel_id is not None
+    assert reference_properties.submodel_id == reference_properties.reference.key[0].value
 
 def _check_relation_methods(relation: SourceSinkRelation):
     # test to_json methods
