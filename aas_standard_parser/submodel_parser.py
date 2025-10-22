@@ -3,9 +3,9 @@
 import logging
 
 from basyx.aas import model
-from basyx.aas.model import ExternalReference, Key, KeyTypes, NamespaceSet, Reference, SubmodelElement
+from basyx.aas.model import NamespaceSet, SubmodelElement
 
-import collection_helpers
+from aas_standard_parser import collection_helpers
 
 logger = logging.getLogger(__name__)
 
