@@ -107,6 +107,14 @@ jobs:
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "Extracted VERSION=$VERSION"
 
+      - name: Generate Changelog
+        id: changelog
+        uses: mikepenz/release-changelog-builder-action@v4
+        with:
+          configuration: .github/changelog-config.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Create Git tag if it doesn't exist
         run: |
           VERSION_TAG="v${{ steps.get_version.outputs.version }}"
@@ -124,6 +132,19 @@ jobs:
           tag_name: v${{ steps.get_version.outputs.version }}
           name: 🚀 Release v${{ steps.get_version.outputs.version }}
           generate_release_notes: true
+          body: |
+            ## 📝 Release Notes
+
+            **Version:** v${{ steps.get_version.outputs.version }}
+            **Commit:** `${{ steps.get_version.outputs.hash }}`
+
+            ### 🧩 Build Information
+            - Pypi package: `aas-standard-parser ${{ steps.get_version.outputs.version }}`
+            - `pip install aas-standard-parser`
+
+            ### 🔗 Links
+            - [Compare changes](https://github.com/${{ github.repository }}/compare/last...v${{ steps.get_version.outputs.version }})
+            - [Full commit log](https://github.com/${{ github.repository }}/commits/main)
           files: dist/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
