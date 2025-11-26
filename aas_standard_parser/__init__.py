@@ -13,7 +13,7 @@ except importlib.metadata.PackageNotFoundError:
 __project__ = "aas-standard-parser"
 __package__ = "aas-standard-parser"
 
-from aas_standard_parser import aimc_parser
+from aas_standard_parser import aas_parser, aid_parser, aimc_parser, submodel_parser
 from aas_standard_parser.aid_parser import AIDParser
 
-__all__ = ["AIDParser", "aimc_parser"]
+__all__ = ["AIDParser", "aimc_parser", "aas_parser", "aid_parser", "submodel_parser"]
