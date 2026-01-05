@@ -44,7 +44,7 @@ These components enable efficient parsing, transformation, and analysis of AAS s
 - AID Parser
 - AIMC Parser
 - AAS Parser
-- [Submodel Parser](docs/api_references/api_submodel_parser)
+- [Submodel Parser](docs/api_references/api_submodel_parser.md)
 - Collection Helpers
 - Reference Helpers
 - [Utilities](docs/api_references/api_utils.md)
