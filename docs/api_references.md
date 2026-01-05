@@ -1,3 +1,3 @@
 # 📚 API References
 
-- 🛠️ [Utility](docs/api_utils.md)
+- 🛠️ [Utility](docs/api_references/api_utils.md)

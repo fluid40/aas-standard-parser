@@ -40,6 +40,10 @@ These components enable efficient parsing, transformation, and analysis of AAS s
 
 ---
 
+## Documentation
+
+📚 [API References](docs/api_references.md)
+
 ## Resources
 
 🤖 [Releases](http://github.com/fluid40/aas-standard-parser/releases)
