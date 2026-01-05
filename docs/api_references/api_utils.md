@@ -19,9 +19,9 @@ submodel = create_submodel_from_file('path/to/your/submodel.json')
 
 ## Functions
 
-
-### create_submodel_from_file(file_path: str) -> model.Submodel
-
+```python
+create_submodel_from_file(file_path: str) -> model.Submodel
+```
 Loads a Submodel structure from a given JSON file and converts it into a model.Submodel object from the python SDK framework.
 
 **Parameters:**
@@ -32,5 +32,8 @@ Loads a Submodel structure from a given JSON file and converts it into a model.S
 
 **Raises:**
 - `FileNotFoundError`: If the specified file does not exist.
+
+**Description:**
+Reads the specified JSON file, parses its contents, and constructs a `model.Submodel` object using the data. This function abstracts away file handling and parsing logic, allowing users to easily instantiate submodels from JSON definitions compatible with the AAS Python SDK.
 
 ---

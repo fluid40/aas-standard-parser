@@ -27,7 +27,7 @@ These components enable efficient parsing, transformation, and analysis of AAS s
 
 ## Provided Parsers
 
-- **AIDParser**: Parses AID submodels to extract interface descriptions, properties, and security/authentication details.
+- **AID Parser**: Parses AID submodels to extract interface descriptions, properties, and security/authentication details.
 - **AIMC Parser**: Parses AIMC submodels to extract and process mapping configurations and source-sink relations.
 - **AAS Parser**: Utilities to extract submodel IDs from an Asset Administration Shell.
 - **Submodel Parser**: Helpers to retrieve submodel elements by semantic ID or by path within a submodel.
@@ -40,9 +40,14 @@ These components enable efficient parsing, transformation, and analysis of AAS s
 
 ---
 
-## Documentation
-
-📚 [API References](docs/api_references.md)
+## API References
+- AID Parser
+- AIMC Parser
+- AAS Parser
+- [Submodel Parser](docs/api_references/api_submodel_parser)
+- Collection Helpers
+- Reference Helpers
+- [Utilities](docs/api_references/api_utils.md)
 
 ## Resources
 

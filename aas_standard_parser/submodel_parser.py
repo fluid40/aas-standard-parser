@@ -3,32 +3,19 @@
 import logging
 
 from basyx.aas import model
-from basyx.aas.model import NamespaceSet, SubmodelElement
-
-from aas_standard_parser import collection_helpers
 
 logger = logging.getLogger(__name__)
 
 
-def get_element_by_semantic_id(collection: NamespaceSet[SubmodelElement], semantic_id: str) -> SubmodelElement | None:
-    """Get an element from parent collection by its semantic ID (not recursive).
-
-    :param parent: parent collection to search within
-    :param semantic_id: semantic ID to search for
-    :return: the found submodel element or None if not found
-    """
-    return collection_helpers.find_by_semantic_id(collection, semantic_id)
-
-
-def get_submodel_element_by_path(submodel: model.Submodel, path: str) -> model.SubmodelElement:
-    """Returns a specific submodel element from the submodel at a specific path.
+def get_submodel_element_by_id_short_path(submodel: model.Submodel, id_short_path: str) -> model.SubmodelElement:
+    """Retrieve a specific submodel element from the submodel at a specific idShort path.
 
     :param submodel: The submodel to search within.
-    :param path: IdShort path to the submodel element (dot-separated), e.g., "Element1.Element2[0].Element3".
+    :param id_short_path: IdShort path to the submodel element (dot-separated), e.g., "Element1.Element2[0].Element3".
     :return: The found submodel element or None if not found.
     """
     # Split the path by '.' and traverse the structure
-    parts = path.split(".")
+    parts = id_short_path.split(".")
     current_elements = submodel.submodel_element
     part_index = 0
     for part in parts:
