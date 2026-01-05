@@ -14,9 +14,6 @@
 [![PyPI version](https://img.shields.io/pypi/v/aas-standard-parser.svg)](https://pypi.org/project/aas-standard-parser/)
 
 
-
-## Overview
-
 This project provides tools for parsing and handling Asset Administration Shell (AAS) standard submodels, with a focus on AID and AIMC submodels. It enables:
 
 - Extraction, interpretation, and mapping of submodel elements and their properties
