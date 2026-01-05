@@ -22,7 +22,7 @@ This project provides tools for parsing and handling Asset Administration Shell 
 - Structured and colored logging, including log file management
 
 These components enable efficient parsing, transformation, and analysis of AAS submodels in Python-based workflows.
-
+> **Note:** Most functions in this project utilize the [python aas sdk framework](https://github.com/aas-core-works/aas-core3.0-python) for parsing and handling AAS submodels, ensuring compatibility with the official AAS data models and structures.
 ---
 
 ## Provided Parsers
