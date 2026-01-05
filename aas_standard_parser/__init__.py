@@ -3,7 +3,7 @@
 import importlib.metadata
 from datetime import datetime, timezone
 
-from aas_standard_parser import aas_parser, aid_parser, aimc_parser, submodel_parser
+from aas_standard_parser import aas_parser, aid_parser, aimc_parser, collection_helpers, reference_helpers, submodel_parser, utils
 from aas_standard_parser.aid_parser import AIDParser
 from aas_standard_parser.version_check import check_for_update
 
@@ -22,4 +22,4 @@ __package__ = "aas-standard-parser"
 
 check_for_update()
 
-__all__ = ["AIDParser", "aas_parser", "aid_parser", "aimc_parser", "submodel_parser"]
+__all__ = ["AIDParser", "aas_parser", "aid_parser", "aimc_parser", "collection_helpers", "reference_helpers", "submodel_parser", "utils"]
