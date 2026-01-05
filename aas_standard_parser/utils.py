@@ -1,3 +1,5 @@
+"""Utility functions for AAS standard parser."""
+
 import json
 from pathlib import Path
 
@@ -18,7 +20,7 @@ def create_submodel_from_file(file_path: str) -> model.Submodel:
     template_data = {}
 
     # Load the template JSON file
-    with open(file, "r", encoding="utf-8") as f:
+    with file.open("r", encoding="utf-8") as f:
         template_data = json.load(f)
 
     # Load the template JSON into a Submodel object
