@@ -8,10 +8,10 @@ logger = logging.getLogger(__name__)
 
 
 def get_submodel_ids(shell: model.AssetAdministrationShell) -> list[str]:
-    """Get all submodel IDs from the given AAS.
+    """Get all IDs from the submodels referenced in the given AAS.
 
-    :param shell: parent AAS to search within
-    :return: list of submodel IDs
+    :param shell: The Asset Administration Shell to extract submodel IDs from.
+    :return: A list of submodel IDs referenced in the AAS.
     """
     submodel_ids = []
     for submodel in shell.submodel:
