@@ -1,7 +1,5 @@
 # 🛠️ API Reference: utils.py
 
-
-
 This module provides utility functions for the AAS standard parser.
 
 ## Usage

@@ -1,5 +1,4 @@
-# 🛠️ API Reference: aas_parser.py
-
+# 🔎 API Reference: aas_parser.py
 
 This module provides functions for parsing Asset Administration Shells (AAS) in the AAS standard parser.
 

@@ -46,7 +46,7 @@ These components enable efficient parsing, transformation, and analysis of AAS s
 - [AAS Parser](docs/api_references/api_aas_parser.md)
 - [Submodel Parser](docs/api_references/api_submodel_parser.md)
 - Collection Helpers
-- Reference Helpers
+- [Reference Helpers](docs/api_references/api_reference_helpers.md)
 - [Utilities](docs/api_references/api_utils.md)
 
 ## Resources

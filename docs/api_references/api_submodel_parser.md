@@ -1,5 +1,4 @@
-# 🛠️ API Reference: submodel_parser.py
-
+# 🔎 API Reference: submodel_parser.py
 
 This module provides functions for parsing and traversing submodels in the AAS standard parser.
 
