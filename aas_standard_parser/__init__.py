@@ -7,7 +7,7 @@ from aas_standard_parser import aas_parser, aid_parser, aimc_parser, submodel_pa
 from aas_standard_parser.aid_parser import AIDParser
 from aas_standard_parser.version_check import check_for_update
 
-__copyright__ = f"Copyright (C) {datetime.now(tz=timezone.utc).year} :em engineering methods AG. All rights reserved."
+__copyright__ = f"Copyright (C) {datetime.now(tz=timezone.utc).year} Fluid 4.0. All rights reserved."
 __author__ = "Daniel Klein, Celina Adelhardt, Tom Gneuß"
 
 try:
