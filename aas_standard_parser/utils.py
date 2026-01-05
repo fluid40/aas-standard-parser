@@ -8,14 +8,14 @@ from basyx.aas import model
 
 
 def create_submodel_from_file(file_path: str) -> model.Submodel:
-    """Creates a Submodel from a given file path.
+    """Loads a Submodel structure from a given JSON file and converts it into a model.Submodel object from the python SDK framework.
 
-    :param file_path: Path to the file containing the submodel data.
-    :return: The created Submodel object.
+    :param file_path: Path to the JSON file containing the Submodel structure.
+    :return: A model.Submodel object representing the loaded Submodel structure.
     """
     file = Path(file_path)
     if not file.exists():
-        raise FileNotFoundError(f"Submodel template file not found: {file}")
+        raise FileNotFoundError(f"Submodel structure file not found: {file}")
 
     template_data = {}
 
