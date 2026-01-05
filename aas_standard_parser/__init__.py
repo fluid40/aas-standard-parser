@@ -1,11 +1,17 @@
-import importlib.metadata
-from datetime import datetime
+"""AAS Standard parser Package."""
 
-# TODO: introduce MIT license
-__copyright__ = f"Copyright (C) {datetime.now().year} :em engineering methods AG. All rights reserved."
+import importlib.metadata
+from datetime import datetime, timezone
+
+from aas_standard_parser import aas_parser, aid_parser, aimc_parser, submodel_parser
+from aas_standard_parser.aid_parser import AIDParser
+from aas_standard_parser.version_check import check_for_update
+
+__copyright__ = f"Copyright (C) {datetime.now(tz=timezone.utc).year} :em engineering methods AG. All rights reserved."
 __author__ = "Daniel Klein, Celina Adelhardt, Tom Gneuß"
 
 try:
+    __license__ = "MIT"
     __version__ = importlib.metadata.version(__name__)
 except importlib.metadata.PackageNotFoundError:
     __version__ = "0.0.0-dev"
@@ -13,7 +19,7 @@ except importlib.metadata.PackageNotFoundError:
 __project__ = "aas-standard-parser"
 __package__ = "aas-standard-parser"
 
-from aas_standard_parser import aas_parser, aid_parser, aimc_parser, submodel_parser
-from aas_standard_parser.aid_parser import AIDParser
 
-__all__ = ["AIDParser", "aimc_parser", "aas_parser", "aid_parser", "submodel_parser"]
+check_for_update()
+
+__all__ = ["AIDParser", "aas_parser", "aid_parser", "aimc_parser", "submodel_parser"]
