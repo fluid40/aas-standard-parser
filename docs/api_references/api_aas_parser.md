@@ -8,9 +8,9 @@ This module provides functions for parsing Asset Administration Shells (AAS) in 
 To use `aas_parser.py`, import the module and call its functions as needed. For example, to extract all submodel IDs from an AAS:
 
 ```python
-from aas_standard_parser.aas_parser import get_submodel_ids
+from aas_standard_parser import aas_parser
 
-submodel_ids = get_submodel_ids(shell)
+submodel_ids = aas_parser.get_submodel_ids(shell)
 # `submodel_ids` is now a list of all submodel IDs referenced in the given AAS.
 ```
 

@@ -8,9 +8,9 @@ This module provides functions for parsing and traversing submodels in the AAS s
 To use `submodel_parser.py`, import the module and call its functions as needed. For example, to retrieve a submodel element by its idShort path:
 
 ```python
-from aas_standard_parser.submodel_parser import get_submodel_element_by_id_short_path
+from aas_standard_parser import submodel_parser
 
-submodel_element = get_submodel_element_by_id_short_path(submodel, 'Element1.Element2[0].Element3')
+submodel_element = submodel_parser.get_submodel_element_by_id_short_path(submodel, 'Element1.Element2[0].Element3')
 # Now you can work with the `submodel_element` as needed.
 ```
 

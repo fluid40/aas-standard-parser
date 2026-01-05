@@ -9,9 +9,9 @@ This module provides utility functions for the AAS standard parser.
 To use `utils.py`, simply import the module and call its functions as needed. For example, to load a submodel from a JSON file:
 
 ```python
-from aas_standard_parser.utils import create_submodel_from_file
+from aas_standard_parser import utils
 
-submodel = create_submodel_from_file('path/to/your/submodel.json')
+submodel = utils.create_submodel_from_file('path/to/your/submodel.json')
 # Now you can work with the `submodel` object as defined by the AAS Python SDK.
 ```
 
