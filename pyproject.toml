@@ -4,14 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "aas-standard-parser"
-version = "0.2.9"
+version = "0.3.0"
 description = "Some auxiliary functions for parsing standard submodels"
 readme = "README.md"
 license = { file = "LICENSE" }
 authors = [{ name = "Daniel Klein", email = "daniel.klein@em.ag" }]
 dependencies = ["typing>=3.7.4.3", "basyx-python-sdk>=1.2.1"]
 [project.urls]
-Homepage = "https://github.com/fluid40/aas-http-client"
+Homepage = "https://github.com/fluid40/aas-standard-parser"
 
 [tool.commitizen]
 name = "cz_conventional_commits"

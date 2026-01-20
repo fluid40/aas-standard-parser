@@ -4,7 +4,7 @@
 <!-- change this to your projects logo if you have on.
   If you don't have one it might be worth trying chatgpt dall-e to create one for you...
  -->
-<img src="docs/assets/fluid_logo.svg" alt="aas_http_client" width=500 />
+<img src="docs/assets/fluid_logo.svg" alt="aas_standard_parser" width=500 />
 </div>
 
 ---

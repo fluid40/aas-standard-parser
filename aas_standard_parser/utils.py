@@ -1,10 +1,14 @@
 """Utility functions for AAS standard parser."""
 
 import json
+import logging
 from pathlib import Path
+from typing import Any
 
-from aas_http_client import sdk_tools
+import basyx.aas.adapter.json
 from basyx.aas import model
+
+logger = logging.getLogger(__name__)
 
 
 def create_submodel_from_file(file_path: str) -> model.Submodel:
@@ -24,4 +28,23 @@ def create_submodel_from_file(file_path: str) -> model.Submodel:
         template_data = json.load(f)
 
     # Load the template JSON into a Submodel object
-    return sdk_tools.convert_to_object(template_data)
+    return _convert_to_object(template_data)
+
+
+def _convert_to_object(content: dict) -> Any | None:
+    """Convert a dictionary to a BaSyx SDK framework object.
+
+    :param content: dictionary to convert
+    :return: BaSyx SDK framework object or None
+    """
+    if not content or len(content) == 0:
+        logger.debug("Empty content provided for conversion to object.")
+        return None
+
+    try:
+        dict_string = json.dumps(content)
+        return json.loads(dict_string, cls=basyx.aas.adapter.json.json_deserialization.AASFromJsonDecoder)
+    except Exception as e:
+        logger.error(f"Decoding error: {e}")
+        logger.error(f"In JSON: {content}")
+        return None
