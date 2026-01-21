@@ -87,5 +87,8 @@ def contains_supplemental_semantic_id(element: SubmodelElement, semantic_id_valu
     :param semantic_id_value: The supplemental semantic ID value to search for.
     :return: True if the element contains the supplemental semantic ID, False otherwise.
     """
+    if element.supplemental_semantic_id is None or len(element.supplemental_semantic_id.key) == 0:
+        return False
+
     reference: Reference = ExternalReference((Key(type_=KeyTypes.GLOBAL_REFERENCE, value=semantic_id_value),))
     return element.supplemental_semantic_id.__contains__(reference)

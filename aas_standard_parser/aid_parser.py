@@ -1,76 +1,88 @@
 """This module provides functions to parse AID Submodels and extract MQTT interface descriptions."""
 
 import base64
-from typing import Dict, List
 
-from basyx.aas.model import (
-    Property,
-    SubmodelElement,
-    SubmodelElementCollection,
-    SubmodelElementList,
-)
+from basyx.aas import model
 
 from aas_standard_parser.collection_helpers import find_all_by_semantic_id, find_by_id_short, find_by_semantic_id
 
 
 class IProtocolBinding:
+    """Interface for protocol binding details."""
+
     def __init__(self):
-        pass
+        """Initialize IProtocolBinding."""
 
 
 class HttpProtocolBinding(IProtocolBinding):
-    def __init__(self, method_name: str, headers: Dict[str, str]):
+    """HTTP protocol binding details."""
+
+    def __init__(self, method_name: str, headers: dict[str, str]):
+        """Initialize HttpProtocolBinding."""
         super().__init__()
         self.method_name = method_name
         self.headers = headers
 
 
 class PropertyDetails:
-    def __init__(self, href: str, keys: List[str], protocol_binding: IProtocolBinding = None):
+    """Details of a property in an AID interface."""
+
+    def __init__(self, href: str, keys: list[str], protocol_binding: IProtocolBinding = None):
+        """Initialize PropertyDetails."""
         self.href = href
         self.keys = keys
         self.protocol_binding = protocol_binding
 
 
 class IAuthenticationDetails:
+    """Interface for authentication details."""
+
     def __init__(self):
+        """Initialize IAuthenticationDetails."""
         # TODO: different implementations for different AID versions
-        pass
 
 
 class BasicAuthenticationDetails(IAuthenticationDetails):
+    """Basic authentication details."""
+
     def __init__(self, user: str, password: str):
+        """Initialize BasicAuthenticationDetails."""
         self.user = user
         self.password = password
         super().__init__()
 
 
 class NoAuthenticationDetails(IAuthenticationDetails):
+    """No authentication details."""
+
     def __init__(self):
+        """Initialize NoAuthenticationDetails."""
         super().__init__()
 
 
 class AIDParser:
+    """Parser for Asset Interface Descriptions (AID) Submodels."""
+
     def __init__(self):
-        pass
+        """Initialize the AIDParser."""
 
-    def parse_base(self, aid_interface: SubmodelElementCollection) -> str:
+    def parse_base(self, aid_interface: model.SubmodelElementCollection) -> str:
         """Get the base address (EndpointMetadata.base) from a SMC describing an interface in the AID."""
-
-        endpoint_metadata: SubmodelElementCollection | None = find_by_semantic_id(
+        endpoint_metadata: model.SubmodelElementCollection | None = find_by_semantic_id(
             aid_interface.value, "https://admin-shell.io/idta/AssetInterfacesDescription/1/0/EndpointMetadata"
         )
         if endpoint_metadata is None:
             raise ValueError(f"'EndpointMetadata' SMC not found in the provided '{aid_interface.id_short}' SMC.")
 
-        base: Property | None = find_by_semantic_id(endpoint_metadata.value, "https://www.w3.org/2019/wot/td#baseURI")
+        base: model.Property | None = find_by_semantic_id(endpoint_metadata.value, "https://www.w3.org/2019/wot/td#baseURI")
         if base is None:
             raise ValueError("'base' Property not found in 'EndpointMetadata' SMC.")
 
         return base.value
 
-    def parse_properties(self, aid_interface: SubmodelElementCollection) -> Dict[str, PropertyDetails]:
+    def parse_properties(self, aid_interface: model.SubmodelElementCollection) -> dict[str, PropertyDetails]:
         """Find all first-level and nested properties in a provided SMC describing one interface in the AID.
+
         Map each property (either top-level or nested) to the according 'href' attribute.
         Nested properties are further mapped to the hierarchical list of keys
         that are necessary to extract their value from the payload of the interface.
@@ -78,32 +90,32 @@ class AIDParser:
         :param aid_interface: An SMC describing an interface in the AID.
         :return: A dictionary mapping each property (represented by its idShort-path) to PropertyDetails.
         """
-        mapping: Dict[str, PropertyDetails] = {}
+        mapping: dict[str, PropertyDetails] = {}
 
-        interaction_metadata: SubmodelElementCollection | None = find_by_semantic_id(
+        interaction_metadata: model.SubmodelElementCollection | None = find_by_semantic_id(
             aid_interface.value, "https://admin-shell.io/idta/AssetInterfacesDescription/1/0/InteractionMetadata"
         )
         if interaction_metadata is None:
             raise ValueError(f"'InteractionMetadata' SMC not found in the provided '{aid_interface.id_short}' SMC.")
 
-        properties: SubmodelElementCollection | None = find_by_semantic_id(
+        properties: model.SubmodelElementCollection | None = find_by_semantic_id(
             interaction_metadata.value, "https://www.w3.org/2019/wot/td#PropertyAffordance"
         )
         if properties is None:
             raise ValueError("'properties' SMC not found in 'InteractionMetadata' SMC.")
 
-        fl_properties: List[SubmodelElement] = find_all_by_semantic_id(
+        fl_properties: list[model.SubmodelElement] = find_all_by_semantic_id(
             properties.value, "https://admin-shell.io/idta/AssetInterfacesDescription/1/0/PropertyDefinition"
         )
         if fl_properties is None:
-            print(f"WARN: No first-level 'property' SMC not found in 'properties' SMC.")
+            print("WARN: No first-level 'property' SMC not found in 'properties' SMC.")
             return {}
 
         def traverse_property(
-            smc: SubmodelElementCollection,
+            smc: model.SubmodelElementCollection,
             parent_path: str,
             href: str,
-            key_path: List[str | int],
+            key_path: list[str | int],
             is_items=False,
             idx=None,
             is_top_level=False,
@@ -151,13 +163,13 @@ class AIDParser:
                 "https://www.w3.org/2019/wot/json-schema#properties",
                 "https://www.w3.org/2019/wot/json-schema#items",
             ]:
-                nested_group: SubmodelElementCollection | None = find_by_semantic_id(smc.value, nested_sem_id)
+                nested_group: model.SubmodelElementCollection | None = find_by_semantic_id(smc.value, nested_sem_id)
                 if nested_group:
                     # attach the name of that SMC ("items" or "properties" or similar) to the key_path
                     full_path += "." + nested_group.id_short
 
                     # find all nested properties/items by semantic-ID
-                    nested_properties: List[SubmodelElement] = find_all_by_semantic_id(
+                    nested_properties: list[model.SubmodelElement] = find_all_by_semantic_id(
                         nested_group.value, "https://www.w3.org/2019/wot/json-schema#propertyName"
                     )
 
@@ -171,11 +183,11 @@ class AIDParser:
 
         # process all first-level properties
         for fl_property in fl_properties:  # type: SubmodelElementCollection
-            forms: SubmodelElementCollection | None = find_by_semantic_id(fl_property.value, "https://www.w3.org/2019/wot/td#hasForm")
+            forms: model.SubmodelElementCollection | None = find_by_semantic_id(fl_property.value, "https://www.w3.org/2019/wot/td#hasForm")
             if forms is None:
                 raise ValueError(f"'forms' SMC not found in '{fl_property.id_short}' SMC.")
 
-            href: Property | None = find_by_semantic_id(forms.value, "https://www.w3.org/2019/wot/hypermedia#hasTarget")
+            href: model.Property | None = find_by_semantic_id(forms.value, "https://www.w3.org/2019/wot/hypermedia#hasTarget")
             if href is None:
                 raise ValueError("'href' Property not found in 'forms' SMC.")
 
@@ -192,14 +204,14 @@ class AIDParser:
             protocol_binding: IProtocolBinding = None
 
             # ... try HTTP ("htv_methodName" must be present)
-            htv_method_name: Property | None = find_by_semantic_id(forms.value, "https://www.w3.org/2011/http#methodName")
+            htv_method_name: model.Property | None = find_by_semantic_id(forms.value, "https://www.w3.org/2011/http#methodName")
             if htv_method_name is not None:
                 protocol_binding: HttpProtocolBinding = HttpProtocolBinding(htv_method_name.value, {})
-                htv_headers: SubmodelElementCollection | None = find_by_semantic_id(forms.value, "https://www.w3.org/2011/http#headers")
+                htv_headers: model.SubmodelElementCollection | None = find_by_semantic_id(forms.value, "https://www.w3.org/2011/http#headers")
                 if htv_headers is not None:
-                    for header in htv_headers.value:  # type: SubmodelElementCollection
-                        htv_field_name: Property | None = find_by_semantic_id(header.value, "https://www.w3.org/2011/http#fieldName")
-                        htv_field_value: Property | None = find_by_semantic_id(header.value, "https://www.w3.org/2011/http#fieldValue")
+                    for header in htv_headers.value:  # type: ignore # type: SubmodelElementCollection
+                        htv_field_name: model.Property | None = find_by_semantic_id(header.value, "https://www.w3.org/2011/http#fieldName")
+                        htv_field_value: model.Property | None = find_by_semantic_id(header.value, "https://www.w3.org/2011/http#fieldValue")
                         protocol_binding.headers[htv_field_name.value] = htv_field_value.value
 
             # TODO: the other protocols
@@ -220,19 +232,21 @@ class AIDParser:
 
         return mapping
 
-    def parse_security(self, aid_interface: SubmodelElementCollection) -> IAuthenticationDetails:
+    def parse_security(self, aid_interface: model.SubmodelElementCollection) -> IAuthenticationDetails:
         """Extract the authentication details (EndpointMetadata.security) from the provided interface in the AID.
 
         :param aid_interface: An SMC describing an interface in the AID.
         :return: A subtype of IAuthenticationDetails with details depending on the specified authentication method for the interface.
         """
-        endpoint_metadata: SubmodelElementCollection | None = find_by_semantic_id(
+        endpoint_metadata: model.SubmodelElementCollection | None = find_by_semantic_id(
             aid_interface.value, "https://admin-shell.io/idta/AssetInterfacesDescription/1/0/EndpointMetadata"
         )
         if endpoint_metadata is None:
             raise ValueError(f"'EndpointMetadata' SMC not found in the provided '{aid_interface.id_short}' SMC.")
 
-        security: SubmodelElementList | None = find_by_semantic_id(endpoint_metadata.value, "https://www.w3.org/2019/wot/td#hasSecurityConfiguration")
+        security: model.SubmodelElementList | None = find_by_semantic_id(
+            endpoint_metadata.value, "https://www.w3.org/2019/wot/td#hasSecurityConfiguration"
+        )
         if security is None:
             raise ValueError("'security' SML not found in 'EndpointMetadata' SMC.")
 
@@ -244,19 +258,19 @@ class AIDParser:
         sc_idshort = security.value[0].value.key[-1].value
 
         # get the securityDefinitions SMC
-        security_definitions: SubmodelElementCollection | None = find_by_semantic_id(
+        security_definitions: model.SubmodelElementCollection | None = find_by_semantic_id(
             endpoint_metadata.value, "https://www.w3.org/2019/wot/td#definesSecurityScheme"
         )
         if security_definitions is None:
             raise ValueError("'securityDefinitions' SMC not found in 'EndpointMetadata' SMC.")
 
         # find the security scheme SMC with the same idShort as mentioned in the reference "sc"
-        referenced_security: SubmodelElementCollection | None = find_by_id_short(security_definitions.value, sc_idshort)
+        referenced_security: model.SubmodelElementCollection | None = find_by_id_short(security_definitions.value, sc_idshort)
         if referenced_security is None:
             raise ValueError(f"Referenced security scheme '{sc_idshort}' SMC not found in 'securityDefinitions' SMC")
 
         # get the name of the security scheme
-        scheme: Property | None = find_by_semantic_id(referenced_security.value, "https://www.w3.org/2019/wot/security#SecurityScheme")
+        scheme: model.Property | None = find_by_semantic_id(referenced_security.value, "https://www.w3.org/2019/wot/security#SecurityScheme")
         if scheme is None:
             raise ValueError(f"'scheme' Property not found in referenced security scheme '{sc_idshort}' SMC.")
 
@@ -267,7 +281,7 @@ class AIDParser:
                 auth_details = NoAuthenticationDetails()
 
             case "basic":
-                basic_sc_name: Property | None = find_by_semantic_id(referenced_security.value, "https://www.w3.org/2019/wot/security#name")
+                basic_sc_name: model.Property | None = find_by_semantic_id(referenced_security.value, "https://www.w3.org/2019/wot/security#name")
                 if basic_sc_name is None:
                     raise ValueError("'name' Property not found in 'basic_sc' SMC")
 

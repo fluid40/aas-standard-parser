@@ -1,7 +1,7 @@
 """AAS Standard parser Package."""
 
 import importlib.metadata
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from aas_standard_parser import (
     aas_parser,
@@ -16,7 +16,7 @@ from aas_standard_parser import (
 from aas_standard_parser.aid_parser import AIDParser
 from aas_standard_parser.version_check import check_for_update
 
-__copyright__ = f"Copyright (C) {datetime.now(tz=timezone.utc).year} Fluid 4.0. All rights reserved."
+__copyright__ = f"Copyright (C) {datetime.now(tz=UTC).year} Fluid 4.0. All rights reserved."
 __author__ = "Daniel Klein, Celina Adelhardt, Tom Gneuß"
 
 try:
