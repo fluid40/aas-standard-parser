@@ -53,11 +53,11 @@ def get_mapping_configuration_elements(aimc_submodel: model.Submodel) -> list[mo
     return mapping_configurations
 
 
-def parse_mapping_configurations(aimc_submodel: model.Submodel) -> MappingConfigurations:
+def parse_mapping_configurations(aimc_submodel: model.Submodel) -> MappingConfigurations | None:
     """Parse all mapping configurations in the AIMC submodel.
 
     :param aimc_submodel: The AIMC submodel to parse mapping configurations from.
-    :return: A list of parsed mapping configurations.
+    :return: A list of parsed mapping configurations or None if parsing failed.
     """
     logger.info("Parse mapping configurations from AIMC submodel.")
 
@@ -67,7 +67,7 @@ def parse_mapping_configurations(aimc_submodel: model.Submodel) -> MappingConfig
     mapping_configurations_elements = get_mapping_configuration_elements(aimc_submodel)
     if mapping_configurations_elements is None:
         logger.error("No mapping configuration elements found in AIMC submodel.")
-        return mapping_configurations_elements
+        return None
 
     # parse each mapping configuration element
     for mc_element in mapping_configurations_elements:
