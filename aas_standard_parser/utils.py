@@ -1,5 +1,6 @@
 """Utility functions for AAS standard parser."""
 
+import base64
 import json
 import logging
 from pathlib import Path
@@ -48,3 +49,25 @@ def _convert_to_object(content: dict) -> Any | None:
         logger.error(f"Decoding error: {e}")
         logger.error(f"In JSON: {content}")
         return None
+
+
+def decode_base_64(text: str) -> str:
+    """Decode a Base64 encoded string.
+
+    :param text: Base64 encoded string to decode
+    :return:  Decoded string
+    """
+    text_bytes = text.encode("utf-8")
+    base64_bytes = base64.b64encode(text_bytes)
+    return base64_bytes.decode("utf-8")
+
+
+def encode_base_64(text: str) -> str:
+    """Encode a string to Base64.
+
+    :param text: String to encode
+    :return: Base64 encoded string
+    """
+    text_bytes = text.encode("utf-8")
+    base64_bytes = base64.b64decode(text_bytes)
+    return base64_bytes.decode("utf-8")

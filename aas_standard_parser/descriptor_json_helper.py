@@ -2,6 +2,9 @@
 
 import logging
 
+from aas_standard_parser.classes.descriptor_json_helper_classes import EndPointHrefData
+from aas_standard_parser.utils import decode_base_64, encode_base_64
+
 logger = logging.getLogger(__name__)
 
 
@@ -32,3 +35,30 @@ def get_endpoint_hrefs(descriptor_data: dict) -> list[str]:
     :return: A list of href strings extracted from the endpoints.
     """
     return [endpoint.get("protocolInformation", {}).get("href", "") for endpoint in descriptor_data.get("endpoints", [])]
+
+
+def parse_endpoint_href(href: str) -> EndPointHrefData | None:
+    """Parse the endpoint href into its components.
+
+    :param href: The href string to parse.
+    :return: An EndPointHrefData object containing parsed components.
+    """
+    if "shells/" not in href and "submodels/" not in href:
+        logger.warning(f"Invalid href format: {href}")
+        return None
+
+    split_str = ""
+    if "/shells/" in href:
+        split_str = "/shells/"
+    elif "/submodels/" in href:
+        split_str = "/submodels/"
+
+    base_url: str = href.split(split_str, maxsplit=1)[0]
+    identifier: str = href.split(split_str)[1]
+
+    href_data = EndPointHrefData(href)
+    href_data.base_url = base_url
+    href_data.identifier = identifier
+    href_data.identifier_encoded = encode_base_64(identifier)
+
+    return href_data
