@@ -8,8 +8,9 @@ from aas_standard_parser import (
     aid_parser,
     aimc_parser,
     collection_helpers,
+    descriptor_json_helper,
     reference_helpers,
-    submodel_json_parser,
+    submodel_json_helper,
     submodel_parser,
     utils,
 )
@@ -37,8 +38,9 @@ __all__ = [
     "aid_parser",
     "aimc_parser",
     "collection_helpers",
+    "descriptor_json_helper",
     "reference_helpers",
-    "submodel_json_parser",
+    "submodel_json_helper",
     "submodel_parser",
     "utils",
 ]
