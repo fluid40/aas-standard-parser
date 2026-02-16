@@ -59,3 +59,17 @@ def get_submodel_element_by_id_short_path(submodel: model.Submodel, id_short_pat
             return submodel_element
 
     return submodel_element
+
+
+def get_semantic_id_value(submodel: model.Submodel, index: int = 0) -> str | None:
+    """Get the semantic ID from a submodel.
+
+    :param submodel: The submodel to extract the semantic ID from.
+    :param index: The index of the semantic ID key to retrieve.
+    :return: The semantic ID string if found, otherwise None.
+    """
+    if submodel.semantic_id is None or index >= len(submodel.semantic_id.key):
+        logger.warning(f"No semantic ID found for submodel {submodel.id_short}")
+        return None
+
+    return submodel.semantic_id.key[index].value
