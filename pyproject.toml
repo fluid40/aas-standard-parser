@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "aas-standard-parser"
-version = "0.3.4"
+version = "0.3.5"
 description = "Some auxiliary functions for parsing standard submodels"
 readme = "README.md"
 license = { file = "LICENSE" }
