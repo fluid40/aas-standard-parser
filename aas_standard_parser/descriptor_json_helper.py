@@ -59,6 +59,9 @@ def parse_endpoint_href(href: str) -> EndPointHrefData | None:
     href_data = EndPointHrefData(href)
     href_data.base_url = base_url
     href_data.identifier = identifier
-    href_data.identifier_encoded = encode_base_64(identifier)
+    try:
+        href_data.identifier_encoded = decode_base_64(identifier)
+    except Exception as e:
+        logger.error(f"Failed to encode identifier '{identifier}' from href '{href}': {e}")
 
     return href_data
