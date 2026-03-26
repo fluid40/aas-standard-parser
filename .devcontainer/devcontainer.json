@@ -20,10 +20,18 @@
                 "aaron-bond.better-comments",
                 "vivaxy.vscode-conventional-commits",
                 "tamasfe.even-better-toml",
-                "GitHub.vscode-github-actions",
                 "bierner.github-markdown-preview",
+                "ms-python.debugpy",
+                "yzhang.markdown-all-in-one",
+                "ryanluker.vscode-coverage-gutters",
+                "gruntfuggly.todo-tree",
+                "esbenp.prettier-vscode",
+                "ms-python.mypy-type-checker",
+                "DavidAnson.vscode-markdownlint",
+                "perkovec.emoji",
+                "GitHub.vscode-github-actions",
                 "dbaeumer.vscode-eslint",
-                "ms-python.debugpy"
+                "mervin.markdown-formatter"
             ]
         }
     },
