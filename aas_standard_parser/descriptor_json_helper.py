@@ -90,18 +90,22 @@ def parse_endpoint_href(href: str) -> EndPointHrefData | None:
         logger.warning(f"Invalid href format: {href}")
         return None
 
+    href_data = EndPointHrefData(href)
+
     split_str = ""
     if "/shells/" in href:
         split_str = "/shells/"
+        href_data.tag = split_str.replace("/", "")
     elif "/submodels/" in href:
         split_str = "/submodels/"
+        href_data.tag = split_str.replace("/", "")
 
     base_url: str = href.split(split_str, maxsplit=1)[0]
     identifier: str = href.split(split_str)[1]
 
-    href_data = EndPointHrefData(href)
     href_data.base_url = base_url
     href_data.identifier = identifier
+
     try:
         href_data.identifier_encoded = decode_base_64(identifier)
     except Exception as e:

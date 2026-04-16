@@ -10,3 +10,4 @@ class EndPointHrefData:
         self.base_url: str = ""
         self.identifier: str = ""
         self.identifier_encoded: str = ""
+        self.tag: str = ""
