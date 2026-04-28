@@ -1,7 +1,7 @@
 # AAS standard Parser
 
 [![PyPI version](https://img.shields.io/pypi/v/aas-standard-parser.svg)](https://pypi.org/project/aas-standard-parser/)
-[![License: MIT](https://img.shields.io/badge/license-MIT-%23f8a602?label=License&labelColor=%23992b2e)]
+[![License: MIT](https://img.shields.io/badge/license-MIT-%23f8a602?label=License&labelColor=%23992b2e)
 [![CI](https://github.com/fluid40/aas-standard-parser/actions/workflows/CI.yml/badge.svg?branch=main&cache-bust=1)](https://github.com/fluid40/aas-standard-parser/actions)
 
 This project provides tools for parsing and handling Asset Administration Shell (AAS) standard submodels, with a focus on AID and AIMC submodels. It enables:
