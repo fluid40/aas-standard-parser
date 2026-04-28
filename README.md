@@ -17,9 +17,11 @@ These components enable efficient parsing, transformation, and analysis of AAS s
 
 * Most functions in this project utilize the [python aas sdk framework](https://github.com/aas-core-works/aas-core3.0-python) for parsing and handling AAS submodels, ensuring compatibility with the official AAS data models and structures.
 
-* [AAS standard Parser](#aas-standard-parser)
-  + [🚀 Features](#-features)
-  + [📚 Resources](#-resources)
+**Table of Contents:**
+
+- [AAS standard Parser](#aas-standard-parser)
+  - [🚀 Features](#-features)
+  - [📚 Resources](#-resources)
 
 ---
 
