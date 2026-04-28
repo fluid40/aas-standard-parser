@@ -1,7 +1,5 @@
 # AAS standard Parser
 
----
-
 [![PyPI version](https://img.shields.io/pypi/v/aas-standard-parser.svg)](https://pypi.org/project/aas-standard-parser/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-%23f8a602?label=License&labelColor=%23992b2e)](LICENSE)
 [![CI](https://github.com/fluid40/aas-standard-parser/actions/workflows/CI.yml/badge.svg?branch=main&cache-bust=1)](https://github.com/fluid40/aas-standard-parser/actions)
@@ -41,7 +39,7 @@ These components enable efficient parsing, transformation, and analysis of AAS s
 
 * ✅ Retrieve submodel elements using idShort paths (dot-separated notation)
 * ✅ Support for hierarchical navigation through nested submodel element collections
-* ✅ Access SubmodelElementList items by index (e.g.,   `Element[0]`)
+* ✅ Access SubmodelElementList items by index (e.g.,    `Element[0]`)
 * ✅ Extract semantic ID values from submodels
 * ✅ Parse complex nested structures with SubmodelElementCollections and Lists
 
