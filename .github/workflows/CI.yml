@@ -166,7 +166,7 @@ jobs:
   build-doxygen-pages:
     name: Create Documentation
     runs-on: ubuntu-latest
-    needs: publish-pypi-package
+    needs: parser-tests
 
     steps:
       - name: Checkout repository
