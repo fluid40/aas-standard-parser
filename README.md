@@ -37,7 +37,7 @@ These components enable efficient parsing, transformation, and analysis of AAS s
 
 * ✅ Retrieve submodel elements using idShort paths (dot-separated notation)
 * ✅ Support for hierarchical navigation through nested submodel element collections
-* ✅ Access SubmodelElementList items by index (e.g.,      `Element[0]`)
+* ✅ Access SubmodelElementList items by index (e.g.,       `Element[0]`)
 * ✅ Extract semantic ID values from submodels
 * ✅ Parse complex nested structures with SubmodelElementCollections and Lists
 
@@ -85,7 +85,7 @@ These components enable efficient parsing, transformation, and analysis of AAS s
 
 ## 📚 Resources
 
-📘 [Documentation](https://github.com/fluid40/aas-standard-parser/)
+📘 [Documentation](https://fluid40.github.io/aas-standard-parser/)
 
 📝 [Changelog](docs/CHANGELOG.md)
 
