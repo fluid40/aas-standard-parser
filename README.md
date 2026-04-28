@@ -18,10 +18,8 @@ These components enable efficient parsing, transformation, and analysis of AAS s
 * Most functions in this project utilize the [python aas sdk framework](https://github.com/aas-core-works/aas-core3.0-python) for parsing and handling AAS submodels, ensuring compatibility with the official AAS data models and structures.
 
 * [AAS standard Parser](#aas-standard-parser)
-  + [Provided Parsers](#provided-parsers)
-  + [Helper Modules](#helper-modules)
-  + [API References](#api-references)
-  + [Resources](#resources)
+  + [🚀 Features](#-features)
+  + [📚 Resources](#-resources)
 
 ---
 
@@ -39,7 +37,7 @@ These components enable efficient parsing, transformation, and analysis of AAS s
 
 * ✅ Retrieve submodel elements using idShort paths (dot-separated notation)
 * ✅ Support for hierarchical navigation through nested submodel element collections
-* ✅ Access SubmodelElementList items by index (e.g.,    `Element[0]`)
+* ✅ Access SubmodelElementList items by index (e.g.,      `Element[0]`)
 * ✅ Extract semantic ID values from submodels
 * ✅ Parse complex nested structures with SubmodelElementCollections and Lists
 
@@ -85,20 +83,16 @@ These components enable efficient parsing, transformation, and analysis of AAS s
 
 ---
 
-## API References
+## 📚 Resources
 
-* AID Parser
-* AIMC Parser
-* [AAS Parser](docs/api_references/api_aas_parser.md)
-* [Submodel Parser](docs/api_references/api_submodel_parser.md)
-* Collection Helpers
-* [Reference Helpers](docs/api_references/api_reference_helpers.md)
-* [Utilities](docs/api_references/api_utils.md)
+📘 [Documentation](https://github.com/fluid40/aas-standard-parser/)
 
-## Resources
+📝 [Changelog](docs/CHANGELOG.md)
 
-🤖 [Releases](http://github.com/fluid40/aas-standard-parser/releases)
+🤖 [GitHub Releases](https://github.com/fluid40/aas-standard-parser/releases)
 
 📦 [Pypi Packages](https://pypi.org/project/aas-standard-parser/)
 
-📜 [MIT License](LICENSE)
+📜 [MIT License](https://github.com/fluid40/aas-standard-parser/blob/main/LICENSE)
+
+---
