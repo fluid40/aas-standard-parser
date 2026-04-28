@@ -25,61 +25,24 @@ These components enable efficient parsing, transformation, and analysis of AAS s
 
 ## 🚀 Features
 
-### Core Parsing Capabilities
+### Comprehensive AAS Submodel Parsing
 
-#### **AAS Parser**
+* ✅ Parse and extract data from AAS structures, with specialized support for AID and AIMC submodels
+* ✅ Navigate hierarchical submodel elements using intuitive dot-separated paths and indexed access
+* ✅ Extract endpoint metadata, interface properties, authentication details, and mapping configurations
 
-* ✅ Extract submodel IDs from Asset Administration Shell structures
-* ✅ Validate and retrieve references from AAS to submodels
-* ✅ Handle and process AAS metadata and configuration
+### Core Parsers
 
-#### **Submodel Parser**
+* ✅ **AAS Parser**: Retrieve submodel IDs and references from Asset Administration Shell structures
+* ✅ **Submodel Parser**: Access nested elements by idShort path with support for SubmodelElementLists and Collections
+* ✅ **AID Parser**: Extract interface descriptions, properties, protocol bindings, and authentication details
+* ✅ **AIMC Parser**: Parse mapping configurations and source-sink relations between interfaces
 
-* ✅ Retrieve submodel elements using idShort paths (dot-separated notation)
-* ✅ Support for hierarchical navigation through nested submodel element collections
-* ✅ Access SubmodelElementList items by index (e.g.,       `Element[0]`)
-* ✅ Extract semantic ID values from submodels
-* ✅ Parse complex nested structures with SubmodelElementCollections and Lists
+### Utility Functions
 
-#### **AID Parser** (Asset Interface Descriptions)
-
-* ✅ Parse endpoint metadata and base addresses from interface descriptions
-* ✅ Extract and map properties with href attributes
-* ✅ Support for hierarchical property traversal with nested key paths
-* ✅ Protocol binding configuration extraction:
-  + HTTP protocol bindings with method names and custom headers
-  + Extensible architecture for additional protocol support
-* ✅ Authentication details handling:
-  + Basic authentication (username/password)
-  + No authentication scenarios
-  + Version-aware authentication parsing
-* ✅ Interface serialization and deserialization
-
-#### **AIMC Parser** (Asset Interfaces Mapping Configuration)
-
-* ✅ Extract mapping configurations from AIMC submodels
-* ✅ Parse source-sink relations and reference properties
-* ✅ Handle mapping configuration elements and their hierarchies
-* ✅ Support for complex mapping scenarios between interfaces
-* ✅ Mapping configuration metadata processing
-
-### Helper Modules
-
-* ✅ **Collection Helpers**: Search and filter submodel elements by:
-  + Semantic ID matching
-  + idShort names
-  + Supplemental semantic IDs
-  + Nested collection traversal
-
-* ✅ **Reference Helpers**: Work with references and semantic identifiers:
-  + Construct idShort paths from reference structures
-  + Extract values from reference keys
-  + Handle reference key types and hierarchies
-
-* ✅ **Utilities**: General-purpose functions:
-  + Load submodels from JSON files
-  + Support for various file formats
-  + Error handling and validation
+* ✅ Collection and reference helpers for semantic ID matching, filtering, and key extraction
+* ✅ Load and validate submodels from JSON files with error handling
+* ✅ Structured JSON logging with colored console output
 
 ---
 
