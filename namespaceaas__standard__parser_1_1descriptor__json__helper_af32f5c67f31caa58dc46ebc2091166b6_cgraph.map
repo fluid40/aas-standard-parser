@@ -1,0 +1,7 @@
+<map id="aas_standard_parser.descriptor_json_helper.get_endpoint_protocol_information_by_index" name="aas_standard_parser.descriptor_json_helper.get_endpoint_protocol_information_by_index">
+<area shape="rect" id="Node000001" title="Get the protocol information from a descriptor&#39;s endpoints by index." alt="" coords="5,5,236,60"/>
+<area shape="rect" id="Node000002" href="$namespaceaas__standard__parser_1_1descriptor__json__helper.html#a11e9196b0a3995a2693ec43e6b699789" title="Get the endpoint from a descriptor&#39;s endpoints by index." alt="" coords="284,5,509,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="236,30,270,30,270,35,236,35"/>
+<area shape="rect" id="Node000003" href="$namespaceaas__standard__parser_1_1descriptor__json__helper.html#a2ad9a975fcabe7b611c0581ab91e9a4d" title="Get all endpoints from a descriptor." alt="" coords="557,13,783,53"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="510,30,544,30,544,35,510,35"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="aas_standard_parser.aimc_parser._get_interface_reference_element" name="aas_standard_parser.aimc_parser._get_interface_reference_element">
+<area shape="rect" id="Node000001" title="Get the interface reference ID from the mapping configuration element." alt="" coords="639,5,831,60"/>
+<area shape="rect" id="Node000002" href="$namespaceaas__standard__parser_1_1aimc__parser.html#afb69723e5c4160b7cf493336435ce4ce" title="Parse a mapping configuration element." alt="" coords="325,5,591,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="625,35,591,35,591,30,625,30"/>
+<area shape="rect" id="Node000003" href="$namespaceaas__standard__parser_1_1aimc__parser.html#ae2cda8726f34a73499ebca6377ee46e2" title="Parse all mapping configurations in the AIMC submodel." alt="" coords="5,13,277,53"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="312,35,278,35,278,30,312,30"/>
+</map>

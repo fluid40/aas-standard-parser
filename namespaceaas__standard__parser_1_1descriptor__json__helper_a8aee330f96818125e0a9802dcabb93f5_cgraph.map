@@ -1,0 +1,5 @@
+<map id="aas_standard_parser.descriptor_json_helper.get_endpoint_hrefs" name="aas_standard_parser.descriptor_json_helper.get_endpoint_hrefs">
+<area shape="rect" id="Node000001" title="Get all hrefs from a descriptor&#39;s endpoints." alt="" coords="5,5,237,45"/>
+<area shape="rect" id="Node000002" href="$namespaceaas__standard__parser_1_1descriptor__json__helper.html#a2ad9a975fcabe7b611c0581ab91e9a4d" title="Get all endpoints from a descriptor." alt="" coords="285,5,511,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="238,23,271,23,271,28,238,28"/>
+</map>

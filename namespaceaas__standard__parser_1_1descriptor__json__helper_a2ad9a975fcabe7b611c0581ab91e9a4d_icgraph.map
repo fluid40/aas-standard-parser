@@ -1,0 +1,11 @@
+<map id="aas_standard_parser.descriptor_json_helper.get_endpoints" name="aas_standard_parser.descriptor_json_helper.get_endpoints">
+<area shape="rect" id="Node000001" title="Get all endpoints from a descriptor." alt="" coords="837,49,1063,89"/>
+<area shape="rect" id="Node000002" href="$namespaceaas__standard__parser_1_1descriptor__json__helper.html#a11e9196b0a3995a2693ec43e6b699789" title="Get the endpoint from a descriptor&#39;s endpoints by index." alt="" coords="561,5,786,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="823,55,786,50,786,45,824,50"/>
+<area shape="rect" id="Node000005" href="$namespaceaas__standard__parser_1_1descriptor__json__helper.html#a8aee330f96818125e0a9802dcabb93f5" title="Get all hrefs from a descriptor&#39;s endpoints." alt="" coords="557,85,789,125"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="824,88,790,92,789,87,824,82"/>
+<area shape="rect" id="Node000003" href="$namespaceaas__standard__parser_1_1descriptor__json__helper.html#af32f5c67f31caa58dc46ebc2091166b6" title="Get the protocol information from a descriptor&#39;s endpoints by index." alt="" coords="279,5,509,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="547,35,510,35,510,30,547,30"/>
+<area shape="rect" id="Node000004" href="$namespaceaas__standard__parser_1_1descriptor__json__helper.html#abc73a4fe4db6926d2c0aa70e287b1ad0" title="Get the href from a descriptor&#39;s endpoints." alt="" coords="5,5,231,60"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="265,35,231,35,231,30,265,30"/>
+</map>

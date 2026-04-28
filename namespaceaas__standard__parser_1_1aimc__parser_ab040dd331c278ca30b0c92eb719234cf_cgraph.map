@@ -1,0 +1,5 @@
+<map id="aas_standard_parser.aimc_parser.get_mapping_configuration_elements" name="aas_standard_parser.aimc_parser.get_mapping_configuration_elements">
+<area shape="rect" id="Node000001" title="Get all mapping configurations from the AIMC submodel." alt="" coords="5,5,256,60"/>
+<area shape="rect" id="Node000002" href="$namespaceaas__standard__parser_1_1aimc__parser.html#a46e2a901cf0fbb8a9280390f13560daa" title="Get the mapping configuration root submodel element collection from the AIMC submodel." alt="" coords="304,5,555,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="256,30,290,30,290,35,256,35"/>
+</map>

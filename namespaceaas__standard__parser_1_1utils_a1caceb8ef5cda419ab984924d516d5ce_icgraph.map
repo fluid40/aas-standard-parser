@@ -1,0 +1,5 @@
+<map id="aas_standard_parser.utils._convert_to_object" name="aas_standard_parser.utils._convert_to_object">
+<area shape="rect" id="Node000001" title="Convert a dictionary to a BaSyx SDK framework object." alt="" coords="287,5,479,45"/>
+<area shape="rect" id="Node000002" href="$namespaceaas__standard__parser_1_1utils.html#aaa56ac6854f1594a69a5ce463d0581b5" title="Loads a Submodel structure from a given JSON file and converts it into a model.Submodel object from t..." alt="" coords="5,5,239,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="273,28,239,28,239,23,273,23"/>
+</map>

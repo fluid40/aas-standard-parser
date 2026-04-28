@@ -1,0 +1,7 @@
+<map id="aas_standard_parser.aid_parser.IAuthenticationDetails" name="aas_standard_parser.aid_parser.IAuthenticationDetails">
+<area shape="rect" id="Node000001" title="Interface for authentication details." alt="" coords="5,37,224,77"/>
+<area shape="rect" id="Node000002" href="$classaas__standard__parser_1_1aid__parser_1_1BasicAuthenticationDetails.html" title="Basic authentication details." alt="" coords="272,5,521,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="238,41,271,37,272,42,238,46"/>
+<area shape="rect" id="Node000003" href="$classaas__standard__parser_1_1aid__parser_1_1NoAuthenticationDetails.html" title="No authentication details." alt="" coords="281,69,513,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="238,69,281,74,280,79,238,74"/>
+</map>

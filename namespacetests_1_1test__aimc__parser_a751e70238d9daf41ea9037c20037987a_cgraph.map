@@ -1,0 +1,13 @@
+<map id="tests.test_aimc_parser.test_004_parse_mapping_configurations" name="tests.test_aimc_parser.test_004_parse_mapping_configurations">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,37,264,77"/>
+<area shape="rect" id="Node000002" href="$namespacetests_1_1test__aimc__parser.html#a2614fb22e334c68fb066862efd172703" title=" " alt="" coords="312,5,485,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="264,39,298,35,299,40,265,44"/>
+<area shape="rect" id="Node000003" href="$namespacetests_1_1test__aimc__parser.html#a2d9a454c98632424f213146d3ec87aaa" title=" " alt="" coords="312,69,485,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="265,70,299,75,298,80,264,76"/>
+<area shape="rect" id="Node000004" href="$namespacetests_1_1test__aimc__parser.html#a81eb0c796de00ce6627d716bd8c7e531" title=" " alt="" coords="533,5,721,45"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="470,67,542,46,543,52,472,72"/>
+<area shape="rect" id="Node000005" href="$namespacetests_1_1test__aimc__parser.html#aa1ce49a267aa908a04126e40f193e66e" title=" " alt="" coords="541,69,714,109"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="485,87,527,87,527,92,485,92"/>
+<area shape="rect" id="Node000006" href="$namespacetests_1_1test__aimc__parser.html#a55c87d08249486a7f877c1ba5384b402" title=" " alt="" coords="537,133,718,173"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="472,107,543,127,542,132,470,112"/>
+</map>

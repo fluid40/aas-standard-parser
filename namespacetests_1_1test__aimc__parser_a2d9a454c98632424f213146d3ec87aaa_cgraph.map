@@ -1,0 +1,9 @@
+<map id="tests.test_aimc_parser._check_relations" name="tests.test_aimc_parser._check_relations">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,69,179,109"/>
+<area shape="rect" id="Node000002" href="$namespacetests_1_1test__aimc__parser.html#a81eb0c796de00ce6627d716bd8c7e531" title=" " alt="" coords="227,5,415,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,67,235,46,237,52,165,72"/>
+<area shape="rect" id="Node000003" href="$namespacetests_1_1test__aimc__parser.html#aa1ce49a267aa908a04126e40f193e66e" title=" " alt="" coords="234,69,407,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="179,87,220,87,220,92,179,92"/>
+<area shape="rect" id="Node000004" href="$namespacetests_1_1test__aimc__parser.html#a55c87d08249486a7f877c1ba5384b402" title=" " alt="" coords="230,133,411,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="165,107,237,127,235,132,163,112"/>
+</map>
