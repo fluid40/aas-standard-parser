@@ -12,5 +12,7 @@ var searchData=
   ['get_5fsubmodel_5fids_9',['get_submodel_ids',['../namespaceaas__standard__parser_1_1aas__parser.html#adfbca11f89d09c5c0fc18bf88e7dad45',1,'aas_standard_parser::aas_parser']]],
   ['get_5fvalue_5ffrom_5fkey_5fat_5findex_10',['get_value_from_key_at_index',['../namespaceaas__standard__parser_1_1reference__helpers.html#a9e86201b623b38b31a38d7d7d89f38d4',1,'aas_standard_parser::reference_helpers']]],
   ['get_5fvalue_5ffrom_5fsemantic_5fid_5fby_5findex_11',['get_value_from_semantic_id_by_index',['../namespaceaas__standard__parser_1_1submodel__json__helper.html#ac017baaefb03ab3a4cc899f316b5ab29',1,'aas_standard_parser::submodel_json_helper']]],
-  ['get_5fvalues_5ffrom_5fkeys_12',['get_values_from_keys',['../namespaceaas__standard__parser_1_1reference__helpers.html#aded2e3def35f6d499e5c51abe12455eb',1,'aas_standard_parser::reference_helpers']]]
+  ['get_5fvalues_5ffrom_5fkeys_12',['get_values_from_keys',['../namespaceaas__standard__parser_1_1reference__helpers.html#aded2e3def35f6d499e5c51abe12455eb',1,'aas_standard_parser::reference_helpers']]],
+  ['getting_20started_13',['🚀 Getting Started',['../md_docs_2getting__started.html',1,'']]],
+  ['getting_5fstarted_2emd_14',['getting_started.md',['../getting__started_8md.html',1,'']]]
 ];

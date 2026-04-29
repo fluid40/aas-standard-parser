@@ -42,8 +42,15 @@ var NAVTREE =
       [ "Usage", "md_docs_2api__references_2api__utils.html#autotoc_md18", null ],
       [ "Functions", "md_docs_2api__references_2api__utils.html#autotoc_md20", null ]
     ] ],
-    [ "Changelog", "md_docs_2CHANGELOG.html", [
+    [ "📝 Changelog", "md_docs_2CHANGELOG.html", [
       [ "[0.9.0] - 2026-04-17", "md_docs_2CHANGELOG.html#autotoc_md23", null ]
+    ] ],
+    [ "🚀 Getting Started", "md_docs_2getting__started.html", [
+      [ "Overview", "md_docs_2getting__started.html#autotoc_md26", [
+        [ "Available Parsers", "md_docs_2getting__started.html#autotoc_md27", null ],
+        [ "Available Helpers", "md_docs_2getting__started.html#autotoc_md28", null ]
+      ] ],
+      [ "Installation", "md_docs_2getting__started.html#autotoc_md29", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -72,7 +79,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "aas__parser_8py.html",
-"test__descriptor__json__helper_8py.html#ac42a5cddefd95795692878ec3446ee07"
+"test__aimc__parser_8py.html#aa1ce49a267aa908a04126e40f193e66e"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

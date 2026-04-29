@@ -1,12 +1,12 @@
 var indexSectionsWithContent =
 {
-  0: "0129_abcdefghiklmnprstuv📚🔎🚀🛠🧩",
+  0: "0129_abcdefghiklmnoprstuv📚📝🔎🚀🛠🧩",
   1: "abehimnprs",
   2: "adt",
-  3: "_acdrstuv",
+  3: "_acdgrstuv",
   4: "_acdefgpst",
   5: "achiklmprsu",
-  6: "acprsu🔎🛠🧩"
+  6: "acgprsu📝🔎🚀🛠🧩"
 };
 
 var indexSectionNames =

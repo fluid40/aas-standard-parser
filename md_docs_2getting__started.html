@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>AAS Standard Parser Documentation: 📝 Changelog</title>
+<title>AAS Standard Parser Documentation: 🚀 Getting Started</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,7 +63,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('md_docs_2CHANGELOG.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('md_docs_2getting__started.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -89,21 +89,48 @@ $(document).ready(function(){initNavTree('md_docs_2CHANGELOG.html',''); initResi
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">📝 Changelog</div></div>
+  <div class="headertitle"><div class="title">🚀 Getting Started</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md22"></a> </p>
-<h1><a class="anchor" id="autotoc_md23"></a>
-[0.9.0] - 2026-04-17</h1>
+<div class="textblock"><p><a class="anchor" id="autotoc_md24"></a> This guide will walk you through installing and using <code>aas-standard-parser</code> .</p>
 <ul>
-<li>✨Feat:</li>
-<li>✨Feat</li>
-<li>🐛Fix</li>
-<li>📝Doc</li>
-<li>♻️Refactor</li>
-<li>🧹Chore </li>
+<li>🚀 Getting Started<ul>
+<li>Overview</li>
+<li>Installation</li>
 </ul>
-</div></div><!-- contents -->
+</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md26"></a>
+Overview</h1>
+<p><b>aas-standard-parser</b> is a Python library for parsing and handling Asset Administration Shell (AAS) standard submodels. It provides a comprehensive set of parsers and utility helpers to extract, interpret, and work with AAS structures.</p>
+<h2><a class="anchor" id="autotoc_md27"></a>
+Available Parsers</h2>
+<ul>
+<li><b>AAS Parser</b>: Extract submodel IDs and references from Asset Administration Shell structures</li>
+<li><b>Submodel Parser</b>: Navigate and retrieve submodel elements using intuitive dot-separated paths with support for nested collections and indexed access</li>
+<li><b>AID Parser</b>: Parse Asset Interface Description (AID) submodels to extract interface metadata, properties, protocol bindings, and authentication details</li>
+<li><b>AIMC Parser</b>: Extract and process Asset Interface Mapping Configuration (AIMC) submodels, including mapping configurations and source-sink relations</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md28"></a>
+Available Helpers</h2>
+<ul>
+<li><b>Collection Helpers</b>: Work with submodel element collections, filter by semantic ID, and extract keys from collections</li>
+<li><b>Reference Helpers</b>: Handle AAS references, semantic IDs, and validate reference structures</li>
+<li><b>JSON Helpers</b>: Load and validate submodels from JSON files with structured error handling</li>
+<li><b>Utility Functions</b>: General-purpose utilities for logging, validation, and data transformation</li>
+</ul>
+<p>The library leverages the <a href="https://github.com/aas-core-works/aas-core3.0-python">python aas sdk framework</a> to ensure compatibility with official AAS data models and structures.</p>
+<h1><a class="anchor" id="autotoc_md29"></a>
+Installation</h1>
+<p>Prerequisites:</p>
+<ul>
+<li>Python 3.10 or newer</li>
+</ul>
+<p>Install via pip:</p>
+<div class="fragment"><div class="line">pip install aas-standard-parser</div>
+</div><!-- fragment --><hr  />
+ </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->

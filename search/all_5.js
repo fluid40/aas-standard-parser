@@ -1,7 +1,7 @@
 var searchData=
 [
   ['aas_20standard_20parser_0',['AAS standard Parser',['../index.html',1,'']]],
-  ['aas_20submodel_20parsing_1',['Comprehensive AAS Submodel Parsing',['../index.html#autotoc_md27',1,'']]],
+  ['aas_20submodel_20parsing_1',['Comprehensive AAS Submodel Parsing',['../index.html#autotoc_md34',1,'']]],
   ['aas_5fparser_20py_2',['🔎 API Reference: aas_parser.py',['../md_docs_2api__references_2api__aas__parser.html',1,'']]],
   ['aas_5fparser_2epy_3',['aas_parser.py',['../aas__parser_8py.html',1,'']]],
   ['aas_5fstandard_5fparser_4',['aas_standard_parser',['../namespaceaas__standard__parser.html',1,'']]],
@@ -30,5 +30,7 @@ var searchData=
   ['api_5faas_5fparser_2emd_27',['api_aas_parser.md',['../api__aas__parser_8md.html',1,'']]],
   ['api_5freference_5fhelpers_2emd_28',['api_reference_helpers.md',['../api__reference__helpers_8md.html',1,'']]],
   ['api_5fsubmodel_5fparser_2emd_29',['api_submodel_parser.md',['../api__submodel__parser_8md.html',1,'']]],
-  ['api_5futils_2emd_30',['api_utils.md',['../api__utils_8md.html',1,'']]]
+  ['api_5futils_2emd_30',['api_utils.md',['../api__utils_8md.html',1,'']]],
+  ['available_20helpers_31',['Available Helpers',['../md_docs_2getting__started.html#autotoc_md28',1,'']]],
+  ['available_20parsers_32',['Available Parsers',['../md_docs_2getting__started.html#autotoc_md27',1,'']]]
 ];
