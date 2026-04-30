@@ -2,13 +2,12 @@
 
 This guide will walk you through installing and using `aas-standard-parser` .
 
-* [🚀 Getting Started](#-getting-started)
-  + [Overview](#overview)
+- [🚀 Getting Started](#-getting-started)
+  - [Overview](#overview)
     - [Available Parsers](#available-parsers)
     - [Available Helpers](#available-helpers)
-  + [Installation](#installation)
-  + [Usage](#usage)
-    - [Load AAS Data](#load-aas-data)
+  - [Installation](#installation)
+  - [Usage](#usage)
     - [AAS Parser](#aas-parser)
     - [Submodel Parser](#submodel-parser)
     - [AID Parser](#aid-parser)
@@ -59,18 +58,13 @@ pip install aas-standard-parser
 
 The examples below use the parser modules directly. In most workflows, you start by loading a submodel JSON file into a BaSyx `Submodel` object and then pass that object to one of the parser functions.
 
-### Load AAS Data
-
-```python
-from aas_standard_parser.utils import create_submodel_from_file
-
-aid_submodel = create_submodel_from_file("tests/test_data/aid_submodel.json")
-aimc_submodel = create_submodel_from_file("tests/test_data/aimc_submodel.json")
-```
-
 ### AAS Parser
 
-Use the AAS parser to extract referenced submodel IDs from an Asset Administration Shell.
+This module provides functions for parsing Asset Administration Shells (AAS) in the AAS standard parser.
+For the full list of available methods and signatures, see:
+* [AAS Parser Implementation API reference](https://fluid40.github.io/aas-standard-parser/namespaceaas__standard__parser_1_1aas__parser.html)
+
+Example: Use the AAS parser to extract referenced submodel IDs from an Asset Administration Shell.
 
 ```python
 from aas_standard_parser.aas_parser import get_submodel_ids
@@ -90,7 +84,11 @@ Typical result:
 
 ### Submodel Parser
 
-Use the submodel parser to navigate nested elements by `idShort` path.
+This module provides functions for parsing and traversing submodels in the AAS standard parser.
+For the full list of available methods and signatures, see:
+* [Submodel Parser Implementation API reference](https://fluid40.github.io/aas-standard-parser/namespaceaas__standard__parser_1_1submodel__parser.html)
+
+Example: Use the submodel parser to navigate nested elements by `idShort` path.
 
 ```python
 from aas_standard_parser.submodel_parser import get_submodel_element_by_id_short_path
@@ -112,7 +110,11 @@ item = get_submodel_element_by_id_short_path(submodel, "SomeList[0].NestedElemen
 
 ### AID Parser
 
-Use `AIDParser` to extract endpoint metadata, property mappings, and security information from an Asset Interface Description.
+This module provides functions for parsing AID submodels in the AAS standard parser.
+For the full list of available methods and signatures, see:
+* [AID Parser Implementation API reference](https://fluid40.github.io/aas-standard-parser/namespaceaas__standard__parser_1_1aid__parser.html)
+
+Example: Use `AIDParser` to extract endpoint metadata, property mappings, and security information from an Asset Interface Description.
 
 ```python
 from aas_standard_parser.aid_parser import AIDParser
@@ -141,7 +143,11 @@ for path, details in properties.items():
 
 ### AIMC Parser
 
-Use the AIMC parser to read mapping configurations and source-sink relations.
+This module provides functions for parsing AIMC submodels in the AAS standard parser.
+For the full list of available methods and signatures, see:
+* [AIMC Parser Implementation API reference](https://fluid40.github.io/aas-standard-parser/namespaceaas__standard__parser_1_1aimc__parser.html)
+
+Example: Use the AIMC parser to read mapping configurations and source-sink relations.
 
 ```python
 from aas_standard_parser.aimc_parser import (
@@ -168,7 +174,11 @@ for configuration in mapping_configurations.configurations:
 
 ### Collection Helpers
 
-Use the collection helpers to search `SubmodelElementCollection` and `SubmodelElementList` content by semantic ID, supplemental semantic ID, or `idShort` .
+This module provides functions for parsing and handling submodel element collections in the AAS standard parser.
+For the full list of available methods and signatures, see:
+* [Collection Helpers Implementation API reference](https://fluid40.github.io/aas-standard-parser/namespaceaas__standard__parser_1_1collection__helpers.html)
+
+Example: Use the collection helpers to search `SubmodelElementCollection` and `SubmodelElementList` content by semantic ID, supplemental semantic ID, or `idShort` .
 
 ```python
 from aas_standard_parser.collection_helpers import (
@@ -200,7 +210,11 @@ if endpoint_metadata is not None:
 
 ### Reference Helpers
 
-Use the reference helpers to derive readable paths and inspect key values from AAS references.
+This module provides functions for parsing and handling references in the AAS standard parser.
+For the full list of available methods and signatures, see:
+* [Reference Helpers Implementation API reference](https://fluid40.github.io/aas-standard-parser/namespaceaas__standard__parser_1_1reference__helpers.html)
+
+Example: Use the reference helpers to derive readable paths and inspect key values from AAS references.
 
 ```python
 from aas_standard_parser.reference_helpers import (
@@ -222,7 +236,11 @@ print(first_value)
 
 ### Submodel JSON Helper
 
-Use the JSON helper if you need to inspect raw JSON dictionaries before converting them into BaSyx objects.
+This module provides functions for parsing and handling submodels as JSON structures in the AAS standard parser.
+For the full list of available methods and signatures, see:
+* [Submodel JSON Helper Implementation API reference](https://fluid40.github.io/aas-standard-parser/namespaceaas__standard__parser_1_1submodel__json__helper.html)
+
+Example: Use the JSON helper if you need to inspect raw JSON dictionaries before converting them into BaSyx objects.
 
 ```python
 import json
@@ -238,7 +256,11 @@ print(semantic_id)
 
 ### Descriptor JSON Helper
 
-Use the descriptor helper to inspect descriptor endpoints and parse encoded shell or submodel URLs.
+This module provides functions for parsing and handling descriptors as JSON structures in the AAS standard parser.
+For the full list of available methods and signatures, see:
+* [Descriptor JSON Helper Implementation API reference](https://fluid40.github.io/aas-standard-parser/namespaceaas__standard__parser_1_1descriptor__json__helper.html)
+
+Example: Use the descriptor helper to inspect descriptor endpoints and parse encoded shell or submodel URLs.
 
 ```python
 from aas_standard_parser.descriptor_json_helper import (
@@ -274,7 +296,11 @@ print(href_data.identifier_encoded)
 
 ### Utilities
 
-The utilities module provides helpers for loading submodels and converting Base64-encoded identifiers.
+This module provides general utility functions for the AAS standard parser.
+For the full list of available methods and signatures, see:
+* [Utilities Implementation API reference](https://fluid40.github.io/aas-standard-parser/namespaceaas__standard__parser_1_1utils.html)
+
+Example: Decode and encode submodel IDs.
 
 ```python
 from aas_standard_parser.utils import create_submodel_from_file, decode_base_64, encode_base_64
@@ -287,6 +313,15 @@ decoded = decode_base_64(encoded)
 print(submodel.id)
 print(encoded)
 print(decoded)
+```
+
+Example: Create a submodel object from a JSON file.
+
+```python
+from aas_standard_parser.utils import create_submodel_from_file
+
+aid_submodel = create_submodel_from_file("tests/test_data/aid_submodel.json")
+aimc_submodel = create_submodel_from_file("tests/test_data/aimc_submodel.json")
 ```
 
 If you are working with AAS descriptors, `encode_base_64()` and `decode_base_64()` are useful for converting between readable identifiers and encoded URL fragments.
