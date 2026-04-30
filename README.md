@@ -21,6 +21,9 @@ These components enable efficient parsing, transformation, and analysis of AAS s
 
 - [AAS standard Parser](#aas-standard-parser)
   - [🚀 Features](#-features)
+    - [Comprehensive AAS Submodel Parsing](#comprehensive-aas-submodel-parsing)
+    - [Core Parsers](#core-parsers)
+    - [Utility Functions](#utility-functions)
   - [📚 Resources](#-resources)
 
 ---

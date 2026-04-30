@@ -22,7 +22,7 @@ FILTER_PATTERNS         = *.py=./doxypy-wrapper.sh
 
 PYTHON_DOCSTRING        = NO
 
-EXCLUDE                 = aas_standard_parser/demo
+EXCLUDE                 = aas_standard_parser/demo, docs/api_references
 
 # -------------------------------------------------------------
 # Extraction settings
