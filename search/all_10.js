@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['mappingconfiguration_0',['MappingConfiguration',['../classaimc__parser__classes_1_1MappingConfiguration.html',1,'aimc_parser_classes']]],
-  ['mappingconfigurations_1',['MappingConfigurations',['../classaimc__parser__classes_1_1MappingConfigurations.html',1,'aimc_parser_classes']]],
-  ['method_5fname_2',['method_name',['../classaas__standard__parser_1_1aid__parser_1_1HttpProtocolBinding.html#ae8c625eddd7088629cc0023c14555f71',1,'aas_standard_parser::aid_parser::HttpProtocolBinding']]]
+  ['load_20aas_20data_0',['Load AAS Data',['../md_docs_2getting__started.html#autotoc_md10',1,'']]],
+  ['logger_1',['logger',['../namespaceaas__standard__parser_1_1aas__parser.html#a5151dc0eaf912e5358f89e827be6961c',1,'aas_standard_parser.aas_parser.logger'],['../namespaceaas__standard__parser_1_1aimc__parser.html#acc5914a7e12bdea16e4280042181a0e9',1,'aas_standard_parser.aimc_parser.logger'],['../namespaceaas__standard__parser_1_1descriptor__json__helper.html#af6754c50a46d728809b4f5fc307eb94a',1,'aas_standard_parser.descriptor_json_helper.logger'],['../namespaceaas__standard__parser_1_1submodel__json__helper.html#a225b2370e306d103b4713dea8550cf7c',1,'aas_standard_parser.submodel_json_helper.logger'],['../namespaceaas__standard__parser_1_1submodel__parser.html#aa02fb7d1da7ded0971b13e51d610c4ef',1,'aas_standard_parser.submodel_parser.logger'],['../namespaceaas__standard__parser_1_1utils.html#a37e958fbdd6a418a934ada0b6d32f73c',1,'aas_standard_parser.utils.logger'],['../namespaceaas__standard__parser_1_1version__check.html#ae2a7b7e9d4951f6f971bfaf016022131',1,'aas_standard_parser.version_check.logger']]]
 ];

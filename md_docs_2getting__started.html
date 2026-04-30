@@ -92,19 +92,36 @@ $(document).ready(function(){initNavTree('md_docs_2getting__started.html',''); i
   <div class="headertitle"><div class="title">🚀 Getting Started</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md24"></a> This guide will walk you through installing and using <code>aas-standard-parser</code> .</p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md2"></a> This guide will walk you through installing and using <code>aas-standard-parser</code> .</p>
 <ul>
 <li>🚀 Getting Started<ul>
-<li>Overview</li>
+<li>Overview<ul>
+<li>Available Parsers</li>
+<li>Available Helpers</li>
+</ul>
+</li>
 <li>Installation</li>
+<li>Usage<ul>
+<li>Load AAS Data</li>
+<li>AAS Parser</li>
+<li>Submodel Parser</li>
+<li>AID Parser</li>
+<li>AIMC Parser</li>
+<li>Collection Helpers</li>
+<li>Reference Helpers</li>
+<li>Submodel JSON Helper</li>
+<li>Descriptor JSON Helper</li>
+<li>Utilities</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md26"></a>
+<h1><a class="anchor" id="autotoc_md4"></a>
 Overview</h1>
 <p><b>aas-standard-parser</b> is a Python library for parsing and handling Asset Administration Shell (AAS) standard submodels. It provides a comprehensive set of parsers and utility helpers to extract, interpret, and work with AAS structures.</p>
-<h2><a class="anchor" id="autotoc_md27"></a>
+<h2><a class="anchor" id="autotoc_md5"></a>
 Available Parsers</h2>
 <ul>
 <li><b>AAS Parser</b>: Extract submodel IDs and references from Asset Administration Shell structures</li>
@@ -112,7 +129,7 @@ Available Parsers</h2>
 <li><b>AID Parser</b>: Parse Asset Interface Description (AID) submodels to extract interface metadata, properties, protocol bindings, and authentication details</li>
 <li><b>AIMC Parser</b>: Extract and process Asset Interface Mapping Configuration (AIMC) submodels, including mapping configurations and source-sink relations</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md28"></a>
+<h2><a class="anchor" id="autotoc_md6"></a>
 Available Helpers</h2>
 <ul>
 <li><b>Collection Helpers</b>: Work with submodel element collections, filter by semantic ID, and extract keys from collections</li>
@@ -121,7 +138,7 @@ Available Helpers</h2>
 <li><b>Utility Functions</b>: General-purpose utilities for logging, validation, and data transformation</li>
 </ul>
 <p>The library leverages the <a href="https://github.com/aas-core-works/aas-core3.0-python">python aas sdk framework</a> to ensure compatibility with official AAS data models and structures.</p>
-<h1><a class="anchor" id="autotoc_md29"></a>
+<h1><a class="anchor" id="autotoc_md7"></a>
 Installation</h1>
 <p>Prerequisites:</p>
 <ul>
@@ -130,7 +147,199 @@ Installation</h1>
 <p>Install via pip:</p>
 <div class="fragment"><div class="line">pip install aas-standard-parser</div>
 </div><!-- fragment --><hr  />
- </div></div><!-- contents -->
+<h1><a class="anchor" id="autotoc_md9"></a>
+Usage</h1>
+<p>The examples below use the parser modules directly. In most workflows, you start by loading a submodel JSON file into a BaSyx <code>Submodel</code> object and then pass that object to one of the parser functions.</p>
+<h2><a class="anchor" id="autotoc_md10"></a>
+Load AAS Data</h2>
+<div class="fragment"><div class="line"><span class="keyword">from</span> <a class="code hl_namespace" href="namespaceaas__standard__parser_1_1utils.html">aas_standard_parser.utils</a> <span class="keyword">import</span> create_submodel_from_file</div>
+<div class="line"> </div>
+<div class="line">aid_submodel = create_submodel_from_file(<span class="stringliteral">&quot;tests/test_data/aid_submodel.json&quot;</span>)</div>
+<div class="line">aimc_submodel = create_submodel_from_file(<span class="stringliteral">&quot;tests/test_data/aimc_submodel.json&quot;</span>)</div>
+<div class="ttc" id="anamespaceaas__standard__parser_1_1utils_html"><div class="ttname"><a href="namespaceaas__standard__parser_1_1utils.html">aas_standard_parser.utils</a></div><div class="ttdef"><b>Definition</b> <a href="utils_8py_source.html#l00001">utils.py:1</a></div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md11"></a>
+AAS Parser</h2>
+<p>Use the AAS parser to extract referenced submodel IDs from an Asset Administration Shell.</p>
+<div class="fragment"><div class="line"><span class="keyword">from</span> <a class="code hl_namespace" href="namespaceaas__standard__parser_1_1aas__parser.html">aas_standard_parser.aas_parser</a> <span class="keyword">import</span> get_submodel_ids</div>
+<div class="line"> </div>
+<div class="line">submodel_ids = get_submodel_ids(shell)</div>
+<div class="line">print(submodel_ids)</div>
+<div class="ttc" id="anamespaceaas__standard__parser_1_1aas__parser_html"><div class="ttname"><a href="namespaceaas__standard__parser_1_1aas__parser.html">aas_standard_parser.aas_parser</a></div><div class="ttdef"><b>Definition</b> <a href="aas__parser_8py_source.html#l00001">aas_parser.py:1</a></div></div>
+</div><!-- fragment --><p>Typical result:</p>
+<div class="fragment"><div class="line">[</div>
+<div class="line">  <span class="stringliteral">&quot;https://example.com/submodels/aid&quot;</span>,</div>
+<div class="line">  <span class="stringliteral">&quot;https://example.com/submodels/aimc&quot;</span>,</div>
+<div class="line">]</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md12"></a>
+Submodel Parser</h2>
+<p>Use the submodel parser to navigate nested elements by <code>idShort</code> path.</p>
+<div class="fragment"><div class="line"><span class="keyword">from</span> <a class="code hl_namespace" href="namespaceaas__standard__parser_1_1submodel__parser.html">aas_standard_parser.submodel_parser</a> <span class="keyword">import</span> get_submodel_element_by_id_short_path</div>
+<div class="line"> </div>
+<div class="line">element = get_submodel_element_by_id_short_path(</div>
+<div class="line">  aid_submodel,</div>
+<div class="line">  <span class="stringliteral">&quot;Interface_MQTT.InteractionMetadata.properties.AxisData.properties.HandlingC&quot;</span>,</div>
+<div class="line">)</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordflow">if</span> element <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:</div>
+<div class="line">  print(element.id_short)</div>
+<div class="ttc" id="anamespaceaas__standard__parser_1_1submodel__parser_html"><div class="ttname"><a href="namespaceaas__standard__parser_1_1submodel__parser.html">aas_standard_parser.submodel_parser</a></div><div class="ttdef"><b>Definition</b> <a href="submodel__parser_8py_source.html#l00001">submodel_parser.py:1</a></div></div>
+</div><!-- fragment --><p>Indexed access for <code>SubmodelElementList</code> values is also supported:</p>
+<div class="fragment"><div class="line">item = get_submodel_element_by_id_short_path(submodel, <span class="stringliteral">&quot;SomeList[0].NestedElement&quot;</span>)</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md13"></a>
+AID Parser</h2>
+<p>Use <code>AIDParser</code> to extract endpoint metadata, property mappings, and security information from an Asset Interface Description.</p>
+<div class="fragment"><div class="line"><span class="keyword">from</span> <a class="code hl_namespace" href="namespaceaas__standard__parser_1_1aid__parser.html">aas_standard_parser.aid_parser</a> <span class="keyword">import</span> AIDParser</div>
+<div class="line"><span class="keyword">from</span> <a class="code hl_namespace" href="namespaceaas__standard__parser_1_1collection__helpers.html">aas_standard_parser.collection_helpers</a> <span class="keyword">import</span> find_by_id_short</div>
+<div class="line"> </div>
+<div class="line">parser = AIDParser()</div>
+<div class="line">aid_interface = find_by_id_short(aid_submodel.submodel_element, <span class="stringliteral">&quot;Interface_MQTT&quot;</span>)</div>
+<div class="line"> </div>
+<div class="line">base_url = parser.parse_base(aid_interface)</div>
+<div class="line">print(base_url)</div>
+<div class="line"> </div>
+<div class="line">properties = parser.parse_properties(aid_interface)</div>
+<div class="line"><span class="keywordflow">for</span> path, details <span class="keywordflow">in</span> properties.items():</div>
+<div class="line">  print(path, details.href, details.keys)</div>
+<div class="line"> </div>
+<div class="line">security = parser.parse_security(aid_interface)</div>
+<div class="line">print(type(security).__name__)</div>
+<div class="ttc" id="anamespaceaas__standard__parser_1_1aid__parser_html"><div class="ttname"><a href="namespaceaas__standard__parser_1_1aid__parser.html">aas_standard_parser.aid_parser</a></div><div class="ttdef"><b>Definition</b> <a href="aid__parser_8py_source.html#l00001">aid_parser.py:1</a></div></div>
+<div class="ttc" id="anamespaceaas__standard__parser_1_1collection__helpers_html"><div class="ttname"><a href="namespaceaas__standard__parser_1_1collection__helpers.html">aas_standard_parser.collection_helpers</a></div><div class="ttdef"><b>Definition</b> <a href="collection__helpers_8py_source.html#l00001">collection_helpers.py:1</a></div></div>
+</div><!-- fragment --><p>Typical <code>parse_properties()</code> output maps each property path to its endpoint path and payload keys:</p>
+<div class="fragment"><div class="line"><span class="keywordflow">for</span> path, details <span class="keywordflow">in</span> properties.items():</div>
+<div class="line">  print(f<span class="stringliteral">&quot;{path} -&gt; href={details.href}, keys={details.keys}&quot;</span>)</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md14"></a>
+AIMC Parser</h2>
+<p>Use the AIMC parser to read mapping configurations and source-sink relations.</p>
+<div class="fragment"><div class="line"><span class="keyword">from</span> <a class="code hl_namespace" href="namespaceaas__standard__parser_1_1aimc__parser.html">aas_standard_parser.aimc_parser</a> <span class="keyword">import</span> (</div>
+<div class="line">  get_mapping_configuration_elements,</div>
+<div class="line">  get_mapping_configuration_root_element,</div>
+<div class="line">  parse_mapping_configurations,</div>
+<div class="line">)</div>
+<div class="line"> </div>
+<div class="line">root = get_mapping_configuration_root_element(aimc_submodel)</div>
+<div class="line">print(root.id_short)</div>
+<div class="line"> </div>
+<div class="line">elements = get_mapping_configuration_elements(aimc_submodel)</div>
+<div class="line">print(len(elements))</div>
+<div class="line"> </div>
+<div class="line">mapping_configurations = parse_mapping_configurations(aimc_submodel)</div>
+<div class="line">print(mapping_configurations.aid_submodel_ids)</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordflow">for</span> configuration <span class="keywordflow">in</span> mapping_configurations.configurations:</div>
+<div class="line">  print(configuration.aid_submodel_id)</div>
+<div class="line">  print(configuration.interface_reference.value.key[0].value)</div>
+<div class="line">  <span class="keywordflow">for</span> relation <span class="keywordflow">in</span> configuration.source_sink_relations:</div>
+<div class="line">    print(relation.source_properties.property_name, relation.sink_properties.property_name)</div>
+<div class="ttc" id="anamespaceaas__standard__parser_1_1aimc__parser_html"><div class="ttname"><a href="namespaceaas__standard__parser_1_1aimc__parser.html">aas_standard_parser.aimc_parser</a></div><div class="ttdef"><b>Definition</b> <a href="aimc__parser_8py_source.html#l00001">aimc_parser.py:1</a></div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md15"></a>
+Collection Helpers</h2>
+<p>Use the collection helpers to search <code>SubmodelElementCollection</code> and <code>SubmodelElementList</code> content by semantic ID, supplemental semantic ID, or <code>idShort</code> .</p>
+<div class="fragment"><div class="line"><span class="keyword">from</span> <a class="code hl_namespace" href="namespaceaas__standard__parser_1_1collection__helpers.html">aas_standard_parser.collection_helpers</a> <span class="keyword">import</span> (</div>
+<div class="line">  contains_supplemental_semantic_id,</div>
+<div class="line">  find_all_by_in_semantic_id,</div>
+<div class="line">  find_all_by_semantic_id,</div>
+<div class="line">  find_by_id_short,</div>
+<div class="line">  find_by_in_semantic_id,</div>
+<div class="line">  find_by_semantic_id,</div>
+<div class="line">  find_by_supplemental_semantic_id,</div>
+<div class="line">)</div>
+<div class="line"> </div>
+<div class="line">interface = find_by_id_short(aid_submodel.submodel_element, <span class="stringliteral">&quot;Interface_MQTT&quot;</span>)</div>
+<div class="line">endpoint_metadata = find_by_semantic_id(</div>
+<div class="line">  interface.value,</div>
+<div class="line">  <span class="stringliteral">&quot;https://admin-shell.io/idta/AssetInterfacesDescription/1/0/EndpointMetadata&quot;</span>,</div>
+<div class="line">)</div>
+<div class="line">interaction_metadata = find_by_in_semantic_id(interface.value, <span class="stringliteral">&quot;InteractionMetadata&quot;</span>)</div>
+<div class="line">properties = find_all_by_semantic_id(</div>
+<div class="line">  interaction_metadata.value,</div>
+<div class="line">  <span class="stringliteral">&quot;https://www.w3.org/2019/wot/td#PropertyAffordance&quot;</span>,</div>
+<div class="line">)</div>
+<div class="line">collections = find_all_by_in_semantic_id(interface.value, <span class="stringliteral">&quot;PropertyDefinition&quot;</span>)</div>
+<div class="line">security_scheme = find_by_supplemental_semantic_id(interface.value, <span class="stringliteral">&quot;https://example.com/custom-semantic-id&quot;</span>)</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordflow">if</span> endpoint_metadata <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:</div>
+<div class="line">  print(contains_supplemental_semantic_id(endpoint_metadata, <span class="stringliteral">&quot;https://example.com/custom-semantic-id&quot;</span>))</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md16"></a>
+Reference Helpers</h2>
+<p>Use the reference helpers to derive readable paths and inspect key values from AAS references.</p>
+<div class="fragment"><div class="line"><span class="keyword">from</span> <a class="code hl_namespace" href="namespaceaas__standard__parser_1_1reference__helpers.html">aas_standard_parser.reference_helpers</a> <span class="keyword">import</span> (</div>
+<div class="line">  construct_id_short_path_from_reference,</div>
+<div class="line">  get_value_from_key_at_index,</div>
+<div class="line">  get_values_from_keys,</div>
+<div class="line">)</div>
+<div class="line"> </div>
+<div class="line">reference = configuration.interface_reference.value</div>
+<div class="line"> </div>
+<div class="line">path = construct_id_short_path_from_reference(reference)</div>
+<div class="line">all_values = get_values_from_keys(reference)</div>
+<div class="line">first_value = get_value_from_key_at_index(reference, 0)</div>
+<div class="line"> </div>
+<div class="line">print(path)</div>
+<div class="line">print(all_values)</div>
+<div class="line">print(first_value)</div>
+<div class="ttc" id="anamespaceaas__standard__parser_1_1reference__helpers_html"><div class="ttname"><a href="namespaceaas__standard__parser_1_1reference__helpers.html">aas_standard_parser.reference_helpers</a></div><div class="ttdef"><b>Definition</b> <a href="reference__helpers_8py_source.html#l00001">reference_helpers.py:1</a></div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md17"></a>
+Submodel JSON Helper</h2>
+<p>Use the JSON helper if you need to inspect raw JSON dictionaries before converting them into BaSyx objects.</p>
+<div class="fragment"><div class="line"><span class="keyword">import</span> json</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">from</span> <a class="code hl_namespace" href="namespaceaas__standard__parser_1_1submodel__json__helper.html">aas_standard_parser.submodel_json_helper</a> <span class="keyword">import</span> get_value_from_semantic_id_by_index</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">with</span> open(<span class="stringliteral">&quot;tests/test_data/aid_submodel.json&quot;</span>, encoding=<span class="stringliteral">&quot;utf-8&quot;</span>) <span class="keyword">as</span> file:</div>
+<div class="line">  aid_data = json.load(file)</div>
+<div class="line"> </div>
+<div class="line">semantic_id = get_value_from_semantic_id_by_index(aid_data)</div>
+<div class="line">print(semantic_id)</div>
+<div class="ttc" id="anamespaceaas__standard__parser_1_1submodel__json__helper_html"><div class="ttname"><a href="namespaceaas__standard__parser_1_1submodel__json__helper.html">aas_standard_parser.submodel_json_helper</a></div><div class="ttdef"><b>Definition</b> <a href="submodel__json__helper_8py_source.html#l00001">submodel_json_helper.py:1</a></div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md18"></a>
+Descriptor JSON Helper</h2>
+<p>Use the descriptor helper to inspect descriptor endpoints and parse encoded shell or submodel URLs.</p>
+<div class="fragment"><div class="line"><span class="keyword">from</span> <a class="code hl_namespace" href="namespaceaas__standard__parser_1_1descriptor__json__helper.html">aas_standard_parser.descriptor_json_helper</a> <span class="keyword">import</span> (</div>
+<div class="line">  get_endpoint_by_index,</div>
+<div class="line">  get_endpoint_href_by_index,</div>
+<div class="line">  get_endpoint_hrefs,</div>
+<div class="line">  get_endpoint_protocol_information_by_index,</div>
+<div class="line">  get_endpoints,</div>
+<div class="line">  parse_endpoint_href,</div>
+<div class="line">)</div>
+<div class="line"> </div>
+<div class="line">descriptor = {</div>
+<div class="line">  <span class="stringliteral">&quot;endpoints&quot;</span>: [</div>
+<div class="line">    {</div>
+<div class="line">      <span class="stringliteral">&quot;protocolInformation&quot;</span>: {</div>
+<div class="line">        <span class="stringliteral">&quot;href&quot;</span>: <span class="stringliteral">&quot;http://aas-server:8075/submodels/RW5lcmd5TW9uaXRvcmluZw&quot;</span></div>
+<div class="line">      }</div>
+<div class="line">    }</div>
+<div class="line">  ]</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line">print(get_endpoints(descriptor))</div>
+<div class="line">print(get_endpoint_by_index(descriptor, 0))</div>
+<div class="line">print(get_endpoint_protocol_information_by_index(descriptor, 0))</div>
+<div class="line">print(get_endpoint_href_by_index(descriptor, 0))</div>
+<div class="line">print(get_endpoint_hrefs(descriptor))</div>
+<div class="line"> </div>
+<div class="line">href_data = parse_endpoint_href(get_endpoint_href_by_index(descriptor, 0))</div>
+<div class="line">print(href_data.base_url)</div>
+<div class="line">print(href_data.identifier)</div>
+<div class="line">print(href_data.identifier_encoded)</div>
+<div class="ttc" id="anamespaceaas__standard__parser_1_1descriptor__json__helper_html"><div class="ttname"><a href="namespaceaas__standard__parser_1_1descriptor__json__helper.html">aas_standard_parser.descriptor_json_helper</a></div><div class="ttdef"><b>Definition</b> <a href="descriptor__json__helper_8py_source.html#l00001">descriptor_json_helper.py:1</a></div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md19"></a>
+Utilities</h2>
+<p>The utilities module provides helpers for loading submodels and converting Base64-encoded identifiers.</p>
+<div class="fragment"><div class="line"><span class="keyword">from</span> <a class="code hl_namespace" href="namespaceaas__standard__parser_1_1utils.html">aas_standard_parser.utils</a> <span class="keyword">import</span> create_submodel_from_file, decode_base_64, encode_base_64</div>
+<div class="line"> </div>
+<div class="line">submodel = create_submodel_from_file(<span class="stringliteral">&quot;tests/test_data/aimc_submodel.json&quot;</span>)</div>
+<div class="line"> </div>
+<div class="line">encoded = encode_base_64(<span class="stringliteral">&quot;EnergyMonitoring&quot;</span>)</div>
+<div class="line">decoded = decode_base_64(encoded)</div>
+<div class="line"> </div>
+<div class="line">print(submodel.id)</div>
+<div class="line">print(encoded)</div>
+<div class="line">print(decoded)</div>
+</div><!-- fragment --><p>If you are working with AAS descriptors, <code>encode_base_64()</code> and <code>decode_base_64()</code> are useful for converting between readable identifiers and encoded URL fragments. </p>
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
