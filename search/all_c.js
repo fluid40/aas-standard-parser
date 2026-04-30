@@ -1,8 +1,11 @@
 var searchData=
 [
-  ['headers_0',['headers',['../classaas__standard__parser_1_1aid__parser_1_1HttpProtocolBinding.html#a38326e7808eca307416e56ae2e1f62f0',1,'aas_standard_parser::aid_parser::HttpProtocolBinding']]],
-  ['helper_1',['helper',['../md_docs_2getting__started.html#autotoc_md17',1,'Descriptor JSON Helper'],['../md_docs_2getting__started.html#autotoc_md16',1,'Submodel JSON Helper']]],
-  ['helpers_2',['helpers',['../md_docs_2getting__started.html#autotoc_md6',1,'Available Helpers'],['../md_docs_2getting__started.html#autotoc_md14',1,'Collection Helpers'],['../md_docs_2getting__started.html#autotoc_md15',1,'Reference Helpers']]],
-  ['href_3',['href',['../classaas__standard__parser_1_1aid__parser_1_1PropertyDetails.html#ae0c5fafb9503ede50492fc604838d2e6',1,'aas_standard_parser::aid_parser::PropertyDetails']]],
-  ['httpprotocolbinding_4',['HttpProtocolBinding',['../classaas__standard__parser_1_1aid__parser_1_1HttpProtocolBinding.html',1,'aas_standard_parser::aid_parser']]]
+  ['features_0',['🚀 Features',['../index.html#autotoc_md22',1,'']]],
+  ['find_5fall_5fby_5fin_5fsemantic_5fid_1',['find_all_by_in_semantic_id',['../namespaceaas__standard__parser_1_1collection__helpers.html#ae1b0d8b752ee523d1e3ebea89edb0a16',1,'aas_standard_parser::collection_helpers']]],
+  ['find_5fall_5fby_5fsemantic_5fid_2',['find_all_by_semantic_id',['../namespaceaas__standard__parser_1_1collection__helpers.html#aaceabe1f38bd08df7fdcc5e344d48bdd',1,'aas_standard_parser::collection_helpers']]],
+  ['find_5fby_5fid_5fshort_3',['find_by_id_short',['../namespaceaas__standard__parser_1_1collection__helpers.html#acf5db0640b9e4543ae0fd4c101aed375',1,'aas_standard_parser::collection_helpers']]],
+  ['find_5fby_5fin_5fsemantic_5fid_4',['find_by_in_semantic_id',['../namespaceaas__standard__parser_1_1collection__helpers.html#a31b22679c095f1ecfdd4007ab3858fd1',1,'aas_standard_parser::collection_helpers']]],
+  ['find_5fby_5fsemantic_5fid_5',['find_by_semantic_id',['../namespaceaas__standard__parser_1_1collection__helpers.html#ad3b59073df7d5828becb76c77000e1ba',1,'aas_standard_parser::collection_helpers']]],
+  ['find_5fby_5fsupplemental_5fsemantic_5fid_6',['find_by_supplemental_semantic_id',['../namespaceaas__standard__parser_1_1collection__helpers.html#a0152772e591a6af320d0b5915fea7c94',1,'aas_standard_parser::collection_helpers']]],
+  ['functions_7',['Utility Functions',['../index.html#autotoc_md25',1,'']]]
 ];

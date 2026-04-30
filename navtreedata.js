@@ -27,24 +27,25 @@ var NAVTREE =
   [ "AAS Standard Parser Documentation", "index.html", [
     [ "AAS standard Parser", "index.html", "index" ],
     [ "📝 Changelog", "md_docs_2CHANGELOG.html", [
-      [ "[0.9.0] - 2026-04-17", "md_docs_2CHANGELOG.html#autotoc_md1", null ]
+      [ "[0.5.0] - 2026-04-30", "md_docs_2CHANGELOG.html#autotoc_md1", null ],
+      [ "[0.4.1] - 2026-04-17", "md_docs_2CHANGELOG.html#autotoc_md2", null ]
     ] ],
     [ "🚀 Getting Started", "md_docs_2getting__started.html", [
-      [ "Overview", "md_docs_2getting__started.html#autotoc_md4", [
-        [ "Available Parsers", "md_docs_2getting__started.html#autotoc_md5", null ],
-        [ "Available Helpers", "md_docs_2getting__started.html#autotoc_md6", null ]
+      [ "Overview", "md_docs_2getting__started.html#autotoc_md5", [
+        [ "Available Parsers", "md_docs_2getting__started.html#autotoc_md6", null ],
+        [ "Available Helpers", "md_docs_2getting__started.html#autotoc_md7", null ]
       ] ],
-      [ "Installation", "md_docs_2getting__started.html#autotoc_md7", null ],
-      [ "Usage", "md_docs_2getting__started.html#autotoc_md9", [
-        [ "AAS Parser", "md_docs_2getting__started.html#autotoc_md10", null ],
-        [ "Submodel Parser", "md_docs_2getting__started.html#autotoc_md11", null ],
-        [ "AID Parser", "md_docs_2getting__started.html#autotoc_md12", null ],
-        [ "AIMC Parser", "md_docs_2getting__started.html#autotoc_md13", null ],
-        [ "Collection Helpers", "md_docs_2getting__started.html#autotoc_md14", null ],
-        [ "Reference Helpers", "md_docs_2getting__started.html#autotoc_md15", null ],
-        [ "Submodel JSON Helper", "md_docs_2getting__started.html#autotoc_md16", null ],
-        [ "Descriptor JSON Helper", "md_docs_2getting__started.html#autotoc_md17", null ],
-        [ "Utilities", "md_docs_2getting__started.html#autotoc_md18", null ]
+      [ "Installation", "md_docs_2getting__started.html#autotoc_md8", null ],
+      [ "Usage", "md_docs_2getting__started.html#autotoc_md10", [
+        [ "AAS Parser", "md_docs_2getting__started.html#autotoc_md11", null ],
+        [ "Submodel Parser", "md_docs_2getting__started.html#autotoc_md12", null ],
+        [ "AID Parser", "md_docs_2getting__started.html#autotoc_md13", null ],
+        [ "AIMC Parser", "md_docs_2getting__started.html#autotoc_md14", null ],
+        [ "Collection Helpers", "md_docs_2getting__started.html#autotoc_md15", null ],
+        [ "Reference Helpers", "md_docs_2getting__started.html#autotoc_md16", null ],
+        [ "Submodel JSON Helper", "md_docs_2getting__started.html#autotoc_md17", null ],
+        [ "Descriptor JSON Helper", "md_docs_2getting__started.html#autotoc_md18", null ],
+        [ "Utilities", "md_docs_2getting__started.html#autotoc_md19", null ]
       ] ]
     ] ],
     [ "Namespaces", "namespaces.html", [
@@ -74,7 +75,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "aas__parser_8py.html",
-"test__descriptor__json__helper_8py.html"
+"test__aimc__parser_8py_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

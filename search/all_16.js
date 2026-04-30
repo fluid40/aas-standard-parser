@@ -1,17 +1,17 @@
 var searchData=
 [
-  ['sink_5fproperties_0',['sink_properties',['../classaimc__parser__classes_1_1SourceSinkRelation.html#a5c30b86a85247efe7a06a8c8a0c94812',1,'aimc_parser_classes::SourceSinkRelation']]],
-  ['sink_5freference_5fas_5fdict_1',['sink_reference_as_dict',['../classaimc__parser__classes_1_1SourceSinkRelation.html#a9f1a18a6bcb1358da54455435f6a94d1',1,'aimc_parser_classes::SourceSinkRelation']]],
-  ['source_5fproperties_2',['source_properties',['../classaimc__parser__classes_1_1SourceSinkRelation.html#ac15f72c35a57ef5889761c958171aeae',1,'aimc_parser_classes::SourceSinkRelation']]],
-  ['source_5freference_5fas_5fdict_3',['source_reference_as_dict',['../classaimc__parser__classes_1_1SourceSinkRelation.html#a020839c059b5a28f8954c7ecd65e9e6a',1,'aimc_parser_classes::SourceSinkRelation']]],
-  ['source_5fsink_5frelations_4',['source_sink_relations',['../classaimc__parser__classes_1_1MappingConfiguration.html#ac8167b4fd89b97cb8aebb78345df2f6d',1,'aimc_parser_classes::MappingConfiguration']]],
-  ['sourcesinkrelation_5',['SourceSinkRelation',['../classaimc__parser__classes_1_1SourceSinkRelation.html',1,'aimc_parser_classes']]],
-  ['standard_20parser_6',['AAS standard Parser',['../index.html',1,'']]],
-  ['started_7',['🚀 Getting Started',['../md_docs_2getting__started.html',1,'']]],
-  ['submodel_20json_20helper_8',['Submodel JSON Helper',['../md_docs_2getting__started.html#autotoc_md16',1,'']]],
-  ['submodel_20parser_9',['Submodel Parser',['../md_docs_2getting__started.html#autotoc_md11',1,'']]],
-  ['submodel_20parsing_10',['Comprehensive AAS Submodel Parsing',['../index.html#autotoc_md22',1,'']]],
-  ['submodel_5fid_11',['submodel_id',['../classaimc__parser__classes_1_1ReferenceProperties.html#a5a852332ae1bb300107d77c42bb606cd',1,'aimc_parser_classes::ReferenceProperties']]],
-  ['submodel_5fjson_5fhelper_2epy_12',['submodel_json_helper.py',['../submodel__json__helper_8py.html',1,'']]],
-  ['submodel_5fparser_2epy_13',['submodel_parser.py',['../submodel__parser_8py.html',1,'']]]
+  ['parent_5fpath_0',['parent_path',['../classaimc__parser__classes_1_1ReferenceProperties.html#adc9aa4fb4c894506ec79aba5c19ff7c1',1,'aimc_parser_classes::ReferenceProperties']]],
+  ['parse_5fbase_1',['parse_base',['../classaas__standard__parser_1_1aid__parser_1_1AIDParser.html#a25b37c28e76cd73a1af923ac89d66584',1,'aas_standard_parser::aid_parser::AIDParser']]],
+  ['parse_5fendpoint_5fhref_2',['parse_endpoint_href',['../namespaceaas__standard__parser_1_1descriptor__json__helper.html#a2165085ae86a1f9d9c70959d76a8d4ed',1,'aas_standard_parser::descriptor_json_helper']]],
+  ['parse_5fmapping_5fconfiguration_5felement_3',['parse_mapping_configuration_element',['../namespaceaas__standard__parser_1_1aimc__parser.html#afb69723e5c4160b7cf493336435ce4ce',1,'aas_standard_parser::aimc_parser']]],
+  ['parse_5fmapping_5fconfigurations_4',['parse_mapping_configurations',['../namespaceaas__standard__parser_1_1aimc__parser.html#ae2cda8726f34a73499ebca6377ee46e2',1,'aas_standard_parser::aimc_parser']]],
+  ['parse_5fproperties_5',['parse_properties',['../classaas__standard__parser_1_1aid__parser_1_1AIDParser.html#a0105b745f20e3c2b658bf67eace0be33',1,'aas_standard_parser::aid_parser::AIDParser']]],
+  ['parse_5fsecurity_6',['parse_security',['../classaas__standard__parser_1_1aid__parser_1_1AIDParser.html#a78283a46fd7c5688ceaa0607c075f165',1,'aas_standard_parser::aid_parser::AIDParser']]],
+  ['parser_7',['parser',['../md_docs_2getting__started.html#autotoc_md11',1,'AAS Parser'],['../index.html',1,'AAS standard Parser'],['../md_docs_2getting__started.html#autotoc_md13',1,'AID Parser'],['../md_docs_2getting__started.html#autotoc_md14',1,'AIMC Parser'],['../md_docs_2getting__started.html#autotoc_md12',1,'Submodel Parser']]],
+  ['parsers_8',['parsers',['../md_docs_2getting__started.html#autotoc_md6',1,'Available Parsers'],['../index.html#autotoc_md24',1,'Core Parsers']]],
+  ['parsing_9',['Comprehensive AAS Submodel Parsing',['../index.html#autotoc_md23',1,'']]],
+  ['password_10',['password',['../classaas__standard__parser_1_1aid__parser_1_1BasicAuthenticationDetails.html#a5b7bbba7c001e5ca7b3a259128d1dfa8',1,'aas_standard_parser::aid_parser::BasicAuthenticationDetails']]],
+  ['property_5fname_11',['property_name',['../classaimc__parser__classes_1_1ReferenceProperties.html#ae8d6792a5f4e00e34ad2080c417d5c76',1,'aimc_parser_classes::ReferenceProperties']]],
+  ['propertydetails_12',['PropertyDetails',['../classaas__standard__parser_1_1aid__parser_1_1PropertyDetails.html',1,'aas_standard_parser::aid_parser']]],
+  ['protocol_5fbinding_13',['protocol_binding',['../classaas__standard__parser_1_1aid__parser_1_1PropertyDetails.html#abb8922241acbe08925ecf55b375b46ae',1,'aas_standard_parser::aid_parser::PropertyDetails']]]
 ];

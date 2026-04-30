@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('md_docs_2getting__started.html',''); i
   <div class="headertitle"><div class="title">🚀 Getting Started</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md2"></a> This guide will walk you through installing and using <code>aas-standard-parser</code> .</p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md3"></a> This guide will walk you through installing and using <code>aas-standard-parser</code> .</p>
 <ul>
 <li>🚀 Getting Started<ul>
 <li>Overview<ul>
@@ -117,10 +117,10 @@ $(document).ready(function(){initNavTree('md_docs_2getting__started.html',''); i
 </li>
 </ul>
 <hr  />
-<h1><a class="anchor" id="autotoc_md4"></a>
+<h1><a class="anchor" id="autotoc_md5"></a>
 Overview</h1>
 <p><b>aas-standard-parser</b> is a Python library for parsing and handling Asset Administration Shell (AAS) standard submodels. It provides a comprehensive set of parsers and utility helpers to extract, interpret, and work with AAS structures.</p>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md6"></a>
 Available Parsers</h2>
 <ul>
 <li><b>AAS Parser</b>: Extract submodel IDs and references from Asset Administration Shell structures</li>
@@ -128,7 +128,7 @@ Available Parsers</h2>
 <li><b>AID Parser</b>: Parse Asset Interface Description (AID) submodels to extract interface metadata, properties, protocol bindings, and authentication details</li>
 <li><b>AIMC Parser</b>: Extract and process Asset Interface Mapping Configuration (AIMC) submodels, including mapping configurations and source-sink relations</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 Available Helpers</h2>
 <ul>
 <li><b>Collection Helpers</b>: Work with submodel element collections, filter by semantic ID, and extract keys from collections</li>
@@ -137,7 +137,7 @@ Available Helpers</h2>
 <li><b>Utility Functions</b>: General-purpose utilities for logging, validation, and data transformation</li>
 </ul>
 <p>The library leverages the <a href="https://github.com/aas-core-works/aas-core3.0-python">python aas sdk framework</a> to ensure compatibility with official AAS data models and structures.</p>
-<h1><a class="anchor" id="autotoc_md7"></a>
+<h1><a class="anchor" id="autotoc_md8"></a>
 Installation</h1>
 <p>Prerequisites:</p>
 <ul>
@@ -146,10 +146,10 @@ Installation</h1>
 <p>Install via pip:</p>
 <div class="fragment"><div class="line">pip install aas-standard-parser</div>
 </div><!-- fragment --><hr  />
-<h1><a class="anchor" id="autotoc_md9"></a>
+<h1><a class="anchor" id="autotoc_md10"></a>
 Usage</h1>
 <p>The examples below use the parser modules directly. In most workflows, you start by loading a submodel JSON file into a BaSyx <code>Submodel</code> object and then pass that object to one of the parser functions.</p>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 AAS Parser</h2>
 <p>This module provides functions for parsing Asset Administration Shells (AAS) in the AAS standard parser. For the full list of available methods and signatures, see:</p><ul>
 <li><a href="https://fluid40.github.io/aas-standard-parser/namespaceaas__standard__parser_1_1aas__parser.html">AAS Parser Implementation API reference</a></li>
@@ -165,7 +165,7 @@ AAS Parser</h2>
 <div class="line">  <span class="stringliteral">&quot;https://example.com/submodels/aid&quot;</span>,</div>
 <div class="line">  <span class="stringliteral">&quot;https://example.com/submodels/aimc&quot;</span>,</div>
 <div class="line">]</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md11"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md12"></a>
 Submodel Parser</h2>
 <p>This module provides functions for parsing and traversing submodels in the AAS standard parser. For the full list of available methods and signatures, see:</p><ul>
 <li><a href="https://fluid40.github.io/aas-standard-parser/namespaceaas__standard__parser_1_1submodel__parser.html">Submodel Parser Implementation API reference</a></li>
@@ -183,7 +183,7 @@ Submodel Parser</h2>
 <div class="ttc" id="anamespaceaas__standard__parser_1_1submodel__parser_html"><div class="ttname"><a href="namespaceaas__standard__parser_1_1submodel__parser.html">aas_standard_parser.submodel_parser</a></div><div class="ttdef"><b>Definition</b> <a href="submodel__parser_8py_source.html#l00001">submodel_parser.py:1</a></div></div>
 </div><!-- fragment --><p>Indexed access for <code>SubmodelElementList</code> values is also supported:</p>
 <div class="fragment"><div class="line">item = get_submodel_element_by_id_short_path(submodel, <span class="stringliteral">&quot;SomeList[0].NestedElement&quot;</span>)</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md12"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md13"></a>
 AID Parser</h2>
 <p>This module provides functions for parsing AID submodels in the AAS standard parser. For the full list of available methods and signatures, see:</p><ul>
 <li><a href="https://fluid40.github.io/aas-standard-parser/namespaceaas__standard__parser_1_1aid__parser.html">AID Parser Implementation API reference</a></li>
@@ -209,7 +209,7 @@ AID Parser</h2>
 </div><!-- fragment --><p>Typical <code>parse_properties()</code> output maps each property path to its endpoint path and payload keys:</p>
 <div class="fragment"><div class="line"><span class="keywordflow">for</span> path, details <span class="keywordflow">in</span> properties.items():</div>
 <div class="line">  print(f<span class="stringliteral">&quot;{path} -&gt; href={details.href}, keys={details.keys}&quot;</span>)</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md13"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md14"></a>
 AIMC Parser</h2>
 <p>This module provides functions for parsing AIMC submodels in the AAS standard parser. For the full list of available methods and signatures, see:</p><ul>
 <li><a href="https://fluid40.github.io/aas-standard-parser/namespaceaas__standard__parser_1_1aimc__parser.html">AIMC Parser Implementation API reference</a></li>
@@ -236,7 +236,7 @@ AIMC Parser</h2>
 <div class="line">  <span class="keywordflow">for</span> relation <span class="keywordflow">in</span> configuration.source_sink_relations:</div>
 <div class="line">    print(relation.source_properties.property_name, relation.sink_properties.property_name)</div>
 <div class="ttc" id="anamespaceaas__standard__parser_1_1aimc__parser_html"><div class="ttname"><a href="namespaceaas__standard__parser_1_1aimc__parser.html">aas_standard_parser.aimc_parser</a></div><div class="ttdef"><b>Definition</b> <a href="aimc__parser_8py_source.html#l00001">aimc_parser.py:1</a></div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md14"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md15"></a>
 Collection Helpers</h2>
 <p>This module provides functions for parsing and handling submodel element collections in the AAS standard parser. For the full list of available methods and signatures, see:</p><ul>
 <li><a href="https://fluid40.github.io/aas-standard-parser/namespaceaas__standard__parser_1_1collection__helpers.html">Collection Helpers Implementation API reference</a></li>
@@ -267,7 +267,7 @@ Collection Helpers</h2>
 <div class="line"> </div>
 <div class="line"><span class="keywordflow">if</span> endpoint_metadata <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:</div>
 <div class="line">  print(contains_supplemental_semantic_id(endpoint_metadata, <span class="stringliteral">&quot;https://example.com/custom-semantic-id&quot;</span>))</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md15"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md16"></a>
 Reference Helpers</h2>
 <p>This module provides functions for parsing and handling references in the AAS standard parser. For the full list of available methods and signatures, see:</p><ul>
 <li><a href="https://fluid40.github.io/aas-standard-parser/namespaceaas__standard__parser_1_1reference__helpers.html">Reference Helpers Implementation API reference</a></li>
@@ -289,7 +289,7 @@ Reference Helpers</h2>
 <div class="line">print(all_values)</div>
 <div class="line">print(first_value)</div>
 <div class="ttc" id="anamespaceaas__standard__parser_1_1reference__helpers_html"><div class="ttname"><a href="namespaceaas__standard__parser_1_1reference__helpers.html">aas_standard_parser.reference_helpers</a></div><div class="ttdef"><b>Definition</b> <a href="reference__helpers_8py_source.html#l00001">reference_helpers.py:1</a></div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md16"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md17"></a>
 Submodel JSON Helper</h2>
 <p>This module provides functions for parsing and handling submodels as JSON structures in the AAS standard parser. For the full list of available methods and signatures, see:</p><ul>
 <li><a href="https://fluid40.github.io/aas-standard-parser/namespaceaas__standard__parser_1_1submodel__json__helper.html">Submodel JSON Helper Implementation API reference</a></li>
@@ -305,7 +305,7 @@ Submodel JSON Helper</h2>
 <div class="line">semantic_id = get_value_from_semantic_id_by_index(aid_data)</div>
 <div class="line">print(semantic_id)</div>
 <div class="ttc" id="anamespaceaas__standard__parser_1_1submodel__json__helper_html"><div class="ttname"><a href="namespaceaas__standard__parser_1_1submodel__json__helper.html">aas_standard_parser.submodel_json_helper</a></div><div class="ttdef"><b>Definition</b> <a href="submodel__json__helper_8py_source.html#l00001">submodel_json_helper.py:1</a></div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md17"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md18"></a>
 Descriptor JSON Helper</h2>
 <p>This module provides functions for parsing and handling descriptors as JSON structures in the AAS standard parser. For the full list of available methods and signatures, see:</p><ul>
 <li><a href="https://fluid40.github.io/aas-standard-parser/namespaceaas__standard__parser_1_1descriptor__json__helper.html">Descriptor JSON Helper Implementation API reference</a></li>
@@ -341,7 +341,7 @@ Descriptor JSON Helper</h2>
 <div class="line">print(href_data.identifier)</div>
 <div class="line">print(href_data.identifier_encoded)</div>
 <div class="ttc" id="anamespaceaas__standard__parser_1_1descriptor__json__helper_html"><div class="ttname"><a href="namespaceaas__standard__parser_1_1descriptor__json__helper.html">aas_standard_parser.descriptor_json_helper</a></div><div class="ttdef"><b>Definition</b> <a href="descriptor__json__helper_8py_source.html#l00001">descriptor_json_helper.py:1</a></div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md18"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md19"></a>
 Utilities</h2>
 <p>This module provides general utility functions for the AAS standard parser. For the full list of available methods and signatures, see:</p><ul>
 <li><a href="https://fluid40.github.io/aas-standard-parser/namespaceaas__standard__parser_1_1utils.html">Utilities Implementation API reference</a></li>
