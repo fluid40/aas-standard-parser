@@ -36,16 +36,15 @@ var NAVTREE =
       ] ],
       [ "Installation", "md_docs_2getting__started.html#autotoc_md7", null ],
       [ "Usage", "md_docs_2getting__started.html#autotoc_md9", [
-        [ "Load AAS Data", "md_docs_2getting__started.html#autotoc_md10", null ],
-        [ "AAS Parser", "md_docs_2getting__started.html#autotoc_md11", null ],
-        [ "Submodel Parser", "md_docs_2getting__started.html#autotoc_md12", null ],
-        [ "AID Parser", "md_docs_2getting__started.html#autotoc_md13", null ],
-        [ "AIMC Parser", "md_docs_2getting__started.html#autotoc_md14", null ],
-        [ "Collection Helpers", "md_docs_2getting__started.html#autotoc_md15", null ],
-        [ "Reference Helpers", "md_docs_2getting__started.html#autotoc_md16", null ],
-        [ "Submodel JSON Helper", "md_docs_2getting__started.html#autotoc_md17", null ],
-        [ "Descriptor JSON Helper", "md_docs_2getting__started.html#autotoc_md18", null ],
-        [ "Utilities", "md_docs_2getting__started.html#autotoc_md19", null ]
+        [ "AAS Parser", "md_docs_2getting__started.html#autotoc_md10", null ],
+        [ "Submodel Parser", "md_docs_2getting__started.html#autotoc_md11", null ],
+        [ "AID Parser", "md_docs_2getting__started.html#autotoc_md12", null ],
+        [ "AIMC Parser", "md_docs_2getting__started.html#autotoc_md13", null ],
+        [ "Collection Helpers", "md_docs_2getting__started.html#autotoc_md14", null ],
+        [ "Reference Helpers", "md_docs_2getting__started.html#autotoc_md15", null ],
+        [ "Submodel JSON Helper", "md_docs_2getting__started.html#autotoc_md16", null ],
+        [ "Descriptor JSON Helper", "md_docs_2getting__started.html#autotoc_md17", null ],
+        [ "Utilities", "md_docs_2getting__started.html#autotoc_md18", null ]
       ] ]
     ] ],
     [ "Namespaces", "namespaces.html", [
@@ -75,7 +74,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "aas__parser_8py.html",
-"test__aimc__parser_8py_source.html"
+"test__descriptor__json__helper_8py.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
