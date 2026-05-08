@@ -2,10 +2,34 @@
 
 import logging
 
-from aas_standard_parser.classes.descriptor_json_helper_classes import EndPointHrefData
+from aas_standard_parser.classes.descriptor_json_helper_classes import DescriptorData, EndPointHrefData
 from aas_standard_parser.utils import decode_base_64
 
 logger = logging.getLogger(__name__)
+
+
+def parse_descriptor(descriptor_data: dict) -> DescriptorData | None:
+    """Parse the descriptor data into a DescriptorData object.
+
+    :param descriptor_data: The descriptor data containing endpoints.
+    :return: A DescriptorData object containing parsed descriptor information.
+    """
+    identifier = descriptor_data.get("id", "")
+
+    if not identifier:
+        logger.warning(f"Descriptor data missing 'id' field: {descriptor_data}")
+        return None
+
+    descriptor = DescriptorData(identifier)
+    descriptor.endpoints = descriptor_data.get("endpoints", [])
+    descriptor.description = descriptor_data.get("description", {})
+    descriptor.display_name = descriptor_data.get("displayName", {})
+    descriptor.assetKind = descriptor_data.get("assetKind", "")
+    descriptor.id_short = descriptor_data.get("idShort", "")
+    descriptor.semantic_id = descriptor_data.get("semanticId", {})
+    descriptor.supplementary_semantic_ids = descriptor_data.get("supplementarySemanticIds", [])
+
+    return descriptor
 
 
 def get_endpoints(descriptor_data: dict) -> list[dict]:
