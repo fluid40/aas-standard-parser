@@ -31,6 +31,7 @@ var namespaceaas__standard__parser =
       [ "get_endpoint_hrefs", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#a8aee330f96818125e0a9802dcabb93f5", null ],
       [ "get_endpoint_protocol_information_by_index", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#af32f5c67f31caa58dc46ebc2091166b6", null ],
       [ "get_endpoints", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#a2ad9a975fcabe7b611c0581ab91e9a4d", null ],
+      [ "parse_descriptor", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#a4a45607db47b6396565e7c87a3b0cbb0", null ],
       [ "parse_endpoint_href", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#a2165085ae86a1f9d9c70959d76a8d4ed", null ],
       [ "logger", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#af6754c50a46d728809b4f5fc307eb94a", null ]
     ] ],

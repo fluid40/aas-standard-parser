@@ -1,6 +1,7 @@
 var hierarchy =
 [
     [ "aas_standard_parser.aid_parser.AIDParser", "classaas__standard__parser_1_1aid__parser_1_1AIDParser.html", null ],
+    [ "descriptor_json_helper_classes.DescriptorData", "classdescriptor__json__helper__classes_1_1DescriptorData.html", null ],
     [ "descriptor_json_helper_classes.EndPointHrefData", "classdescriptor__json__helper__classes_1_1EndPointHrefData.html", null ],
     [ "aas_standard_parser.aid_parser.IAuthenticationDetails", "classaas__standard__parser_1_1aid__parser_1_1IAuthenticationDetails.html", [
       [ "aas_standard_parser.aid_parser.BasicAuthenticationDetails", "classaas__standard__parser_1_1aid__parser_1_1BasicAuthenticationDetails.html", null ],

@@ -18,6 +18,7 @@ var annotated_dup =
       [ "SourceSinkRelation", "classaimc__parser__classes_1_1SourceSinkRelation.html", "classaimc__parser__classes_1_1SourceSinkRelation" ]
     ] ],
     [ "descriptor_json_helper_classes", "namespacedescriptor__json__helper__classes.html", [
+      [ "DescriptorData", "classdescriptor__json__helper__classes_1_1DescriptorData.html", "classdescriptor__json__helper__classes_1_1DescriptorData" ],
       [ "EndPointHrefData", "classdescriptor__json__helper__classes_1_1EndPointHrefData.html", "classdescriptor__json__helper__classes_1_1EndPointHrefData" ]
     ] ]
 ];

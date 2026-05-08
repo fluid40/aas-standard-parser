@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['mappingconfiguration_0',['MappingConfiguration',['../classaimc__parser__classes_1_1MappingConfiguration.html',1,'aimc_parser_classes']]],
-  ['mappingconfigurations_1',['MappingConfigurations',['../classaimc__parser__classes_1_1MappingConfigurations.html',1,'aimc_parser_classes']]]
+  ['iauthenticationdetails_0',['IAuthenticationDetails',['../classaas__standard__parser_1_1aid__parser_1_1IAuthenticationDetails.html',1,'aas_standard_parser::aid_parser']]],
+  ['iprotocolbinding_1',['IProtocolBinding',['../classaas__standard__parser_1_1aid__parser_1_1IProtocolBinding.html',1,'aas_standard_parser::aid_parser']]]
 ];

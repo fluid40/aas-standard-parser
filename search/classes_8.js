@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['referenceproperties_0',['ReferenceProperties',['../classaimc__parser__classes_1_1ReferenceProperties.html',1,'aimc_parser_classes']]]
+  ['propertydetails_0',['PropertyDetails',['../classaas__standard__parser_1_1aid__parser_1_1PropertyDetails.html',1,'aas_standard_parser::aid_parser']]]
 ];

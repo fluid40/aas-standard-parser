@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['httpprotocolbinding_0',['HttpProtocolBinding',['../classaas__standard__parser_1_1aid__parser_1_1HttpProtocolBinding.html',1,'aas_standard_parser::aid_parser']]]
+  ['endpointhrefdata_0',['EndPointHrefData',['../classdescriptor__json__helper__classes_1_1EndPointHrefData.html',1,'descriptor_json_helper_classes']]]
 ];
