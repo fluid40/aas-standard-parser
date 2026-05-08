@@ -85,6 +85,8 @@ jobs:
 
       - name: Upload package as artifact
         uses: actions/upload-artifact@v4
+        env:
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
         with:
           name: pypi-dist
           path: dist/*
@@ -107,6 +109,8 @@ jobs:
 
       - name: Download package artifact
         uses: actions/download-artifact@v4
+        env:
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
         with:
           name: pypi-dist
           path: dist
@@ -131,6 +135,7 @@ jobs:
           configuration: .github/changelog-config.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
       - name: Create Git Tag
         run: |
@@ -190,6 +195,8 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
+        env:
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./doc/html
