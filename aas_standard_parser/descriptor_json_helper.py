@@ -3,7 +3,7 @@
 import logging
 
 from aas_standard_parser.classes.descriptor_json_helper_classes import DescriptorData, EndPointHrefData
-from aas_standard_parser.utils import decode_base_64
+from aas_standard_parser.utils import decode_base_64, encode_base_64
 
 logger = logging.getLogger(__name__)
 
@@ -28,7 +28,7 @@ def parse_descriptor(descriptor_data: dict) -> DescriptorData | None:
     descriptor.id_short = descriptor_data.get("idShort", "")
     descriptor.semantic_id = descriptor_data.get("semanticId", {})
     descriptor.supplementary_semantic_ids = descriptor_data.get("supplementarySemanticIds", [])
-    descriptor.identifier = decode_base_64(identifier_encoded)
+    descriptor.identifier = encode_base_64(identifier_encoded)
 
     return descriptor
 

@@ -1,6 +1,6 @@
 # 📝 Changelog
 
-## [0.5.2] - 2026-05-38
+## [0.5.3] - 2026-05-38
 
 * 🐛Fix: Correct parameter names and add encoded and decoded identifier to parser data.
 
