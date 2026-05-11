@@ -14,13 +14,13 @@ def parse_descriptor(descriptor_data: dict) -> DescriptorData | None:
     :param descriptor_data: The descriptor data containing endpoints.
     :return: A DescriptorData object containing parsed descriptor information.
     """
-    identifier = descriptor_data.get("id", "")
+    identifier_encoded = descriptor_data.get("id", "")
 
-    if not identifier:
+    if not identifier_encoded:
         logger.warning(f"Descriptor data missing 'id' field: {descriptor_data}")
         return None
 
-    descriptor = DescriptorData(identifier)
+    descriptor = DescriptorData(identifier_encoded)
     descriptor.endpoints = descriptor_data.get("endpoints", [])
     descriptor.description = descriptor_data.get("description", {})
     descriptor.display_name = descriptor_data.get("displayName", {})
@@ -28,6 +28,7 @@ def parse_descriptor(descriptor_data: dict) -> DescriptorData | None:
     descriptor.id_short = descriptor_data.get("idShort", "")
     descriptor.semantic_id = descriptor_data.get("semanticId", {})
     descriptor.supplementary_semantic_ids = descriptor_data.get("supplementarySemanticIds", [])
+    descriptor.identifier = decode_base_64(identifier_encoded)
 
     return descriptor
 
