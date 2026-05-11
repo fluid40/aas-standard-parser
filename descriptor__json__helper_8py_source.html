@@ -102,7 +102,7 @@ $(document).ready(function(){initNavTree('descriptor__json__helper_8py_source.ht
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">import</span> logging</div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">from</span> aas_standard_parser.classes.descriptor_json_helper_classes <span class="keyword">import</span> DescriptorData, EndPointHrefData</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">from</span> <a class="code hl_namespace" href="namespaceaas__standard__parser_1_1utils.html">aas_standard_parser.utils</a> <span class="keyword">import</span> decode_base_64</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">from</span> <a class="code hl_namespace" href="namespaceaas__standard__parser_1_1utils.html">aas_standard_parser.utils</a> <span class="keyword">import</span> decode_base_64, encode_base_64</div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="namespaceaas__standard__parser_1_1descriptor__json__helper.html#af6754c50a46d728809b4f5fc307eb94a">    8</a></span>logger = logging.getLogger(__name__)</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
@@ -128,7 +128,7 @@ $(document).ready(function(){initNavTree('descriptor__json__helper_8py_source.ht
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    descriptor.id_short = descriptor_data.get(<span class="stringliteral">&quot;idShort&quot;</span>, <span class="stringliteral">&quot;&quot;</span>)</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    descriptor.semantic_id = descriptor_data.get(<span class="stringliteral">&quot;semanticId&quot;</span>, {})</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    descriptor.supplementary_semantic_ids = descriptor_data.get(<span class="stringliteral">&quot;supplementarySemanticIds&quot;</span>, [])</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    descriptor.identifier = decode_base_64(identifier_encoded)</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    descriptor.identifier = encode_base_64(identifier_encoded)</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordflow">return</span> descriptor</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
