@@ -16,9 +16,10 @@ class EndPointHrefData:
 class DescriptorData:
     """Class to represent the descriptor data structure."""
 
-    def __init__(self, identifier: str):
+    def __init__(self, identifier_encoded: str):
         """Initialize the DescriptorData with the given descriptor data."""
-        self.identifier: str = identifier
+        self.identifier_encoded: str = identifier_encoded
+        self.identifier: str = ""
         self.endpoints: list[dict] = []
         self.description: dict = {}
         self.display_name: dict = {}
