@@ -1,5 +1,9 @@
 # 📝 Changelog
 
+## [0.5.2] - 2026-05-38
+
+* 🐛Fix: Correct parameter names and add encoded and decoded identifier to parser data.
+
 ## [0.5.1] - 2026-05-38
 
 * ✨Feat: Implement descriptor parsing.
@@ -12,8 +16,9 @@
 
 * ✨Feat: Initial version.
 
-* ✨Feat
-* 🐛Fix
-* 📝Doc
-* ♻️Refactor
-* 🧹Chore
+* ✨Feat        - Feature
+* 🐛Fix         - Bugfix
+* 📝Doc         - Documentation
+* ♻️Refactor    - Refactor
+* 🧹Chore       - Chore
+* 🚀Improvement - Improvement
