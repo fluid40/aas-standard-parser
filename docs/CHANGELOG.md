@@ -1,8 +1,8 @@
 # 📝 Changelog
 
-## [0.5.4] - 2026-05-28
+## [0.6.0] - 2026-05-28
 
-* 🚀Improvement: Update basyx-python-sdk version to 2.0.1 in requirements.txt.
+* 🚀Improvement: Update basyx-python-sdk version to 2.0.1 and requests to 2.34.2.
 
 ## [0.5.3] - 2026-05-11
 
