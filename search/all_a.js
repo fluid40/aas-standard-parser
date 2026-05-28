@@ -1,9 +1,14 @@
 var searchData=
 [
-  ['decode_5fbase_5f64_0',['decode_base_64',['../namespaceaas__standard__parser_1_1utils.html#a1a1919b73ec3483260e1b184fad334c7',1,'aas_standard_parser::utils']]],
-  ['descriptor_20json_20helper_1',['Descriptor JSON Helper',['../md_docs_2getting__started.html#autotoc_md21',1,'']]],
-  ['descriptor_5fjson_5fhelper_2epy_2',['descriptor_json_helper.py',['../descriptor__json__helper_8py.html',1,'']]],
-  ['descriptor_5fjson_5fhelper_5fclasses_3',['descriptor_json_helper_classes',['../namespacedescriptor__json__helper__classes.html',1,'']]],
-  ['descriptor_5fjson_5fhelper_5fclasses_2epy_4',['descriptor_json_helper_classes.py',['../descriptor__json__helper__classes_8py.html',1,'']]],
-  ['descriptordata_5',['DescriptorData',['../classdescriptor__json__helper__classes_1_1DescriptorData.html',1,'descriptor_json_helper_classes']]]
+  ['changelog_0',['📝 Changelog',['../md_docs_2CHANGELOG.html',1,'']]],
+  ['changelog_2emd_1',['CHANGELOG.md',['../CHANGELOG_8md.html',1,'']]],
+  ['check_5ffor_5fupdate_2',['check_for_update',['../namespaceaas__standard__parser_1_1version__check.html#a7250237daee8fd66ed892a879d8bb114',1,'aas_standard_parser::version_check']]],
+  ['collection_20helpers_3',['Collection Helpers',['../md_docs_2getting__started.html#autotoc_md18',1,'']]],
+  ['collection_5fhelpers_2epy_4',['collection_helpers.py',['../collection__helpers_8py.html',1,'']]],
+  ['comprehensive_20aas_20submodel_20parsing_5',['Comprehensive AAS Submodel Parsing',['../index.html#autotoc_md26',1,'']]],
+  ['configurations_6',['configurations',['../classaimc__parser__classes_1_1MappingConfigurations.html#aa5f7a29001490cf25f8a91e21b09f959',1,'aimc_parser_classes::MappingConfigurations']]],
+  ['construct_5fid_5fshort_5fpath_5ffrom_5freference_7',['construct_id_short_path_from_reference',['../namespaceaas__standard__parser_1_1reference__helpers.html#a8db69408a38296fda6be4af96a67a5c0',1,'aas_standard_parser::reference_helpers']]],
+  ['contains_5fsupplemental_5fsemantic_5fid_8',['contains_supplemental_semantic_id',['../namespaceaas__standard__parser_1_1collection__helpers.html#a0dbf969cdf0576cc992a228cbcb26616',1,'aas_standard_parser::collection_helpers']]],
+  ['core_20parsers_9',['Core Parsers',['../index.html#autotoc_md27',1,'']]],
+  ['create_5fsubmodel_5ffrom_5ffile_10',['create_submodel_from_file',['../namespaceaas__standard__parser_1_1utils.html#aaa56ac6854f1594a69a5ce463d0581b5',1,'aas_standard_parser::utils']]]
 ];
