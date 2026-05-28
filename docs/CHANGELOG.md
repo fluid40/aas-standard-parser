@@ -1,10 +1,14 @@
 # 📝 Changelog
 
-## [0.5.3] - 2026-05-38
+## [0.5.4] - 2026-05-28
+
+* 🚀Improvement: Update basyx-python-sdk version to 2.0.1 in requirements.txt.
+
+## [0.5.3] - 2026-05-11
 
 * 🐛Fix: Correct parameter names and add encoded and decoded identifier to parser data.
 
-## [0.5.1] - 2026-05-38
+## [0.5.1] - 2026-05-11
 
 * ✨Feat: Implement descriptor parsing.
 
