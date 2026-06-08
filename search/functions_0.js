@@ -10,5 +10,6 @@ var searchData=
   ['_5fgenerate_5fsource_5fsink_5frelations_7',['_generate_source_sink_relations',['../namespaceaas__standard__parser_1_1aimc__parser.html#ab016468c203096559c2badb908cab29f',1,'aas_standard_parser::aimc_parser']]],
   ['_5fget_5finterface_5freference_5felement_8',['_get_interface_reference_element',['../namespaceaas__standard__parser_1_1aimc__parser.html#a6486b0ae2674841eb1561f5c733b1c01',1,'aas_standard_parser::aimc_parser']]],
   ['_5fget_5freference_5fparent_5fpath_9',['_get_reference_parent_path',['../namespaceaas__standard__parser_1_1aimc__parser.html#a331dfa790904ba66b0206794f1ce6822',1,'aas_standard_parser::aimc_parser']]],
-  ['_5fget_5freference_5fproperties_10',['_get_reference_properties',['../namespaceaas__standard__parser_1_1aimc__parser.html#abc2d919da2f5d5f6d67921cdf0bf7ada',1,'aas_standard_parser::aimc_parser']]]
+  ['_5fget_5freference_5fproperties_10',['_get_reference_properties',['../namespaceaas__standard__parser_1_1aimc__parser.html#abc2d919da2f5d5f6d67921cdf0bf7ada',1,'aas_standard_parser::aimc_parser']]],
+  ['_5fparse_5fmulti_5flang_11',['_parse_multi_lang',['../namespaceaas__standard__parser_1_1descriptor__json__helper.html#a288d16a8428760c0b6c7bde0a41e35eb',1,'aas_standard_parser::descriptor_json_helper']]]
 ];

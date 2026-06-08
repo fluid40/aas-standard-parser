@@ -1,5 +1,6 @@
 var descriptor__json__helper_8py =
 [
+    [ "_parse_multi_lang", "descriptor__json__helper_8py.html#a288d16a8428760c0b6c7bde0a41e35eb", null ],
     [ "get_endpoint_by_index", "descriptor__json__helper_8py.html#a11e9196b0a3995a2693ec43e6b699789", null ],
     [ "get_endpoint_href_by_index", "descriptor__json__helper_8py.html#abc73a4fe4db6926d2c0aa70e287b1ad0", null ],
     [ "get_endpoint_hrefs", "descriptor__json__helper_8py.html#a8aee330f96818125e0a9802dcabb93f5", null ],

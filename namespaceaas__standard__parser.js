@@ -26,6 +26,7 @@ var namespaceaas__standard__parser =
       [ "find_by_supplemental_semantic_id", "namespaceaas__standard__parser_1_1collection__helpers.html#a0152772e591a6af320d0b5915fea7c94", null ]
     ] ],
     [ "descriptor_json_helper", "namespaceaas__standard__parser_1_1descriptor__json__helper.html", [
+      [ "_parse_multi_lang", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#a288d16a8428760c0b6c7bde0a41e35eb", null ],
       [ "get_endpoint_by_index", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#a11e9196b0a3995a2693ec43e6b699789", null ],
       [ "get_endpoint_href_by_index", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#abc73a4fe4db6926d2c0aa70e287b1ad0", null ],
       [ "get_endpoint_hrefs", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#a8aee330f96818125e0a9802dcabb93f5", null ],

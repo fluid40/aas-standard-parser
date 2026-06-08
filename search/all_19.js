@@ -9,9 +9,9 @@ var searchData=
   ['sourcesinkrelation_6',['SourceSinkRelation',['../classaimc__parser__classes_1_1SourceSinkRelation.html',1,'aimc_parser_classes']]],
   ['standard_20parser_7',['AAS standard Parser',['../index.html',1,'']]],
   ['started_8',['🚀 Getting Started',['../md_docs_2getting__started.html',1,'']]],
-  ['submodel_20json_20helper_9',['Submodel JSON Helper',['../md_docs_2getting__started.html#autotoc_md20',1,'']]],
-  ['submodel_20parser_10',['Submodel Parser',['../md_docs_2getting__started.html#autotoc_md15',1,'']]],
-  ['submodel_20parsing_11',['Comprehensive AAS Submodel Parsing',['../index.html#autotoc_md26',1,'']]],
+  ['submodel_20json_20helper_9',['Submodel JSON Helper',['../md_docs_2getting__started.html#autotoc_md21',1,'']]],
+  ['submodel_20parser_10',['Submodel Parser',['../md_docs_2getting__started.html#autotoc_md16',1,'']]],
+  ['submodel_20parsing_11',['Comprehensive AAS Submodel Parsing',['../index.html#autotoc_md27',1,'']]],
   ['submodel_5fid_12',['submodel_id',['../classaimc__parser__classes_1_1ReferenceProperties.html#a5a852332ae1bb300107d77c42bb606cd',1,'aimc_parser_classes::ReferenceProperties']]],
   ['submodel_5fjson_5fhelper_2epy_13',['submodel_json_helper.py',['../submodel__json__helper_8py.html',1,'']]],
   ['submodel_5fparser_2epy_14',['submodel_parser.py',['../submodel__parser_8py.html',1,'']]]
