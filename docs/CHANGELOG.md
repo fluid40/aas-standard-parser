@@ -1,5 +1,9 @@
 # 📝 Changelog
 
+## [0.6.1] - 2026-06.08
+
+* ✨Feat: Enhance descriptor parsing with hrefs and multi-language support
+
 ## [0.6.0] - 2026-05-28
 
 * 🚀Improvement: Update basyx-python-sdk version to 2.0.1 and requests to 2.34.2.

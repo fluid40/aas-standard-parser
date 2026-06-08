@@ -21,6 +21,8 @@ class DescriptorData:
         self.identifier_decoded: str = identifier_decoded
         self.identifier: str = ""
         self.endpoints: list[dict] = []
+        self.hrefs: list[str] = []
+        self.hrefs_data: list[dict[str, EndPointHrefData]] = []
         self.description: dict = {}
         self.display_name: dict = {}
         self.assetKind = ""

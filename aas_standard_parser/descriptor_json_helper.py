@@ -21,9 +21,16 @@ def parse_descriptor(descriptor_data: dict) -> DescriptorData | None:
         return None
 
     descriptor = DescriptorData(identifier_encoded)
-    descriptor.endpoints = descriptor_data.get("endpoints", [])
-    descriptor.description = descriptor_data.get("description", {})
-    descriptor.display_name = descriptor_data.get("displayName", {})
+    descriptor.endpoints = descriptor_data.get("endpoints", {})
+    descriptor.hrefs = get_endpoint_hrefs(descriptor_data)
+
+    for href in descriptor.hrefs:
+        data = parse_endpoint_href(href)
+        if data is not None:
+            descriptor.hrefs_data.append({href: data})
+
+    descriptor.description = _parse_multi_lang(descriptor_data.get("description", []))
+    descriptor.display_name = _parse_multi_lang(descriptor_data.get("displayName", []))
     descriptor.assetKind = descriptor_data.get("assetKind", "")
     descriptor.id_short = descriptor_data.get("idShort", "")
     descriptor.semantic_id = descriptor_data.get("semanticId", {})
@@ -31,6 +38,19 @@ def parse_descriptor(descriptor_data: dict) -> DescriptorData | None:
     descriptor.identifier = encode_base_64(identifier_encoded)
 
     return descriptor
+
+
+def _parse_multi_lang(description: list[dict]) -> dict[str, str]:
+    return_list: dict = {}
+
+    for desc in description:
+        if "language" not in desc or "text" not in desc:
+            logger.warning(f"Invalid description entry: {desc}")
+            continue
+
+        return_list.update({desc["language"]: desc["text"]})
+
+    return return_list
 
 
 def get_endpoints(descriptor_data: dict) -> list[dict]:
