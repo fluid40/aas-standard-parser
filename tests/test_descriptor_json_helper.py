@@ -58,6 +58,8 @@ def test_002_parse_descriptor_json():
 
     assert descriptor_data is not None
     assert descriptor_data.description == {"en": "The software information aspect model contains the essential information of all software components that have been implemented or flashed in an instantiated part (e.g. serialized part). "}
+    assert descriptor_data.main_description == "The software information aspect model contains the essential information of all software components that have been implemented or flashed in an instantiated part (e.g. serialized part). "
+    assert descriptor_data.display_name == {}
     assert descriptor_data.id_short == "SoftwareInformation"
     assert descriptor_data.semantic_id == {
         "type": "ExternalReference",
@@ -72,3 +74,4 @@ def test_002_parse_descriptor_json():
     assert descriptor_data.endpoints[0]["protocolInformation"]["href"] == "https://engineering-app-poc.em.ag/aas-env/submodels/c3VibW9kZWxfU29mdHdhcmVJbmZvcm1hdGlvbl8yMDI2MDYwODExMzAyNjg3OV8w"
     assert descriptor_data.endpoints[0]["protocolInformation"]["endpointProtocol"] == "https"
     assert descriptor_data.endpoints[0]["interface"] == "SUBMODEL-3.0"
+    assert descriptor_data.main_display_name == ""

@@ -24,7 +24,9 @@ class DescriptorData:
         self.hrefs: list[str] = []
         self.hrefs_data: list[dict[str, EndPointHrefData]] = []
         self.description: dict = {}
+        self.main_description: str = ""
         self.display_name: dict = {}
+        self.main_display_name: str = ""
         self.assetKind = ""
         self.id_short = ""
         self.semantic_id = ""

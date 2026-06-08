@@ -30,7 +30,9 @@ def parse_descriptor(descriptor_data: dict) -> DescriptorData | None:
             descriptor.hrefs_data.append({href: data})
 
     descriptor.description = _parse_multi_lang(descriptor_data.get("description", []))
+    descriptor.main_description = next(iter(descriptor.description.values())) if descriptor.description else ""
     descriptor.display_name = _parse_multi_lang(descriptor_data.get("displayName", []))
+    descriptor.main_display_name = next(iter(descriptor.display_name.values())) if descriptor.display_name else ""
     descriptor.assetKind = descriptor_data.get("assetKind", "")
     descriptor.id_short = descriptor_data.get("idShort", "")
     descriptor.semantic_id = descriptor_data.get("semanticId", {})

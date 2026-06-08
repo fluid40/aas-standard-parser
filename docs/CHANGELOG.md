@@ -1,6 +1,6 @@
 # 📝 Changelog
 
-## [0.6.1] - 2026-06.08
+## [0.6.2] - 2026-06.08
 
 * ✨Feat: Enhance descriptor parsing with hrefs and multi-language support
 
