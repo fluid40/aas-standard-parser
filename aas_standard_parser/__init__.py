@@ -4,8 +4,6 @@ import importlib.metadata
 from datetime import UTC, datetime
 
 from aas_standard_parser import (
-    DescriptorData,
-    EndPointHrefData,
     aas_parser,
     aid_parser,
     aimc_parser,
@@ -17,6 +15,7 @@ from aas_standard_parser import (
     utils,
 )
 from aas_standard_parser.aid_parser import AIDParser
+from aas_standard_parser.classes.descriptor_json_helper_classes import DescriptorData, EndPointHrefData
 from aas_standard_parser.version_check import check_for_update
 
 __copyright__ = f"Copyright (C) {datetime.now(tz=UTC).year} Fluid 4.0. All rights reserved."
