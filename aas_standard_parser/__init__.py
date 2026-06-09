@@ -4,6 +4,8 @@ import importlib.metadata
 from datetime import UTC, datetime
 
 from aas_standard_parser import (
+    DescriptorData,
+    EndPointHrefData,
     aas_parser,
     aid_parser,
     aimc_parser,
@@ -34,6 +36,8 @@ check_for_update()
 
 __all__ = [
     "AIDParser",
+    "DescriptorData",
+    "EndPointHrefData",
     "aas_parser",
     "aid_parser",
     "aimc_parser",
