@@ -1,5 +1,9 @@
 # 📝 Changelog
 
+## [0.6.5] - 2026-07-07
+
+* 🚀Improvement: Implement "get description" and "get display name" functions in submodel parser
+
 ## [0.6.4] - 2026-06-09
 
 * ✨Feat: Enhance descriptor parsing with hrefs and multi-language support
