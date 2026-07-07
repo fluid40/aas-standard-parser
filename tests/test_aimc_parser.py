@@ -7,19 +7,19 @@ from aas_standard_parser.utils import create_submodel_from_file
 
 
 @pytest.fixture(scope="module")
-def aimc_submodel() -> model.Property:
+def aimc_submodel() -> model.Submodel:
     # create a Submodel
     return create_submodel_from_file("tests/test_data/aimc_submodel.json")
 
 
-def test_001_get_mapping_configuration_root_element(aimc_submodel: model.submodel):
+def test_001_get_mapping_configuration_root_element(aimc_submodel: model.Submodel):
     root_element = aimc_parser.get_mapping_configuration_root_element(aimc_submodel)
 
     assert root_element is not None
     assert root_element.id_short == "MappingConfigurations"
 
 
-def test_002_get_mapping_configuration_elements(aimc_submodel: model.submodel):
+def test_002_get_mapping_configuration_elements(aimc_submodel: model.Submodel):
     configuration_elements = aimc_parser.get_mapping_configuration_elements(
         aimc_submodel
     )
@@ -30,7 +30,8 @@ def test_002_get_mapping_configuration_elements(aimc_submodel: model.submodel):
     configuration_element = configuration_elements[0]
     assert isinstance(configuration_element, model.SubmodelElementCollection)
 
-def test_003_parse_mapping_configuration_element(aimc_submodel: model.submodel):
+
+def test_003_parse_mapping_configuration_element(aimc_submodel: model.Submodel):
     configuration_elements = aimc_parser.get_mapping_configuration_elements(
         aimc_submodel
     )
@@ -42,7 +43,8 @@ def test_003_parse_mapping_configuration_element(aimc_submodel: model.submodel):
     _check_interface_ref(configuration)
     _check_relations(configuration)
 
-def test_004_parse_mapping_configurations(aimc_submodel: model.submodel):
+
+def test_004_parse_mapping_configurations(aimc_submodel: model.Submodel):
     mapping_configurations = aimc_parser.parse_mapping_configurations(aimc_submodel)
 
     assert mapping_configurations is not None
