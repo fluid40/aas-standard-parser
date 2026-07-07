@@ -7,6 +7,54 @@ from basyx.aas import model
 logger = logging.getLogger(__name__)
 
 
+def get_description_from_submodel(submodel: model.Submodel, language: str = "en") -> str | None:
+    """Get the description from a submodel.
+
+    :param submodel: The submodel to extract the description from.
+    :param language: The language code for the description.
+    :return: The description string if found, otherwise None.
+    """
+    if submodel.description is None:
+        logger.warning(f"No description found for submodel {submodel.id_short}")
+        return None
+
+    keys = submodel.description.keys()
+
+    if keys is None or len(keys) == 0:
+        logger.warning(f"No description keys found for submodel {submodel.id_short}")
+        return None
+
+    if language not in keys:
+        logger.warning(f"Description for language '{language}' not found in submodel {submodel.id_short}")
+        return None
+
+    return submodel.description.get(language)
+
+
+def get_display_name_from_submodel(submodel: model.Submodel, language: str = "en") -> str | None:
+    """Get the display name from a submodel.
+
+    :param submodel: The submodel to extract the display name from.
+    :param language: The language code for the display name.
+    :return: The display name string if found, otherwise None.
+    """
+    if submodel.display_name is None:
+        logger.warning(f"No display name found for submodel {submodel.id_short}")
+        return None
+
+    keys = submodel.display_name.keys()
+
+    if keys is None or len(keys) == 0:
+        logger.warning(f"No display name keys found for submodel {submodel.id_short}")
+        return None
+
+    if language not in keys:
+        logger.warning(f"Display name for language '{language}' not found in submodel {submodel.id_short}")
+        return None
+
+    return submodel.display_name.get(language)
+
+
 def get_submodel_element_by_id_short_path(submodel: model.Submodel, id_short_path: str) -> model.SubmodelElement:
     """Retrieve a specific submodel element from the submodel at a specific idShort path.
 

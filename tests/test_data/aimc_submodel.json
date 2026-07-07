@@ -21,6 +21,12 @@
             "text": "This Submodel specifies an information model for describing the mapping of interface(s) of an asset service or asset-related service already described in an Asset Interfaces Description (AID) Submodel."
         }
     ],
+    "displayName": [
+        {
+            "language": "en",
+            "text": "AIMC Submodel."
+        }
+    ],
     "idShort": "AssetInterfacesMappingConfiguration",
     "submodelElements": [
         {
