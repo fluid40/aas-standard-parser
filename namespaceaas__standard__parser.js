@@ -46,6 +46,8 @@ var namespaceaas__standard__parser =
       [ "logger", "namespaceaas__standard__parser_1_1submodel__json__helper.html#a225b2370e306d103b4713dea8550cf7c", null ]
     ] ],
     [ "submodel_parser", "namespaceaas__standard__parser_1_1submodel__parser.html", [
+      [ "get_description_from_submodel", "namespaceaas__standard__parser_1_1submodel__parser.html#af64a718963bf182203e0b274b58229b6", null ],
+      [ "get_display_name_from_submodel", "namespaceaas__standard__parser_1_1submodel__parser.html#a807b0c1850b9214b56daa7c88d11f736", null ],
       [ "get_semantic_id_value", "namespaceaas__standard__parser_1_1submodel__parser.html#adda721b73d99b2573d03229329ae42b1", null ],
       [ "get_submodel_element_by_id_short_path", "namespaceaas__standard__parser_1_1submodel__parser.html#a6b6057d36b18e8871d8dacc178efb886", null ],
       [ "logger", "namespaceaas__standard__parser_1_1submodel__parser.html#aa02fb7d1da7ded0971b13e51d610c4ef", null ]

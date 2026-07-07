@@ -98,6 +98,12 @@ $(document).ready(function(){initNavTree('namespaceaas__standard__parser_1_1subm
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:af64a718963bf182203e0b274b58229b6" id="r_af64a718963bf182203e0b274b58229b6"><td class="memItemLeft" align="right" valign="top">str|None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceaas__standard__parser_1_1submodel__parser.html#af64a718963bf182203e0b274b58229b6">get_description_from_submodel</a> (model.Submodel submodel, str language=&quot;en&quot;)</td></tr>
+<tr class="memdesc:af64a718963bf182203e0b274b58229b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the description from a submodel.  <br /></td></tr>
+<tr class="separator:af64a718963bf182203e0b274b58229b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a807b0c1850b9214b56daa7c88d11f736" id="r_a807b0c1850b9214b56daa7c88d11f736"><td class="memItemLeft" align="right" valign="top">str|None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceaas__standard__parser_1_1submodel__parser.html#a807b0c1850b9214b56daa7c88d11f736">get_display_name_from_submodel</a> (model.Submodel submodel, str language=&quot;en&quot;)</td></tr>
+<tr class="memdesc:a807b0c1850b9214b56daa7c88d11f736"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the display name from a submodel.  <br /></td></tr>
+<tr class="separator:a807b0c1850b9214b56daa7c88d11f736"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b6057d36b18e8871d8dacc178efb886" id="r_a6b6057d36b18e8871d8dacc178efb886"><td class="memItemLeft" align="right" valign="top">model.SubmodelElement&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceaas__standard__parser_1_1submodel__parser.html#a6b6057d36b18e8871d8dacc178efb886">get_submodel_element_by_id_short_path</a> (model.Submodel submodel, str id_short_path)</td></tr>
 <tr class="memdesc:a6b6057d36b18e8871d8dacc178efb886"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve a specific submodel element from the submodel at a specific idShort path.  <br /></td></tr>
 <tr class="separator:a6b6057d36b18e8871d8dacc178efb886"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -111,6 +117,86 @@ Variables</h2></td></tr>
 <tr class="separator:aa02fb7d1da7ded0971b13e51d610c4ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="af64a718963bf182203e0b274b58229b6" name="af64a718963bf182203e0b274b58229b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af64a718963bf182203e0b274b58229b6">&#9670;&#160;</a></span>get_description_from_submodel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str | None aas_standard_parser.submodel_parser.get_description_from_submodel </td>
+          <td>(</td>
+          <td class="paramtype">model.Submodel&#160;</td>
+          <td class="paramname"><em>submodel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">str &#160;</td>
+          <td class="paramname"><em>language</em> = <code>&quot;en&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the description from a submodel. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">submodel</td><td>The submodel to extract the description from. </td></tr>
+    <tr><td class="paramname">language</td><td>The language code for the description. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The description string if found, otherwise None. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="submodel__parser_8py_source.html#l00016">16</a> of file <a class="el" href="submodel__parser_8py_source.html">submodel_parser.py</a>.</p>
+
+</div>
+</div>
+<a id="a807b0c1850b9214b56daa7c88d11f736" name="a807b0c1850b9214b56daa7c88d11f736"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a807b0c1850b9214b56daa7c88d11f736">&#9670;&#160;</a></span>get_display_name_from_submodel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str | None aas_standard_parser.submodel_parser.get_display_name_from_submodel </td>
+          <td>(</td>
+          <td class="paramtype">model.Submodel&#160;</td>
+          <td class="paramname"><em>submodel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">str &#160;</td>
+          <td class="paramname"><em>language</em> = <code>&quot;en&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the display name from a submodel. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">submodel</td><td>The submodel to extract the display name from. </td></tr>
+    <tr><td class="paramname">language</td><td>The language code for the display name. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The display name string if found, otherwise None. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="submodel__parser_8py_source.html#l00040">40</a> of file <a class="el" href="submodel__parser_8py_source.html">submodel_parser.py</a>.</p>
+
+</div>
+</div>
 <a id="adda721b73d99b2573d03229329ae42b1" name="adda721b73d99b2573d03229329ae42b1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adda721b73d99b2573d03229329ae42b1">&#9670;&#160;</a></span>get_semantic_id_value()</h2>
 
@@ -147,7 +233,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The semantic ID string if found, otherwise None. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="submodel__parser_8py_source.html#l00070">70</a> of file <a class="el" href="submodel__parser_8py_source.html">submodel_parser.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="submodel__parser_8py_source.html#l00118">118</a> of file <a class="el" href="submodel__parser_8py_source.html">submodel_parser.py</a>.</p>
 
 </div>
 </div>
@@ -187,7 +273,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The found submodel element or None if not found. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="submodel__parser_8py_source.html#l00016">16</a> of file <a class="el" href="submodel__parser_8py_source.html">submodel_parser.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="submodel__parser_8py_source.html#l00064">64</a> of file <a class="el" href="submodel__parser_8py_source.html">submodel_parser.py</a>.</p>
 
 </div>
 </div>
