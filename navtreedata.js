@@ -27,30 +27,31 @@ var NAVTREE =
   [ "AAS Standard Parser Documentation", "index.html", [
     [ "AAS standard Parser", "index.html", "index" ],
     [ "📝 Changelog", "md_docs_2CHANGELOG.html", [
-      [ "[0.6.5] - 2026-07-07", "md_docs_2CHANGELOG.html#autotoc_md1", null ],
-      [ "[0.6.4] - 2026-06-09", "md_docs_2CHANGELOG.html#autotoc_md2", null ],
-      [ "[0.6.0] - 2026-05-28", "md_docs_2CHANGELOG.html#autotoc_md3", null ],
-      [ "[0.5.3] - 2026-05-11", "md_docs_2CHANGELOG.html#autotoc_md4", null ],
-      [ "[0.5.1] - 2026-05-11", "md_docs_2CHANGELOG.html#autotoc_md5", null ],
-      [ "[0.5.0] - 2026-04-30", "md_docs_2CHANGELOG.html#autotoc_md6", null ],
-      [ "[0.4.1] - 2026-04-17", "md_docs_2CHANGELOG.html#autotoc_md7", null ]
+      [ "[0.6.6] - 2026-08-14", "md_docs_2CHANGELOG.html#autotoc_md1", null ],
+      [ "[0.6.5] - 2026-07-07", "md_docs_2CHANGELOG.html#autotoc_md2", null ],
+      [ "[0.6.4] - 2026-06-09", "md_docs_2CHANGELOG.html#autotoc_md3", null ],
+      [ "[0.6.0] - 2026-05-28", "md_docs_2CHANGELOG.html#autotoc_md4", null ],
+      [ "[0.5.3] - 2026-05-11", "md_docs_2CHANGELOG.html#autotoc_md5", null ],
+      [ "[0.5.1] - 2026-05-11", "md_docs_2CHANGELOG.html#autotoc_md6", null ],
+      [ "[0.5.0] - 2026-04-30", "md_docs_2CHANGELOG.html#autotoc_md7", null ],
+      [ "[0.4.1] - 2026-04-17", "md_docs_2CHANGELOG.html#autotoc_md8", null ]
     ] ],
     [ "🚀 Getting Started", "md_docs_2getting__started.html", [
-      [ "Overview", "md_docs_2getting__started.html#autotoc_md10", [
-        [ "Available Parsers", "md_docs_2getting__started.html#autotoc_md11", null ],
-        [ "Available Helpers", "md_docs_2getting__started.html#autotoc_md12", null ]
+      [ "Overview", "md_docs_2getting__started.html#autotoc_md11", [
+        [ "Available Parsers", "md_docs_2getting__started.html#autotoc_md12", null ],
+        [ "Available Helpers", "md_docs_2getting__started.html#autotoc_md13", null ]
       ] ],
-      [ "Installation", "md_docs_2getting__started.html#autotoc_md13", null ],
-      [ "Usage", "md_docs_2getting__started.html#autotoc_md15", [
-        [ "AAS Parser", "md_docs_2getting__started.html#autotoc_md16", null ],
-        [ "Submodel Parser", "md_docs_2getting__started.html#autotoc_md17", null ],
-        [ "AID Parser", "md_docs_2getting__started.html#autotoc_md18", null ],
-        [ "AIMC Parser", "md_docs_2getting__started.html#autotoc_md19", null ],
-        [ "Collection Helpers", "md_docs_2getting__started.html#autotoc_md20", null ],
-        [ "Reference Helpers", "md_docs_2getting__started.html#autotoc_md21", null ],
-        [ "Submodel JSON Helper", "md_docs_2getting__started.html#autotoc_md22", null ],
-        [ "Descriptor JSON Helper", "md_docs_2getting__started.html#autotoc_md23", null ],
-        [ "Utilities", "md_docs_2getting__started.html#autotoc_md24", null ]
+      [ "Installation", "md_docs_2getting__started.html#autotoc_md14", null ],
+      [ "Usage", "md_docs_2getting__started.html#autotoc_md16", [
+        [ "AAS Parser", "md_docs_2getting__started.html#autotoc_md17", null ],
+        [ "Submodel Parser", "md_docs_2getting__started.html#autotoc_md18", null ],
+        [ "AID Parser", "md_docs_2getting__started.html#autotoc_md19", null ],
+        [ "AIMC Parser", "md_docs_2getting__started.html#autotoc_md20", null ],
+        [ "Collection Helpers", "md_docs_2getting__started.html#autotoc_md21", null ],
+        [ "Reference Helpers", "md_docs_2getting__started.html#autotoc_md22", null ],
+        [ "Submodel JSON Helper", "md_docs_2getting__started.html#autotoc_md23", null ],
+        [ "Descriptor JSON Helper", "md_docs_2getting__started.html#autotoc_md24", null ],
+        [ "Utilities", "md_docs_2getting__started.html#autotoc_md25", null ]
       ] ]
     ] ],
     [ "Namespaces", "namespaces.html", [
@@ -80,7 +81,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "aas__parser_8py.html",
-"namespacetests_1_1test__utils.html#adb72ad8319d53435b67e119ad05de6ee"
+"namespacetests_1_1test__utils.html#ab871e4b82821ac6b5422f4ac3abca59a"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
