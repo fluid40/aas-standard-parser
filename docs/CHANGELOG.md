@@ -1,5 +1,9 @@
 # 📝 Changelog
 
+## [0.6.6] - 2026-08-14
+
+* 🧹Chore: Upgrade package versions in requirements.txt for improved compatibility and features.
+
 ## [0.6.5] - 2026-07-07
 
 * 🚀Improvement: Implement "get description" and "get display name" functions in submodel parser
