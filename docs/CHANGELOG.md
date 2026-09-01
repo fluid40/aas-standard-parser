@@ -1,5 +1,9 @@
 # 📝 Changelog
 
+## [0.6.7] - 2026-09-01
+
+* 🧹Chore: Update dependencies in pyproject.toml and requirements.txt for improved compatibility.
+
 ## [0.6.6] - 2026-08-14
 
 * 🧹Chore: Upgrade package versions in requirements.txt for improved compatibility and features.

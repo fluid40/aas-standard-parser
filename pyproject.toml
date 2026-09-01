@@ -4,17 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "aas-standard-parser"
-version = "0.6.6"
+version = "0.6.7"
 description = "Some auxiliary functions for parsing standard submodels"
 readme = "README.md"
 license = { file = "LICENSE" }
 authors = [{ name = "Daniel Klein", email = "daniel.klein@em.ag" }]
 requires-python = ">=3.11"
-dependencies = [
-    "basyx-python-sdk>=2.0.1",
-    "python-json-logger>=4.0.0",
-    "requests>=2.34.2",
-]
+dependencies = ["basyx-python-sdk>=2.1.0", "requests>=2.34.2"]
 [project.urls]
 Homepage = "https://github.com/fluid40/aas-standard-parser"
 
