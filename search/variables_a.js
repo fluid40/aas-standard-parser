@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['user_0',['user',['../classaas__standard__parser_1_1aid__parser_1_1BasicAuthenticationDetails.html#a3062ff2c7693e0ebf26057b6193df721',1,'aas_standard_parser::aid_parser::BasicAuthenticationDetails']]]
+  ['reference_0',['reference',['../classaimc__parser__classes_1_1ReferenceProperties.html#abee91a2cd17cc26c557b433204d3b7d0',1,'aimc_parser_classes::ReferenceProperties']]]
 ];

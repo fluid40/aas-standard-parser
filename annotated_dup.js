@@ -20,5 +20,8 @@ var annotated_dup =
     [ "descriptor_json_helper_classes", "namespacedescriptor__json__helper__classes.html", [
       [ "DescriptorData", "classdescriptor__json__helper__classes_1_1DescriptorData.html", "classdescriptor__json__helper__classes_1_1DescriptorData" ],
       [ "EndPointHrefData", "classdescriptor__json__helper__classes_1_1EndPointHrefData.html", "classdescriptor__json__helper__classes_1_1EndPointHrefData" ]
+    ] ],
+    [ "env_parser_classes", "namespaceenv__parser__classes.html", [
+      [ "EnvironmentData", "classenv__parser__classes_1_1EnvironmentData.html", "classenv__parser__classes_1_1EnvironmentData" ]
     ] ]
 ];

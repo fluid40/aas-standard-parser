@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['parent_5fpath_0',['parent_path',['../classaimc__parser__classes_1_1ReferenceProperties.html#adc9aa4fb4c894506ec79aba5c19ff7c1',1,'aimc_parser_classes::ReferenceProperties']]],
-  ['password_1',['password',['../classaas__standard__parser_1_1aid__parser_1_1BasicAuthenticationDetails.html#a5b7bbba7c001e5ca7b3a259128d1dfa8',1,'aas_standard_parser::aid_parser::BasicAuthenticationDetails']]],
-  ['property_5fname_2',['property_name',['../classaimc__parser__classes_1_1ReferenceProperties.html#ae8d6792a5f4e00e34ad2080c417d5c76',1,'aimc_parser_classes::ReferenceProperties']]],
-  ['protocol_5fbinding_3',['protocol_binding',['../classaas__standard__parser_1_1aid__parser_1_1PropertyDetails.html#abb8922241acbe08925ecf55b375b46ae',1,'aas_standard_parser::aid_parser::PropertyDetails']]]
+  ['logger_0',['logger',['../namespaceaas__standard__parser_1_1aimc__parser.html#acc5914a7e12bdea16e4280042181a0e9',1,'aas_standard_parser.aimc_parser.logger'],['../namespaceaas__standard__parser_1_1descriptor__json__helper.html#af6754c50a46d728809b4f5fc307eb94a',1,'aas_standard_parser.descriptor_json_helper.logger'],['../namespaceaas__standard__parser_1_1submodel__json__helper.html#a225b2370e306d103b4713dea8550cf7c',1,'aas_standard_parser.submodel_json_helper.logger'],['../namespaceaas__standard__parser_1_1submodel__parser.html#aa02fb7d1da7ded0971b13e51d610c4ef',1,'aas_standard_parser.submodel_parser.logger'],['../namespaceaas__standard__parser_1_1utils.html#a37e958fbdd6a418a934ada0b6d32f73c',1,'aas_standard_parser.utils.logger'],['../namespaceaas__standard__parser_1_1version__check.html#ae2a7b7e9d4951f6f971bfaf016022131',1,'aas_standard_parser.version_check.logger']]]
 ];

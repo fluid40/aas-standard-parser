@@ -1,5 +1,8 @@
 var namespacetests =
 [
+    [ "test_aas_parser", "namespacetests_1_1test__aas__parser.html", [
+      [ "test_001_parse_environment_file", "namespacetests_1_1test__aas__parser.html#ae23c3ac3b86883dda576d12665a00958", null ]
+    ] ],
     [ "test_aimc_parser", "namespacetests_1_1test__aimc__parser.html", [
       [ "_check_interface_ref", "namespacetests_1_1test__aimc__parser.html#a2614fb22e334c68fb066862efd172703", null ],
       [ "_check_relation_methods", "namespacetests_1_1test__aimc__parser.html#a81eb0c796de00ce6627d716bd8c7e531", null ],
