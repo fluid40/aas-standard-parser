@@ -1,5 +1,9 @@
 # 📝 Changelog
 
+## [0.6.8] - 2026-09-01
+
+* ✨Feat: Add parser for json environment files
+
 ## [0.6.7] - 2026-09-01
 
 * 🧹Chore: Update dependencies in pyproject.toml and requirements.txt for improved compatibility.
