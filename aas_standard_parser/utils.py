@@ -12,7 +12,7 @@ from basyx.aas import model
 logger = logging.getLogger(__name__)
 
 
-def create_submodel_from_file(file_path: str) -> model.Submodel:
+def create_submodel_from_file(file_path: str) -> model.Submodel | None:
     """Loads a Submodel structure from a given JSON file and converts it into a model.Submodel object from the python SDK framework.
 
     :param file_path: Path to the JSON file containing the Submodel structure.

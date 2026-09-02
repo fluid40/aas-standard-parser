@@ -1,6 +1,6 @@
 # 📝 Changelog
 
-## [0.6.8] - 2026-09-01
+## [0.6.9] - 2026-09-02
 
 * ✨Feat: Add parser for json environment files
 
