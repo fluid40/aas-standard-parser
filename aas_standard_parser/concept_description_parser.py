@@ -15,17 +15,17 @@ def get_description_from_concept_description(concept_description: model.concept.
     :return: The description string if found, otherwise None.
     """
     if concept_description.description is None:
-        _logger.warning(f"No description found for concept description {concept_description.id_short}")
+        _logger.debug(f"No description found for concept description {concept_description.id_short}")
         return None
 
     keys = concept_description.description.keys()
 
     if keys is None or len(keys) == 0:
-        _logger.warning(f"No description keys found for concept description {concept_description.id_short}")
+        _logger.debug(f"No description keys found for concept description {concept_description.id_short}")
         return None
 
     if language not in keys:
-        _logger.warning(f"Description for language '{language}' not found in concept description {concept_description.id_short}")
+        _logger.debug(f"Description for language '{language}' not found in concept description {concept_description.id_short}")
         return None
 
     return concept_description.description.get(language)
@@ -39,17 +39,17 @@ def get_display_name_from_concept_description(concept_description: model.concept
     :return: The display name string if found, otherwise None.
     """
     if concept_description.display_name is None:
-        _logger.warning(f"No display name found for concept description {concept_description.id_short}")
+        _logger.debug(f"No display name found for concept description {concept_description.id_short}")
         return None
 
     keys = concept_description.display_name.keys()
 
     if keys is None or len(keys) == 0:
-        _logger.warning(f"No display name keys found for concept description {concept_description.id_short}")
+        _logger.debug(f"No display name keys found for concept description {concept_description.id_short}")
         return None
 
     if language not in keys:
-        _logger.warning(f"Display name for language '{language}' not found in concept description {concept_description.id_short}")
+        _logger.debug(f"Display name for language '{language}' not found in concept description {concept_description.id_short}")
         return None
 
     return concept_description.display_name.get(language)

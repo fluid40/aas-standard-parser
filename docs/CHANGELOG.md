@@ -1,6 +1,6 @@
 # 📝 Changelog
 
-## [0.7.2] - 2026-09-02
+## [0.7.3] - 2026-09-02
 
 * ✨Feat: Add Concept Description parser.
 

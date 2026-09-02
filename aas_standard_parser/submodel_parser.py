@@ -15,17 +15,17 @@ def get_description_from_submodel(submodel: model.Submodel, language: str = "en"
     :return: The description string if found, otherwise None.
     """
     if submodel.description is None:
-        logger.warning(f"No description found for submodel {submodel.id_short}")
+        logger.debug(f"No description found for submodel {submodel.id_short}")
         return None
 
     keys = submodel.description.keys()
 
     if keys is None or len(keys) == 0:
-        logger.warning(f"No description keys found for submodel {submodel.id_short}")
+        logger.debug(f"No description keys found for submodel {submodel.id_short}")
         return None
 
     if language not in keys:
-        logger.warning(f"Description for language '{language}' not found in submodel {submodel.id_short}")
+        logger.debug(f"Description for language '{language}' not found in submodel {submodel.id_short}")
         return None
 
     return submodel.description.get(language)
@@ -39,17 +39,17 @@ def get_display_name_from_submodel(submodel: model.Submodel, language: str = "en
     :return: The display name string if found, otherwise None.
     """
     if submodel.display_name is None:
-        logger.warning(f"No display name found for submodel {submodel.id_short}")
+        logger.debug(f"No display name found for submodel {submodel.id_short}")
         return None
 
     keys = submodel.display_name.keys()
 
     if keys is None or len(keys) == 0:
-        logger.warning(f"No display name keys found for submodel {submodel.id_short}")
+        logger.debug(f"No display name keys found for submodel {submodel.id_short}")
         return None
 
     if language not in keys:
-        logger.warning(f"Display name for language '{language}' not found in submodel {submodel.id_short}")
+        logger.debug(f"Display name for language '{language}' not found in submodel {submodel.id_short}")
         return None
 
     return submodel.display_name.get(language)

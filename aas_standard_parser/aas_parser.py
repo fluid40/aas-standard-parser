@@ -65,17 +65,17 @@ def get_description_from_shell(shell: model.AssetAdministrationShell, language: 
     :return: The description string if found, otherwise None.
     """
     if shell.description is None:
-        _logger.warning(f"No description found for shell {shell.id_short}")
+        _logger.debug(f"No description found for shell {shell.id_short}")
         return None
 
     keys = shell.description.keys()
 
     if keys is None or len(keys) == 0:
-        _logger.warning(f"No description keys found for shell {shell.id_short}")
+        _logger.debug(f"No description keys found for shell {shell.id_short}")
         return None
 
     if language not in keys:
-        _logger.warning(f"Description for language '{language}' not found in shell {shell.id_short}")
+        _logger.debug(f"Description for language '{language}' not found in shell {shell.id_short}")
         return None
 
     return shell.description.get(language)
@@ -89,17 +89,17 @@ def get_display_name_from_shell(shell: model.AssetAdministrationShell, language:
     :return: The display name string if found, otherwise None.
     """
     if shell.display_name is None:
-        _logger.warning(f"No display name found for shell {shell.id_short}")
+        _logger.debug(f"No display name found for shell {shell.id_short}")
         return None
 
     keys = shell.display_name.keys()
 
     if keys is None or len(keys) == 0:
-        _logger.warning(f"No display name keys found for shell {shell.id_short}")
+        _logger.debug(f"No display name keys found for shell {shell.id_short}")
         return None
 
     if language not in keys:
-        _logger.warning(f"Display name for language '{language}' not found in shell {shell.id_short}")
+        _logger.debug(f"Display name for language '{language}' not found in shell {shell.id_short}")
         return None
 
     return shell.display_name.get(language)
