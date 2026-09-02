@@ -2,6 +2,8 @@ var namespaceaas__standard__parser =
 [
     [ "aas_parser", "namespaceaas__standard__parser_1_1aas__parser.html", [
       [ "_parse_node", "namespaceaas__standard__parser_1_1aas__parser.html#a020990838d76334e5260b73114fb3de2", null ],
+      [ "get_description_from_shell", "namespaceaas__standard__parser_1_1aas__parser.html#ae1c4449f017dcc8bd18b74bd99ca5eca", null ],
+      [ "get_display_name_from_submodel", "namespaceaas__standard__parser_1_1aas__parser.html#a2ab6a1d484618ffe4414ba06a05fc26f", null ],
       [ "get_submodel_ids", "namespaceaas__standard__parser_1_1aas__parser.html#adfbca11f89d09c5c0fc18bf88e7dad45", null ],
       [ "parse_environment_file", "namespaceaas__standard__parser_1_1aas__parser.html#ac7163818842d182fdd9465c7559f6045", null ],
       [ "_logger", "namespaceaas__standard__parser_1_1aas__parser.html#a0d05bf6f72a5bb7dd62aa77db8d3d2e7", null ]
@@ -27,6 +29,11 @@ var namespaceaas__standard__parser =
       [ "find_by_semantic_id", "namespaceaas__standard__parser_1_1collection__helpers.html#ad3b59073df7d5828becb76c77000e1ba", null ],
       [ "find_by_supplemental_semantic_id", "namespaceaas__standard__parser_1_1collection__helpers.html#a0152772e591a6af320d0b5915fea7c94", null ]
     ] ],
+    [ "concept_description_parser", "namespaceaas__standard__parser_1_1concept__description__parser.html", [
+      [ "get_description_from_concept_description", "namespaceaas__standard__parser_1_1concept__description__parser.html#af8e73c078bb60df68739c9700383290f", null ],
+      [ "get_display_name_from_concept_description", "namespaceaas__standard__parser_1_1concept__description__parser.html#a678639c92675b890a4b9108d680c7599", null ],
+      [ "_logger", "namespaceaas__standard__parser_1_1concept__description__parser.html#af348de8c2adde9b690dd26c2001aa3fc", null ]
+    ] ],
     [ "descriptor_json_helper", "namespaceaas__standard__parser_1_1descriptor__json__helper.html", [
       [ "_parse_multi_lang", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#a288d16a8428760c0b6c7bde0a41e35eb", null ],
       [ "get_endpoint_by_index", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#a11e9196b0a3995a2693ec43e6b699789", null ],
@@ -50,7 +57,7 @@ var namespaceaas__standard__parser =
     [ "submodel_parser", "namespaceaas__standard__parser_1_1submodel__parser.html", [
       [ "get_description_from_submodel", "namespaceaas__standard__parser_1_1submodel__parser.html#af64a718963bf182203e0b274b58229b6", null ],
       [ "get_display_name_from_submodel", "namespaceaas__standard__parser_1_1submodel__parser.html#a807b0c1850b9214b56daa7c88d11f736", null ],
-      [ "get_semantic_id_value", "namespaceaas__standard__parser_1_1submodel__parser.html#adda721b73d99b2573d03229329ae42b1", null ],
+      [ "get_semantic_id_value_from_submodel", "namespaceaas__standard__parser_1_1submodel__parser.html#a8ebe406d6df29cb6334a6c850c382056", null ],
       [ "get_submodel_element_by_id_short_path", "namespaceaas__standard__parser_1_1submodel__parser.html#a6b6057d36b18e8871d8dacc178efb886", null ],
       [ "logger", "namespaceaas__standard__parser_1_1submodel__parser.html#aa02fb7d1da7ded0971b13e51d610c4ef", null ]
     ] ],

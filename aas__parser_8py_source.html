@@ -159,21 +159,75 @@ $(document).ready(function(){initNavTree('aas__parser_8py_source.html',''); init
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordflow">return</span> env_content</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">def </span><a class="code hl_function" href="namespaceaas__standard__parser_1_1aas__parser.html#a020990838d76334e5260b73114fb3de2">_parse_node</a>(node: str, json_content: dict) -&gt; list[dict]:</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordflow">if</span> <span class="keywordflow">not</span> json_content <span class="keywordflow">or</span> <span class="keywordflow">not</span> isinstance(json_content, dict) <span class="keywordflow">or</span> node <span class="keywordflow">not</span> <span class="keywordflow">in</span> json_content:</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordflow">return</span> []</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">def </span><a class="code hl_function" href="namespaceaas__standard__parser_1_1aas__parser.html#ae1c4449f017dcc8bd18b74bd99ca5eca">get_description_from_shell</a>(shell: model.AssetAdministrationShell, language: str = <span class="stringliteral">&quot;en&quot;</span>) -&gt; str | <span class="keywordtype">None</span>:</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="stringliteral">&quot;&quot;&quot;Get the description from an Asset Administration Shell.</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="stringliteral"></span> </div>
 </div>
-<div class="foldopen" id="foldopen00063" data-start="" data-end="">
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="namespaceaas__standard__parser_1_1aas__parser.html#a020990838d76334e5260b73114fb3de2">   63</a></span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    content_list = json_content[node]</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordflow">if</span> <span class="keywordflow">not</span> content_list <span class="keywordflow">or</span> <span class="keywordflow">not</span> isinstance(content_list, list):</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordflow">return</span> []</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordflow">return</span> content_list</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="stringliteral">    :param shell: The Asset Administration Shell to extract the description from.</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="stringliteral">    :param language: The language code for the description.</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="stringliteral">    :return: The description string if found, otherwise None.</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordflow">if</span> shell.description <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        _logger.warning(f<span class="stringliteral">&quot;No description found for shell {shell.id_short}&quot;</span>)</div>
+<div class="foldopen" id="foldopen00069" data-start="" data-end="">
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="namespaceaas__standard__parser_1_1aas__parser.html#ae1c4449f017dcc8bd18b74bd99ca5eca">   69</a></span>        <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    keys = shell.description.keys()</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordflow">if</span> keys <span class="keywordflow">is</span> <span class="keywordtype">None</span> <span class="keywordflow">or</span> len(keys) == 0:</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        _logger.warning(f<span class="stringliteral">&quot;No description keys found for shell {shell.id_short}&quot;</span>)</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="keywordflow">if</span> language <span class="keywordflow">not</span> <span class="keywordflow">in</span> keys:</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        _logger.warning(f<span class="stringliteral">&quot;Description for language &#39;{language}&#39; not found in shell {shell.id_short}&quot;</span>)</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordflow">return</span> shell.description.get(language)</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="keyword">def </span><a class="code hl_function" href="namespaceaas__standard__parser_1_1aas__parser.html#a2ab6a1d484618ffe4414ba06a05fc26f">get_display_name_from_submodel</a>(shell: model.AssetAdministrationShell, language: str = <span class="stringliteral">&quot;en&quot;</span>) -&gt; str | <span class="keywordtype">None</span>:</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="stringliteral">&quot;&quot;&quot;Get the display name from an Asset Administration Shell.</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="stringliteral"></span> </div>
 </div>
-<div class="ttc" id="anamespaceaas__standard__parser_1_1aas__parser_html_a020990838d76334e5260b73114fb3de2"><div class="ttname"><a href="namespaceaas__standard__parser_1_1aas__parser.html#a020990838d76334e5260b73114fb3de2">aas_standard_parser.aas_parser._parse_node</a></div><div class="ttdeci">list[dict] _parse_node(str node, dict json_content)</div><div class="ttdef"><b>Definition</b> <a href="aas__parser_8py_source.html#l00063">aas_parser.py:63</a></div></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="stringliteral">    :param shell: The Asset Administration Shell to extract the display name from.</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="stringliteral">    :param language: The language code for the display name.</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="stringliteral">    :return: The display name string if found, otherwise None.</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keywordflow">if</span> shell.display_name <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        _logger.warning(f<span class="stringliteral">&quot;No display name found for shell {shell.id_short}&quot;</span>)</div>
+<div class="foldopen" id="foldopen00093" data-start="" data-end="">
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="namespaceaas__standard__parser_1_1aas__parser.html#a2ab6a1d484618ffe4414ba06a05fc26f">   93</a></span>        <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    keys = shell.display_name.keys()</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordflow">if</span> keys <span class="keywordflow">is</span> <span class="keywordtype">None</span> <span class="keywordflow">or</span> len(keys) == 0:</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        _logger.warning(f<span class="stringliteral">&quot;No display name keys found for shell {shell.id_short}&quot;</span>)</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordflow">if</span> language <span class="keywordflow">not</span> <span class="keywordflow">in</span> keys:</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        _logger.warning(f<span class="stringliteral">&quot;Display name for language &#39;{language}&#39; not found in shell {shell.id_short}&quot;</span>)</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordflow">return</span> shell.display_name.get(language)</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="keyword">def </span><a class="code hl_function" href="namespaceaas__standard__parser_1_1aas__parser.html#a020990838d76334e5260b73114fb3de2">_parse_node</a>(node: str, json_content: dict) -&gt; list[dict]:</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordflow">if</span> <span class="keywordflow">not</span> json_content <span class="keywordflow">or</span> <span class="keywordflow">not</span> isinstance(json_content, dict) <span class="keywordflow">or</span> node <span class="keywordflow">not</span> <span class="keywordflow">in</span> json_content:</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <span class="keywordflow">return</span> []</div>
+</div>
+<div class="foldopen" id="foldopen00111" data-start="" data-end="">
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="namespaceaas__standard__parser_1_1aas__parser.html#a020990838d76334e5260b73114fb3de2">  111</a></span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    content_list = json_content[node]</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keywordflow">if</span> <span class="keywordflow">not</span> content_list <span class="keywordflow">or</span> <span class="keywordflow">not</span> isinstance(content_list, list):</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        <span class="keywordflow">return</span> []</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="keywordflow">return</span> content_list</div>
+</div>
+<div class="ttc" id="anamespaceaas__standard__parser_1_1aas__parser_html_a020990838d76334e5260b73114fb3de2"><div class="ttname"><a href="namespaceaas__standard__parser_1_1aas__parser.html#a020990838d76334e5260b73114fb3de2">aas_standard_parser.aas_parser._parse_node</a></div><div class="ttdeci">list[dict] _parse_node(str node, dict json_content)</div><div class="ttdef"><b>Definition</b> <a href="aas__parser_8py_source.html#l00111">aas_parser.py:111</a></div></div>
+<div class="ttc" id="anamespaceaas__standard__parser_1_1aas__parser_html_a2ab6a1d484618ffe4414ba06a05fc26f"><div class="ttname"><a href="namespaceaas__standard__parser_1_1aas__parser.html#a2ab6a1d484618ffe4414ba06a05fc26f">aas_standard_parser.aas_parser.get_display_name_from_submodel</a></div><div class="ttdeci">str|None get_display_name_from_submodel(model.AssetAdministrationShell shell, str language=&quot;en&quot;)</div><div class="ttdoc">Get the display name from an Asset Administration Shell.</div><div class="ttdef"><b>Definition</b> <a href="aas__parser_8py_source.html#l00093">aas_parser.py:93</a></div></div>
 <div class="ttc" id="anamespaceaas__standard__parser_1_1aas__parser_html_adfbca11f89d09c5c0fc18bf88e7dad45"><div class="ttname"><a href="namespaceaas__standard__parser_1_1aas__parser.html#adfbca11f89d09c5c0fc18bf88e7dad45">aas_standard_parser.aas_parser.get_submodel_ids</a></div><div class="ttdeci">list[str] get_submodel_ids(model.AssetAdministrationShell shell)</div><div class="ttdoc">Get all IDs from the submodels referenced in the given AAS.</div><div class="ttdef"><b>Definition</b> <a href="aas__parser_8py_source.html#l00022">aas_parser.py:22</a></div></div>
+<div class="ttc" id="anamespaceaas__standard__parser_1_1aas__parser_html_ae1c4449f017dcc8bd18b74bd99ca5eca"><div class="ttname"><a href="namespaceaas__standard__parser_1_1aas__parser.html#ae1c4449f017dcc8bd18b74bd99ca5eca">aas_standard_parser.aas_parser.get_description_from_shell</a></div><div class="ttdeci">str|None get_description_from_shell(model.AssetAdministrationShell shell, str language=&quot;en&quot;)</div><div class="ttdoc">Get the description from an Asset Administration Shell.</div><div class="ttdef"><b>Definition</b> <a href="aas__parser_8py_source.html#l00069">aas_parser.py:69</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
