@@ -1,12 +1,8 @@
 """Module for parsing AAS."""
 
-import json
 import logging
-from pathlib import Path
 
 from basyx.aas import model
-
-from aas_standard_parser.classes.env_parser_classes import EnvironmentData
 
 _logger = logging.getLogger(__name__)
 

@@ -81,7 +81,7 @@ def get_description_from_shell(shell: model.AssetAdministrationShell, language: 
     return shell.description.get(language)
 
 
-def get_display_name_from_submodel(shell: model.AssetAdministrationShell, language: str = "en") -> str | None:
+def get_display_name_from_shell(shell: model.AssetAdministrationShell, language: str = "en") -> str | None:
     """Get the display name from an Asset Administration Shell.
 
     :param shell: The Asset Administration Shell to extract the display name from.
