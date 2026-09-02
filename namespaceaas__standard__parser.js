@@ -3,7 +3,7 @@ var namespaceaas__standard__parser =
     [ "aas_parser", "namespaceaas__standard__parser_1_1aas__parser.html", [
       [ "_parse_node", "namespaceaas__standard__parser_1_1aas__parser.html#a020990838d76334e5260b73114fb3de2", null ],
       [ "get_description_from_shell", "namespaceaas__standard__parser_1_1aas__parser.html#ae1c4449f017dcc8bd18b74bd99ca5eca", null ],
-      [ "get_display_name_from_submodel", "namespaceaas__standard__parser_1_1aas__parser.html#a2ab6a1d484618ffe4414ba06a05fc26f", null ],
+      [ "get_display_name_from_shell", "namespaceaas__standard__parser_1_1aas__parser.html#a7d0b1ec84ba5a8895dba9ab8ced82cf3", null ],
       [ "get_submodel_ids", "namespaceaas__standard__parser_1_1aas__parser.html#adfbca11f89d09c5c0fc18bf88e7dad45", null ],
       [ "parse_environment_file", "namespaceaas__standard__parser_1_1aas__parser.html#ac7163818842d182fdd9465c7559f6045", null ],
       [ "_logger", "namespaceaas__standard__parser_1_1aas__parser.html#a0d05bf6f72a5bb7dd62aa77db8d3d2e7", null ]
