@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['8_202026_2009_2001_0',['[0.6.8] - 2026-09-01',['../md_docs_2CHANGELOG.html#autotoc_md1',1,'']]]
+  ['9_202026_2009_2002_0',['[0.6.9] - 2026-09-02',['../md_docs_2CHANGELOG.html#autotoc_md1',1,'']]]
 ];
