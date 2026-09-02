@@ -108,19 +108,19 @@ $(document).ready(function(){initNavTree('utils_8py_source.html',''); initResiza
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">import</span> basyx.aas.adapter.json</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">from</span> basyx.aas <span class="keyword">import</span> model</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="namespaceaas__standard__parser_1_1utils.html#a37e958fbdd6a418a934ada0b6d32f73c">   12</a></span>logger = logging.getLogger(__name__)</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>_logger = logging.getLogger(__name__)</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">def </span>create_submodel_from_file(file_path: str) -&gt; model.Submodel | <span class="keywordtype">None</span>:</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="namespaceaas__standard__parser_1_1utils.html#ae68ba5e2941c56cf0a34ac68335d2ab7">   15</a></span><span class="keyword">def </span>create_submodel_from_file(file_path: str) -&gt; model.Submodel | <span class="keywordtype">None</span>:</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="stringliteral">&quot;&quot;&quot;Loads a Submodel structure from a given JSON file and converts it into a model.Submodel object from the python SDK framework.</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="stringliteral"></span> </div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="stringliteral">    :param file_path: Path to the JSON file containing the Submodel structure.</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="stringliteral">    :return: A model.Submodel object representing the loaded Submodel structure.</span></div>
-<div class="foldopen" id="foldopen00020" data-start="" data-end="">
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="namespaceaas__standard__parser_1_1utils.html#a05ea165d5c4f78680559a648d5f19daf">   20</a></span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    file = Path(file_path)</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordflow">if</span> <span class="keywordflow">not</span> file.exists():</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keywordflow">raise</span> FileNotFoundError(f<span class="stringliteral">&quot;Submodel structure file not found: {file}&quot;</span>)</div>
+<div class="foldopen" id="foldopen00023" data-start="" data-end="">
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="namespaceaas__standard__parser_1_1utils.html#a05ea165d5c4f78680559a648d5f19daf">   23</a></span>        <span class="keywordflow">raise</span> FileNotFoundError(f<span class="stringliteral">&quot;Submodel structure file not found: {file}&quot;</span>)</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    template_data = {}</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
@@ -129,58 +129,78 @@ $(document).ready(function(){initNavTree('utils_8py_source.html',''); initResiza
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        template_data = json.load(f)</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="comment"># Load the template JSON into a Submodel object</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceaas__standard__parser_1_1utils.html#a1caceb8ef5cda419ab984924d516d5ce">_convert_to_object</a>(template_data)</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceaas__standard__parser_1_1utils.html#a5711d36266834d12de342680a7ef4991">convert_to_object</a>(template_data)</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">def </span><a class="code hl_function" href="namespaceaas__standard__parser_1_1utils.html#a1caceb8ef5cda419ab984924d516d5ce">_convert_to_object</a>(content: dict) -&gt; Any | <span class="keywordtype">None</span>:</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">def </span><a class="code hl_function" href="namespaceaas__standard__parser_1_1utils.html#a5711d36266834d12de342680a7ef4991">convert_to_object</a>(content: dict) -&gt; Any | <span class="keywordtype">None</span>:</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="stringliteral">&quot;&quot;&quot;Convert a dictionary to a BaSyx SDK framework object.</span></div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="stringliteral"></span> </div>
+</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="stringliteral">    :param content: dictionary to convert</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="stringliteral">    :return: BaSyx SDK framework object or None</span></div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordflow">if</span> <span class="keywordflow">not</span> content <span class="keywordflow">or</span> len(content) == 0:</div>
-<div class="foldopen" id="foldopen00042" data-start="" data-end="">
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="namespaceaas__standard__parser_1_1utils.html#a1caceb8ef5cda419ab984924d516d5ce">   42</a></span>        logger.debug(<span class="stringliteral">&quot;Empty content provided for conversion to object.&quot;</span>)</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        _logger.debug(<span class="stringliteral">&quot;Empty content provided for conversion to object.&quot;</span>)</div>
+<div class="foldopen" id="foldopen00043" data-start="" data-end="">
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="namespaceaas__standard__parser_1_1utils.html#a5711d36266834d12de342680a7ef4991">   43</a></span>        <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordflow">try</span>:</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        dict_string = json.dumps(content)</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keywordflow">return</span> json.loads(dict_string, cls=basyx.aas.adapter.json.json_deserialization.AASFromJsonDecoder)</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordflow">except</span> Exception <span class="keyword">as</span> e:</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        logger.error(f<span class="stringliteral">&quot;Decoding error: {e}&quot;</span>)</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        logger.error(f<span class="stringliteral">&quot;In JSON: {content}&quot;</span>)</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        _logger.error(f<span class="stringliteral">&quot;Decoding error: {e}&quot;</span>)</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        _logger.error(f<span class="stringliteral">&quot;In JSON: {content}&quot;</span>)</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">def </span>decode_base_64(text: str) -&gt; str:</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="stringliteral">&quot;&quot;&quot;Decode a Base64 encoded string.</span></div>
-</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">def </span><a class="code hl_function" href="namespaceaas__standard__parser_1_1utils.html#a22de8dfed3685ecdf2829b85181c7983">convert_to_dict</a>(object: Any) -&gt; dict | <span class="keywordtype">None</span>:</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="stringliteral">&quot;&quot;&quot;Convert a BaSyx SDK framework object. to a dictionary.</span></div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="stringliteral">    :param text: Base64 encoded string to decode</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="stringliteral">    :return:  Decoded string</span></div>
+</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="stringliteral">    :param object: BaSyx SDK framework object to convert</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="stringliteral">    :return: dictionary representation of the object or None</span></div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    missing_padding = len(text) % 4</div>
-<div class="foldopen" id="foldopen00061" data-start="" data-end="">
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="namespaceaas__standard__parser_1_1utils.html#a1a1919b73ec3483260e1b184fad334c7">   61</a></span>    <span class="keywordflow">if</span> missing_padding:</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        text += <span class="stringliteral">&quot;=&quot;</span> * (4 - missing_padding)</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">if</span> <span class="keywordflow">not</span> object:</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        _logger.debug(<span class="stringliteral">&quot;Empty object provided for conversion to dictionary.&quot;</span>)</div>
+<div class="foldopen" id="foldopen00062" data-start="" data-end="">
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="namespaceaas__standard__parser_1_1utils.html#a22de8dfed3685ecdf2829b85181c7983">   62</a></span>        <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    decoded = base64.urlsafe_b64decode(text)</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordflow">return</span> decoded.decode(<span class="stringliteral">&quot;utf-8&quot;</span>)</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="keyword">def </span>encode_base_64(text: str) -&gt; str:</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="stringliteral">&quot;&quot;&quot;Encode a string to Base64.</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordflow">try</span>:</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        data_string = json.dumps(object, cls=basyx.aas.adapter.json.AASToJsonEncoder)</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keywordflow">return</span> json.loads(data_string)</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordflow">except</span> Exception <span class="keyword">as</span> e:</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        _logger.error(f<span class="stringliteral">&quot;Encoding error: {e}&quot;</span>)</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        _logger.error(f<span class="stringliteral">&quot;In object: {object}&quot;</span>)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="keyword">def </span>decode_base_64(text: str) -&gt; str:</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="stringliteral">&quot;&quot;&quot;Decode a Base64 encoded string.</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="stringliteral"></span> </div>
 </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="stringliteral">    :param text: String to encode</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="stringliteral">    :return: Base64 encoded string</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    encoded_bytes = base64.urlsafe_b64encode(text.encode(<span class="stringliteral">&quot;utf-8&quot;</span>)).rstrip(b<span class="stringliteral">&quot;=&quot;</span>)</div>
-<div class="foldopen" id="foldopen00075" data-start="" data-end="">
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="namespaceaas__standard__parser_1_1utils.html#aefe3f82a6af114dbea3f171fadb33cb8">   75</a></span>    <span class="keywordflow">return</span> encoded_bytes.decode(<span class="stringliteral">&quot;utf-8&quot;</span>)</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="stringliteral">    :param text: Base64 encoded string to decode</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="stringliteral">    :return:  Decoded string</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    missing_padding = len(text) % 4</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordflow">if</span> missing_padding:</div>
+<div class="foldopen" id="foldopen00081" data-start="" data-end="">
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="namespaceaas__standard__parser_1_1utils.html#a1a1919b73ec3483260e1b184fad334c7">   81</a></span>        text += <span class="stringliteral">&quot;=&quot;</span> * (4 - missing_padding)</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    decoded = base64.urlsafe_b64decode(text)</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordflow">return</span> decoded.decode(<span class="stringliteral">&quot;utf-8&quot;</span>)</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="keyword">def </span>encode_base_64(text: str) -&gt; str:</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="stringliteral">&quot;&quot;&quot;Encode a string to Base64.</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="stringliteral"></span> </div>
 </div>
-<div class="ttc" id="anamespaceaas__standard__parser_1_1utils_html_a1caceb8ef5cda419ab984924d516d5ce"><div class="ttname"><a href="namespaceaas__standard__parser_1_1utils.html#a1caceb8ef5cda419ab984924d516d5ce">aas_standard_parser.utils._convert_to_object</a></div><div class="ttdeci">Any|None _convert_to_object(dict content)</div><div class="ttdoc">Convert a dictionary to a BaSyx SDK framework object.</div><div class="ttdef"><b>Definition</b> <a href="utils_8py_source.html#l00042">utils.py:42</a></div></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="stringliteral">    :param text: String to encode</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="stringliteral">    :return: Base64 encoded string</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    encoded_bytes = base64.urlsafe_b64encode(text.encode(<span class="stringliteral">&quot;utf-8&quot;</span>)).rstrip(b<span class="stringliteral">&quot;=&quot;</span>)</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keywordflow">return</span> encoded_bytes.decode(<span class="stringliteral">&quot;utf-8&quot;</span>)</div>
+<div class="ttc" id="anamespaceaas__standard__parser_1_1utils_html_a22de8dfed3685ecdf2829b85181c7983"><div class="ttname"><a href="namespaceaas__standard__parser_1_1utils.html#a22de8dfed3685ecdf2829b85181c7983">aas_standard_parser.utils.convert_to_dict</a></div><div class="ttdeci">dict|None convert_to_dict(Any object)</div><div class="ttdoc">Convert a BaSyx SDK framework object.</div><div class="ttdef"><b>Definition</b> <a href="utils_8py_source.html#l00062">utils.py:62</a></div></div>
+<div class="ttc" id="anamespaceaas__standard__parser_1_1utils_html_a5711d36266834d12de342680a7ef4991"><div class="ttname"><a href="namespaceaas__standard__parser_1_1utils.html#a5711d36266834d12de342680a7ef4991">aas_standard_parser.utils.convert_to_object</a></div><div class="ttdeci">Any|None convert_to_object(dict content)</div><div class="ttdoc">Convert a dictionary to a BaSyx SDK framework object.</div><div class="ttdef"><b>Definition</b> <a href="utils_8py_source.html#l00043">utils.py:43</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

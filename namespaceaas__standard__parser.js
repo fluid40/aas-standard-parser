@@ -55,11 +55,12 @@ var namespaceaas__standard__parser =
       [ "logger", "namespaceaas__standard__parser_1_1submodel__parser.html#aa02fb7d1da7ded0971b13e51d610c4ef", null ]
     ] ],
     [ "utils", "namespaceaas__standard__parser_1_1utils.html", [
-      [ "_convert_to_object", "namespaceaas__standard__parser_1_1utils.html#a1caceb8ef5cda419ab984924d516d5ce", null ],
+      [ "convert_to_dict", "namespaceaas__standard__parser_1_1utils.html#a22de8dfed3685ecdf2829b85181c7983", null ],
+      [ "convert_to_object", "namespaceaas__standard__parser_1_1utils.html#a5711d36266834d12de342680a7ef4991", null ],
       [ "create_submodel_from_file", "namespaceaas__standard__parser_1_1utils.html#a05ea165d5c4f78680559a648d5f19daf", null ],
       [ "decode_base_64", "namespaceaas__standard__parser_1_1utils.html#a1a1919b73ec3483260e1b184fad334c7", null ],
       [ "encode_base_64", "namespaceaas__standard__parser_1_1utils.html#aefe3f82a6af114dbea3f171fadb33cb8", null ],
-      [ "logger", "namespaceaas__standard__parser_1_1utils.html#a37e958fbdd6a418a934ada0b6d32f73c", null ]
+      [ "_logger", "namespaceaas__standard__parser_1_1utils.html#ae68ba5e2941c56cf0a34ac68335d2ab7", null ]
     ] ],
     [ "version_check", "namespaceaas__standard__parser_1_1version__check.html", [
       [ "check_for_update", "namespaceaas__standard__parser_1_1version__check.html#a7250237daee8fd66ed892a879d8bb114", null ],
