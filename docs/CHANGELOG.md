@@ -1,5 +1,9 @@
 # 📝 Changelog
 
+## [0.6.12] - 2026-09-02
+
+* ✨Feat: Add Concept Description parser.
+
 ## [0.6.11] - 2026-09-02
 
 * ✨Feat: Add convert BaSyx object to dict function.

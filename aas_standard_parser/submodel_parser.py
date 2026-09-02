@@ -109,7 +109,7 @@ def get_submodel_element_by_id_short_path(submodel: model.Submodel, id_short_pat
     return submodel_element
 
 
-def get_semantic_id_value(submodel: model.Submodel, index: int = 0) -> str | None:
+def get_semantic_id_value_from_submodel(submodel: model.Submodel, index: int = 0) -> str | None:
     """Get the semantic ID from a submodel.
 
     :param submodel: The submodel to extract the semantic ID from.
