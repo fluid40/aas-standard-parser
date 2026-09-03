@@ -4,55 +4,43 @@ import logging
 
 from basyx.aas import model
 
-logger = logging.getLogger(__name__)
+from aas_standard_parser import aas_parser
+
+_logger = logging.getLogger(__name__)
 
 
-def get_description_from_submodel(submodel: model.Submodel, language: str = "en") -> str | None:
-    """Get the description from a submodel.
+def get_description_from_submodel(submodel: model.Submodel, preferred_languages: list[str] | None = None) -> str | None:
+    """Get the description from a Submodel.
 
-    :param submodel: The submodel to extract the description from.
-    :param language: The language code for the description.
+    :param submodel: The Submodel to extract the description from.
+    :param preferred_languages: A list of preferred languages to extract the description from, in order of preference. Defaults to ["en", "de"].
     :return: The description string if found, otherwise None.
     """
+    if preferred_languages is None:
+        preferred_languages = ["en", "de"]
+
     if submodel.description is None:
-        logger.debug(f"No description found for submodel {submodel.id_short}")
+        _logger.debug(f"No description found for concept description '{submodel.id_short}'")
         return None
 
-    keys = submodel.description.keys()
-
-    if keys is None or len(keys) == 0:
-        logger.debug(f"No description keys found for submodel {submodel.id_short}")
-        return None
-
-    if language not in keys:
-        logger.debug(f"Description for language '{language}' not found in submodel {submodel.id_short}")
-        return None
-
-    return submodel.description.get(language)
+    return aas_parser.extract_multi_language_object(submodel.description, preferred_languages=preferred_languages)
 
 
-def get_display_name_from_submodel(submodel: model.Submodel, language: str = "en") -> str | None:
-    """Get the display name from a submodel.
+def get_display_name_from_submodel(submodel: model.Submodel, preferred_languages: list[str] | None = None) -> str | None:
+    """Get the display name from a Submodel.
 
-    :param submodel: The submodel to extract the display name from.
-    :param language: The language code for the display name.
+    :param submodel: The Submodel to extract the display name from.
+    :param preferred_languages: A list of preferred languages to extract the display name from, in order of preference. Defaults to ["en", "de"].
     :return: The display name string if found, otherwise None.
     """
+    if preferred_languages is None:
+        preferred_languages = ["en", "de"]
+
     if submodel.display_name is None:
-        logger.debug(f"No display name found for submodel {submodel.id_short}")
+        _logger.debug(f"No display name found for submodel '{submodel.id_short}'")
         return None
 
-    keys = submodel.display_name.keys()
-
-    if keys is None or len(keys) == 0:
-        logger.debug(f"No display name keys found for submodel {submodel.id_short}")
-        return None
-
-    if language not in keys:
-        logger.debug(f"Display name for language '{language}' not found in submodel {submodel.id_short}")
-        return None
-
-    return submodel.display_name.get(language)
+    return aas_parser.extract_multi_language_object(submodel.display_name, preferred_languages=preferred_languages)
 
 
 def get_submodel_element_by_id_short_path(submodel: model.Submodel, id_short_path: str) -> model.SubmodelElement:
@@ -77,12 +65,12 @@ def get_submodel_element_by_id_short_path(submodel: model.Submodel, id_short_pat
             submodel_element = next((el for el in current_elements if el.id_short == base), None)
 
             if not submodel_element or not (isinstance(submodel_element, (model.SubmodelElementList, model.SubmodelElementCollection))):
-                logger.debug(f"Submodel element '{base}' not found or is not a collection/list in current {current_elements}.")
+                _logger.debug(f"Submodel element '{base}' not found or is not a collection/list in current {current_elements}.")
                 return None
 
             # Check if index is within range
             if idx >= len(submodel_element.value):
-                logger.debug(f"Index '{idx}' out of range for element '{base}' with length {len(submodel_element.value)}.")
+                _logger.debug(f"Index '{idx}' out of range for element '{base}' with length {len(submodel_element.value)}.")
                 return None
 
             # get the element by its index from SubmodelElementList
@@ -93,7 +81,7 @@ def get_submodel_element_by_id_short_path(submodel: model.Submodel, id_short_pat
             submodel_element = next((el for el in current_elements if el.id_short == part), None)
 
         if not submodel_element:
-            logger.debug(f"Submodel element '{part}' not found in current {current_elements}.")
+            _logger.debug(f"Submodel element '{part}' not found in current {current_elements}.")
             return None
 
         # If we've reached the last part, return the found element
@@ -117,7 +105,7 @@ def get_semantic_id_value_from_submodel(submodel: model.Submodel, index: int = 0
     :return: The semantic ID string if found, otherwise None.
     """
     if submodel.semantic_id is None or index >= len(submodel.semantic_id.key):
-        logger.warning(f"No semantic ID found for submodel {submodel.id_short}")
+        _logger.warning(f"No semantic ID found for submodel '{submodel.id_short}'")
         return None
 
     return submodel.semantic_id.key[index].value

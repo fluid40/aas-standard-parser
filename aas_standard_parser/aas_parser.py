@@ -1,31 +1,67 @@
-"""Module for parsing AAS."""
+"""Module for parsing AAS in general."""
 
 import json
 import logging
 from pathlib import Path
-
-from basyx.aas import model
+from typing import Any
 
 from aas_standard_parser.classes.env_parser_classes import EnvironmentData
 
 _logger = logging.getLogger(__name__)
 
 
-def get_submodel_ids(shell: model.AssetAdministrationShell) -> list[str]:
-    """Get all IDs from the submodels referenced in the given AAS.
+def extract_multi_language_dict(multi_language_dict: dict, preferred_languages: list[str] | None = None) -> str | None:
+    """Extract a readable text from BaSyx multilingual text/name containers.
 
-    :param shell: The Asset Administration Shell to extract submodel IDs from.
-    :return: A list of submodel IDs referenced in the AAS.
+    :param multi_language_dict: A dictionary containing multilingual text with language codes as keys.
+    :param preferred_languages: A list of preferred languages to extract the text from, in order of preference. Defaults to ["en", "de"].
+    :return: The extracted text in the preferred language, or the first available text if none of the preferred languages are found, or None if no text is available.
     """
-    submodel_ids = []
-    for submodel in shell.submodel:
-        if len(submodel.key) < 1 or submodel.key[0].type != model.KeyTypes.SUBMODEL:
-            _logger.warning(f"Submodel reference {submodel} does not start with SUBMODEL key type.")
-            continue
+    if preferred_languages is None:
+        preferred_languages = ["en", "de"]
 
-        submodel_ids.append(submodel.key[0].value)
+    if multi_language_dict is None:
+        return None
 
-    return submodel_ids
+    for language in preferred_languages:
+        try:
+            text = multi_language_dict.get(language)
+        except AttributeError:
+            text = None
+        if text:
+            return str(text)
+
+    try:
+        first_value = next(iter(multi_language_dict.values()))
+    except (AttributeError, StopIteration):
+        first_value = None
+
+    return str(first_value) if first_value else None
+
+
+def extract_multi_language_object(multi_language_object: Any, preferred_languages: list[str] | None = None) -> str | None:
+    """Extract a readable text from BaSyx multilingual text/name containers.
+
+    :param multi_language_dict: A dictionary containing multilingual text with language codes as keys.
+    :param preferred_languages: A list of preferred languages to extract the text from, in order of preference. Defaults to ["en", "de"].
+    :return: The extracted text in the preferred language, or the first available text if none of the preferred languages are found, or None if no text is available.
+    """
+    if preferred_languages is None:
+        preferred_languages = ["en", "de"]
+
+    if multi_language_object is None:
+        return None
+
+    keys = multi_language_object.keys()
+
+    if not keys or len(keys) == 0:
+        return None
+
+    for language in preferred_languages:
+        if language in keys:
+            return str(multi_language_object.get(language))
+
+    return str(multi_language_object.get(next(iter(keys)))) if keys else None
 
 
 def parse_environment_file(file_path: str) -> EnvironmentData | None:
@@ -55,54 +91,6 @@ def parse_environment_file(file_path: str) -> EnvironmentData | None:
     env_content.shells = _parse_node("assetAdministrationShells", json_content)
 
     return env_content
-
-
-def get_description_from_shell(shell: model.AssetAdministrationShell, language: str = "en") -> str | None:
-    """Get the description from an Asset Administration Shell.
-
-    :param shell: The Asset Administration Shell to extract the description from.
-    :param language: The language code for the description.
-    :return: The description string if found, otherwise None.
-    """
-    if shell.description is None:
-        _logger.debug(f"No description found for shell {shell.id_short}")
-        return None
-
-    keys = shell.description.keys()
-
-    if keys is None or len(keys) == 0:
-        _logger.debug(f"No description keys found for shell {shell.id_short}")
-        return None
-
-    if language not in keys:
-        _logger.debug(f"Description for language '{language}' not found in shell {shell.id_short}")
-        return None
-
-    return shell.description.get(language)
-
-
-def get_display_name_from_shell(shell: model.AssetAdministrationShell, language: str = "en") -> str | None:
-    """Get the display name from an Asset Administration Shell.
-
-    :param shell: The Asset Administration Shell to extract the display name from.
-    :param language: The language code for the display name.
-    :return: The display name string if found, otherwise None.
-    """
-    if shell.display_name is None:
-        _logger.debug(f"No display name found for shell {shell.id_short}")
-        return None
-
-    keys = shell.display_name.keys()
-
-    if keys is None or len(keys) == 0:
-        _logger.debug(f"No display name keys found for shell {shell.id_short}")
-        return None
-
-    if language not in keys:
-        _logger.debug(f"Display name for language '{language}' not found in shell {shell.id_short}")
-        return None
-
-    return shell.display_name.get(language)
 
 
 def _parse_node(node: str, json_content: dict) -> list[dict]:

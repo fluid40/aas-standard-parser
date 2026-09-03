@@ -1,9 +1,7 @@
-from typing import List
-
 from basyx.aas.model import ExternalReference, Key, KeyTypes, NamespaceSet, Reference, SubmodelElement
 
 
-def find_all_by_semantic_id(parent: NamespaceSet[SubmodelElement], semantic_id_value: str) -> List[SubmodelElement]:
+def find_all_by_semantic_id(parent: NamespaceSet[SubmodelElement], semantic_id_value: str) -> list[SubmodelElement]:
     """Find all SubmodelElements having a specific Semantic ID.
 
     :param parent: The NamespaceSet to search within.

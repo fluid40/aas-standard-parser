@@ -1,5 +1,11 @@
 # 📝 Changelog
 
+## [0.7.4] - 2026-09-03
+
+* 🧹Chore: Split shell parser and AAS parser for general parsing.
+* ✨Feat: Add function to extract texts from multi language properties
+* 🚀Improvement: Improve function to get display name and description to get next available language if preferred language is not available.
+
 ## [0.7.3] - 2026-09-02
 
 * ✨Feat: Add Concept Description parser.

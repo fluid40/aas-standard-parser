@@ -9,7 +9,12 @@ from aas_standard_parser.utils import create_submodel_from_file
 @pytest.fixture(scope="module")
 def aimc_submodel() -> model.Submodel:
     # create a Submodel
-    return create_submodel_from_file("tests/test_data/aimc_submodel.json")
+    submodel = create_submodel_from_file("tests/test_data/aimc_submodel.json")
+
+    if not submodel:
+        raise ValueError("Failed to create Submodel from file 'tests/test_data/aimc_submodel.json'")
+
+    return submodel
 
 def test_001a_get_description_from_submodel(aimc_submodel: model.Submodel):
     description = submodel_parser.get_description_from_submodel(aimc_submodel)
@@ -18,9 +23,10 @@ def test_001a_get_description_from_submodel(aimc_submodel: model.Submodel):
     assert description == 'This Submodel specifies an information model for describing the mapping of interface(s) of an asset service or asset-related service already described in an Asset Interfaces Description (AID) Submodel.'
 
 def test_001b_get_description_from_submodel(aimc_submodel: model.Submodel):
-    description = submodel_parser.get_description_from_submodel(aimc_submodel, "de")
+    description = submodel_parser.get_description_from_submodel(aimc_submodel, ["de"])
 
-    assert description is None
+    assert description is not None
+    assert description == 'This Submodel specifies an information model for describing the mapping of interface(s) of an asset service or asset-related service already described in an Asset Interfaces Description (AID) Submodel.'
 
 def test_002a_get_display_name_from_submodel(aimc_submodel: model.Submodel):
     display_name = submodel_parser.get_display_name_from_submodel(aimc_submodel)
@@ -29,6 +35,6 @@ def test_002a_get_display_name_from_submodel(aimc_submodel: model.Submodel):
     assert display_name == 'AIMC Submodel.'
 
 def test_002b_get_display_name_from_submodel(aimc_submodel: model.Submodel):
-    display_name = submodel_parser.get_display_name_from_submodel(aimc_submodel, "de")
-
-    assert display_name is None
+    display_name = submodel_parser.get_display_name_from_submodel(aimc_submodel, ["de"])
+    assert display_name is not None
+    assert display_name == 'AIMC Submodel.'
