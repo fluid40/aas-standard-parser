@@ -41,7 +41,7 @@ jobs:
           fi
 
   check-vulnerabilities:
-    name: Check Package Vulnerabilities
+    name: Package Vulnerabilities
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
