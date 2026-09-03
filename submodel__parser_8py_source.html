@@ -103,135 +103,123 @@ $(document).ready(function(){initNavTree('submodel__parser_8py_source.html','');
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">from</span> basyx.aas <span class="keyword">import</span> model</div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="namespaceaas__standard__parser_1_1submodel__parser.html#aa02fb7d1da7ded0971b13e51d610c4ef">    7</a></span>logger = logging.getLogger(__name__)</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">from</span> aas_standard_parser <span class="keyword">import</span> aas_parser</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">def </span><a class="code hl_function" href="namespaceaas__standard__parser_1_1submodel__parser.html#af64a718963bf182203e0b274b58229b6">get_description_from_submodel</a>(submodel: model.Submodel, language: str = <span class="stringliteral">&quot;en&quot;</span>) -&gt; str | <span class="keywordtype">None</span>:</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="stringliteral">&quot;&quot;&quot;Get the description from a submodel.</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="stringliteral">    :param submodel: The submodel to extract the description from.</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="stringliteral">    :param language: The language code for the description.</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="stringliteral">    :return: The description string if found, otherwise None.</span></div>
-<div class="foldopen" id="foldopen00016" data-start="" data-end="">
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="namespaceaas__standard__parser_1_1submodel__parser.html#af64a718963bf182203e0b274b58229b6">   16</a></span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordflow">if</span> submodel.description <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        logger.debug(f<span class="stringliteral">&quot;No description found for submodel {submodel.id_short}&quot;</span>)</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    keys = submodel.description.keys()</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordflow">if</span> keys <span class="keywordflow">is</span> <span class="keywordtype">None</span> <span class="keywordflow">or</span> len(keys) == 0:</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        logger.debug(f<span class="stringliteral">&quot;No description keys found for submodel {submodel.id_short}&quot;</span>)</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordflow">if</span> language <span class="keywordflow">not</span> <span class="keywordflow">in</span> keys:</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        logger.debug(f<span class="stringliteral">&quot;Description for language &#39;{language}&#39; not found in submodel {submodel.id_short}&quot;</span>)</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">return</span> submodel.description.get(language)</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>_logger = logging.getLogger(__name__)</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="namespaceaas__standard__parser_1_1submodel__parser.html#ad25517cfa974024703e8a69a2fd81bd9">   12</a></span><span class="keyword">def </span><a class="code hl_function" href="namespaceaas__standard__parser_1_1submodel__parser.html#aa928909a0a6c5ec3467c87ddc52e4451">get_description_from_submodel</a>(submodel: model.Submodel, preferred_languages: list[str] | <span class="keywordtype">None</span> = <span class="keywordtype">None</span>) -&gt; str | <span class="keywordtype">None</span>:</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="stringliteral">&quot;&quot;&quot;Get the description from a Submodel.</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="stringliteral">    :param submodel: The Submodel to extract the description from.</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="stringliteral">    :param preferred_languages: A list of preferred languages to extract the description from, in order of preference. Defaults to [&quot;en&quot;, &quot;de&quot;].</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="stringliteral">    :return: The description string if found, otherwise None.</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordflow">if</span> preferred_languages <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        preferred_languages = [<span class="stringliteral">&quot;en&quot;</span>, <span class="stringliteral">&quot;de&quot;</span>]</div>
+<div class="foldopen" id="foldopen00021" data-start="" data-end="">
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="namespaceaas__standard__parser_1_1submodel__parser.html#aa928909a0a6c5ec3467c87ddc52e4451">   21</a></span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordflow">if</span> submodel.description <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        _logger.debug(f<span class="stringliteral">&quot;No description found for concept description &#39;{submodel.id_short}&#39;&quot;</span>)</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordflow">return</span> aas_parser.extract_multi_language_object(submodel.description, preferred_languages=preferred_languages)</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">def </span><a class="code hl_function" href="namespaceaas__standard__parser_1_1submodel__parser.html#a58751d56fd0549db6616431dd5b24d2d">get_display_name_from_submodel</a>(submodel: model.Submodel, preferred_languages: list[str] | <span class="keywordtype">None</span> = <span class="keywordtype">None</span>) -&gt; str | <span class="keywordtype">None</span>:</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="stringliteral">&quot;&quot;&quot;Get the display name from a Submodel.</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="stringliteral"></span> </div>
 </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">def </span><a class="code hl_function" href="namespaceaas__standard__parser_1_1submodel__parser.html#a807b0c1850b9214b56daa7c88d11f736">get_display_name_from_submodel</a>(submodel: model.Submodel, language: str = <span class="stringliteral">&quot;en&quot;</span>) -&gt; str | <span class="keywordtype">None</span>:</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="stringliteral">&quot;&quot;&quot;Get the display name from a submodel.</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="stringliteral">    :param submodel: The submodel to extract the display name from.</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="stringliteral">    :param language: The language code for the display name.</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="stringliteral">    :return: The display name string if found, otherwise None.</span></div>
-<div class="foldopen" id="foldopen00040" data-start="" data-end="">
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="namespaceaas__standard__parser_1_1submodel__parser.html#a807b0c1850b9214b56daa7c88d11f736">   40</a></span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordflow">if</span> submodel.display_name <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        logger.debug(f<span class="stringliteral">&quot;No display name found for submodel {submodel.id_short}&quot;</span>)</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="stringliteral">    :param submodel: The Submodel to extract the display name from.</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="stringliteral">    :param preferred_languages: A list of preferred languages to extract the display name from, in order of preference. Defaults to [&quot;en&quot;, &quot;de&quot;].</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="stringliteral">    :return: The display name string if found, otherwise None.</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordflow">if</span> preferred_languages <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        preferred_languages = [<span class="stringliteral">&quot;en&quot;</span>, <span class="stringliteral">&quot;de&quot;</span>]</div>
+<div class="foldopen" id="foldopen00038" data-start="" data-end="">
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="namespaceaas__standard__parser_1_1submodel__parser.html#a58751d56fd0549db6616431dd5b24d2d">   38</a></span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordflow">if</span> submodel.display_name <span class="keywordflow">is</span> <span class="keywordtype">None</span>:</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        _logger.debug(f<span class="stringliteral">&quot;No display name found for submodel &#39;{submodel.id_short}&#39;&quot;</span>)</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordflow">return</span> aas_parser.extract_multi_language_object(submodel.display_name, preferred_languages=preferred_languages)</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    keys = submodel.display_name.keys()</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordflow">if</span> keys <span class="keywordflow">is</span> <span class="keywordtype">None</span> <span class="keywordflow">or</span> len(keys) == 0:</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        logger.debug(f<span class="stringliteral">&quot;No display name keys found for submodel {submodel.id_short}&quot;</span>)</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordflow">if</span> language <span class="keywordflow">not</span> <span class="keywordflow">in</span> keys:</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        logger.debug(f<span class="stringliteral">&quot;Display name for language &#39;{language}&#39; not found in submodel {submodel.id_short}&quot;</span>)</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordflow">return</span> submodel.display_name.get(language)</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">def </span><a class="code hl_function" href="namespaceaas__standard__parser_1_1submodel__parser.html#a6b6057d36b18e8871d8dacc178efb886">get_submodel_element_by_id_short_path</a>(submodel: model.Submodel, id_short_path: str) -&gt; model.SubmodelElement:</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="stringliteral">&quot;&quot;&quot;Retrieve a specific submodel element from the submodel at a specific idShort path.</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="stringliteral"></span> </div>
 </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keyword">def </span><a class="code hl_function" href="namespaceaas__standard__parser_1_1submodel__parser.html#a6b6057d36b18e8871d8dacc178efb886">get_submodel_element_by_id_short_path</a>(submodel: model.Submodel, id_short_path: str) -&gt; model.SubmodelElement:</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="stringliteral">&quot;&quot;&quot;Retrieve a specific submodel element from the submodel at a specific idShort path.</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="stringliteral">    :param submodel: The submodel to search within.</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="stringliteral">    :param id_short_path: IdShort path to the submodel element (dot-separated), e.g., &quot;Element1.Element2[0].Element3&quot;.</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="stringliteral">    :return: The found submodel element or None if not found.</span></div>
-<div class="foldopen" id="foldopen00064" data-start="" data-end="">
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="namespaceaas__standard__parser_1_1submodel__parser.html#a6b6057d36b18e8871d8dacc178efb886">   64</a></span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="comment"># Split the path by &#39;.&#39; and traverse the structure</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    parts = id_short_path.split(<span class="stringliteral">&quot;.&quot;</span>)</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    current_elements = submodel.submodel_element</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    part_index = 0</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordflow">for</span> part <span class="keywordflow">in</span> parts:</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        part_index += 1</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="comment"># Handle indexed access like &quot;Element[0]&quot; for SubmodelElementLists</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keywordflow">if</span> <span class="stringliteral">&quot;[&quot;</span> <span class="keywordflow">in</span> part <span class="keywordflow">and</span> <span class="stringliteral">&quot;]&quot;</span> <span class="keywordflow">in</span> part:</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            <span class="comment"># Split SubmodelElementList name and index</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            base, idx = part[:-1].split(<span class="stringliteral">&quot;[&quot;</span>)</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            idx = int(idx)</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            <span class="comment"># Find the SubmodelElementList in the current elements</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            submodel_element = next((el <span class="keywordflow">for</span> el <span class="keywordflow">in</span> current_elements <span class="keywordflow">if</span> el.id_short == base), <span class="keywordtype">None</span>)</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="stringliteral">    :param submodel: The submodel to search within.</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="stringliteral">    :param id_short_path: IdShort path to the submodel element (dot-separated), e.g., &quot;Element1.Element2[0].Element3&quot;.</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="stringliteral">    :return: The found submodel element or None if not found.</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment"># Split the path by &#39;.&#39; and traverse the structure</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    parts = id_short_path.split(<span class="stringliteral">&quot;.&quot;</span>)</div>
+<div class="foldopen" id="foldopen00055" data-start="" data-end="">
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="namespaceaas__standard__parser_1_1submodel__parser.html#a6b6057d36b18e8871d8dacc178efb886">   55</a></span>    current_elements = submodel.submodel_element</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    part_index = 0</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordflow">for</span> part <span class="keywordflow">in</span> parts:</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        part_index += 1</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="comment"># Handle indexed access like &quot;Element[0]&quot; for SubmodelElementLists</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keywordflow">if</span> <span class="stringliteral">&quot;[&quot;</span> <span class="keywordflow">in</span> part <span class="keywordflow">and</span> <span class="stringliteral">&quot;]&quot;</span> <span class="keywordflow">in</span> part:</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            <span class="comment"># Split SubmodelElementList name and index</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            base, idx = part[:-1].split(<span class="stringliteral">&quot;[&quot;</span>)</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            idx = int(idx)</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            <span class="comment"># Find the SubmodelElementList in the current elements</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            submodel_element = next((el <span class="keywordflow">for</span> el <span class="keywordflow">in</span> current_elements <span class="keywordflow">if</span> el.id_short == base), <span class="keywordtype">None</span>)</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            <span class="keywordflow">if</span> <span class="keywordflow">not</span> submodel_element <span class="keywordflow">or</span> <span class="keywordflow">not</span> (isinstance(submodel_element, (model.SubmodelElementList, model.SubmodelElementCollection))):</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                _logger.debug(f<span class="stringliteral">&quot;Submodel element &#39;{base}&#39; not found or is not a collection/list in current {current_elements}.&quot;</span>)</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <span class="comment"># Check if index is within range</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            <span class="keywordflow">if</span> idx &gt;= len(submodel_element.value):</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                _logger.debug(f<span class="stringliteral">&quot;Index &#39;{idx}&#39; out of range for element &#39;{base}&#39; with length {len(submodel_element.value)}.&quot;</span>)</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            <span class="comment"># get the element by its index from SubmodelElementList</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            submodel_element = submodel_element.value[idx]</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            <span class="keywordflow">if</span> <span class="keywordflow">not</span> submodel_element <span class="keywordflow">or</span> <span class="keywordflow">not</span> (isinstance(submodel_element, (model.SubmodelElementList, model.SubmodelElementCollection))):</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                logger.debug(f<span class="stringliteral">&quot;Submodel element &#39;{base}&#39; not found or is not a collection/list in current {current_elements}.&quot;</span>)</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keywordflow">else</span>:</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            <span class="comment"># Find the SubmodelElement in the current SubmodelElementCollection</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            submodel_element = next((el <span class="keywordflow">for</span> el <span class="keywordflow">in</span> current_elements <span class="keywordflow">if</span> el.id_short == part), <span class="keywordtype">None</span>)</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            <span class="comment"># Check if index is within range</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            <span class="keywordflow">if</span> idx &gt;= len(submodel_element.value):</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                logger.debug(f<span class="stringliteral">&quot;Index &#39;{idx}&#39; out of range for element &#39;{base}&#39; with length {len(submodel_element.value)}.&quot;</span>)</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            <span class="comment"># get the element by its index from SubmodelElementList</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            submodel_element = submodel_element.value[idx]</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keywordflow">if</span> <span class="keywordflow">not</span> submodel_element:</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            _logger.debug(f<span class="stringliteral">&quot;Submodel element &#39;{part}&#39; not found in current {current_elements}.&quot;</span>)</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="comment"># If we&#39;ve reached the last part, return the found element</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keywordflow">if</span> part_index == len(parts):</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            <span class="keywordflow">return</span> submodel_element</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keywordflow">else</span>:</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            <span class="comment"># Find the SubmodelElement in the current SubmodelElementCollection</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            submodel_element = next((el <span class="keywordflow">for</span> el <span class="keywordflow">in</span> current_elements <span class="keywordflow">if</span> el.id_short == part), <span class="keywordtype">None</span>)</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <span class="keywordflow">if</span> <span class="keywordflow">not</span> submodel_element:</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            logger.debug(f<span class="stringliteral">&quot;Submodel element &#39;{part}&#39; not found in current {current_elements}.&quot;</span>)</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="comment"># If the found element is a collection or list, continue traversing</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="keywordflow">if</span> isinstance(submodel_element, (model.SubmodelElementCollection, model.SubmodelElementList)):</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            current_elements = submodel_element.value</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="keywordflow">else</span>:</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            <span class="keywordflow">return</span> submodel_element</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordflow">return</span> submodel_element</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <span class="comment"># If we&#39;ve reached the last part, return the found element</span></div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keywordflow">if</span> part_index == len(parts):</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            <span class="keywordflow">return</span> submodel_element</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="comment"># If the found element is a collection or list, continue traversing</span></div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <span class="keywordflow">if</span> isinstance(submodel_element, (model.SubmodelElementCollection, model.SubmodelElementList)):</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>            current_elements = submodel_element.value</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <span class="keywordflow">else</span>:</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>            <span class="keywordflow">return</span> submodel_element</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="keywordflow">return</span> submodel_element</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="keyword">def </span><a class="code hl_function" href="namespaceaas__standard__parser_1_1submodel__parser.html#a8ebe406d6df29cb6334a6c850c382056">get_semantic_id_value_from_submodel</a>(submodel: model.Submodel, index: int = 0) -&gt; str | <span class="keywordtype">None</span>:</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="stringliteral">&quot;&quot;&quot;Get the semantic ID from a submodel.</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="stringliteral"></span> </div>
+</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="stringliteral">    :param submodel: The submodel to extract the semantic ID from.</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="stringliteral">    :param index: The index of the semantic ID key to retrieve.</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="stringliteral">    :return: The semantic ID string if found, otherwise None.</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keywordflow">if</span> submodel.semantic_id <span class="keywordflow">is</span> <span class="keywordtype">None</span> <span class="keywordflow">or</span> index &gt;= len(submodel.semantic_id.key):</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        _logger.warning(f<span class="stringliteral">&quot;No semantic ID found for submodel &#39;{submodel.id_short}&#39;&quot;</span>)</div>
+<div class="foldopen" id="foldopen00109" data-start="" data-end="">
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="namespaceaas__standard__parser_1_1submodel__parser.html#a8ebe406d6df29cb6334a6c850c382056">  109</a></span>        <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keywordflow">return</span> submodel.semantic_id.key[index].value</div>
 </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="keyword">def </span><a class="code hl_function" href="namespaceaas__standard__parser_1_1submodel__parser.html#a8ebe406d6df29cb6334a6c850c382056">get_semantic_id_value_from_submodel</a>(submodel: model.Submodel, index: int = 0) -&gt; str | <span class="keywordtype">None</span>:</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="stringliteral">&quot;&quot;&quot;Get the semantic ID from a submodel.</span></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="stringliteral">    :param submodel: The submodel to extract the semantic ID from.</span></div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="stringliteral">    :param index: The index of the semantic ID key to retrieve.</span></div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="stringliteral">    :return: The semantic ID string if found, otherwise None.</span></div>
-<div class="foldopen" id="foldopen00118" data-start="" data-end="">
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="namespaceaas__standard__parser_1_1submodel__parser.html#a8ebe406d6df29cb6334a6c850c382056">  118</a></span><span class="stringliteral">    &quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordflow">if</span> submodel.semantic_id <span class="keywordflow">is</span> <span class="keywordtype">None</span> <span class="keywordflow">or</span> index &gt;= len(submodel.semantic_id.key):</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        logger.warning(f<span class="stringliteral">&quot;No semantic ID found for submodel {submodel.id_short}&quot;</span>)</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keywordflow">return</span> submodel.semantic_id.key[index].value</div>
-</div>
-<div class="ttc" id="anamespaceaas__standard__parser_1_1submodel__parser_html_a6b6057d36b18e8871d8dacc178efb886"><div class="ttname"><a href="namespaceaas__standard__parser_1_1submodel__parser.html#a6b6057d36b18e8871d8dacc178efb886">aas_standard_parser.submodel_parser.get_submodel_element_by_id_short_path</a></div><div class="ttdeci">model.SubmodelElement get_submodel_element_by_id_short_path(model.Submodel submodel, str id_short_path)</div><div class="ttdoc">Retrieve a specific submodel element from the submodel at a specific idShort path.</div><div class="ttdef"><b>Definition</b> <a href="submodel__parser_8py_source.html#l00064">submodel_parser.py:64</a></div></div>
-<div class="ttc" id="anamespaceaas__standard__parser_1_1submodel__parser_html_a807b0c1850b9214b56daa7c88d11f736"><div class="ttname"><a href="namespaceaas__standard__parser_1_1submodel__parser.html#a807b0c1850b9214b56daa7c88d11f736">aas_standard_parser.submodel_parser.get_display_name_from_submodel</a></div><div class="ttdeci">str|None get_display_name_from_submodel(model.Submodel submodel, str language=&quot;en&quot;)</div><div class="ttdoc">Get the display name from a submodel.</div><div class="ttdef"><b>Definition</b> <a href="submodel__parser_8py_source.html#l00040">submodel_parser.py:40</a></div></div>
-<div class="ttc" id="anamespaceaas__standard__parser_1_1submodel__parser_html_a8ebe406d6df29cb6334a6c850c382056"><div class="ttname"><a href="namespaceaas__standard__parser_1_1submodel__parser.html#a8ebe406d6df29cb6334a6c850c382056">aas_standard_parser.submodel_parser.get_semantic_id_value_from_submodel</a></div><div class="ttdeci">str|None get_semantic_id_value_from_submodel(model.Submodel submodel, int index=0)</div><div class="ttdoc">Get the semantic ID from a submodel.</div><div class="ttdef"><b>Definition</b> <a href="submodel__parser_8py_source.html#l00118">submodel_parser.py:118</a></div></div>
-<div class="ttc" id="anamespaceaas__standard__parser_1_1submodel__parser_html_af64a718963bf182203e0b274b58229b6"><div class="ttname"><a href="namespaceaas__standard__parser_1_1submodel__parser.html#af64a718963bf182203e0b274b58229b6">aas_standard_parser.submodel_parser.get_description_from_submodel</a></div><div class="ttdeci">str|None get_description_from_submodel(model.Submodel submodel, str language=&quot;en&quot;)</div><div class="ttdoc">Get the description from a submodel.</div><div class="ttdef"><b>Definition</b> <a href="submodel__parser_8py_source.html#l00016">submodel_parser.py:16</a></div></div>
+<div class="ttc" id="anamespaceaas__standard__parser_1_1submodel__parser_html_a58751d56fd0549db6616431dd5b24d2d"><div class="ttname"><a href="namespaceaas__standard__parser_1_1submodel__parser.html#a58751d56fd0549db6616431dd5b24d2d">aas_standard_parser.submodel_parser.get_display_name_from_submodel</a></div><div class="ttdeci">str|None get_display_name_from_submodel(model.Submodel submodel, list[str]|None preferred_languages=None)</div><div class="ttdoc">Get the display name from a Submodel.</div><div class="ttdef"><b>Definition</b> <a href="submodel__parser_8py_source.html#l00038">submodel_parser.py:38</a></div></div>
+<div class="ttc" id="anamespaceaas__standard__parser_1_1submodel__parser_html_a6b6057d36b18e8871d8dacc178efb886"><div class="ttname"><a href="namespaceaas__standard__parser_1_1submodel__parser.html#a6b6057d36b18e8871d8dacc178efb886">aas_standard_parser.submodel_parser.get_submodel_element_by_id_short_path</a></div><div class="ttdeci">model.SubmodelElement get_submodel_element_by_id_short_path(model.Submodel submodel, str id_short_path)</div><div class="ttdoc">Retrieve a specific submodel element from the submodel at a specific idShort path.</div><div class="ttdef"><b>Definition</b> <a href="submodel__parser_8py_source.html#l00055">submodel_parser.py:55</a></div></div>
+<div class="ttc" id="anamespaceaas__standard__parser_1_1submodel__parser_html_a8ebe406d6df29cb6334a6c850c382056"><div class="ttname"><a href="namespaceaas__standard__parser_1_1submodel__parser.html#a8ebe406d6df29cb6334a6c850c382056">aas_standard_parser.submodel_parser.get_semantic_id_value_from_submodel</a></div><div class="ttdeci">str|None get_semantic_id_value_from_submodel(model.Submodel submodel, int index=0)</div><div class="ttdoc">Get the semantic ID from a submodel.</div><div class="ttdef"><b>Definition</b> <a href="submodel__parser_8py_source.html#l00109">submodel_parser.py:109</a></div></div>
+<div class="ttc" id="anamespaceaas__standard__parser_1_1submodel__parser_html_aa928909a0a6c5ec3467c87ddc52e4451"><div class="ttname"><a href="namespaceaas__standard__parser_1_1submodel__parser.html#aa928909a0a6c5ec3467c87ddc52e4451">aas_standard_parser.submodel_parser.get_description_from_submodel</a></div><div class="ttdeci">str|None get_description_from_submodel(model.Submodel submodel, list[str]|None preferred_languages=None)</div><div class="ttdoc">Get the description from a Submodel.</div><div class="ttdef"><b>Definition</b> <a href="submodel__parser_8py_source.html#l00021">submodel_parser.py:21</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
