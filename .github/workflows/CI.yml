@@ -61,7 +61,7 @@ jobs:
       - name: Check package vulnerabilities
         run: pip-audit -r requirements.txt
 
-  parser-tests:
+  unit-tests:
     name: Unit Tests
     runs-on: ubuntu-latest
     steps:
@@ -86,7 +86,7 @@ jobs:
     name: Publish PyPI Package
     if: github.ref == 'refs/heads/main' && needs.detect-project-changes.outputs.changed == 'true'
     runs-on: ubuntu-latest
-    needs: [detect-project-changes, parser-tests, check-vulnerabilities]
+    needs: [detect-project-changes, unit-tests, check-vulnerabilities]
 
     steps:
       - uses: actions/checkout@v6
@@ -124,7 +124,7 @@ jobs:
     needs: publish-pypi-package
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
@@ -151,7 +151,7 @@ jobs:
 
       - name: Generate Changelog
         id: changelog
-        uses: mikepenz/release-changelog-builder-action@v4
+        uses: mikepenz/release-changelog-builder-action@v6
         with:
           configuration: .github/changelog-config.json
         env:
