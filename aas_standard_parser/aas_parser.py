@@ -23,6 +23,9 @@ def extract_multi_language_dict(multi_language_dict: dict, preferred_languages: 
     if multi_language_dict is None:
         return None
 
+    if len(multi_language_dict) == 0:
+        return None
+
     for language in preferred_languages:
         try:
             text = multi_language_dict.get(language)
