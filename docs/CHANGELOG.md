@@ -1,5 +1,9 @@
 # 📝 Changelog
 
+## [0.7.6] - 2026-10-01
+
+* ✨Feat: Add function to retrieve semantic ID value by index in descriptor JSON
+
 ## [0.7.4] - 2026-09-03
 
 * 🧹Chore: Split shell parser and AAS parser for general parsing.

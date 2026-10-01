@@ -55,6 +55,37 @@ def _parse_multi_lang(description: list[dict]) -> dict[str, str]:
     return return_list
 
 
+def get_value_from_semantic_id_by_index(descriptor_data: dict, index: int = 0) -> str | None:
+    """Retrieve the value from the semantic ID from a descriptor JSON dictionary by index.
+
+    :param descriptor_data: The descriptor data as a dictionary.
+    :param index: The index to access if the element is a list or collection, defaults to 0.
+    :return: The value of the found submodel element or None if not found.
+    """
+    if "semanticId" not in descriptor_data:
+        logger.debug(f"Descriptor '{descriptor_data}' has no semantic ID")
+        return None
+
+    sm_semantic_id = descriptor_data.get("semanticId", {})
+    if "keys" not in sm_semantic_id or len(sm_semantic_id["keys"]) == 0:
+        logger.debug(f"Descriptor '{descriptor_data}' has no semantic ID keys")
+        return None
+
+    keys = sm_semantic_id.get("keys", [])
+
+    if len(keys) < index + 1:
+        logger.debug(f"Descriptor '{descriptor_data}' has no semantic ID key at index {index}")
+        return None
+
+    key = keys[index]
+
+    if "value" not in key:
+        logger.debug(f"Descriptor '{descriptor_data}' has no semantic ID value")
+        return None
+
+    return key["value"]
+
+
 def get_endpoints(descriptor_data: dict) -> list[dict]:
     """Get all endpoints from a descriptor.
 
