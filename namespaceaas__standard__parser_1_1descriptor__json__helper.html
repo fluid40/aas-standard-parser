@@ -103,6 +103,9 @@ Functions</h2></td></tr>
 <tr class="separator:a4a45607db47b6396565e7c87a3b0cbb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a288d16a8428760c0b6c7bde0a41e35eb" id="r_a288d16a8428760c0b6c7bde0a41e35eb"><td class="memItemLeft" align="right" valign="top">dict[str, str]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceaas__standard__parser_1_1descriptor__json__helper.html#a288d16a8428760c0b6c7bde0a41e35eb">_parse_multi_lang</a> (list[dict] description)</td></tr>
 <tr class="separator:a288d16a8428760c0b6c7bde0a41e35eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7b339e9e4d2c209ec005cf9c6df2cfb" id="r_af7b339e9e4d2c209ec005cf9c6df2cfb"><td class="memItemLeft" align="right" valign="top">str|None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceaas__standard__parser_1_1descriptor__json__helper.html#af7b339e9e4d2c209ec005cf9c6df2cfb">get_value_from_semantic_id_by_index</a> (dict descriptor_data, int index=0)</td></tr>
+<tr class="memdesc:af7b339e9e4d2c209ec005cf9c6df2cfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the value from the semantic ID from a descriptor JSON dictionary by index.  <br /></td></tr>
+<tr class="separator:af7b339e9e4d2c209ec005cf9c6df2cfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ad9a975fcabe7b611c0581ab91e9a4d" id="r_a2ad9a975fcabe7b611c0581ab91e9a4d"><td class="memItemLeft" align="right" valign="top">list[dict]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceaas__standard__parser_1_1descriptor__json__helper.html#a2ad9a975fcabe7b611c0581ab91e9a4d">get_endpoints</a> (dict descriptor_data)</td></tr>
 <tr class="memdesc:a2ad9a975fcabe7b611c0581ab91e9a4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get all endpoints from a descriptor.  <br /></td></tr>
 <tr class="separator:a2ad9a975fcabe7b611c0581ab91e9a4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -197,7 +200,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The endpoint dictionary if found, otherwise None. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="descriptor__json__helper_8py_source.html#l00073">73</a> of file <a class="el" href="descriptor__json__helper_8py_source.html">descriptor_json_helper.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="descriptor__json__helper_8py_source.html#l00104">104</a> of file <a class="el" href="descriptor__json__helper_8py_source.html">descriptor_json_helper.py</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -247,7 +250,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The href string if found, otherwise None. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="descriptor__json__helper_8py_source.html#l00109">109</a> of file <a class="el" href="descriptor__json__helper_8py_source.html">descriptor_json_helper.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="descriptor__json__helper_8py_source.html#l00140">140</a> of file <a class="el" href="descriptor__json__helper_8py_source.html">descriptor_json_helper.py</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -281,7 +284,7 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A list of href strings extracted from the endpoints. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="descriptor__json__helper_8py_source.html#l00124">124</a> of file <a class="el" href="descriptor__json__helper_8py_source.html">descriptor_json_helper.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="descriptor__json__helper_8py_source.html#l00155">155</a> of file <a class="el" href="descriptor__json__helper_8py_source.html">descriptor_json_helper.py</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -331,7 +334,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The protocol information dictionary if found, otherwise None. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="descriptor__json__helper_8py_source.html#l00093">93</a> of file <a class="el" href="descriptor__json__helper_8py_source.html">descriptor_json_helper.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="descriptor__json__helper_8py_source.html#l00124">124</a> of file <a class="el" href="descriptor__json__helper_8py_source.html">descriptor_json_helper.py</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -370,12 +373,52 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A list of endpoint dictionaries extracted from the descriptor. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="descriptor__json__helper_8py_source.html#l00063">63</a> of file <a class="el" href="descriptor__json__helper_8py_source.html">descriptor_json_helper.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="descriptor__json__helper_8py_source.html#l00094">94</a> of file <a class="el" href="descriptor__json__helper_8py_source.html">descriptor_json_helper.py</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="namespaceaas__standard__parser_1_1descriptor__json__helper_a2ad9a975fcabe7b611c0581ab91e9a4d_icgraph.svg" width="100%" height="398"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
+
+</div>
+</div>
+<a id="af7b339e9e4d2c209ec005cf9c6df2cfb" name="af7b339e9e4d2c209ec005cf9c6df2cfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7b339e9e4d2c209ec005cf9c6df2cfb">&#9670;&#160;</a></span>get_value_from_semantic_id_by_index()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"> str | None aas_standard_parser.descriptor_json_helper.get_value_from_semantic_id_by_index </td>
+          <td>(</td>
+          <td class="paramtype">dict&#160;</td>
+          <td class="paramname"><em>descriptor_data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &#160;</td>
+          <td class="paramname"><em>index</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieve the value from the semantic ID from a descriptor JSON dictionary by index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">descriptor_data</td><td>The descriptor data as a dictionary. </td></tr>
+    <tr><td class="paramname">index</td><td>The index to access if the element is a list or collection, defaults to 0. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The value of the found submodel element or None if not found. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="descriptor__json__helper_8py_source.html#l00064">64</a> of file <a class="el" href="descriptor__json__helper_8py_source.html">descriptor_json_helper.py</a>.</p>
 
 </div>
 </div>
@@ -438,7 +481,7 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>An EndPointHrefData object containing parsed components. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="descriptor__json__helper_8py_source.html#l00135">135</a> of file <a class="el" href="descriptor__json__helper_8py_source.html">descriptor_json_helper.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="descriptor__json__helper_8py_source.html#l00166">166</a> of file <a class="el" href="descriptor__json__helper_8py_source.html">descriptor_json_helper.py</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">

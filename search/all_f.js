@@ -17,7 +17,7 @@ var searchData=
   ['get_5fsubmodel_5felement_5fby_5fid_5fshort_5fpath_14',['get_submodel_element_by_id_short_path',['../namespaceaas__standard__parser_1_1submodel__parser.html#a6b6057d36b18e8871d8dacc178efb886',1,'aas_standard_parser::submodel_parser']]],
   ['get_5fsubmodel_5fids_15',['get_submodel_ids',['../namespaceaas__standard__parser_1_1shell__parser.html#aae79f8b09d1b7177f95255ac8feb575b',1,'aas_standard_parser::shell_parser']]],
   ['get_5fvalue_5ffrom_5fkey_5fat_5findex_16',['get_value_from_key_at_index',['../namespaceaas__standard__parser_1_1reference__helpers.html#a9e86201b623b38b31a38d7d7d89f38d4',1,'aas_standard_parser::reference_helpers']]],
-  ['get_5fvalue_5ffrom_5fsemantic_5fid_5fby_5findex_17',['get_value_from_semantic_id_by_index',['../namespaceaas__standard__parser_1_1submodel__json__helper.html#ac017baaefb03ab3a4cc899f316b5ab29',1,'aas_standard_parser::submodel_json_helper']]],
+  ['get_5fvalue_5ffrom_5fsemantic_5fid_5fby_5findex_17',['get_value_from_semantic_id_by_index',['../namespaceaas__standard__parser_1_1descriptor__json__helper.html#af7b339e9e4d2c209ec005cf9c6df2cfb',1,'aas_standard_parser.descriptor_json_helper.get_value_from_semantic_id_by_index()'],['../namespaceaas__standard__parser_1_1submodel__json__helper.html#ac017baaefb03ab3a4cc899f316b5ab29',1,'aas_standard_parser.submodel_json_helper.get_value_from_semantic_id_by_index()']]],
   ['get_5fvalues_5ffrom_5fkeys_18',['get_values_from_keys',['../namespaceaas__standard__parser_1_1reference__helpers.html#aded2e3def35f6d499e5c51abe12455eb',1,'aas_standard_parser::reference_helpers']]],
   ['getting_20started_19',['🚀 Getting Started',['../md_docs_2getting__started.html',1,'']]],
   ['getting_5fstarted_2emd_20',['getting_started.md',['../getting__started_8md.html',1,'']]]
