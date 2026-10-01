@@ -1,6 +1,6 @@
 # 📝 Changelog
 
-## [0.7.6] - 2026-10-01
+## [0.7.7] - 2026-10-01
 
 * ✨Feat: Add function to retrieve semantic ID value by index in descriptor JSON
 
