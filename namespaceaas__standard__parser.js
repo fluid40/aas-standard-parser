@@ -40,7 +40,8 @@ var namespaceaas__standard__parser =
       [ "get_endpoint_hrefs", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#a8aee330f96818125e0a9802dcabb93f5", null ],
       [ "get_endpoint_protocol_information_by_index", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#af32f5c67f31caa58dc46ebc2091166b6", null ],
       [ "get_endpoints", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#a2ad9a975fcabe7b611c0581ab91e9a4d", null ],
-      [ "get_value_from_semantic_id_by_index", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#af7b339e9e4d2c209ec005cf9c6df2cfb", null ],
+      [ "get_semantic_id_value_at_index_data", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#a243312ff940924122768a789aed60b97", null ],
+      [ "get_value_from_semantic_id_by_index", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#a7369cdfd248f82f0dcbb5756eb0ab3d8", null ],
       [ "parse_descriptor", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#a4a45607db47b6396565e7c87a3b0cbb0", null ],
       [ "parse_endpoint_href", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#a2165085ae86a1f9d9c70959d76a8d4ed", null ],
       [ "logger", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#af6754c50a46d728809b4f5fc307eb94a", null ]
@@ -48,6 +49,7 @@ var namespaceaas__standard__parser =
     [ "reference_helpers", "namespaceaas__standard__parser_1_1reference__helpers.html", [
       [ "construct_id_short_path_from_reference", "namespaceaas__standard__parser_1_1reference__helpers.html#a8db69408a38296fda6be4af96a67a5c0", null ],
       [ "get_value_from_key_at_index", "namespaceaas__standard__parser_1_1reference__helpers.html#a9e86201b623b38b31a38d7d7d89f38d4", null ],
+      [ "get_value_from_reference_at_index", "namespaceaas__standard__parser_1_1reference__helpers.html#a03651868d280a875833bf09a8fd7bee1", null ],
       [ "get_values_from_keys", "namespaceaas__standard__parser_1_1reference__helpers.html#aded2e3def35f6d499e5c51abe12455eb", null ]
     ] ],
     [ "shell_parser", "namespaceaas__standard__parser_1_1shell__parser.html", [
