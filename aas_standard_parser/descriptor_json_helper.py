@@ -55,32 +55,47 @@ def _parse_multi_lang(description: list[dict]) -> dict[str, str]:
     return return_list
 
 
-def get_value_from_semantic_id_by_index(descriptor_data: dict, index: int = 0) -> str | None:
+def get_semantic_id_value_at_index_data(descriptor_data: DescriptorData, index: int) -> str | None:
+    """Get the value from the semantic ID at the specified index.
+
+    :param semantic_id: The semantic ID dictionary containing keys.
+    :param index: The index of the key to extract the value from.
+    :return: The value from the key at the given index if it exists, otherwise None.
+    """
+    semantic_id = descriptor_data.semantic_id
+    keys = semantic_id.get("keys", [])
+    if index < 0 or index >= len(keys):
+        logger.warning(f"Index {index} out of range for semantic ID {semantic_id}")
+        return None
+    return keys[index].get("value")
+
+
+def get_value_from_semantic_id_by_index(descriptor_dict: dict, index: int = 0) -> str | None:
     """Retrieve the value from the semantic ID from a descriptor JSON dictionary by index.
 
-    :param descriptor_data: The descriptor data as a dictionary.
+    :param descriptor_dict: The descriptor data as a dictionary.
     :param index: The index to access if the element is a list or collection, defaults to 0.
     :return: The value of the found submodel element or None if not found.
     """
-    if "semanticId" not in descriptor_data:
-        logger.debug(f"Descriptor '{descriptor_data}' has no semantic ID")
+    if "semanticId" not in descriptor_dict:
+        logger.debug(f"Descriptor '{descriptor_dict}' has no semantic ID")
         return None
 
-    sm_semantic_id = descriptor_data.get("semanticId", {})
+    sm_semantic_id = descriptor_dict.get("semanticId", {})
     if "keys" not in sm_semantic_id or len(sm_semantic_id["keys"]) == 0:
-        logger.debug(f"Descriptor '{descriptor_data}' has no semantic ID keys")
+        logger.debug(f"Descriptor '{descriptor_dict}' has no semantic ID keys")
         return None
 
     keys = sm_semantic_id.get("keys", [])
 
     if len(keys) < index + 1:
-        logger.debug(f"Descriptor '{descriptor_data}' has no semantic ID key at index {index}")
+        logger.debug(f"Descriptor '{descriptor_dict}' has no semantic ID key at index {index}")
         return None
 
     key = keys[index]
 
     if "value" not in key:
-        logger.debug(f"Descriptor '{descriptor_data}' has no semantic ID value")
+        logger.debug(f"Descriptor '{descriptor_dict}' has no semantic ID value")
         return None
 
     return key["value"]
