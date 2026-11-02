@@ -1,6 +1,6 @@
 # 📝 Changelog
 
-## [0.7.9] - 2026-11-02
+## [0.8.0] - 2026-11-02
 
 * ✨Feat: Add multi_language_parser module and refactor related functions for better multilingual support
 * 🚀Improvement: Add Global Asset ID to descriptor parsing

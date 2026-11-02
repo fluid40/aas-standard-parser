@@ -40,7 +40,7 @@ def get_description_from_shell(shell: model.AssetAdministrationShell, preferred_
         _logger.debug(f"No description found for shell '{shell.id_short}'")
         return None
 
-    return multi_language_parser.extract_multi_language_object(shell.description, preferred_languages=preferred_languages)
+    return multi_language_parser.parse_multi_language_object(shell.description, preferred_languages=preferred_languages)
 
 
 def get_display_name_from_shell(shell: model.AssetAdministrationShell, preferred_languages: list[str] | None = None) -> str | None:
@@ -57,4 +57,4 @@ def get_display_name_from_shell(shell: model.AssetAdministrationShell, preferred
         _logger.debug(f"No display name found for shell '{shell.id_short}'")
         return None
 
-    return multi_language_parser.extract_multi_language_object(shell.display_name, preferred_languages=preferred_languages)
+    return multi_language_parser.parse_multi_language_object(shell.display_name, preferred_languages=preferred_languages)
