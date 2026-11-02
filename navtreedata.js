@@ -27,7 +27,7 @@ var NAVTREE =
   [ "AAS Standard Parser Documentation", "index.html", [
     [ "AAS standard Parser", "index.html", "index" ],
     [ "📝 Changelog", "md_docs_2CHANGELOG.html", [
-      [ "[0.7.9] - 2026-11-02", "md_docs_2CHANGELOG.html#autotoc_md1", null ],
+      [ "[0.8.0] - 2026-11-02", "md_docs_2CHANGELOG.html#autotoc_md1", null ],
       [ "[0.7.8] - 2026-10-12", "md_docs_2CHANGELOG.html#autotoc_md2", null ],
       [ "[0.7.7] - 2026-10-01", "md_docs_2CHANGELOG.html#autotoc_md3", null ],
       [ "[0.7.4] - 2026-09-03", "md_docs_2CHANGELOG.html#autotoc_md4", null ],
@@ -89,7 +89,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "aas__parser_8py.html",
-"namespaceaas__standard__parser_1_1submodel__parser.html#ad25517cfa974024703e8a69a2fd81bd9"
+"namespaceaas__standard__parser_1_1submodel__parser.html#a8ebe406d6df29cb6334a6c850c382056"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

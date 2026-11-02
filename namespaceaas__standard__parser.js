@@ -45,8 +45,9 @@ var namespaceaas__standard__parser =
       [ "logger", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#af6754c50a46d728809b4f5fc307eb94a", null ]
     ] ],
     [ "multi_language_parser", "namespaceaas__standard__parser_1_1multi__language__parser.html", [
-      [ "extract_multi_language_dict", "namespaceaas__standard__parser_1_1multi__language__parser.html#a368bc35c4ddb0001af6fb6c033359de4", null ],
-      [ "extract_multi_language_object", "namespaceaas__standard__parser_1_1multi__language__parser.html#a42fa299bb94837f6842939c06be74d43", null ]
+      [ "parse_multi_language_dict", "namespaceaas__standard__parser_1_1multi__language__parser.html#ab483eb03ed761eb982da4781f81300a0", null ],
+      [ "parse_multi_language_list", "namespaceaas__standard__parser_1_1multi__language__parser.html#a193bd1806529b1c5e5c35ba80d86fcc1", null ],
+      [ "parse_multi_language_object", "namespaceaas__standard__parser_1_1multi__language__parser.html#a667fae3a0ffe022f6a74030945c3712f", null ]
     ] ],
     [ "reference_helpers", "namespaceaas__standard__parser_1_1reference__helpers.html", [
       [ "construct_id_short_path_from_reference", "namespaceaas__standard__parser_1_1reference__helpers.html#a8db69408a38296fda6be4af96a67a5c0", null ],

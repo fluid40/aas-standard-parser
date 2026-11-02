@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['8_202026_2010_2012_0',['[0.7.8] - 2026-10-12',['../md_docs_2CHANGELOG.html#autotoc_md2',1,'']]]
+  ['8_200_202026_2011_2002_0',['[0.8.0] - 2026-11-02',['../md_docs_2CHANGELOG.html#autotoc_md1',1,'']]],
+  ['8_202026_2010_2012_1',['[0.7.8] - 2026-10-12',['../md_docs_2CHANGELOG.html#autotoc_md2',1,'']]]
 ];

@@ -20,6 +20,12 @@ var namespacetests =
       [ "test_001b_get_mapping_configuration_root_element", "namespacetests_1_1test__descriptor__json__helper.html#a69c972c57ce5c74ed9047c759bf20f34", null ],
       [ "test_002_parse_descriptor_json", "namespacetests_1_1test__descriptor__json__helper.html#afcf0b6c7dd3463696e427455a067712d", null ]
     ] ],
+    [ "test_multi_language_parser", "namespacetests_1_1test__multi__language__parser.html", [
+      [ "test_parse_multi_language_dict", "namespacetests_1_1test__multi__language__parser.html#a2980b80cfa96e59a7cc5a40cdc452230", null ],
+      [ "test_parse_multi_language_list", "namespacetests_1_1test__multi__language__parser.html#a34f0f0cdd1237bf1355beebdba842120", null ],
+      [ "test_parse_multi_language_object", "namespacetests_1_1test__multi__language__parser.html#af5d3645c37f68324003ade5f0eea9b50", null ],
+      [ "test_parse_multi_language_text_type", "namespacetests_1_1test__multi__language__parser.html#a315edaed68e0ec3776d418ebc8187325", null ]
+    ] ],
     [ "test_submodel_parser", "namespacetests_1_1test__submodel__parser.html", [
       [ "aimc_submodel", "namespacetests_1_1test__submodel__parser.html#a0ab804da840ee8b2c9119484a84e90f8", null ],
       [ "test_001a_get_description_from_submodel", "namespacetests_1_1test__submodel__parser.html#a9a63f3b74472abefb52285defbceaef7", null ],

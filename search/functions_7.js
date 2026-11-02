@@ -6,6 +6,9 @@ var searchData=
   ['parse_5fenvironment_5ffile_3',['parse_environment_file',['../namespaceaas__standard__parser_1_1aas__parser.html#ac7163818842d182fdd9465c7559f6045',1,'aas_standard_parser::aas_parser']]],
   ['parse_5fmapping_5fconfiguration_5felement_4',['parse_mapping_configuration_element',['../namespaceaas__standard__parser_1_1aimc__parser.html#afb69723e5c4160b7cf493336435ce4ce',1,'aas_standard_parser::aimc_parser']]],
   ['parse_5fmapping_5fconfigurations_5',['parse_mapping_configurations',['../namespaceaas__standard__parser_1_1aimc__parser.html#ae2cda8726f34a73499ebca6377ee46e2',1,'aas_standard_parser::aimc_parser']]],
-  ['parse_5fproperties_6',['parse_properties',['../classaas__standard__parser_1_1aid__parser_1_1AIDParser.html#a0105b745f20e3c2b658bf67eace0be33',1,'aas_standard_parser::aid_parser::AIDParser']]],
-  ['parse_5fsecurity_7',['parse_security',['../classaas__standard__parser_1_1aid__parser_1_1AIDParser.html#a78283a46fd7c5688ceaa0607c075f165',1,'aas_standard_parser::aid_parser::AIDParser']]]
+  ['parse_5fmulti_5flanguage_5fdict_6',['parse_multi_language_dict',['../namespaceaas__standard__parser_1_1multi__language__parser.html#ab483eb03ed761eb982da4781f81300a0',1,'aas_standard_parser::multi_language_parser']]],
+  ['parse_5fmulti_5flanguage_5flist_7',['parse_multi_language_list',['../namespaceaas__standard__parser_1_1multi__language__parser.html#a193bd1806529b1c5e5c35ba80d86fcc1',1,'aas_standard_parser::multi_language_parser']]],
+  ['parse_5fmulti_5flanguage_5fobject_8',['parse_multi_language_object',['../namespaceaas__standard__parser_1_1multi__language__parser.html#a667fae3a0ffe022f6a74030945c3712f',1,'aas_standard_parser::multi_language_parser']]],
+  ['parse_5fproperties_9',['parse_properties',['../classaas__standard__parser_1_1aid__parser_1_1AIDParser.html#a0105b745f20e3c2b658bf67eace0be33',1,'aas_standard_parser::aid_parser::AIDParser']]],
+  ['parse_5fsecurity_10',['parse_security',['../classaas__standard__parser_1_1aid__parser_1_1AIDParser.html#a78283a46fd7c5688ceaa0607c075f165',1,'aas_standard_parser::aid_parser::AIDParser']]]
 ];
