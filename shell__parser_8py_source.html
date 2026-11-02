@@ -103,7 +103,7 @@ $(document).ready(function(){initNavTree('shell__parser_8py_source.html',''); in
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">from</span> basyx.aas <span class="keyword">import</span> model</div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">from</span> aas_standard_parser <span class="keyword">import</span> aas_parser</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">from</span> aas_standard_parser <span class="keyword">import</span> multi_language_parser</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>_logger = logging.getLogger(__name__)</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
@@ -142,7 +142,7 @@ $(document).ready(function(){initNavTree('shell__parser_8py_source.html',''); in
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        _logger.debug(f<span class="stringliteral">&quot;No description found for shell &#39;{shell.id_short}&#39;&quot;</span>)</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordflow">return</span> aas_parser.extract_multi_language_object(shell.description, preferred_languages=preferred_languages)</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordflow">return</span> multi_language_parser.extract_multi_language_object(shell.description, preferred_languages=preferred_languages)</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">def </span><a class="code hl_function" href="namespaceaas__standard__parser_1_1shell__parser.html#a5ae4f06b36f206bb7d5c675a2eb68600">get_display_name_from_shell</a>(shell: model.AssetAdministrationShell, preferred_languages: list[str] | <span class="keywordtype">None</span> = <span class="keywordtype">None</span>) -&gt; str | <span class="keywordtype">None</span>:</div>
@@ -161,7 +161,7 @@ $(document).ready(function(){initNavTree('shell__parser_8py_source.html',''); in
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        _logger.debug(f<span class="stringliteral">&quot;No display name found for shell &#39;{shell.id_short}&#39;&quot;</span>)</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordflow">return</span> <span class="keywordtype">None</span></div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">return</span> aas_parser.extract_multi_language_object(shell.display_name, preferred_languages=preferred_languages)</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">return</span> multi_language_parser.extract_multi_language_object(shell.display_name, preferred_languages=preferred_languages)</div>
 </div>
 <div class="ttc" id="anamespaceaas__standard__parser_1_1shell__parser_html_a5ae4f06b36f206bb7d5c675a2eb68600"><div class="ttname"><a href="namespaceaas__standard__parser_1_1shell__parser.html#a5ae4f06b36f206bb7d5c675a2eb68600">aas_standard_parser.shell_parser.get_display_name_from_shell</a></div><div class="ttdeci">str|None get_display_name_from_shell(model.AssetAdministrationShell shell, list[str]|None preferred_languages=None)</div><div class="ttdoc">Get the display name from an Asset Administration Shell.</div><div class="ttdef"><b>Definition</b> <a href="shell__parser_8py_source.html#l00055">shell_parser.py:55</a></div></div>
 <div class="ttc" id="anamespaceaas__standard__parser_1_1shell__parser_html_a8419272a0900d08af44afbad3152b062"><div class="ttname"><a href="namespaceaas__standard__parser_1_1shell__parser.html#a8419272a0900d08af44afbad3152b062">aas_standard_parser.shell_parser.get_description_from_shell</a></div><div class="ttdeci">str|None get_description_from_shell(model.AssetAdministrationShell shell, list[str]|None preferred_languages=None)</div><div class="ttdoc">Get the description from an Asset Administration Shell.</div><div class="ttdef"><b>Definition</b> <a href="shell__parser_8py_source.html#l00038">shell_parser.py:38</a></div></div>

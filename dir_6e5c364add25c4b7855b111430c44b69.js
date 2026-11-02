@@ -8,6 +8,7 @@ var dir_6e5c364add25c4b7855b111430c44b69 =
     [ "collection_helpers.py", "collection__helpers_8py.html", "collection__helpers_8py" ],
     [ "concept_description_parser.py", "concept__description__parser_8py.html", "concept__description__parser_8py" ],
     [ "descriptor_json_helper.py", "descriptor__json__helper_8py.html", "descriptor__json__helper_8py" ],
+    [ "multi_language_parser.py", "multi__language__parser_8py.html", "multi__language__parser_8py" ],
     [ "reference_helpers.py", "reference__helpers_8py.html", "reference__helpers_8py" ],
     [ "shell_parser.py", "shell__parser_8py.html", "shell__parser_8py" ],
     [ "submodel_json_helper.py", "submodel__json__helper_8py.html", "submodel__json__helper_8py" ],

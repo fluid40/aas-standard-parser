@@ -7,11 +7,12 @@ var searchData=
   ['aas_5fstandard_5fparser_3a_3acollection_5fhelpers_4',['collection_helpers',['../namespaceaas__standard__parser_1_1collection__helpers.html',1,'aas_standard_parser']]],
   ['aas_5fstandard_5fparser_3a_3aconcept_5fdescription_5fparser_5',['concept_description_parser',['../namespaceaas__standard__parser_1_1concept__description__parser.html',1,'aas_standard_parser']]],
   ['aas_5fstandard_5fparser_3a_3adescriptor_5fjson_5fhelper_6',['descriptor_json_helper',['../namespaceaas__standard__parser_1_1descriptor__json__helper.html',1,'aas_standard_parser']]],
-  ['aas_5fstandard_5fparser_3a_3areference_5fhelpers_7',['reference_helpers',['../namespaceaas__standard__parser_1_1reference__helpers.html',1,'aas_standard_parser']]],
-  ['aas_5fstandard_5fparser_3a_3ashell_5fparser_8',['shell_parser',['../namespaceaas__standard__parser_1_1shell__parser.html',1,'aas_standard_parser']]],
-  ['aas_5fstandard_5fparser_3a_3asubmodel_5fjson_5fhelper_9',['submodel_json_helper',['../namespaceaas__standard__parser_1_1submodel__json__helper.html',1,'aas_standard_parser']]],
-  ['aas_5fstandard_5fparser_3a_3asubmodel_5fparser_10',['submodel_parser',['../namespaceaas__standard__parser_1_1submodel__parser.html',1,'aas_standard_parser']]],
-  ['aas_5fstandard_5fparser_3a_3autils_11',['utils',['../namespaceaas__standard__parser_1_1utils.html',1,'aas_standard_parser']]],
-  ['aas_5fstandard_5fparser_3a_3aversion_5fcheck_12',['version_check',['../namespaceaas__standard__parser_1_1version__check.html',1,'aas_standard_parser']]],
-  ['aimc_5fparser_5fclasses_13',['aimc_parser_classes',['../namespaceaimc__parser__classes.html',1,'']]]
+  ['aas_5fstandard_5fparser_3a_3amulti_5flanguage_5fparser_7',['multi_language_parser',['../namespaceaas__standard__parser_1_1multi__language__parser.html',1,'aas_standard_parser']]],
+  ['aas_5fstandard_5fparser_3a_3areference_5fhelpers_8',['reference_helpers',['../namespaceaas__standard__parser_1_1reference__helpers.html',1,'aas_standard_parser']]],
+  ['aas_5fstandard_5fparser_3a_3ashell_5fparser_9',['shell_parser',['../namespaceaas__standard__parser_1_1shell__parser.html',1,'aas_standard_parser']]],
+  ['aas_5fstandard_5fparser_3a_3asubmodel_5fjson_5fhelper_10',['submodel_json_helper',['../namespaceaas__standard__parser_1_1submodel__json__helper.html',1,'aas_standard_parser']]],
+  ['aas_5fstandard_5fparser_3a_3asubmodel_5fparser_11',['submodel_parser',['../namespaceaas__standard__parser_1_1submodel__parser.html',1,'aas_standard_parser']]],
+  ['aas_5fstandard_5fparser_3a_3autils_12',['utils',['../namespaceaas__standard__parser_1_1utils.html',1,'aas_standard_parser']]],
+  ['aas_5fstandard_5fparser_3a_3aversion_5fcheck_13',['version_check',['../namespaceaas__standard__parser_1_1version__check.html',1,'aas_standard_parser']]],
+  ['aimc_5fparser_5fclasses_14',['aimc_parser_classes',['../namespaceaimc__parser__classes.html',1,'']]]
 ];

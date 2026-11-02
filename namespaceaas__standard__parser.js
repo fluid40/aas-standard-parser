@@ -2,8 +2,6 @@ var namespaceaas__standard__parser =
 [
     [ "aas_parser", "namespaceaas__standard__parser_1_1aas__parser.html", [
       [ "_parse_node", "namespaceaas__standard__parser_1_1aas__parser.html#a020990838d76334e5260b73114fb3de2", null ],
-      [ "extract_multi_language_dict", "namespaceaas__standard__parser_1_1aas__parser.html#a7a6499eea3e6792ba4140c32d52d03c5", null ],
-      [ "extract_multi_language_object", "namespaceaas__standard__parser_1_1aas__parser.html#a4f832401ffe88c94fff6804df2e847a4", null ],
       [ "parse_environment_file", "namespaceaas__standard__parser_1_1aas__parser.html#ac7163818842d182fdd9465c7559f6045", null ],
       [ "_logger", "namespaceaas__standard__parser_1_1aas__parser.html#a0d05bf6f72a5bb7dd62aa77db8d3d2e7", null ]
     ] ],
@@ -45,6 +43,10 @@ var namespaceaas__standard__parser =
       [ "parse_descriptor", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#a4a45607db47b6396565e7c87a3b0cbb0", null ],
       [ "parse_endpoint_href", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#a2165085ae86a1f9d9c70959d76a8d4ed", null ],
       [ "logger", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#af6754c50a46d728809b4f5fc307eb94a", null ]
+    ] ],
+    [ "multi_language_parser", "namespaceaas__standard__parser_1_1multi__language__parser.html", [
+      [ "extract_multi_language_dict", "namespaceaas__standard__parser_1_1multi__language__parser.html#a368bc35c4ddb0001af6fb6c033359de4", null ],
+      [ "extract_multi_language_object", "namespaceaas__standard__parser_1_1multi__language__parser.html#a42fa299bb94837f6842939c06be74d43", null ]
     ] ],
     [ "reference_helpers", "namespaceaas__standard__parser_1_1reference__helpers.html", [
       [ "construct_id_short_path_from_reference", "namespaceaas__standard__parser_1_1reference__helpers.html#a8db69408a38296fda6be4af96a67a5c0", null ],

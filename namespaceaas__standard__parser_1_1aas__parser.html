@@ -98,12 +98,6 @@ $(document).ready(function(){initNavTree('namespaceaas__standard__parser_1_1aas_
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a7a6499eea3e6792ba4140c32d52d03c5" id="r_a7a6499eea3e6792ba4140c32d52d03c5"><td class="memItemLeft" align="right" valign="top">str|None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceaas__standard__parser_1_1aas__parser.html#a7a6499eea3e6792ba4140c32d52d03c5">extract_multi_language_dict</a> (dict multi_language_dict, list[str]|None preferred_languages=None)</td></tr>
-<tr class="memdesc:a7a6499eea3e6792ba4140c32d52d03c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract a readable text from BaSyx multilingual text/name containers.  <br /></td></tr>
-<tr class="separator:a7a6499eea3e6792ba4140c32d52d03c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f832401ffe88c94fff6804df2e847a4" id="r_a4f832401ffe88c94fff6804df2e847a4"><td class="memItemLeft" align="right" valign="top">str|None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceaas__standard__parser_1_1aas__parser.html#a4f832401ffe88c94fff6804df2e847a4">extract_multi_language_object</a> (Any multi_language_object, list[str]|None preferred_languages=None)</td></tr>
-<tr class="memdesc:a4f832401ffe88c94fff6804df2e847a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract a readable text from BaSyx multilingual text/name containers.  <br /></td></tr>
-<tr class="separator:a4f832401ffe88c94fff6804df2e847a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7163818842d182fdd9465c7559f6045" id="r_ac7163818842d182fdd9465c7559f6045"><td class="memItemLeft" align="right" valign="top">EnvironmentData|None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceaas__standard__parser_1_1aas__parser.html#ac7163818842d182fdd9465c7559f6045">parse_environment_file</a> (str file_path)</td></tr>
 <tr class="memdesc:ac7163818842d182fdd9465c7559f6045"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse an environment file and return an EnvironmentData instance.  <br /></td></tr>
 <tr class="separator:ac7163818842d182fdd9465c7559f6045"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -150,92 +144,12 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aas__parser_8py_source.html#l00102">102</a> of file <a class="el" href="aas__parser_8py_source.html">aas_parser.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aas__parser_8py_source.html#l00044">44</a> of file <a class="el" href="aas__parser_8py_source.html">aas_parser.py</a>.</p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="namespaceaas__standard__parser_1_1aas__parser_a020990838d76334e5260b73114fb3de2_icgraph.svg" width="468" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-
-</div>
-</div>
-<a id="a7a6499eea3e6792ba4140c32d52d03c5" name="a7a6499eea3e6792ba4140c32d52d03c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a6499eea3e6792ba4140c32d52d03c5">&#9670;&#160;</a></span>extract_multi_language_dict()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"> str | None aas_standard_parser.aas_parser.extract_multi_language_dict </td>
-          <td>(</td>
-          <td class="paramtype">dict&#160;</td>
-          <td class="paramname"><em>multi_language_dict</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">list[str] | None &#160;</td>
-          <td class="paramname"><em>preferred_languages</em> = <code>None</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Extract a readable text from BaSyx multilingual text/name containers. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">multi_language_dict</td><td>A dictionary containing multilingual text with language codes as keys. </td></tr>
-    <tr><td class="paramname">preferred_languages</td><td>A list of preferred languages to extract the text from, in order of preference. Defaults to ["en", "de"]. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The extracted text in the preferred language, or the first available text if none of the preferred languages are found, or None if no text is available. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="aas__parser_8py_source.html#l00022">22</a> of file <a class="el" href="aas__parser_8py_source.html">aas_parser.py</a>.</p>
-
-</div>
-</div>
-<a id="a4f832401ffe88c94fff6804df2e847a4" name="a4f832401ffe88c94fff6804df2e847a4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4f832401ffe88c94fff6804df2e847a4">&#9670;&#160;</a></span>extract_multi_language_object()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"> str | None aas_standard_parser.aas_parser.extract_multi_language_object </td>
-          <td>(</td>
-          <td class="paramtype">Any&#160;</td>
-          <td class="paramname"><em>multi_language_object</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">list[str] | None &#160;</td>
-          <td class="paramname"><em>preferred_languages</em> = <code>None</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Extract a readable text from BaSyx multilingual text/name containers. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">multi_language_dict</td><td>A dictionary containing multilingual text with language codes as keys. </td></tr>
-    <tr><td class="paramname">preferred_languages</td><td>A list of preferred languages to extract the text from, in order of preference. Defaults to ["en", "de"]. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The extracted text in the preferred language, or the first available text if none of the preferred languages are found, or None if no text is available. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="aas__parser_8py_source.html#l00054">54</a> of file <a class="el" href="aas__parser_8py_source.html">aas_parser.py</a>.</p>
 
 </div>
 </div>
@@ -264,7 +178,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>An EnvironmentData instance containing the parsed data. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="aas__parser_8py_source.html#l00078">78</a> of file <a class="el" href="aas__parser_8py_source.html">aas_parser.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aas__parser_8py_source.html#l00020">20</a> of file <a class="el" href="aas__parser_8py_source.html">aas_parser.py</a>.</p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -294,7 +208,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="aas__parser_8py_source.html#l00013">13</a> of file <a class="el" href="aas__parser_8py_source.html">aas_parser.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="aas__parser_8py_source.html#l00012">12</a> of file <a class="el" href="aas__parser_8py_source.html">aas_parser.py</a>.</p>
 
 </div>
 </div>
