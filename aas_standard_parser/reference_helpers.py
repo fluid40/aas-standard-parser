@@ -36,3 +36,13 @@ def get_value_from_key_at_index(reference: ModelReference, index: int) -> str:
     :return: value from the key at the given index
     """
     return reference.key[index].value
+
+
+def get_value_from_reference_at_index(reference: ModelReference, index: int) -> str:
+    """Returns the value from the key at the given index in reference.
+
+    :param reference: reference to extract value from
+    :param index: index of the key to get the value from
+    :return: value from the key at the given index
+    """
+    return reference.key[index].value
