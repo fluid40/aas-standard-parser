@@ -2,6 +2,7 @@
 
 import logging
 
+from aas_standard_parser import multi_language_parser
 from aas_standard_parser.classes.descriptor_json_helper_classes import DescriptorData, EndPointHrefData
 from aas_standard_parser.utils import decode_base_64, encode_base_64
 
@@ -30,11 +31,12 @@ def parse_descriptor(descriptor_data: dict) -> DescriptorData | None:
             descriptor.hrefs_data.append({href: data})
 
     descriptor.description = _parse_multi_lang(descriptor_data.get("description", []))
-    descriptor.main_description = next(iter(descriptor.description.values())) if descriptor.description else ""
+    descriptor.main_description = multi_language_parser.extract_multi_language_dict(descriptor_data.get("description", []))
     descriptor.display_name = _parse_multi_lang(descriptor_data.get("displayName", []))
-    descriptor.main_display_name = next(iter(descriptor.display_name.values())) if descriptor.display_name else ""
+    descriptor.main_display_name = multi_language_parser.extract_multi_language_dict(descriptor_data.get("displayName", []))
     descriptor.assetKind = descriptor_data.get("assetKind", "")
     descriptor.id_short = descriptor_data.get("idShort", "")
+    descriptor.global_asset_id = descriptor_data.get("globalAssetId", "")
     descriptor.semantic_id = descriptor_data.get("semanticId", {})
     descriptor.supplementary_semantic_ids = descriptor_data.get("supplementarySemanticIds", [])
     descriptor.identifier = encode_base_64(identifier_encoded)

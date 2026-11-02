@@ -4,7 +4,7 @@ import logging
 
 from basyx.aas import model
 
-from aas_standard_parser import aas_parser
+from aas_standard_parser import multi_language_parser
 
 _logger = logging.getLogger(__name__)
 
@@ -25,7 +25,7 @@ def get_description_from_concept_description(
         _logger.debug(f"No description found for concept description '{concept_description.id_short}'")
         return None
 
-    return aas_parser.extract_multi_language_object(concept_description.description, preferred_languages=preferred_languages)
+    return multi_language_parser.extract_multi_language_object(concept_description.description, preferred_languages=preferred_languages)
 
 
 def get_display_name_from_concept_description(
@@ -44,4 +44,4 @@ def get_display_name_from_concept_description(
         _logger.debug(f"No display name found for concept description '{concept_description.id_short}'")
         return None
 
-    return aas_parser.extract_multi_language_object(concept_description.display_name, preferred_languages=preferred_languages)
+    return multi_language_parser.extract_multi_language_object(concept_description.display_name, preferred_languages=preferred_languages)

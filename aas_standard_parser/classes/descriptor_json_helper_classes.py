@@ -29,5 +29,6 @@ class DescriptorData:
         self.main_display_name: str = ""
         self.assetKind = ""
         self.id_short = ""
+        self.global_asset_id = ""
         self.semantic_id = ""
         self.supplementary_semantic_ids: list[str] = []

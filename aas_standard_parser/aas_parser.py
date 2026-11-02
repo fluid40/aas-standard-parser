@@ -3,68 +3,10 @@
 import json
 import logging
 from pathlib import Path
-from typing import Any
 
 from aas_standard_parser.classes.env_parser_classes import EnvironmentData
 
 _logger = logging.getLogger(__name__)
-
-
-def extract_multi_language_dict(multi_language_dict: dict, preferred_languages: list[str] | None = None) -> str | None:
-    """Extract a readable text from BaSyx multilingual text/name containers.
-
-    :param multi_language_dict: A dictionary containing multilingual text with language codes as keys.
-    :param preferred_languages: A list of preferred languages to extract the text from, in order of preference. Defaults to ["en", "de"].
-    :return: The extracted text in the preferred language, or the first available text if none of the preferred languages are found, or None if no text is available.
-    """
-    if preferred_languages is None:
-        preferred_languages = ["en", "de"]
-
-    if multi_language_dict is None:
-        return None
-
-    if len(multi_language_dict) == 0:
-        return None
-
-    for language in preferred_languages:
-        try:
-            text = multi_language_dict.get(language)
-        except AttributeError:
-            text = None
-        if text:
-            return str(text)
-
-    try:
-        first_value = next(iter(multi_language_dict.values()))
-    except (AttributeError, StopIteration):
-        first_value = None
-
-    return str(first_value) if first_value else None
-
-
-def extract_multi_language_object(multi_language_object: Any, preferred_languages: list[str] | None = None) -> str | None:
-    """Extract a readable text from BaSyx multilingual text/name containers.
-
-    :param multi_language_dict: A dictionary containing multilingual text with language codes as keys.
-    :param preferred_languages: A list of preferred languages to extract the text from, in order of preference. Defaults to ["en", "de"].
-    :return: The extracted text in the preferred language, or the first available text if none of the preferred languages are found, or None if no text is available.
-    """
-    if preferred_languages is None:
-        preferred_languages = ["en", "de"]
-
-    if multi_language_object is None:
-        return None
-
-    keys = multi_language_object.keys()
-
-    if not keys or len(keys) == 0:
-        return None
-
-    for language in preferred_languages:
-        if language in keys:
-            return str(multi_language_object.get(language))
-
-    return str(multi_language_object.get(next(iter(keys)))) if keys else None
 
 
 def parse_environment_file(file_path: str) -> EnvironmentData | None:

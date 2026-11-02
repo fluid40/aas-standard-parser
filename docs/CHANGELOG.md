@@ -1,5 +1,10 @@
 # 📝 Changelog
 
+## [0.7.8] - 2026-11-02
+
+* ✨Feat: Add multi_language_parser module and refactor related functions for better multilingual support
+* 🚀Improvement: Add Global Asset ID to descriptor parsing
+
 ## [0.7.7] - 2026-10-01
 
 * ✨Feat: Add function to retrieve semantic ID value by index in descriptor JSON

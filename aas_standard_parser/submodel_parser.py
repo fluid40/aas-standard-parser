@@ -4,7 +4,7 @@ import logging
 
 from basyx.aas import model
 
-from aas_standard_parser import aas_parser
+from aas_standard_parser import multi_language_parser
 
 _logger = logging.getLogger(__name__)
 
@@ -23,7 +23,7 @@ def get_description_from_submodel(submodel: model.Submodel, preferred_languages:
         _logger.debug(f"No description found for concept description '{submodel.id_short}'")
         return None
 
-    return aas_parser.extract_multi_language_object(submodel.description, preferred_languages=preferred_languages)
+    return multi_language_parser.extract_multi_language_object(submodel.description, preferred_languages=preferred_languages)
 
 
 def get_display_name_from_submodel(submodel: model.Submodel, preferred_languages: list[str] | None = None) -> str | None:
@@ -40,7 +40,7 @@ def get_display_name_from_submodel(submodel: model.Submodel, preferred_languages
         _logger.debug(f"No display name found for submodel '{submodel.id_short}'")
         return None
 
-    return aas_parser.extract_multi_language_object(submodel.display_name, preferred_languages=preferred_languages)
+    return multi_language_parser.extract_multi_language_object(submodel.display_name, preferred_languages=preferred_languages)
 
 
 def get_submodel_element_by_id_short_path(submodel: model.Submodel, id_short_path: str) -> model.SubmodelElement:
