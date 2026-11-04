@@ -18,7 +18,8 @@ var namespacetests =
     [ "test_descriptor_json_helper", "namespacetests_1_1test__descriptor__json__helper.html", [
       [ "test_001a_get_mapping_configuration_root_element", "namespacetests_1_1test__descriptor__json__helper.html#ac42a5cddefd95795692878ec3446ee07", null ],
       [ "test_001b_get_mapping_configuration_root_element", "namespacetests_1_1test__descriptor__json__helper.html#a69c972c57ce5c74ed9047c759bf20f34", null ],
-      [ "test_002_parse_descriptor_json", "namespacetests_1_1test__descriptor__json__helper.html#afcf0b6c7dd3463696e427455a067712d", null ]
+      [ "test_002a_parse_descriptor_json", "namespacetests_1_1test__descriptor__json__helper.html#acabdc78a3eab0e845e759ba7744c243c", null ],
+      [ "test_002b_parse_descriptor_json", "namespacetests_1_1test__descriptor__json__helper.html#a2e19e1339da5002baee81ea3e99f8700", null ]
     ] ],
     [ "test_multi_language_parser", "namespacetests_1_1test__multi__language__parser.html", [
       [ "test_parse_multi_language_dict", "namespacetests_1_1test__multi__language__parser.html#a2980b80cfa96e59a7cc5a40cdc452230", null ],
