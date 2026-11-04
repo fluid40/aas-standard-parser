@@ -52,7 +52,7 @@ def parse_descriptor(descriptor_data: dict) -> DescriptorData | None:
 
         identifier_encoded = submodel_descriptor.get("id", "")
         identifier = encode_base_64(identifier_encoded)
-        endpoint_data = DescriptorEndpointData(sm_href, identifier)
+        endpoint_data = DescriptorEndpointData(sm_href, identifier, identifier_encoded)
 
         descriptor.submodels.append(endpoint_data)
 

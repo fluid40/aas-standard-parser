@@ -16,10 +16,11 @@ class EndPointHrefData:
 class DescriptorEndpointData:
     """Class to represent a descriptor endpoint data structure."""
 
-    def __init__(self, href: str, identifier: str):
+    def __init__(self, href: str, identifier: str, identifier_decoded: str):
         """Initialize the DescriptorEndpointData with the given interface and protocol information."""
         self.href: str = href
         self.identifier: str = identifier
+        self.identifier_decoded: str = identifier_decoded
 
 
 class DescriptorData:
