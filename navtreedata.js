@@ -27,7 +27,7 @@ var NAVTREE =
   [ "AAS Standard Parser Documentation", "index.html", [
     [ "AAS standard Parser", "index.html", "index" ],
     [ "📝 Changelog", "md_docs_2CHANGELOG.html", [
-      [ "[0.8.1] - 2026-11-04", "md_docs_2CHANGELOG.html#autotoc_md1", null ],
+      [ "[0.8.2] - 2026-11-04", "md_docs_2CHANGELOG.html#autotoc_md1", null ],
       [ "[0.8.0] - 2026-11-02", "md_docs_2CHANGELOG.html#autotoc_md2", null ],
       [ "[0.7.8] - 2026-10-12", "md_docs_2CHANGELOG.html#autotoc_md3", null ],
       [ "[0.7.7] - 2026-10-01", "md_docs_2CHANGELOG.html#autotoc_md4", null ],
