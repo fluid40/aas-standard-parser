@@ -24,7 +24,7 @@ def test_001b_get_mapping_configuration_root_element():
     assert href_data.identifier == "RW5lcmd5TW9uaXRvcmluZw"
     assert href_data.identifier_decoded == "EnergyMonitoring"
 
-def test_002_parse_descriptor_json():
+def test_002a_parse_descriptor_json():
     descriptor = {
         "description": [
             {
@@ -75,3 +75,56 @@ def test_002_parse_descriptor_json():
     assert descriptor_data.endpoints[0]["protocolInformation"]["endpointProtocol"] == "https"
     assert descriptor_data.endpoints[0]["interface"] == "SUBMODEL-3.0"
     assert descriptor_data.main_display_name == ""
+
+def test_002b_parse_descriptor_json():
+    descriptor = {
+        "assetKind": "Instance",
+        "displayName": [
+            {
+                "language": "en",
+                "text": "A2123324235"
+            }
+        ],
+        "endpoints": [
+            {
+                "interface": "AAS-3.2",
+                "protocolInformation": {
+                    "endpointProtocol": "https",
+                    "href": "https://eng-app-dev.em.ag/aas-env-go/shells/aHR0cHM6Ly93d3cuZW0uYWcvc2hlbGwvYTIxMjMzMjQyMzU"
+                }
+            }
+        ],
+        "globalAssetId": "A2123324235",
+        "id": "https://www.em.ag/shell/a2123324235",
+        "idShort": "A2123324235",
+        "submodelDescriptors": [
+            {
+                "endpoints": [
+                    {
+                        "interface": "SUBMODEL-3.2",
+                        "protocolInformation": {
+                            "endpointProtocol": "https",
+                            "href": "https://eng-app-dev.em.ag/aas-env-go/submodels/aHR0cHM6Ly93d3cuZW0uYWcvc2hlbGwvYTIxMjMzMjQyMzUvcGFydHR5cGVpbmZvcm1hdGlvbg"
+                        }
+                    }
+                ],
+                "id": "https://www.em.ag/shell/a2123324235/parttypeinformation"
+            }
+        ]
+    }
+
+    descriptor_data = descriptor_json_helper.parse_descriptor(descriptor)
+
+    assert descriptor_data is not None
+    assert descriptor_data.description == {}
+    assert descriptor_data.main_description == ""
+    assert descriptor_data.display_name == {"en": "A2123324235"}
+    assert descriptor_data.main_display_name == "A2123324235"
+    assert descriptor_data.assetKind == "Instance"
+    assert descriptor_data.global_asset_id == "A2123324235"
+    assert descriptor_data.id_short == "A2123324235"
+    assert descriptor_data.semantic_id == {}
+    assert descriptor_data.endpoints == descriptor["endpoints"]
+    assert len(descriptor_data.submodels) == 1
+    assert descriptor_data.submodels[0].href == "https://eng-app-dev.em.ag/aas-env-go/submodels/aHR0cHM6Ly93d3cuZW0uYWcvc2hlbGwvYTIxMjMzMjQyMzUvcGFydHR5cGVpbmZvcm1hdGlvbg"
+    assert descriptor_data.submodels[0].identifier == "aHR0cHM6Ly93d3cuZW0uYWcvc2hlbGwvYTIxMjMzMjQyMzUvcGFydHR5cGVpbmZvcm1hdGlvbg"

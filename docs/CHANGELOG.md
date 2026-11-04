@@ -1,5 +1,9 @@
 # 📝 Changelog
 
+## [0.8.1] - 2026-11-04
+
+* 🚀Improvement: Add DescriptorEndpointData class and update descriptor parsing to handle submodel descriptors
+
 ## [0.8.0] - 2026-11-02
 
 * ✨Feat: Add multi_language_parser module and refactor related functions for better multilingual support

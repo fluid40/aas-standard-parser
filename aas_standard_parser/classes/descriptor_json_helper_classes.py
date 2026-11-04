@@ -13,6 +13,15 @@ class EndPointHrefData:
         self.tag: str = ""
 
 
+class DescriptorEndpointData:
+    """Class to represent a descriptor endpoint data structure."""
+
+    def __init__(self, href: str, identifier: str):
+        """Initialize the DescriptorEndpointData with the given interface and protocol information."""
+        self.href: str = href
+        self.identifier: str = identifier
+
+
 class DescriptorData:
     """Class to represent the descriptor data structure."""
 
@@ -32,3 +41,4 @@ class DescriptorData:
         self.id_short: str = ""
         self.semantic_id: dict = {}
         self.supplementary_semantic_ids: list[str] = []
+        self.submodels: list[DescriptorEndpointData] = []
