@@ -4,7 +4,7 @@ basyx-python-sdk>=2.2.0
 requests>=2.34.2
 
 # Development and tooling
-pytest>=9.2.1
+pytest>=9.2.0
 pytest-cov>=7.1.0
 python-json-logger>=4.2.0
 build>=1.6.1
