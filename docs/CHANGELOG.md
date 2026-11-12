@@ -1,6 +1,6 @@
 # 📝 Changelog
 
-## [0.8.2] - 2026-11-12
+## [0.8.4] - 2026-11-12
 
 * 🧹Chore: Update package dependencies for improved compatibility.
 
