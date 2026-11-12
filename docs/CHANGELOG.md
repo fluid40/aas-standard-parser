@@ -1,5 +1,9 @@
 # 📝 Changelog
 
+## [0.8.2] - 2026-11-12
+
+* 🧹Chore: Update package dependencies for improved compatibility.
+
 ## [0.8.2] - 2026-11-04
 
 * 🚀Improvement: Add DescriptorEndpointData class and update descriptor parsing to handle submodel descriptors
