@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['mappingconfiguration_0',['MappingConfiguration',['../classaimc__parser__classes_1_1MappingConfiguration.html',1,'aimc_parser_classes']]],
-  ['mappingconfigurations_1',['MappingConfigurations',['../classaimc__parser__classes_1_1MappingConfigurations.html',1,'aimc_parser_classes']]],
-  ['method_5fname_2',['method_name',['../classaas__standard__parser_1_1aid__parser_1_1HttpProtocolBinding.html#ae8c625eddd7088629cc0023c14555f71',1,'aas_standard_parser::aid_parser::HttpProtocolBinding']]],
-  ['multi_5flanguage_5fparser_2epy_3',['multi_language_parser.py',['../multi__language__parser_8py.html',1,'']]]
+  ['readme_2emd_0',['README.md',['../README_8md.html',1,'']]],
+  ['reference_20helpers_1',['Reference Helpers',['../md_docs_2getting__started.html#autotoc_md33',1,'']]],
+  ['reference_5fhelpers_2epy_2',['reference_helpers.py',['../reference__helpers_8py.html',1,'']]],
+  ['resources_3',['📚 Resources',['../index.html#autotoc_md44',1,'']]]
 ];

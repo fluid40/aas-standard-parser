@@ -1,87 +1,16 @@
 var namespaceaas__standard__parser =
 [
-    [ "aas_parser", "namespaceaas__standard__parser_1_1aas__parser.html", [
-      [ "_parse_node", "namespaceaas__standard__parser_1_1aas__parser.html#a020990838d76334e5260b73114fb3de2", null ],
-      [ "parse_environment_file", "namespaceaas__standard__parser_1_1aas__parser.html#ac7163818842d182fdd9465c7559f6045", null ],
-      [ "_logger", "namespaceaas__standard__parser_1_1aas__parser.html#a0d05bf6f72a5bb7dd62aa77db8d3d2e7", null ]
-    ] ],
-    [ "aid_parser", "namespaceaas__standard__parser_1_1aid__parser.html", "namespaceaas__standard__parser_1_1aid__parser" ],
-    [ "aimc_parser", "namespaceaas__standard__parser_1_1aimc__parser.html", [
-      [ "_generate_source_sink_relations", "namespaceaas__standard__parser_1_1aimc__parser.html#ab016468c203096559c2badb908cab29f", null ],
-      [ "_get_interface_reference_element", "namespaceaas__standard__parser_1_1aimc__parser.html#a6486b0ae2674841eb1561f5c733b1c01", null ],
-      [ "_get_reference_parent_path", "namespaceaas__standard__parser_1_1aimc__parser.html#a331dfa790904ba66b0206794f1ce6822", null ],
-      [ "_get_reference_properties", "namespaceaas__standard__parser_1_1aimc__parser.html#abc2d919da2f5d5f6d67921cdf0bf7ada", null ],
-      [ "get_mapping_configuration_elements", "namespaceaas__standard__parser_1_1aimc__parser.html#ab040dd331c278ca30b0c92eb719234cf", null ],
-      [ "get_mapping_configuration_root_element", "namespaceaas__standard__parser_1_1aimc__parser.html#a46e2a901cf0fbb8a9280390f13560daa", null ],
-      [ "parse_mapping_configuration_element", "namespaceaas__standard__parser_1_1aimc__parser.html#afb69723e5c4160b7cf493336435ce4ce", null ],
-      [ "parse_mapping_configurations", "namespaceaas__standard__parser_1_1aimc__parser.html#ae2cda8726f34a73499ebca6377ee46e2", null ],
-      [ "logger", "namespaceaas__standard__parser_1_1aimc__parser.html#acc5914a7e12bdea16e4280042181a0e9", null ]
-    ] ],
-    [ "collection_helpers", "namespaceaas__standard__parser_1_1collection__helpers.html", [
-      [ "contains_supplemental_semantic_id", "namespaceaas__standard__parser_1_1collection__helpers.html#a0dbf969cdf0576cc992a228cbcb26616", null ],
-      [ "find_all_by_in_semantic_id", "namespaceaas__standard__parser_1_1collection__helpers.html#ae1b0d8b752ee523d1e3ebea89edb0a16", null ],
-      [ "find_all_by_semantic_id", "namespaceaas__standard__parser_1_1collection__helpers.html#aaf5798d76ea36f135b7995d583d3bd6f", null ],
-      [ "find_by_id_short", "namespaceaas__standard__parser_1_1collection__helpers.html#acf5db0640b9e4543ae0fd4c101aed375", null ],
-      [ "find_by_in_semantic_id", "namespaceaas__standard__parser_1_1collection__helpers.html#a31b22679c095f1ecfdd4007ab3858fd1", null ],
-      [ "find_by_semantic_id", "namespaceaas__standard__parser_1_1collection__helpers.html#ad3b59073df7d5828becb76c77000e1ba", null ],
-      [ "find_by_supplemental_semantic_id", "namespaceaas__standard__parser_1_1collection__helpers.html#a0152772e591a6af320d0b5915fea7c94", null ]
-    ] ],
-    [ "concept_description_parser", "namespaceaas__standard__parser_1_1concept__description__parser.html", [
-      [ "get_description_from_concept_description", "namespaceaas__standard__parser_1_1concept__description__parser.html#aa8ca4cbf38fb74da2478556ff7d2571e", null ],
-      [ "get_display_name_from_concept_description", "namespaceaas__standard__parser_1_1concept__description__parser.html#a2875f04cbd260ea2d8985b4772f20d9d", null ],
-      [ "_logger", "namespaceaas__standard__parser_1_1concept__description__parser.html#af348de8c2adde9b690dd26c2001aa3fc", null ]
-    ] ],
-    [ "descriptor_json_helper", "namespaceaas__standard__parser_1_1descriptor__json__helper.html", [
-      [ "_parse_multi_lang", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#a288d16a8428760c0b6c7bde0a41e35eb", null ],
-      [ "get_endpoint_by_index", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#a11e9196b0a3995a2693ec43e6b699789", null ],
-      [ "get_endpoint_href_by_index", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#abc73a4fe4db6926d2c0aa70e287b1ad0", null ],
-      [ "get_endpoint_hrefs", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#a8aee330f96818125e0a9802dcabb93f5", null ],
-      [ "get_endpoint_protocol_information_by_index", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#af32f5c67f31caa58dc46ebc2091166b6", null ],
-      [ "get_endpoints", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#a2ad9a975fcabe7b611c0581ab91e9a4d", null ],
-      [ "get_semantic_id_value_at_index_data", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#a243312ff940924122768a789aed60b97", null ],
-      [ "get_value_from_semantic_id_by_index", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#a7369cdfd248f82f0dcbb5756eb0ab3d8", null ],
-      [ "parse_descriptor", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#a4a45607db47b6396565e7c87a3b0cbb0", null ],
-      [ "parse_endpoint_href", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#a2165085ae86a1f9d9c70959d76a8d4ed", null ],
-      [ "logger", "namespaceaas__standard__parser_1_1descriptor__json__helper.html#af6754c50a46d728809b4f5fc307eb94a", null ]
-    ] ],
-    [ "multi_language_parser", "namespaceaas__standard__parser_1_1multi__language__parser.html", [
-      [ "parse_multi_language_dict", "namespaceaas__standard__parser_1_1multi__language__parser.html#ab483eb03ed761eb982da4781f81300a0", null ],
-      [ "parse_multi_language_list", "namespaceaas__standard__parser_1_1multi__language__parser.html#a193bd1806529b1c5e5c35ba80d86fcc1", null ],
-      [ "parse_multi_language_object", "namespaceaas__standard__parser_1_1multi__language__parser.html#a667fae3a0ffe022f6a74030945c3712f", null ]
-    ] ],
-    [ "reference_helpers", "namespaceaas__standard__parser_1_1reference__helpers.html", [
-      [ "construct_id_short_path_from_reference", "namespaceaas__standard__parser_1_1reference__helpers.html#a8db69408a38296fda6be4af96a67a5c0", null ],
-      [ "get_value_from_key_at_index", "namespaceaas__standard__parser_1_1reference__helpers.html#a9e86201b623b38b31a38d7d7d89f38d4", null ],
-      [ "get_value_from_reference_at_index", "namespaceaas__standard__parser_1_1reference__helpers.html#a03651868d280a875833bf09a8fd7bee1", null ],
-      [ "get_values_from_keys", "namespaceaas__standard__parser_1_1reference__helpers.html#aded2e3def35f6d499e5c51abe12455eb", null ]
-    ] ],
-    [ "shell_parser", "namespaceaas__standard__parser_1_1shell__parser.html", [
-      [ "get_description_from_shell", "namespaceaas__standard__parser_1_1shell__parser.html#a8419272a0900d08af44afbad3152b062", null ],
-      [ "get_display_name_from_shell", "namespaceaas__standard__parser_1_1shell__parser.html#a5ae4f06b36f206bb7d5c675a2eb68600", null ],
-      [ "get_submodel_ids", "namespaceaas__standard__parser_1_1shell__parser.html#aae79f8b09d1b7177f95255ac8feb575b", null ],
-      [ "_logger", "namespaceaas__standard__parser_1_1shell__parser.html#ac1f48ca6d7bc211a103e4d793829a8f3", null ]
-    ] ],
-    [ "submodel_json_helper", "namespaceaas__standard__parser_1_1submodel__json__helper.html", [
-      [ "get_value_from_semantic_id_by_index", "namespaceaas__standard__parser_1_1submodel__json__helper.html#ac017baaefb03ab3a4cc899f316b5ab29", null ],
-      [ "logger", "namespaceaas__standard__parser_1_1submodel__json__helper.html#a225b2370e306d103b4713dea8550cf7c", null ]
-    ] ],
-    [ "submodel_parser", "namespaceaas__standard__parser_1_1submodel__parser.html", [
-      [ "get_description_from_submodel", "namespaceaas__standard__parser_1_1submodel__parser.html#aa928909a0a6c5ec3467c87ddc52e4451", null ],
-      [ "get_display_name_from_submodel", "namespaceaas__standard__parser_1_1submodel__parser.html#a58751d56fd0549db6616431dd5b24d2d", null ],
-      [ "get_semantic_id_value_from_submodel", "namespaceaas__standard__parser_1_1submodel__parser.html#a8ebe406d6df29cb6334a6c850c382056", null ],
-      [ "get_submodel_element_by_id_short_path", "namespaceaas__standard__parser_1_1submodel__parser.html#a6b6057d36b18e8871d8dacc178efb886", null ],
-      [ "_logger", "namespaceaas__standard__parser_1_1submodel__parser.html#ad25517cfa974024703e8a69a2fd81bd9", null ]
-    ] ],
-    [ "utils", "namespaceaas__standard__parser_1_1utils.html", [
-      [ "convert_to_dict", "namespaceaas__standard__parser_1_1utils.html#a22de8dfed3685ecdf2829b85181c7983", null ],
-      [ "convert_to_object", "namespaceaas__standard__parser_1_1utils.html#a5711d36266834d12de342680a7ef4991", null ],
-      [ "create_submodel_from_file", "namespaceaas__standard__parser_1_1utils.html#a05ea165d5c4f78680559a648d5f19daf", null ],
-      [ "decode_base_64", "namespaceaas__standard__parser_1_1utils.html#a1a1919b73ec3483260e1b184fad334c7", null ],
-      [ "encode_base_64", "namespaceaas__standard__parser_1_1utils.html#aefe3f82a6af114dbea3f171fadb33cb8", null ],
-      [ "_logger", "namespaceaas__standard__parser_1_1utils.html#ae68ba5e2941c56cf0a34ac68335d2ab7", null ]
-    ] ],
-    [ "version_check", "namespaceaas__standard__parser_1_1version__check.html", [
-      [ "check_for_update", "namespaceaas__standard__parser_1_1version__check.html#a7250237daee8fd66ed892a879d8bb114", null ],
-      [ "logger", "namespaceaas__standard__parser_1_1version__check.html#ae2a7b7e9d4951f6f971bfaf016022131", null ]
-    ] ]
+    [ "aas_parser", "namespaceaas__standard__parser_1_1aas__parser.html", null ],
+    [ "aid_parser", "namespaceaas__standard__parser_1_1aid__parser.html", null ],
+    [ "aimc_parser", "namespaceaas__standard__parser_1_1aimc__parser.html", null ],
+    [ "collection_helpers", "namespaceaas__standard__parser_1_1collection__helpers.html", null ],
+    [ "concept_description_parser", "namespaceaas__standard__parser_1_1concept__description__parser.html", null ],
+    [ "descriptor_json_helper", "namespaceaas__standard__parser_1_1descriptor__json__helper.html", null ],
+    [ "multi_language_parser", "namespaceaas__standard__parser_1_1multi__language__parser.html", null ],
+    [ "reference_helpers", "namespaceaas__standard__parser_1_1reference__helpers.html", null ],
+    [ "shell_parser", "namespaceaas__standard__parser_1_1shell__parser.html", null ],
+    [ "submodel_json_helper", "namespaceaas__standard__parser_1_1submodel__json__helper.html", null ],
+    [ "submodel_parser", "namespaceaas__standard__parser_1_1submodel__parser.html", null ],
+    [ "utils", "namespaceaas__standard__parser_1_1utils.html", null ],
+    [ "version_check", "namespaceaas__standard__parser_1_1version__check.html", null ]
 ];

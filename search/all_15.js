@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['logger_0',['logger',['../namespaceaas__standard__parser_1_1aimc__parser.html#acc5914a7e12bdea16e4280042181a0e9',1,'aas_standard_parser.aimc_parser.logger'],['../namespaceaas__standard__parser_1_1descriptor__json__helper.html#af6754c50a46d728809b4f5fc307eb94a',1,'aas_standard_parser.descriptor_json_helper.logger'],['../namespaceaas__standard__parser_1_1submodel__json__helper.html#a225b2370e306d103b4713dea8550cf7c',1,'aas_standard_parser.submodel_json_helper.logger'],['../namespaceaas__standard__parser_1_1version__check.html#ae2a7b7e9d4951f6f971bfaf016022131',1,'aas_standard_parser.version_check.logger']]]
+  ['parser_0',['Parser',['../md_docs_2getting__started.html#autotoc_md28',1,'AAS Parser'],['../index.html',1,'AAS standard Parser'],['../md_docs_2getting__started.html#autotoc_md30',1,'AID Parser'],['../md_docs_2getting__started.html#autotoc_md31',1,'AIMC Parser'],['../md_docs_2getting__started.html#autotoc_md29',1,'Submodel Parser']]],
+  ['parsers_1',['Parsers',['../md_docs_2getting__started.html#autotoc_md23',1,'Available Parsers'],['../index.html#autotoc_md41',1,'Core Parsers']]],
+  ['parsing_2',['Comprehensive AAS Submodel Parsing',['../index.html#autotoc_md40',1,'']]]
 ];

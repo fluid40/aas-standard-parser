@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['standard_20parser_0',['AAS standard Parser',['../index.html',1,'']]],
-  ['started_1',['🚀 Getting Started',['../md_docs_2getting__started.html',1,'']]]
+  ['4_201_202026_2004_2017_0',['[0.4.1] - 2026-04-17',['../md_docs_2CHANGELOG.html#autotoc_md19',1,'']]],
+  ['4_202026_2006_2009_1',['[0.6.4] - 2026-06-09',['../md_docs_2CHANGELOG.html#autotoc_md14',1,'']]],
+  ['4_202026_2009_2003_2',['[0.7.4] - 2026-09-03',['../md_docs_2CHANGELOG.html#autotoc_md7',1,'']]],
+  ['4_202026_2011_2012_3',['[0.8.4] - 2026-11-12',['../md_docs_2CHANGELOG.html#autotoc_md2',1,'']]]
 ];

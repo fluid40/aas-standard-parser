@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['parser_0',['AAS standard Parser',['../index.html',1,'']]]
+  ['3_202026_2005_2011_0',['[0.5.3] - 2026-05-11',['../md_docs_2CHANGELOG.html#autotoc_md16',1,'']]],
+  ['3_202026_2009_2002_1',['[0.7.3] - 2026-09-02',['../md_docs_2CHANGELOG.html#autotoc_md8',1,'']]],
+  ['30_2',['[0.5.0] - 2026-04-30',['../md_docs_2CHANGELOG.html#autotoc_md18',1,'']]]
 ];
