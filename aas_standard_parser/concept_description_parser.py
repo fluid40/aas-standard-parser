@@ -1,11 +1,12 @@
 """Module for parsing Concept Descriptions."""
 
 import logging
+from typing import Any
 
 from basyx.aas import model
 
 from aas_standard_parser import multi_language_parser, reference_helpers, utils
-from aas_standard_parser.classes.concept_description_parser_classes import ConceptDescriptionData, DataSpecificationContent
+from aas_standard_parser.classes.concept_description_parser_classes import ConceptDescriptionData, DataSpecificationContent, ValueListItem
 
 _logger = logging.getLogger(__name__)
 
@@ -43,7 +44,7 @@ def parse_concept_description(
         data_spec_content.unit_id = ice_content.unit_id.key[0].value if ice_content.unit_id is not None else ""
         data_spec_content.value = content.value if content.value is not None else ""
         data_spec_content.value_format = content.value_format if content.value_format is not None else ""
-        data_spec_content.value_list = list(content.value_list) if content.value_list is not None else []
+        data_spec_content.value_list = __parse_value_list_items(content.value_list) if content.value_list is not None else []
         data_spec_content.symbol = content.symbol if content.symbol is not None else ""
         data_spec_content.definition = multi_language_parser.parse_multi_language_object(content.definition) if content.definition is not None else ""
 
@@ -56,6 +57,19 @@ def parse_concept_description(
         concept_description_data.data_specification_content.append(data_spec_content)
 
     return concept_description_data
+
+
+def __parse_value_list_items(value_list: set[model.ValueReferencePair]) -> list[ValueListItem]:
+    """Parse a ValueListItem from the model into a ValueListItem class."""
+    parsed_items = []
+    for item in value_list:
+        parsed_item = ValueListItem()
+        parsed_item.value = item.value if item.value is not None else ""
+        parsed_item.reference_value = reference_helpers.get_value_from_reference_at_index(item.value_id, 0) if item.value_id is not None else ""
+
+        parsed_items.append(parsed_item)
+
+    return parsed_items
 
 
 def parse_concept_description_from_dict(concept_description_dict: dict, preferred_languages: list[str] | None = None) -> ConceptDescriptionData:

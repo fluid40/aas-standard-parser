@@ -1,12 +1,24 @@
 """Helper classes for concept description parsing."""
 
 
+class ValueListItem:
+    """Class to represent a value list item structure."""
+
+    value: str
+    reference_value: str
+
+    def __init__(self):
+        """Initialize the value list item with default values."""
+        self.value = ""
+        self.reference_value = ""
+
+
 class DataSpecificationContent:
     """Class to represent a data specification content structure."""
 
     value: str
     value_format: str
-    value_list: list
+    value_list: list[ValueListItem]
     symbol: str
     definition: str
     data_type: dict

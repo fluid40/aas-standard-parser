@@ -18,6 +18,7 @@ from aas_standard_parser import (
     utils,
 )
 from aas_standard_parser.aid_parser import AIDParser
+from aas_standard_parser.classes.concept_description_parser_classes import ConceptDescriptionData, DataSpecificationContent, ValueListItem
 from aas_standard_parser.classes.descriptor_json_helper_classes import DescriptorData, EndPointHrefData
 from aas_standard_parser.version_check import check_for_update
 
@@ -38,8 +39,11 @@ check_for_update()
 
 __all__ = [
     "AIDParser",
+    "ConceptDescriptionData",
+    "DataSpecificationContent",
     "DescriptorData",
     "EndPointHrefData",
+    "ValueListItem",
     "aas_parser",
     "aid_parser",
     "aimc_parser",
