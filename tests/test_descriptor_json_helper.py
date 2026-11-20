@@ -120,7 +120,7 @@ def test_002b_parse_descriptor_json():
     assert descriptor_data.main_description == ""
     assert descriptor_data.display_name == {"en": "A2123324235"}
     assert descriptor_data.main_display_name == "A2123324235"
-    assert descriptor_data.assetKind == "Instance"
+    assert descriptor_data.asset_kind == "Instance"
     assert descriptor_data.global_asset_id == "A2123324235"
     assert descriptor_data.id_short == "A2123324235"
     assert descriptor_data.semantic_id == {}

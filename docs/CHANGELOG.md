@@ -1,5 +1,9 @@
 # 📝 Changelog
 
+## [0.8.5] - 2026-11-20
+
+* ✨Feat: Enhance descriptor and concept description parsing with new data structures and parsing functions
+
 ## [0.8.4] - 2026-11-12
 
 * 🧹Chore: Update package dependencies for improved compatibility.

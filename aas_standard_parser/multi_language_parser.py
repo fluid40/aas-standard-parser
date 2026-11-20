@@ -28,6 +28,28 @@ def parse_multi_language_object(multi_language_object: Any, preferred_languages:
     return str(multi_language_object.get(next(iter(keys)))) if keys else ""
 
 
+def parse_multi_language_object_to_dict(multi_language_object: Any) -> dict:
+    """Convert a BaSyx multilingual text/name container to a dictionary.
+
+    :param multi_language_object: A dictionary containing multilingual text with language codes as keys.
+    :return: The same dictionary if available, or an empty dictionary if no text is available.
+    """
+    if multi_language_object is None:
+        return {}
+
+    keys = multi_language_object.keys()
+
+    if not keys or len(keys) == 0:
+        return {}
+
+    result: dict = {}
+
+    for key in keys:
+        result[key] = multi_language_object.get(key)
+
+    return result
+
+
 def parse_multi_language_list(multi_language_list: list[dict], preferred_languages: list[str] | None = None) -> str:
     """Extract a readable text from BaSyx multilingual text/language dictionaries.
 

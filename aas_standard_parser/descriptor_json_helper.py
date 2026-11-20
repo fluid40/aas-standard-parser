@@ -34,7 +34,7 @@ def parse_descriptor(descriptor_data: dict) -> DescriptorData | None:
     descriptor.main_description = multi_language_parser.parse_multi_language_list(descriptor_data.get("description", []))
     descriptor.display_name = _parse_multi_lang(descriptor_data.get("displayName", []))
     descriptor.main_display_name = multi_language_parser.parse_multi_language_list(descriptor_data.get("displayName", []))
-    descriptor.assetKind = descriptor_data.get("assetKind", "")
+    descriptor.asset_kind = descriptor_data.get("assetKind", "")
     descriptor.id_short = descriptor_data.get("idShort", "")
     descriptor.global_asset_id = descriptor_data.get("globalAssetId", "")
     descriptor.semantic_id = descriptor_data.get("semanticId", {})
