@@ -1,5 +1,13 @@
 # 📝 Changelog
 
+## [0.8.8] - 2026-11-26
+
+* 🚀Improvement: Add specific asset ids to Descriptor parsing
+
+## [0.8.7] - 2026-11-20
+
+* ✨Feat: Enhance concept description parsing with new data structures and parsing functions
+
 ## [0.8.6] - 2026-11-20
 
 * ✨Feat: Enhance concept description parsing with new data structures and parsing functions

@@ -9,39 +9,41 @@ from aas_standard_parser.utils import decode_base_64, encode_base_64
 logger = logging.getLogger(__name__)
 
 
-def parse_descriptor(descriptor_data: dict) -> DescriptorData | None:
+def parse_descriptor(descriptor_dict: dict) -> DescriptorData | None:
     """Parse the descriptor data into a DescriptorData object.
 
     :param descriptor_data: The descriptor data containing endpoints.
     :return: A DescriptorData object containing parsed descriptor information.
     """
-    identifier_encoded = descriptor_data.get("id", "")
+    identifier_encoded = descriptor_dict.get("id", "")
 
     if not identifier_encoded:
-        logger.warning(f"Descriptor data missing 'id' field: {descriptor_data}")
+        logger.warning(f"Descriptor data missing 'id' field: {descriptor_dict}")
         return None
 
-    descriptor = DescriptorData(identifier_encoded)
-    descriptor.endpoints = descriptor_data.get("endpoints", {})
-    descriptor.hrefs = get_endpoint_hrefs(descriptor_data)
+    descriptor_data = DescriptorData(identifier_encoded)
+    descriptor_data.endpoints = descriptor_dict.get("endpoints", {})
+    descriptor_data.hrefs = get_endpoint_hrefs(descriptor_dict)
 
-    for href in descriptor.hrefs:
+    for href in descriptor_data.hrefs:
         data = parse_endpoint_href(href)
         if data is not None:
-            descriptor.hrefs_data.append({href: data})
+            descriptor_data.hrefs_data.append({href: data})
 
-    descriptor.description = _parse_multi_lang(descriptor_data.get("description", []))
-    descriptor.main_description = multi_language_parser.parse_multi_language_list(descriptor_data.get("description", []))
-    descriptor.display_name = _parse_multi_lang(descriptor_data.get("displayName", []))
-    descriptor.main_display_name = multi_language_parser.parse_multi_language_list(descriptor_data.get("displayName", []))
-    descriptor.asset_kind = descriptor_data.get("assetKind", "")
-    descriptor.id_short = descriptor_data.get("idShort", "")
-    descriptor.global_asset_id = descriptor_data.get("globalAssetId", "")
-    descriptor.semantic_id = descriptor_data.get("semanticId", {})
-    descriptor.supplementary_semantic_ids = descriptor_data.get("supplementarySemanticIds", [])
-    descriptor.identifier = encode_base_64(identifier_encoded)
+    descriptor_data.description = _parse_multi_lang(descriptor_dict.get("description", []))
+    descriptor_data.main_description = multi_language_parser.parse_multi_language_list(descriptor_dict.get("description", []))
+    descriptor_data.display_name = _parse_multi_lang(descriptor_dict.get("displayName", []))
+    descriptor_data.main_display_name = multi_language_parser.parse_multi_language_list(descriptor_dict.get("displayName", []))
+    descriptor_data.asset_kind = descriptor_dict.get("assetKind", "")
+    descriptor_data.id_short = descriptor_dict.get("idShort", "")
+    descriptor_data.global_asset_id = descriptor_dict.get("globalAssetId", "")
+    descriptor_data.semantic_id = descriptor_dict.get("semanticId", {})
+    descriptor_data.supplementary_semantic_ids = descriptor_dict.get("supplementarySemanticIds", [])
+    descriptor_data.identifier = encode_base_64(identifier_encoded)
+    specific_asset_ids = descriptor_dict.get("specificAssetIds", [])
+    descriptor_data.specific_asset_ids = {item.get("name"): item.get("value") for item in specific_asset_ids}
 
-    submodel_descriptors: list[dict] = descriptor_data.get("submodelDescriptors", [])
+    submodel_descriptors: list[dict] = descriptor_dict.get("submodelDescriptors", [])
 
     for submodel_descriptor in submodel_descriptors:
         sm_href = get_endpoint_href_by_index(submodel_descriptor)
@@ -54,9 +56,9 @@ def parse_descriptor(descriptor_data: dict) -> DescriptorData | None:
         identifier = encode_base_64(identifier_encoded)
         endpoint_data = DescriptorEndpointData(sm_href, identifier, identifier_encoded)
 
-        descriptor.submodels.append(endpoint_data)
+        descriptor_data.submodels.append(endpoint_data)
 
-    return descriptor
+    return descriptor_data
 
 
 def _parse_multi_lang(description: list[dict]) -> dict[str, str]:

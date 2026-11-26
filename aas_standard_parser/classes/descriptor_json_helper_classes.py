@@ -51,6 +51,7 @@ class DescriptorData:
     semantic_id: dict
     supplementary_semantic_ids: list[str]
     submodels: list[DescriptorEndpointData]
+    specific_asset_ids: dict[str, str]
 
     def __init__(self, identifier_decoded: str):
         """Initialize the DescriptorData with the given descriptor data."""
