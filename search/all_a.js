@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['aas_20parser_0',['AAS Parser',['../md_docs_2getting__started.html#autotoc_md28',1,'']]],
+  ['aas_20parser_0',['AAS Parser',['../md_docs_2getting__started.html#autotoc_md30',1,'']]],
   ['aas_20standard_20parser_1',['AAS standard Parser',['../index.html',1,'']]],
-  ['aas_20submodel_20parsing_2',['Comprehensive AAS Submodel Parsing',['../index.html#autotoc_md40',1,'']]],
+  ['aas_20submodel_20parsing_2',['Comprehensive AAS Submodel Parsing',['../index.html#autotoc_md42',1,'']]],
   ['aas_5fparser_2epy_3',['aas_parser.py',['../aas__parser_8py.html',1,'']]],
   ['aas_5fstandard_5fparser_4',['aas_standard_parser',['../namespaceaas__standard__parser.html',1,'']]],
   ['aas_5fstandard_5fparser_3a_3aaas_5fparser_5',['aas_parser',['../namespaceaas__standard__parser_1_1aas__parser.html',1,'aas_standard_parser']]],
@@ -18,12 +18,12 @@ var searchData=
   ['aas_5fstandard_5fparser_3a_3asubmodel_5fparser_15',['submodel_parser',['../namespaceaas__standard__parser_1_1submodel__parser.html',1,'aas_standard_parser']]],
   ['aas_5fstandard_5fparser_3a_3autils_16',['utils',['../namespaceaas__standard__parser_1_1utils.html',1,'aas_standard_parser']]],
   ['aas_5fstandard_5fparser_3a_3aversion_5fcheck_17',['version_check',['../namespaceaas__standard__parser_1_1version__check.html',1,'aas_standard_parser']]],
-  ['aid_20parser_18',['AID Parser',['../md_docs_2getting__started.html#autotoc_md30',1,'']]],
+  ['aid_20parser_18',['AID Parser',['../md_docs_2getting__started.html#autotoc_md32',1,'']]],
   ['aid_5fparser_2epy_19',['aid_parser.py',['../aid__parser_8py.html',1,'']]],
-  ['aimc_20parser_20',['AIMC Parser',['../md_docs_2getting__started.html#autotoc_md31',1,'']]],
+  ['aimc_20parser_20',['AIMC Parser',['../md_docs_2getting__started.html#autotoc_md33',1,'']]],
   ['aimc_5fparser_2epy_21',['aimc_parser.py',['../aimc__parser_8py.html',1,'']]],
   ['aimc_5fparser_5fclasses_22',['aimc_parser_classes',['../namespaceaimc__parser__classes.html',1,'']]],
   ['aimc_5fparser_5fclasses_2epy_23',['aimc_parser_classes.py',['../aimc__parser__classes_8py.html',1,'']]],
-  ['available_20helpers_24',['Available Helpers',['../md_docs_2getting__started.html#autotoc_md24',1,'']]],
-  ['available_20parsers_25',['Available Parsers',['../md_docs_2getting__started.html#autotoc_md23',1,'']]]
+  ['available_20helpers_24',['Available Helpers',['../md_docs_2getting__started.html#autotoc_md26',1,'']]],
+  ['available_20parsers_25',['Available Parsers',['../md_docs_2getting__started.html#autotoc_md25',1,'']]]
 ];

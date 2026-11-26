@@ -144,24 +144,25 @@ $(function(){initNavTree('descriptor__json__helper__classes_8py_source.html','',
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    semantic_id: dict</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    supplementary_semantic_ids: list[str]</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    submodels: list[DescriptorEndpointData]</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keyword">def </span>__init__(self, identifier_decoded: str):</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="stringliteral">&quot;&quot;&quot;Initialize the DescriptorData with the given descriptor data.&quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        self.identifier_decoded: str = identifier_decoded</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        self.identifier: str = <span class="stringliteral">&quot;&quot;</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        self.endpoints: list[dict] = []</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        self.hrefs: list[str] = []</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        self.hrefs_data: list[dict[str, EndPointHrefData]] = []</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        self.description: dict = {}</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        self.main_description: str = <span class="stringliteral">&quot;&quot;</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        self.display_name: dict = {}</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        self.main_display_name: str = <span class="stringliteral">&quot;&quot;</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        self.global_asset_id: str = <span class="stringliteral">&quot;&quot;</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        self.asset_kind: str = <span class="stringliteral">&quot;&quot;</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        self.id_short: str = <span class="stringliteral">&quot;&quot;</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        self.semantic_id: dict = {}</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        self.supplementary_semantic_ids: list[str] = []</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        self.submodels: list[DescriptorEndpointData] = []</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    specific_asset_ids: dict[str, str]</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keyword">def </span>__init__(self, identifier_decoded: str):</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="stringliteral">&quot;&quot;&quot;Initialize the DescriptorData with the given descriptor data.&quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        self.identifier_decoded: str = identifier_decoded</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        self.identifier: str = <span class="stringliteral">&quot;&quot;</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        self.endpoints: list[dict] = []</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        self.hrefs: list[str] = []</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        self.hrefs_data: list[dict[str, EndPointHrefData]] = []</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        self.description: dict = {}</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        self.main_description: str = <span class="stringliteral">&quot;&quot;</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        self.display_name: dict = {}</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        self.main_display_name: str = <span class="stringliteral">&quot;&quot;</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        self.global_asset_id: str = <span class="stringliteral">&quot;&quot;</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        self.asset_kind: str = <span class="stringliteral">&quot;&quot;</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        self.id_short: str = <span class="stringliteral">&quot;&quot;</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        self.semantic_id: dict = {}</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        self.supplementary_semantic_ids: list[str] = []</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        self.submodels: list[DescriptorEndpointData] = []</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
